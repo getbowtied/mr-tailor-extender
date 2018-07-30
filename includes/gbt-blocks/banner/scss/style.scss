@@ -1,0 +1,30 @@
+.wp-block-gbt-banner
+{
+	margin-bottom: 2.5rem;
+	
+	.shortcode_banner_simple_height {
+		
+		cursor:pointer;
+		margin-bottom:30px;
+		clear:both;
+		
+		position: relative;
+
+		&.full
+		{
+			width: 100vw;
+			margin-left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&.wide
+		{
+			@media all and (min-width: 1024px) {
+				width: 75vw;
+				margin-left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+		
+	}
+}
