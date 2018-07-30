@@ -5,10 +5,10 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
-add_action( 'enqueue_block_editor_assets', 'getbowtied_banner_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'getbowtied_mt_banner_editor_assets' );
 
-if ( ! function_exists( 'getbowtied_banner_editor_assets' ) ) {
-	function getbowtied_banner_editor_assets() {
+if ( ! function_exists( 'getbowtied_mt_banner_editor_assets' ) ) {
+	function getbowtied_mt_banner_editor_assets() {
 
 		wp_enqueue_script(
 			'getbowtied-banner',
@@ -24,10 +24,10 @@ if ( ! function_exists( 'getbowtied_banner_editor_assets' ) ) {
 	}
 }
 
-add_action( 'enqueue_block_assets', 'getbowtied_banner_assets' );
+add_action( 'enqueue_block_assets', 'getbowtied_mt_banner_assets' );
 
-if ( ! function_exists( 'getbowtied_banner_assets' ) ) {
-	function getbowtied_banner_assets() {
+if ( ! function_exists( 'getbowtied_mt_banner_assets' ) ) {
+	function getbowtied_mt_banner_assets() {
 		
 		wp_enqueue_style(
 			'getbowtied-banner-css',
@@ -37,7 +37,7 @@ if ( ! function_exists( 'getbowtied_banner_assets' ) ) {
 	}
 }
 
-register_block_type( 'getbowtied/banner', array(
+register_block_type( 'getbowtied/mt-banner', array(
 	'attributes'      	=> array(
 		'title'							=> array(
 			'type'						=> 'string',
@@ -97,10 +97,10 @@ register_block_type( 'getbowtied/banner', array(
 		),
 	),
 
-	'render_callback' => 'getbowtied_render_banner',
+	'render_callback' => 'getbowtied_mt_render_banner',
 ) );
 
-function getbowtied_render_banner( $attributes ) {
+function getbowtied_mt_render_banner( $attributes ) {
 
 	extract( shortcode_atts( array(
 		'title' 				=> 'Banner Title',

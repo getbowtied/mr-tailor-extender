@@ -19,10 +19,10 @@
 	var Button				= components.Button;
 
 	/* Register Block */
-	registerBlockType( 'getbowtied/banner', {
+	registerBlockType( 'getbowtied/mt-banner', {
 		title: i18n.__( 'Banner' ),
 		icon: 'format-image',
-		category: 'shopkeeper',
+		category: 'mrtailor',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
 		},
@@ -98,7 +98,7 @@
 				{ name: 'yellow', 			color: '#fbba00' },
 				{ name: 'green', 			color: '#43d182' },
 				{ name: 'blue', 			color: '#2594e3' },
-				{ name: 'light-gray', 		color: '#eeeeee' },
+				{ name: 'white', 			color: '#ffffff' },
 				{ name: 'dark-gray', 		color: '#abb7c3' },
 				{ name: 'black', 			color: '#000' 	 },
 			];
