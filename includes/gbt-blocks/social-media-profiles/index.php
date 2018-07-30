@@ -5,10 +5,10 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
-add_action( 'enqueue_block_editor_assets', 'getbowtied_socials_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'getbowtied_mt_socials_editor_assets' );
 
-if ( ! function_exists( 'getbowtied_socials_editor_assets' ) ) {
-    function getbowtied_socials_editor_assets() {
+if ( ! function_exists( 'getbowtied_mt_socials_editor_assets' ) ) {
+    function getbowtied_mt_socials_editor_assets() {
     	
         wp_enqueue_script(
             'getbowtied-socials',
@@ -24,10 +24,10 @@ if ( ! function_exists( 'getbowtied_socials_editor_assets' ) ) {
     }
 }
 
-add_action( 'enqueue_block_assets', 'getbowtied_socials_assets' );
+add_action( 'enqueue_block_assets', 'getbowtied_mt_socials_assets' );
 
-if ( ! function_exists( 'getbowtied_socials_assets' ) ) {
-    function getbowtied_socials_assets() {
+if ( ! function_exists( 'getbowtied_mt_socials_assets' ) ) {
+    function getbowtied_mt_socials_assets() {
         
         wp_enqueue_style(
             'getbowtied-socials-css',
@@ -37,163 +37,113 @@ if ( ! function_exists( 'getbowtied_socials_assets' ) ) {
     }
 }
 
-register_block_type( 'getbowtied/socials', array(
+register_block_type( 'getbowtied/mt-socials', array(
 	'attributes'     			=> array(
 		'items_align'			=> array(
 			'type'				=> 'string',
 			'default'			=> 'left',
 		),
+        'fontSize'              => array(
+            'type'              => 'number',
+            'default'           => '24',
+        ),
+        'fontColor'             => array(
+            'type'              => 'string',
+            'default'           => '#000',
+        ),
 	),
 
-	'render_callback' => 'getbowtied_render_frontend_socials',
+	'render_callback' => 'getbowtied_mt_render_frontend_socials',
 ) );
 
-function get_sk_social_media_icons() {
+function get_mt_social_media_icons() {
     $socials = array(
         array( 
             'link' => 'facebook_link',
-            'icon' => 'spk-icon-facebook-f',
+            'icon' => 'fa fa-facebook',
             'name' => 'Facebook'
         ),
         array( 
             'link' => 'pinterest_link',
-            'icon' => 'spk-icon-pinterest',
+            'icon' => 'fa fa-pinterest',
             'name' => 'Pinterest'
         ),
         array( 
             'link' => 'linkedin_link',
-            'icon' => 'spk-icon-linkedin',
+            'icon' => 'fa fa-linkedin',
             'name' => 'Linkedin'
         ),
         array( 
             'link' => 'twitter_link',
-            'icon' => 'spk-icon-twitter',
+            'icon' => 'fa fa-twitter',
             'name' => 'Twitter'
         ),
         array( 
             'link' => 'googleplus_link',
-            'icon' => 'spk-icon-google-plus',
+            'icon' => 'fa fa-google-plus',
             'name' => 'Google+'
         ),
         array( 
             'link' => 'rss_link',
-            'icon' => 'spk-icon-rss',
+            'icon' => 'fa fa-rss',
             'name' => 'RSS'
         ),
         array( 
             'link' => 'tumblr_link',
-            'icon' => 'spk-icon-tumblr',
+            'icon' => 'fa fa-tumblr',
             'name' => 'Tumblr'
         ),
         array( 
             'link' => 'instagram_link',
-            'icon' => 'spk-icon-instagram',
+            'icon' => 'fa fa-instagram',
             'name' => 'Instagram'
         ),
         array( 
             'link' => 'youtube_link',
-            'icon' => 'spk-icon-youtube',
+            'icon' => 'fa fa-youtube-play',
             'name' => 'Youtube'
         ),
         array( 
             'link' => 'vimeo_link',
-            'icon' => 'spk-icon-vimeo',
+            'icon' => 'fa fa-vimeo-square',
             'name' => 'Vimeo'
         ),
         array( 
-            'link' => 'behance_link',
-            'icon' => 'spk-icon-behance',
-            'name' => 'Behance'
-        ),
-        array( 
-            'link' => 'dribbble_link',
-            'icon' => 'spk-icon-dribbble',
-            'name' => 'Dribbble'
-        ),
-        array( 
-            'link' => 'flickr_link',
-            'icon' => 'spk-icon-flickr',
-            'name' => 'Flickr'
-        ),
-        array( 
-            'link' => 'git_link',
-            'icon' => 'spk-icon-github',
-            'name' => 'Git'
-        ),
-        array( 
-            'link' => 'skype_link',
-            'icon' => 'spk-icon-skype',
-            'name' => 'Skype'
-        ),
-        array( 
-            'link' => 'weibo_link',
-            'icon' => 'spk-icon-sina-weibo',
-            'name' => 'Weibo'
-        ),
-        array( 
-            'link' => 'foursquare_link',
-            'icon' => 'spk-icon-foursquare',
-            'name' => 'Foursquare'
-        ),
-        array( 
-            'link' => 'soundcloud_link',
-            'icon' => 'spk-icon-soundcloud',
-            'name' => 'Soundcloud'
-        ),
-        array( 
-            'link' => 'vk_link',
-            'icon' => 'spk-icon-vk',
-            'name' => 'VK'
-        ),
-        array( 
-            'link' => 'houzz_link',
-            'icon' => 'spk-icon-houzz',
-            'name' => 'Houzz'
-        ),
-        array( 
-            'link' => 'naver_line_link',
-            'icon' => 'spk-icon spk-icon-naver-line-logo',
-            'name' => 'Naver Line'
-        ),
-        array( 
-            'link' => 'tripadvisor_link',
-            'icon' => 'spk-icon-tripadvisor',
-            'name' => 'TripAdvisor'
-        ),
-        array( 
-            'link' => 'wechat_link',
-            'icon' => 'spk-icon-wechat',
-            'name' => 'WeChat'
+            'link' => 'vkontakte_link',
+            'icon' => 'fa fa-vk',
+            'name' => 'Vkontakte'
         ),
     );
 
     return $socials;
 }
 
-function getbowtied_render_frontend_socials($attributes) {
+function getbowtied_mt_render_frontend_socials($attributes) {
 
-	global $shopkeeper_theme_options;
+    global $mr_tailor_theme_options;
 
 	extract(shortcode_atts(
 		array(
-			"items_align" => 'left'
+			'items_align' => 'left',
+            'fontSize'    => '24',
+            'fontColor'   => '#000',
 		), $attributes));
     ob_start();
 
-    $socials = get_sk_social_media_icons();
+    $socials = get_mt_social_media_icons();
 
     $output = '<div class="wp-block-gbt-social-media">';
 
         $output .= '<div class="site-social-icons-shortcode">';
-        $output .= '<ul class="' . esc_html($items_align) . '">';
+        $output .= '<ul class="' . esc_html($items_align) . '" style="font-size:'.$fontSize.'px;">';
 
         foreach($socials as $social) {
 
-        	if ( (isset($shopkeeper_theme_options[$social['link']])) && (trim($shopkeeper_theme_options[$social['link']]) != "" ) ) {
-        		$output .= '<li>';
-        		$output .= '<a class="social_media" target="_blank" href="' . esc_url($shopkeeper_theme_options[$social['link']]) . '">';
+        	if ( (isset($mr_tailor_theme_options[$social['link']])) && (trim($mr_tailor_theme_options[$social['link']]) != "") ) {
+        		$output .= '<li class="site-social-icons-'.$social['name'].'">';
+        		$output .= '<a style="color:'.$fontColor.';" target="_blank" href="' . esc_url(get_theme_mod($social['link'], '')) . '">';
                 $output .= '<i class="' . $social['icon'] . '"></i>';
-        		$output .= '<span class="' . $social['icon'] . '"></span>';
+        		$output .= '<span>' . $social['name'] . '</span>';
         		$output .= '</a></li>';
         	}
         }
