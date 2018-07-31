@@ -1,0 +1,20 @@
+.wp-block-gbt-lookbook
+{
+	margin-bottom: 2.5rem;
+
+	&.full
+	{
+		width: 100vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&.wide
+	{
+		@media all and (min-width: 1024px) {
+			width: 75vw;
+			margin-left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
