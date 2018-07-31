@@ -19,7 +19,7 @@
 	function getCategories()
 	{
 		var data = {
-			action : 'getbowtied_render_portfolio_categories'
+			action : 'getbowtied_mt_render_portfolio_categories'
 		};
 
 		jQuery.post( 'admin-ajax.php', data, function(response) { 
@@ -31,10 +31,10 @@
 	getCategories();
 
 	/* Register Block */
-	registerBlockType( 'getbowtied/portfolio', {
+	registerBlockType( 'getbowtied/mt-portfolio', {
 		title: i18n.__( 'Portfolio' ),
 		icon: 'format-gallery',
-		category: 'shopkeeper',
+		category: 'mrtailor',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
 		},
@@ -59,10 +59,6 @@
 				type: 'string',
 				default: 'asc',
 			},
-			grid: {
-				type: 'string',
-				default: 'default',
-			},
 			itemsPerRow: {
 				type: 'number',
 				default: 3,
@@ -84,28 +80,15 @@
 				props.setAttributes( { categories: categories_list } );
 			}, 1000 );
 
-			function getPreviewGrid( grid ) {
+			function getPreviewGrid() {
 
-				grid = grid || attributes.grid;
-
-				var data = {
-					action 		: 'getbowtied_get_preview_grid',
-					attributes  : { 'grid' : grid }
-				};
+				var data = { action : 'mt_getbowtied_get_preview_grid'	};
 
 				jQuery.post( 'admin-ajax.php', data, function(response) { 
 					response = jQuery.parseJSON(response);
 					props.setAttributes( { preview_grid: response } );
 				});	
 			}
-
-			var grid_layouts =
-			[
-				{ value: 'default', label: 'Default - Equal Boxes' },
-				{ value: 'grid1', 	label: 'Masonry Style - V1' },
-				{ value: 'grid2', 	label: 'Masonry Style - V2' },
-				{ value: 'grid3',	label: 'Masonry Style - V3' }
-			];
 
 			return [
 				el(
@@ -172,24 +155,11 @@
 						}
 					),
 					el(
-						SelectControl,
-						{
-							key: 'portfolio-grid',
-							options: grid_layouts,
-              				label: i18n.__( 'Grid Layout Styles' ),
-              				value: attributes.grid,
-              				onChange: function( newGrid ) {
-              					props.setAttributes( { grid: newGrid } );
-              					getPreviewGrid( newGrid );
-							},
-						}
-					),
-					attributes.grid == 'default' && el(
 						TextControl,
 						{
 							key: 'portfolio-items-per-row',
 							type: 'number',
-							min: 2,
+							min: 3,
 							max: 5,
 							label: i18n.__( 'Items per Row' ),
 							value: attributes.itemsPerRow,
@@ -209,10 +179,10 @@
 						'div',
 						{
 							key: 'portfolio-preview',
-							className: 'portfolio-preview ' + attributes.grid
+							className: 'portfolio-preview'
 						},
 						eval( attributes.preview_grid ),
-						attributes.preview_grid == '' && getPreviewGrid( 'default' )
+						attributes.preview_grid == '' && getPreviewGrid()
 					)
 				)
 			];
