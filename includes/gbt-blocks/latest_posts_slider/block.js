@@ -38,10 +38,10 @@
 	getCategories(categories_list);
 
 	/* Register Block */
-	registerBlockType( 'getbowtied/latest-posts-grid', {
-		title: i18n.__( 'Latest Posts Grid' ),
-		icon: 'grid-view',
-		category: 'shopkeeper',
+	registerBlockType( 'getbowtied/mt-latest-posts-slider', {
+		title: i18n.__( 'Latest Posts Slider' ),
+		icon: 'slides',
+		category: 'mrtailor',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
 		},
@@ -58,10 +58,6 @@
 				type: 'array',
 				default: categories_list
 			},
-			columns: {
-				type: 'number',
-				default: '3'
-			},
 			grid: {
 				type: 'string',
 				default: ''
@@ -72,18 +68,16 @@
 
 			var attributes = props.attributes;
 
-			function getLatestPosts( category, number, columns ) {
+			function getLatestPosts( category, number ) {
 
 				category = category || attributes.category;
 				number   = number   || attributes.number;
-				columns  = columns  || attributes.columns;
 
 				var data = {
-					action 		: 'getbowtied_render_backend_latest_posts_grid',
+					action 		: 'getbowtied_mt_render_backend_latest_posts_slider',
 					attributes  : {
 						'category' : category,
-						'number'   : number,
-						'columns'  : columns,
+						'number'   : number
 					}
 				};
 
@@ -91,6 +85,24 @@
 					response = jQuery.parseJSON(response);
 					props.setAttributes( { grid: response } );
 				});	
+			}
+
+			function createCarousel() {
+
+				setTimeout( function(){
+
+					jQuery(document).ready(function($) {
+						$(".wp-block-gbt-posts-slider .owl-carousel").owlCarousel({
+							items:3,
+							itemsDesktop : [1200,3],
+							itemsDesktopSmall : [1000,2],
+							itemsTablet: false,
+							itemsMobile : [600,1],
+							lazyLoad : true,
+						});
+					});
+
+				}, 1000);
 			}
 
 			return [
@@ -103,29 +115,13 @@
 					el(
 						RangeControl,
 						{
-							key: "latest-posts-columns",
-							value: attributes.columns,
-							allowReset: false,
-							initialPosition: 3,
-							min: 1,
-							max: 4,
-							label: i18n.__( 'Columns' ),
-							onChange: function( newColumns ) {
-								props.setAttributes( { columns: newColumns } );
-								getLatestPosts( null, null, newColumns);
-							},
-						}
-					),
-					el(
-						RangeControl,
-						{
 							key: "latest-posts-number",
 							value: attributes.number,
 							allowReset: false,
 							label: i18n.__( 'Number of Posts' ),
 							onChange: function( newNumber ) {
 								props.setAttributes( { number: newNumber } );
-								getLatestPosts( null, newNumber, null);
+								getLatestPosts( null, newNumber );
 							},
 						}
 					),
@@ -138,13 +134,36 @@
               				value: attributes.category,
               				onChange: function( newCat ) {
               					props.setAttributes( { category: newCat } );
-              					getLatestPosts( newCat, null, null);
+              					getLatestPosts( newCat, null );
 							},
 						}
 					),
 				),
+				el( 
+					'div',
+					{ 
+						key: 'wp-block-slider-title-wrapper',
+						className: 'wp-block-slider-title-wrapper'
+					},
+					el(
+						'h4',
+						{
+							key: 'wp-block-slider-title',
+							className: 'wp-block-slider-title',
+						},
+						el(
+							'span',
+							{
+								key: 'wp-block-slider-dashicon',
+								className: 'dashicon dashicons-slides',
+							},
+						),
+						i18n.__('Latest Posts Slider')
+					),
+				),
 				eval( attributes.grid ),
-				attributes.grid == '' && getLatestPosts( 'All Categories', '12', '3')
+				attributes.grid == '' && getLatestPosts( 'All Categories', '12' ),
+				//createCarousel()
 			];
 		},
 

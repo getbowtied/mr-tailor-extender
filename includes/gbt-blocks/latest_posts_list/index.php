@@ -11,14 +11,14 @@ if ( ! function_exists( 'getbowtied_mt_latest_posts_list_editor_assets' ) ) {
 	function getbowtied_mt_latest_posts_list_editor_assets() {
 		
 		wp_enqueue_script(
-			'getbowtied-latest-posts',
+			'getbowtied-latest-posts-list',
 			plugins_url( 'block.js', __FILE__ ),
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'jquery' ),
 			filemtime( plugin_dir_path( __FILE__ ) . 'block.js' )
 		);
 
 		wp_enqueue_style(
-			'getbowtied-latest-posts-grid-editor-css',
+			'getbowtied-latest-posts-list-editor-css',
 			plugins_url( 'css/editor.css', __FILE__ ),
 			array( 'wp-blocks' )
 		);
@@ -31,7 +31,7 @@ if ( ! function_exists( 'getbowtied_mt_latest_posts_list_assets' ) ) {
 	function getbowtied_mt_latest_posts_list_assets() {
 		
 		wp_enqueue_style(
-			'getbowtied-latest-posts-grid-css',
+			'getbowtied-latest-posts-list-css',
 			plugins_url( 'css/style.css', __FILE__ ),
 			array()
 		);
@@ -68,7 +68,7 @@ function getbowtied_mt_render_frontend_latest_posts_list( $attributes ) {
 	ob_start();
 	?> 
 
-	<div class="wp-block-gbt-posts-grid <?php echo $align; ?>">
+	<div class="wp-block-gbt-posts-list <?php echo $align; ?>">
     
 	    <div class="row">
 	        <div class="blog-list-wrapper">
@@ -100,7 +100,7 @@ function getbowtied_mt_render_frontend_latest_posts_list( $attributes ) {
 	                    ?>
 						
 						<div class="blog-list-item">	
-							<a class="blog_list_img_link" href="<?php get_permalink($post->ID); ?>">
+							<a class="blog_list_img_link" href="<?php echo get_permalink($post->ID); ?>">
 							
 								<span class="blog_list_overlay"></span>
 							
@@ -151,7 +151,7 @@ function getbowtied_mt_render_backend_latest_posts_grid() {
 		'category'	=> 'All Categories'
 	), $attributes ) );
 
-	$output = 'el( "div", { key: "wp-block-gbt-posts-grid", className: "wp-block-gbt-posts-grid"},';
+	$output = 'el( "div", { key: "wp-block-gbt-posts-list", className: "wp-block-gbt-posts-list"},';
 
 		$output .= 'el( "div", { key: "blog-list-wrapper", className: "blog-list-wrapper"},';
 

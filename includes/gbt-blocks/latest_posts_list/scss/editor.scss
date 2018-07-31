@@ -1,9 +1,14 @@
-.wp-block-gbt-posts-grid
+.wp-block-gbt-posts-list
 {
 	.blog-list-item
 	{
 		position: relative;
 		margin: 0 0 10px;
+	}
+
+	.blog_list_img
+	{
+		background-color: #000;
 	}
 	
 	.blog_list_img_link
