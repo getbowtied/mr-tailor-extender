@@ -1,0 +1,18 @@
+.wp-block-gbt-posts-grid {
+  margin-bottom: 0.5rem; }
+  .wp-block-gbt-posts-grid.full {
+    width: 100vw;
+    margin-left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    padding: 0px 23px; }
+  @media all and (min-width: 1024px) {
+    .wp-block-gbt-posts-grid.wide {
+      width: 75vw;
+      margin-left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%); } }
+  .wp-block-gbt-posts-grid .blog-list-title {
+    color: inherit; }
