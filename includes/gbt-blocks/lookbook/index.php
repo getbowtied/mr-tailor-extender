@@ -56,6 +56,10 @@ register_block_type( 'getbowtied/mt-lookbook', array(
 			'type'						=> 'string',
 			'default'					=> '#fff',
 		),
+		'productColor'					=> array(
+			'type'						=> 'string',
+			'default'					=> '#fff',
+		),
 		'bgColor'						=> array(
 			'type'						=> 'string',
 			'default'					=> '#e4e4e4',
@@ -70,11 +74,11 @@ register_block_type( 'getbowtied/mt-lookbook', array(
 		),
 		'columns'						=> array(
 			'type'						=> 'integer',
-			'default'					=> '2',
+			'default'					=> '3',
 		),
 		'height'						=> array(
 			'type'						=> 'integer',
-			'default'					=> '400',
+			'default'					=> '750',
 		),
 		'orderBy'						=> array(
 			'type'						=> 'string',
@@ -102,11 +106,12 @@ function getbowtied_mt_render_frontend_lookbook( $attributes ) {
 		"subtitle" 		=> 'Lookbook Subtitle',
 		"products" 		=> '',
 		"imgURL"		=> '',
-		"columns" 		=> '2',
+		"columns" 		=> '3',
 		"titleColor"	=> '#fff',
 		"subtitleColor"	=> '#fff',
+		"productColor"	=> '#fff',
 		"bgColor"		=> '#e4e4e4',
-		"height"		=> '400',
+		"height"		=> '750',
         "orderBy"	 	=> 'date',
         "order" 		=> 'desc',
 		"align"			=> 'center'
@@ -192,12 +197,12 @@ function getbowtied_mt_render_frontend_lookbook( $attributes ) {
 
 							?>
 
-								<div class="swiper-slide">								
+								<div class="swiper-slide column-<?php echo $columns; ?>">								
 									<div class="lookbook_product_wrapper">
 										<a href="<?php the_permalink(); ?>" class="lookbook_product_wrapper_inside" style="<?php echo $style; ?>"></a>
 										<div class="lookbook_product_infos">										
-											<h4 class="lookbook_product_price"><?php do_action( 'woocommerce_after_shop_loop_item_title' ); ?></h4>
-											<h3 class="lookbook_product_title"><?php the_title(); ?></h3>
+											<h4 class="product_price" style="color:<?php echo $productColor; ?>"><?php do_action( 'woocommerce_after_shop_loop_item_title' ); ?></h4>
+											<h3 class="product_title" style="color:<?php echo $productColor; ?>"><?php the_title(); ?></h3>
 										</div>
 										<a href="<?php the_permalink(); ?>" class="lookbook_product_overlay"></a>
 									</div>

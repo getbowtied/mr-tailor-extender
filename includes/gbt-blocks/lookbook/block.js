@@ -44,9 +44,13 @@
 				type: 'string',
 				default: '#fff'
 			},
+			productColor: {
+				type: 'string',
+				default: '#fff'
+			},
 			bgColor: {
 				type: 'string',
-				default: '#e4e4e4'
+				default: '#000'
 			},
 			imgURL: {
 	            type: 'string',
@@ -65,11 +69,11 @@
 			},
 			columns: {
 				type: 'number',
-				default: '2',
+				default: '3',
 			},
 			height: {
 				type: 'number',
-				default: '400',
+				default: '750',
 			},
 			orderBy: {
 				type: 'string',
@@ -200,6 +204,25 @@
 									value: attributes.subtitleColor,
 									onChange: function( newColor) {
 										props.setAttributes( { subtitleColor: newColor } );
+									},
+								} 
+							),
+						),
+						el(
+							PanelColor,
+							{
+								key: 'lookbook-product-color-panel',
+								title: i18n.__( 'Products Title Color' ),
+								colorValue: attributes.productColor,
+							},
+							el(
+								ColorPalette, 
+								{
+									key: 'lookbook-bg-color-pallete',
+									colors: colors,
+									value: attributes.productColor,
+									onChange: function( newColor) {
+										props.setAttributes( { productColor: newColor } );
 									},
 								} 
 							),

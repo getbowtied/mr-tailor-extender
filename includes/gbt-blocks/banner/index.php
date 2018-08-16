@@ -93,7 +93,7 @@ register_block_type( 'getbowtied/mt-banner', array(
 		),
 		'bgColor'						=> array(
 			'type'						=> 'string',
-			'default'					=> '#f3f3f4',
+			'default'					=> '#000',
 		),
 		'height'						=> array(
 			'type'						=> 'integer',
@@ -131,7 +131,7 @@ function getbowtied_mt_render_banner( $attributes ) {
 		'subtitleFont'			=> 'secondary_font',
 		'innerStrokeThickness' 	=> '2px',
 		'innerStrokeColor' 		=> '#fff',
-		'bgColor' 				=> '#f3f3f4',
+		'bgColor' 				=> '#000',
 		'imgURL' 				=> '',
 		'height' 				=> '300',
 		'separatorPadding' 		=> '5',
