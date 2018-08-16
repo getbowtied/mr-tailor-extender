@@ -163,7 +163,6 @@
 				),
 				eval( attributes.grid ),
 				attributes.grid == '' && getLatestPosts( 'All Categories', '12' ),
-				//createCarousel()
 			];
 		},
 

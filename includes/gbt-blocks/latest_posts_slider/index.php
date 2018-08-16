@@ -95,7 +95,7 @@ function getbowtied_mt_render_frontend_latest_posts_slider( $attributes ) {
 		            $args = array(
 		                'post_status' => 'publish',
 		                'post_type' => 'post',
-		                'category_name' => $category,
+		                'category' => $category,
 		                'posts_per_page' => $number
 		            );
 		            
