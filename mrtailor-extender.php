@@ -8,7 +8,7 @@
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		4.9
- * Tested up to: 			4.9.7
+ * Tested up to: 			4.9.8
  *
  * @package  Mr. Tailor Extender
  * @author   GetBowtied
@@ -22,33 +22,33 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
-// add_action( 'init', 'github_plugin_updater' );
-// function github_plugin_updater() {
+add_action( 'init', 'github_mt_plugin_updater' );
+function github_mt_plugin_updater() {
 
-// 	include_once 'updater.php';
+	include_once 'updater.php';
 
-// 	define( 'WP_GITHUB_FORCE_UPDATE', true );
+	define( 'WP_GITHUB_FORCE_UPDATE', true );
 
-// 	if ( is_admin() ) {
+	if ( is_admin() ) {
 
-// 		$config = array(
-// 			'slug' 				 => plugin_basename(__FILE__),
-// 			'proper_folder_name' => 'shopkeeper-extender',
-// 			'api_url' 			 => 'https://api.github.com/repos/getbowtied/shopkeeper-extender',
-// 			'raw_url' 			 => 'https://raw.github.com/getbowtied/shopkeeper-extender/master',
-// 			'github_url' 		 => 'https://github.com/getbowtied/shopkeeper-extender',
-// 			'zip_url' 			 => 'https://github.com/getbowtied/shopkeeper-extender/zipball/master',
-// 			'sslverify'			 => true,
-// 			'requires'			 => '4.9',
-// 			'tested'			 => '4.9.7',
-// 			'readme'			 => 'README.md',
-// 			'access_token'		 => '',
-// 		);
+		$config = array(
+			'slug' 				 => plugin_basename(__FILE__),
+			'proper_folder_name' => 'mr-tailor-extender',
+			'api_url' 			 => 'https://api.github.com/repos/getbowtied/mr-tailor-extender',
+			'raw_url' 			 => 'https://raw.github.com/getbowtied/mr-tailor-extender/master',
+			'github_url' 		 => 'https://github.com/getbowtied/mr-tailor-extender',
+			'zip_url' 			 => 'https://github.com/getbowtied/mr-tailor-extender/zipball/master',
+			'sslverify'			 => true,
+			'requires'			 => '4.9',
+			'tested'			 => '4.9.8',
+			'readme'			 => 'README.txt',
+			'access_token'		 => '',
+		);
 
-// 		new WP_GitHub_Updater( $config );
+		new WP_GitHub_Updater( $config );
 
-// 	}
-// }
+	}
+}
 
 function gbt_mt_gutenberg_blocks() {
 
