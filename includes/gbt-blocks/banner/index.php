@@ -67,6 +67,22 @@ register_block_type( 'getbowtied/mt-banner', array(
 			'type'						=> 'string',
 			'default'					=> '#fff',
 		),
+		'titleSize'						=> array(
+			'type'						=> 'integer',
+			'default'					=> '27',
+		),
+		'subtitleSize'					=> array(
+			'type'						=> 'integer',
+			'default'					=> '16',
+		),
+		'titleFont'						=> array(
+			'type'						=> 'string',
+			'default'					=> 'primary_font',
+		),
+		'subtitleFont'					=> array(
+			'type'						=> 'string',
+			'default'					=> 'secondary_font',
+		),
 		'innerStrokeThickness'			=> array(
 			'type'						=> 'integer',
 			'default'					=> '2',
@@ -109,6 +125,10 @@ function getbowtied_mt_render_banner( $attributes ) {
 		'blank' 				=> '',
 		'titleColor' 			=> '#fff',
 		'subtitleColor' 		=> '#fff',
+		'titleSize'				=> '27',
+		'subtitleSize'			=> '16',
+		'titleFont'				=> 'primary_font',
+		'subtitleFont'			=> 'secondary_font',
 		'innerStrokeThickness' 	=> '2px',
 		'innerStrokeColor' 		=> '#fff',
 		'bgColor' 				=> '#f3f3f4',
@@ -142,9 +162,9 @@ function getbowtied_mt_render_banner( $attributes ) {
 				
 					<div class="shortcode_banner_simple_height_inside" style="height:'.$height.'px; border: '.$innerStrokeThickness.'px solid '.$innerStrokeColor.'">
 						<div class="shortcode_banner_simple_height_content">
-							<div><h3 style="color:'.$titleColor.' !important">'. $title .'</h3></div>
+							<div><h3 class="banner-title '.$titleFont.'" style="color:'.$titleColor.' !important;font-size:'.$titleSize.'px">'. $title .'</h3></div>
 							<div class="shortcode_banner_simple_height_sep" style="margin:'.$separatorPadding.'px auto; background-color:'.$separatorColor.';"></div>
-							<div><h4 style="color:'.$subtitleColor.' !important">'. $subtitle .'</h4></div>
+							<div><h4 class="banner-subtitle '.$subtitleFont.'" style="color:'.$subtitleColor.' !important;font-size:'.$subtitleSize.'px">'. $subtitle .'</h4></div>
 						</div>
 					</div>
 				</div>

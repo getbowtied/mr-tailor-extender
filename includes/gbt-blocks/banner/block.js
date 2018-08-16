@@ -12,6 +12,7 @@
 
 	var TextControl 		= components.TextControl;
 	var ToggleControl		= components.ToggleControl;
+	var SelectControl		= components.SelectControl;
 	var RangeControl		= components.RangeControl;
 	var ColorPalette		= components.ColorPalette;
 	var PanelBody			= components.PanelBody;
@@ -62,6 +63,22 @@
 				type: 'string',
 				default: '#fff'
 			},
+			titleSize: {
+				type: 'number',
+				default: '27'
+			},
+			subtitleSize: {
+				type: 'number',
+				default: '16'
+			},
+			titleFont: {
+	        	type: 'string',
+	        	default: 'primary_font',
+	        },
+	        subtitleFont: {
+	        	type: 'string',
+	        	default: 'secondary_font',
+	        },
 			innerStrokeThickness: {
 				type: 'number',
 				default: '2'
@@ -72,7 +89,7 @@
 			},
 			bgColor: {
 				type: 'string',
-				default: '#f3f3f4'
+				default: '#000'
 			},
 			height: {
 				type: 'number',
@@ -155,6 +172,72 @@
 								label: i18n.__( 'Height' ),
 								onChange: function( newNumber ) {
 									props.setAttributes( { height: newNumber } );
+								},
+							}
+						),
+					),
+					el( 
+						PanelBody, 
+						{ 
+							key: 'banner-text-settings-panel',
+							title: 'Font Settings',
+							initialOpen: false,
+							style:
+							{
+							    borderBottom: '1px solid #e2e4e7'
+							}
+						},
+						el(
+							RangeControl,
+							{
+								key: "banner-title-font-size",
+								value: attributes.titleSize,
+								allowReset: false,
+								initialPosition: 27,
+								min: 10,
+								max: 72,
+								label: i18n.__( 'Title Font Size' ),
+								onChange: function( newNumber ) {
+									props.setAttributes( { titleSize: newNumber } );
+								},
+							}
+						),
+						el(
+							SelectControl,
+							{
+								key: "banner-title-font-family",
+								options: [{value: 'primary_font', label: 'Primary Font'}, {value: 'secondary_font', label: 'Secondary Font'}],
+								label: i18n.__( 'Title Font Family (preview in frontend)' ),
+								value: attributes.titleFont,
+								onChange: function( newSelection ) {
+									props.setAttributes( { titleFont: newSelection } );
+								},
+							}
+						),
+						el(
+							RangeControl,
+							{
+								key: "banner-subtitle-font-size",
+								value: attributes.subtitleSize,
+								allowReset: false,
+								initialPosition: 16,
+								min: 10,
+								max: 72,
+								label: i18n.__( 'Subtitle Font Size' ),
+								onChange: function( newNumber ) {
+									props.setAttributes( { subtitleSize: newNumber } );
+								},
+							}
+						),
+						el(
+							SelectControl,
+							{
+								key: "banner-subtitle-font-family",
+								options: [{value: 'primary_font', label: 'Primary Font'}, {value: 'secondary_font', label: 'Secondary Font'}],
+								label: i18n.__( 'Subtitle Font Family (preview in frontend)' ),
+								value: attributes.subtitleFont,
+								onChange: function( newSelection ) {
+									props.setAttributes( { subtitleFont: newSelection } );
 								},
 							}
 						),
@@ -410,7 +493,8 @@
 												key: 'banner-title',
 												style:
 												{ 
-													color: attributes.titleColor
+													color: attributes.titleColor,
+													fontSize: attributes.titleSize + 'px'
 												},
 												className: 'banner-title',
 												formattingControls: [],
@@ -447,7 +531,8 @@
 												key: 'banner-subtitle',
 												style:
 												{
-													color: attributes.subtitleColor
+													color: attributes.subtitleColor,
+													fontSize: attributes.subtitleSize + 'px'
 												},
 												className: 'banner-subtitle',
 												tagName: 'h4',

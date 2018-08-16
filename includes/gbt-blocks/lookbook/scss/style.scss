@@ -11,10 +11,40 @@
 
 	&.wide
 	{
-		@media all and (min-width: 1024px) {
-			width: 75vw;
-			margin-left: 50%;
-			transform: translateX(-50%);
+		.single-post &
+		{
+			@media all and (min-width: 1024px)
+			{
+			    width: 75vw;
+			    margin-left: 50% !important;
+			    transform: translateX(-50%);
+			}
+
+			@media all and (max-width: 680px)
+		    {
+		    	width: 100%;
+		    	margin-left: 0 !important;
+		    	left: 0;
+		    }
+		}
+
+		.page
+		{
+			@media all and (min-width: 1518px)
+			{
+			    width: 75vw;
+			    position: relative;
+				margin-left: -37.5vw !important;
+				left: 50%;
+			    transform: translateX(0);
+			}
+
+		    @media all and (max-width: 680px)
+		    {
+		    	width: 100%;
+		    	margin-left: 0 !important;
+		    	left: 0;
+		    }
 		}
 	}
 }
