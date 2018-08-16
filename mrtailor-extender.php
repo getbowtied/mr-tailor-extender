@@ -4,7 +4,7 @@
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://github.com/getbowtied/mr-tailor-extender
  * Description:       		Extends the functionality of Mr. Tailor with Gutenberg elements.
- * Version:           		1.1
+ * Version:           		1.0
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		4.9
