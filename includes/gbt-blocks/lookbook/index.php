@@ -62,7 +62,7 @@ register_block_type( 'getbowtied/mt-lookbook', array(
 		),
 		'bgColor'						=> array(
 			'type'						=> 'string',
-			'default'					=> '#e4e4e4',
+			'default'					=> '#000',
 		),
 		'imgURL'						=> array(
 			'type'						=> 'string',
@@ -110,7 +110,7 @@ function getbowtied_mt_render_frontend_lookbook( $attributes ) {
 		"titleColor"	=> '#fff',
 		"subtitleColor"	=> '#fff',
 		"productColor"	=> '#fff',
-		"bgColor"		=> '#e4e4e4',
+		"bgColor"		=> '#000',
 		"height"		=> '750',
         "orderBy"	 	=> 'date',
         "order" 		=> 'desc',
