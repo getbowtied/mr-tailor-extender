@@ -45,7 +45,7 @@ function github_mt_plugin_updater() {
 			'access_token'		 => '',
 		);
 
-		new WP_GitHub_Updater( $config );
+		//new WP_GitHub_Updater( $config );
 
 	}
 }
@@ -57,7 +57,7 @@ function gbt_mt_gutenberg_blocks() {
 		return;
 	}
 
-	if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0') ) {
+	if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0-beta') ) {
 		include_once 'includes/gbt-blocks/index.php';
 	} else {
 		add_action( 'admin_notices', 'mt_theme_warning' );
