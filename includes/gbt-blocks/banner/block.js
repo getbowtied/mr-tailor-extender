@@ -1,28 +1,30 @@
 ( function( blocks, components, editor, i18n, element ) {
 
-	var el = element.createElement;
+	const el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = blocks.registerBlockType;
+	const registerBlockType   	= blocks.registerBlockType;
 		
-	var InspectorControls 	= editor.InspectorControls;
-	var RichText			= editor.RichText;
-	var BlockControls		= editor.BlockControls;
-	var MediaUpload			= editor.MediaUpload;
+	const InspectorControls 	= editor.InspectorControls;
+	const RichText				= editor.RichText;
+	const BlockControls			= editor.BlockControls;
+	const MediaUpload			= editor.MediaUpload;
+	const ColorSettings			= editor.PanelColorSettings;
 
-	var TextControl 		= components.TextControl;
-	var ToggleControl		= components.ToggleControl;
-	var SelectControl		= components.SelectControl;
-	var RangeControl		= components.RangeControl;
-	var ColorPalette		= components.ColorPalette;
-	var PanelBody			= components.PanelBody;
-	var PanelColor			= components.PanelColor;
-	var Button				= components.Button;
+	const TextControl 			= components.TextControl;
+	const ToggleControl			= components.ToggleControl;
+	const RangeControl			= components.RangeControl;
+	const PanelBody				= components.PanelBody;
+	const Button				= components.Button;
+	const SVG 					= components.SVG;
+	const Path 					= components.Path;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-banner', {
 		title: i18n.__( 'Banner' ),
-		icon: 'format-image',
+		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
+				el( Path, { d:'M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z' } ) 
+			),
 		category: 'mrtailor',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
@@ -39,6 +41,7 @@
 		    imgURL: {
 	            type: 'string',
 	            attribute: 'src',
+	            default: '',
 	        },
 	        imgID: {
 	            type: 'number',
@@ -63,22 +66,6 @@
 				type: 'string',
 				default: '#fff'
 			},
-			titleSize: {
-				type: 'number',
-				default: '27'
-			},
-			subtitleSize: {
-				type: 'number',
-				default: '16'
-			},
-			titleFont: {
-	        	type: 'string',
-	        	default: 'primary_font',
-	        },
-	        subtitleFont: {
-	        	type: 'string',
-	        	default: 'secondary_font',
-	        },
 			innerStrokeThickness: {
 				type: 'number',
 				default: '2'
@@ -87,60 +74,86 @@
 				type: 'string',
 				default: '#fff'
 			},
-			bgColor: {
+			backgroundColor: {
 				type: 'string',
-				default: '#000'
+				default: '#464646'
 			},
 			height: {
 				type: 'number',
 				default: '300',
 			},
-			separatorPadding: {
+			titleSize: {
 				type: 'number',
-				default: '5'
+				default: '38'
 			},
-			separatorColor: {
-				type: 'string',
-				default: '#fff'
+			subtitleSize: {
+				type: 'number',
+				default: '18'
 			},
 		},
 
 		edit: function( props ) {
 
-			var attributes = props.attributes;
+			let attributes = props.attributes;
 
-			var colors = [
-				{ name: 'red', 				color: '#d02e2e' },
-				{ name: 'orange', 			color: '#f76803' },
-				{ name: 'yellow', 			color: '#fbba00' },
-				{ name: 'green', 			color: '#43d182' },
-				{ name: 'blue', 			color: '#2594e3' },
-				{ name: 'white', 			color: '#ffffff' },
-				{ name: 'dark-gray', 		color: '#abb7c3' },
-				{ name: 'black', 			color: '#000' 	 },
-			];
+			function getColors() {
+
+				let colors = [
+					{ 
+						label: i18n.__( 'Title Color' ),
+						value: attributes.titleColor,
+						onChange: function( newColor) {
+							props.setAttributes( { titleColor: newColor } );
+						},
+					},
+					{ 
+						label: i18n.__( 'Subtitle Color' ),
+						value: attributes.subtitleColor,
+						onChange: function( newColor) {
+							props.setAttributes( { subtitleColor: newColor } );
+						},
+					},
+					{ 
+						label: i18n.__( 'Background Color' ),
+						value: attributes.backgroundColor,
+						onChange: function( newColor) {
+							props.setAttributes( { backgroundColor: newColor } );
+						},
+					}
+				];
+
+				if( attributes.innerStrokeThickness > 0 ) {
+					colors.push(
+						{ 
+							label: i18n.__( 'Inner Stroke Color' ),
+							value: attributes.innerStrokeColor,
+							onChange: function( newColor) {
+								props.setAttributes( { innerStrokeColor: newColor } );
+							},
+						}
+					);
+				}
+
+				return colors;
+			}
 
 			return [
 				el(
 					InspectorControls,
 					{ 
-						key: 'banner-inspector'
+						key: 'gbt_18_mt_banner_inspector'
 					},
 					el( 
 						PanelBody, 
 						{ 
-							key: 'banner-general-settings-panel',
+							key: 'gbt_18_mt_banner_settings_panel',
 							title: 'General Settings',
 							initialOpen: false,
-							style:
-							{
-							    borderBottom: '1px solid #e2e4e7'
-							}
 						},
 						el(
 							TextControl,
 							{
-								key: 'banner-url',
+								key: 'gbt_18_mt_banner_url',
 								type: 'string',
 								label: i18n.__( 'URL' ),
 								value: attributes.url,
@@ -152,7 +165,7 @@
 						el(
 							ToggleControl,
 							{
-								key: "banner-blank-toggle",
+								key: "gbt_18_mt_banner_new_tab",
 	              				label: i18n.__( 'Open link in new tab?' ),
 	              				checked: attributes.blank,
 	              				onChange: function() {
@@ -163,7 +176,7 @@
 						el(
 							RangeControl,
 							{
-								key: "banner-height",
+								key: "gbt_18_mt_banner_height",
 								value: attributes.height,
 								allowReset: false,
 								initialPosition: 300,
@@ -179,21 +192,17 @@
 					el( 
 						PanelBody, 
 						{ 
-							key: 'banner-text-settings-panel',
+							key: 'gbt_18_mt_banner_font_panel',
 							title: 'Font Settings',
 							initialOpen: false,
-							style:
-							{
-							    borderBottom: '1px solid #e2e4e7'
-							}
 						},
 						el(
 							RangeControl,
 							{
-								key: "banner-title-font-size",
+								key: "gbt_18_mt_banner_title_size",
 								value: attributes.titleSize,
 								allowReset: false,
-								initialPosition: 27,
+								initialPosition: 38,
 								min: 10,
 								max: 72,
 								label: i18n.__( 'Title Font Size' ),
@@ -203,24 +212,12 @@
 							}
 						),
 						el(
-							SelectControl,
-							{
-								key: "banner-title-font-family",
-								options: [{value: 'primary_font', label: 'Primary Font'}, {value: 'secondary_font', label: 'Secondary Font'}],
-								label: i18n.__( 'Title Font Family (preview in frontend)' ),
-								value: attributes.titleFont,
-								onChange: function( newSelection ) {
-									props.setAttributes( { titleFont: newSelection } );
-								},
-							}
-						),
-						el(
 							RangeControl,
 							{
-								key: "banner-subtitle-font-size",
+								key: "gbt_18_mt_banner_subtitle_size",
 								value: attributes.subtitleSize,
 								allowReset: false,
-								initialPosition: 16,
+								initialPosition: 18,
 								min: 10,
 								max: 72,
 								label: i18n.__( 'Subtitle Font Size' ),
@@ -229,96 +226,21 @@
 								},
 							}
 						),
-						el(
-							SelectControl,
-							{
-								key: "banner-subtitle-font-family",
-								options: [{value: 'primary_font', label: 'Primary Font'}, {value: 'secondary_font', label: 'Secondary Font'}],
-								label: i18n.__( 'Subtitle Font Family (preview in frontend)' ),
-								value: attributes.subtitleFont,
-								onChange: function( newSelection ) {
-									props.setAttributes( { subtitleFont: newSelection } );
-								},
-							}
-						),
-					),
-					el( 
-						PanelBody,
-						{ 
-							key: 'banner-colors-panel',
-							title: 'Colors',
-							initialOpen: false
-						},
-						el(
-							PanelColor,
-							{
-								key: 'banner-title-color-panel',
-								title: i18n.__( 'Title Color' ),
-								colorValue: attributes.titleColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'banner-title-color-pallete',
-									colors: colors,
-									value: attributes.titleColor,
-									onChange: function( newColor) {
-										props.setAttributes( { titleColor: newColor } );
-									},
-								} 
-							),
-						),
-						el(
-							PanelColor,
-							{
-								key: 'banner-subtitle-color-panel',
-								title: i18n.__( 'Subtitle Color' ),
-								colorValue: attributes.subtitleColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'banner-subtitle-color-palette',
-									colors: colors,
-									value: attributes.subtitleColor,
-									onChange: function( newColor) {
-										props.setAttributes( { subtitleColor: newColor } );
-									},
-								} 
-							),
-						),
-						el(
-							PanelColor,
-							{
-								key: 'banner-bg-color-panel',
-								title: i18n.__( 'Background Color' ),
-								colorValue: attributes.bgColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'banner-bg-color-palette',
-									colors: colors,
-									value: attributes.bgColor,
-									onChange: function( newColor) {
-										props.setAttributes( { bgColor: newColor } );
-									},
-								} 
-							),
-						),
 					),
 					el(
 						PanelBody,
 						{ 
-							key: 'banner-inner-stroke-panel',
+							key: 'gbt_18_mt_banner_immer_stroke_settings',
 							title: 'Inner Stroke',
 							initialOpen: false
 						},
 						el(
 							RangeControl,
 							{
-								key: "banner-inner-stroke-thickness",
+								key: "gbt_18_mt_banner_inner_stroke_thickness",
 								value: attributes.innerStrokeThickness,
+								min: '0',
+								max: '30',
 								initialPosition: '2',
 								allowReset: false,
 								label: i18n.__( 'Inner Stroke Thickness' ),
@@ -327,225 +249,151 @@
 								},
 							}
 						),
-						el(
-							PanelColor,
-							{
-								key: 'banner-inner-stroke-color-panel',
-								title: i18n.__( 'Inner Stroke Color' ),
-								colorValue: attributes.innerStrokeColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'banner-inner-stroke-color-palette',
-									colors: colors,
-									value: attributes.innerStrokeColor,
-									onChange: function( newColor) {
-										props.setAttributes( { innerStrokeColor: newColor } );
-									},
-								} 
-							),
-						),
 					),
 					el(
-						PanelBody,
-						{ 
-							key: 'banner-separator-panel',
-							title: 'Separator',
-							initialOpen: false
+						ColorSettings,
+						{
+							key: 'gbt_18_mt_banner_color_settings',
+							title: i18n.__( 'Colors' ),
+							initialOpen: false,
+							colorSettings: getColors()
 						},
-						el(
-							RangeControl,
-							{
-								key: "banner-separator-padding",
-								value: attributes.separatorPadding,
-								initialPosition: '5',
-								allowReset: false,
-								label: i18n.__( 'Separator Padding' ),
-								onChange: function( newNumber ) {
-									props.setAttributes( { separatorPadding: newNumber } );
-								},
-							}
-						),
-						el(
-							PanelColor,
-							{
-								key: 'banner-separator-color-panel',
-								title: i18n.__( 'Separator Color' ),
-								colorValue: attributes.separatorColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'banner-separator-color-palette',
-									colors: colors,
-									value: attributes.separatorColor,
-									onChange: function( newColor) {
-										props.setAttributes( { separatorColor: newColor } );
-									},
-								} 
-							),
-						),
 					),
 				),
 				el(
 					'div', 
 					{ 
-						key: 'wp-block-gbt-banner',
-						className: 'wp-block-gbt-banner',
+						key: 'gbt_18_mt_editor_banner',
+						className: 'gbt_18_mt_editor_banner',
 					},
 					el(
 						'div', 
 						{ 
-							key: 'shortcode_banner_simple_height',
-							id: 'banner-wrapper',
-							className: 'shortcode_banner_simple_height banner_with_img ' + attributes.size,
-						},
-						el(
-							MediaUpload,
+							key: 'gbt_18_mt_editor_banner_wrapper',
+							className: 'gbt_18_mt_editor_banner_wrapper',
+							style:
 							{
-								key: 'banner-image-upload',
-								type: 'image',
-								formattingControls: [ 'align' ],
-								buttonProps: { className: 'components-button button button-large' },
-		              			value: attributes.imgID,
-								onSelect: function( img ) {
-									props.setAttributes( {
-										imgID: img.id,
-										imgURL: img.url,
-										imgAlt: img.alt,
-									} );
-								},
-		              			render: function( img ) { 
-		              				return [
-			              				! attributes.imgID && el(
-			              					Button, 
-			              					{ 
-			              						key: 'banner-add-image-button',
-			              						className: 'button add-image',
-			              						onClick: img.open
-			              					},
-			              					i18n.__( 'Add Image' )
-		              					), 
-		              					!! attributes.imgID && el(
-		              						Button, 
-											{
-												key: 'banner-remove-image-button',
-												className: 'button remove-image',
-												onClick: function() {
-													img.close;
-													props.setAttributes({
-										            	imgID: null,
-										            	imgURL: null,
-										            	imgAlt: null,
-										            });
-												}
-											},
-											i18n.__( 'Remove Image' )
-										), 
-		              				];
-		              			},
-							},
-						),
+								height: attributes.height + 'px',
+							}
+						},
 						el(
 							'div',
 							{
-								key: 'shortcode_banner_simple_height_inner',
-								className: 'shortcode_banner_simple_height_inner',
+								key: 'gbt_18_mt_editor_banner_wrapper_inner',
+								className: 'gbt_18_mt_editor_banner_wrapper_inner',
 							},
-							el(
-								'div',
+							el( 'div',
 								{
-									key: 'shortcode_banner_simple_height_bkg',
-									className: 'shortcode_banner_simple_height_bkg',
+									key: 'gbt_18_mt_editor_banner_background',
+									className: 'gbt_18_mt_editor_banner_background',
 									style:
 									{
-										backgroundColor: attributes.bgColor,
+										backgroundColor: attributes.backgroundColor,
 										backgroundImage: 'url(' + attributes.imgURL + ')'
 									},
 								}
 							),
 							el(
+								MediaUpload,
+								{
+									key: 'gbt_18_mt_editor_banner_img_upload',
+									allowedTypes: [ 'image' ],
+									formattingControls: [ 'align' ],
+									buttonProps: { className: 'components-button button button-large' },
+			              			value: attributes.imgID,
+									onSelect: function( img ) {
+										props.setAttributes( {
+											imgID: img.id,
+											imgURL: img.url,
+											imgAlt: img.alt,
+										} );
+									},
+			              			render: function( img ) { 
+			              				return [
+				              				! attributes.imgID && el(
+				              					Button, 
+				              					{ 
+				              						key: 'gbt_18_mt_editor_banner_add_image_button',
+				              						className: 'button gbt_18_mt_editor_banner_add_image',
+				              						onClick: img.open
+				              					},
+				              					i18n.__( 'Add Image' )
+			              					), 
+			              					!! attributes.imgID && el(
+			              						Button, 
+												{
+													key: 'gbt_18_mt_editor_banner_remove_image_button',
+													className: 'button gbt_18_mt_editor_banner_remove_image',
+													onClick: function() {
+														img.close;
+														props.setAttributes({
+											            	imgID: null,
+											            	imgURL: null,
+											            	imgAlt: null,
+											            });
+													}
+												},
+												i18n.__( 'Remove Image' )
+											), 
+			              				];
+			              			},
+								},
+							),
+							el(
 								'div',
 								{
-									key: 'shortcode_banner_simple_height_inside',
-									className: 'shortcode_banner_simple_height_inside',
+									key: 'gbt_18_mt_editor_banner_content',
+									className: 'gbt_18_mt_editor_banner_content',
 									style:
 									{
-										height: attributes.height + 'px',
 										border: attributes.innerStrokeThickness + 'px solid ' + attributes.innerStrokeColor
 									},
 								},
 								el(
 									'div',
 									{
-										key: 'shortcode_banner_simple_height_content',
-										className: 'shortcode_banner_simple_height_content',
+										key: 'gbt_18_mt_editor_banner_text_content',
+										className: 'gbt_18_mt_editor_banner_text_content',
 									},
 									el(
-										'div',
+										RichText, 
 										{
-											key: 'shortcode_banner_simple_height_content_div',
-										},
-										el(
-											RichText, 
-											{
-												key: 'banner-title',
-												style:
-												{ 
-													color: attributes.titleColor,
-													fontSize: attributes.titleSize + 'px'
-												},
-												className: 'banner-title',
-												formattingControls: [],
-												tagName: 'h3',
-												format: 'string',
-												value: attributes.title,
-												placeholder: i18n.__( 'Add Title' ),
-												onChange: function( newTitle) {
-													props.setAttributes( { title: newTitle } );
-												}
+											key: 'gbt_18_mt_editor_banner_title',
+											style:
+											{ 
+												color: attributes.titleColor,
+												fontSize: attributes.titleSize + 'px'
+											},
+											className: 'gbt_18_mt_editor_banner_title',
+											formattingControls: [],
+											tagName: 'h3',
+											format: 'string',
+											value: attributes.title,
+											placeholder: i18n.__( 'Add Title' ),
+											onChange: function( newTitle) {
+												props.setAttributes( { title: newTitle } );
 											}
-										),
+										}
 									),
 									el(
-										'div', 
+										RichText, 
 										{
-											key: 'shortcode_banner_simple_height_sep',
-											className: 'shortcode_banner_simple_height_sep',
+											key: 'gbt_18_mt_editor_banner_subtitle',
 											style:
 											{
-												margin: attributes.separatorPadding + 'px auto',
-												backgroundColor: attributes.separatorColor
+												color: attributes.subtitleColor,
+												fontSize: attributes.subtitleSize + 'px'
 											},
-										},
-									),
-									el(
-										'div',
-										{
-											key: 'shortcode_banner_simple_height_content_div2',
-										},
-										el(
-											RichText, 
-											{
-												key: 'banner-subtitle',
-												style:
-												{
-													color: attributes.subtitleColor,
-													fontSize: attributes.subtitleSize + 'px'
-												},
-												className: 'banner-subtitle',
-												tagName: 'h4',
-												format: 'string',
-												value: attributes.subtitle,
-												formattingControls: [],
-												placeholder: i18n.__( 'Add Subtitle' ),
-												onChange: function( newSubtitle) {
-													props.setAttributes( { subtitle: newSubtitle } );
-												}
+											className: 'gbt_18_mt_editor_banner_subtitle',
+											tagName: 'p',
+											format: 'string',
+											value: attributes.subtitle,
+											formattingControls: [],
+											placeholder: i18n.__( 'Add Subtitle' ),
+											onChange: function( newSubtitle) {
+												props.setAttributes( { subtitle: newSubtitle } );
 											}
-										),
-
+										}
 									),
 								),
 							),
@@ -554,8 +402,86 @@
 				),
 			];
 		},
-		save: function() {
-			return '';
+		save: function(props) {
+
+			let attributes = props.attributes;
+
+			return el( 'div', 
+				{ 
+					key: 'gbt_18_mt_banner',
+					className: 'gbt_18_mt_banner ' + attributes.align,
+					style:
+					{
+						height: attributes.height + 'px',
+					}
+				},
+				el( 'a', 
+					{ 
+						key: 'gbt_18_mt_banner_wrapper',
+						className: 'gbt_18_mt_banner_wrapper',
+						href: attributes.url,
+						target: attributes.blank ? '_blank' : '_self',
+						rel: 'noopener noreferrer'
+					},
+					el( 'div',
+						{
+							key: 'gbt_18_mt_banner_wrapper_inner',
+							className: 'gbt_18_mt_banner_wrapper_inner',
+						},
+						el( 'div',
+							{
+								key: 'gbt_18_mt_banner_background',
+								className: 'gbt_18_mt_banner_background',
+								style:
+								{
+									backgroundColor: attributes.backgroundColor,
+									backgroundImage: 'url(' + attributes.imgURL + ')'
+								},
+							}
+						),
+						el( 'div',
+							{
+								key: 'gbt_18_mt_banner_content',
+								className: 'gbt_18_mt_banner_content',
+								style:
+								{
+									border: attributes.innerStrokeThickness + 'px solid ' + attributes.innerStrokeColor
+								},
+							},
+							el( 'div',
+								{
+									key: 'gbt_18_mt_banner_text_content',
+									className: 'gbt_18_mt_banner_text_content',
+								},
+								el( 'h3',
+									{
+										key: 'gbt_18_mt_banner_title',
+										className: 'gbt_18_mt_banner_title',
+										style:
+										{
+											color: attributes.titleColor,
+											fontSize: attributes.titleSize + 'px'
+										},
+									},
+									attributes.title
+								),
+								el( 'p',
+									{
+										key: 'gbt_18_mt_banner_subtitle',
+										className: 'gbt_18_mt_banner_subtitle',
+										style:
+										{
+											color: attributes.subtitleColor,
+											fontSize: attributes.subtitleSize + 'px'
+										}
+									},
+									attributes.subtitle
+								)
+							)
+						)
+					)
+				)
+			);
 		},
 	} );
 
