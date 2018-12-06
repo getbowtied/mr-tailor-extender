@@ -28,6 +28,6 @@ if ( ! function_exists( 'getbowtied_mt_product_blocks_scripts' ) ) {
 // require_once 'latest_posts_list/index.php';
 // require_once 'latest_posts_slider/index.php';
 require_once 'banner/block.php';
-// require_once 'portfolio/index.php';
+require_once 'portfolio/block.php';
 require_once 'social_media_profiles/block.php';
 // require_once 'lookbook/index.php';
