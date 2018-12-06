@@ -25,7 +25,7 @@ if ( ! function_exists( 'getbowtied_mt_product_blocks_scripts' ) ) {
 	}
 }
 
-// require_once 'latest_posts_list/index.php';
+require_once 'posts_grid/block.php';
 require_once 'posts_slider/block.php';
 require_once 'banner/block.php';
 require_once 'portfolio/block.php';
