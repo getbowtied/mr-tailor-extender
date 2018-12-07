@@ -1,23 +1,24 @@
-( function( blocks, i18n, element ) {
+( function( blocks, components, editor, i18n, element ) {
 
-	var el = element.createElement;
+	"use strict";
+
+	const el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = wp.blocks.registerBlockType;
-		
-	var InspectorControls 	= wp.editor.InspectorControls;
-	var RichText			= wp.editor.RichText;
-	var BlockControls		= wp.editor.BlockControls;
-	var MediaUpload			= wp.editor.MediaUpload;
+	const registerBlockType   	= blocks.registerBlockType;
 
-	var TextControl 		= wp.components.TextControl;
-	var ToggleControl		= wp.components.ToggleControl;
-	var RangeControl		= wp.components.RangeControl;
-	var SelectControl		= wp.components.SelectControl;
-	var Button				= wp.components.Button;
-	var PanelBody			= wp.components.PanelBody;
-	var ColorPalette		= wp.components.ColorPalette;
-	var PanelColor			= wp.components.PanelColor;
+	const InspectorControls 	= editor.InspectorControls;
+	const ColorSettings			= editor.PanelColorSettings;
+	const MediaUpload			= editor.MediaUpload;
+	const RichText				= editor.RichText;
+
+	const TextControl 			= components.TextControl;
+	const RangeControl			= components.RangeControl;
+	const Button 				= components.Button;
+	const SVG 					= components.SVG;
+	const Path 					= components.Path;
+	
+	const apiFetch 				= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-lookbook', {
@@ -28,14 +29,50 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		attributes: {
-			title: {
+			productIDs: {
 				type: 'string',
-				default: 'Lookbook Title',
+				default: '',
 			},
-			subtitle: {
+		/* Products source */
+			queryProducts: {
 				type: 'string',
-				default: 'Lookbook Subtitle',
+				default: '',
 			},
+			queryProductsLast: {
+				type: 'string',
+				default: '',
+			},
+			queryDisplayType: {
+				type: 'string',
+				default: 'default',
+			},
+		/* loader */
+			isLoading: {
+				type: 'bool',
+				default: false,
+			},
+		/* Manually pick products */
+			querySearchString: {
+				type: 'string',
+				default: '',
+			},
+			querySearchResults: {
+				type: 'array',
+				default: [],
+			},
+			querySearchNoResults: {
+				type: 'bool',
+				default: false,
+			},
+			querySearchSelected: {
+				type: 'array',
+				default: [],
+			},
+			old_align: {
+				type: 'string',
+				default: '',
+			},
+			/* Colors */
 			titleColor: {
 				type: 'string',
 				default: '#fff'
@@ -44,14 +81,24 @@
 				type: 'string',
 				default: '#fff'
 			},
+			backgroundColor: {
+				type: 'string',
+				default: '#464646'
+			},
 			productColor: {
 				type: 'string',
 				default: '#fff'
 			},
-			bgColor: {
+			/* Title & Subtitle */
+			title: {
 				type: 'string',
-				default: '#000'
+				default: 'Lookbook Title',
 			},
+			subtitle: {
+				type: 'string',
+				default: 'Lookbook Subtitle',
+			},
+			/* Lookbook Image */
 			imgURL: {
 	            type: 'string',
 	            attribute: 'src',
@@ -63,228 +110,461 @@
 	            type: 'string',
 	            attribute: 'alt',
 	        },
-			products: {
-				type: 'string',
-				default: '',
-			},
-			columns: {
+	        /* Columns */
+	        columns: {
 				type: 'number',
 				default: '3',
 			},
+			/* Heoght */
 			height: {
 				type: 'number',
 				default: '750',
 			},
-			orderBy: {
-				type: 'string',
-				default: 'date',
-			},
-			order: {
-				type: 'string',
-				default: 'asc',
-			},
 		},
-
 		edit: function( props ) {
 
-			var attributes = props.attributes;
+			let attributes = props.attributes;
+			attributes.selectedIDS = attributes.selectedIDS || [];
 
-			var orderby_options = [
-				{ value: 'none', 	label: 'None' 	},
-				{ value: 'ID', 		label: 'ID' 	},
-				{ value: 'title', 	label: 'Title' 	},
-				{ value: 'date', 	label: 'Date' 	},
-				{ value: 'rand', 	label: 'Rand' 	},
-			];
+		//==============================================================================
+		//	Helper functions
+		//==============================================================================
+			
+			function _searchResultClass(theID){
+				const index = attributes.selectedIDS.indexOf(theID);
+				if ( index == -1) {
+					return 'single-result';
+				} else {
+					return 'single-result selected';
+				}
+			}
 
-			var colors = [
-				{ name: 'red', 				color: '#d02e2e' },
-				{ name: 'orange', 			color: '#f76803' },
-				{ name: 'yellow', 			color: '#fbba00' },
-				{ name: 'green', 			color: '#43d182' },
-				{ name: 'blue', 			color: '#2594e3' },
-				{ name: 'white', 			color: '#ffffff' },
-				{ name: 'dark-gray', 		color: '#abb7c3' },
-				{ name: 'black', 			color: '#000' 	 },
-			];
+			function _sortByKeys(keys, products) {
+				let sorted =[];
+				for ( let i = 0; i < keys.length; i++ ) {
+					for ( let j = 0; j < products.length; j++ ) {
+						if ( keys[i] == products[j].id ) {
+							sorted.push(products[j]);
+							break;
+						}
+					}
+				}
 
+				return sorted;
+			}
+
+			function _destroyQuery() {
+				props.setAttributes({ queryOrder: ''});
+				props.setAttributes({ queryProducts: ''});
+				props.setAttributes({ querySearchString: ''});
+				props.setAttributes({ querySearchResults: []});
+				props.setAttributes({ querySearchSelected: []});
+			}
+
+			function _destroyTempAtts() {
+				props.setAttributes({ querySearchString: ''});
+				props.setAttributes({ querySearchResults: []});
+			}
+
+			function _isChecked( needle, haystack ) {
+				const idx = haystack.indexOf(needle.toString());
+				if ( idx != - 1) {
+					return true;
+				}
+				return false;
+			}
+
+			function _isDonePossible() {
+				return ( (attributes.queryProducts.length == 0) || (attributes.queryProducts === attributes.queryProductsLast) );
+			}
+
+			function _isLoading() {
+				if ( attributes.isLoading  === true ) {
+					return 'is-busy';
+				} else {
+					return '';
+				}
+			}
+
+			function _isLoadingText(){
+				if ( attributes.isLoading  === false ) {
+					return i18n.__('Update');
+				} else {
+					return i18n.__('Updating');
+				}
+			}
+
+		//==============================================================================
+		//	Show products functions
+		//==============================================================================
+			function getQuery( query ) {
+				return '/wc/v2/products' + query;
+			}
+
+			function getProducts() {
+				const query = attributes.queryProducts;
+				props.setAttributes({ queryProductsLast: query});
+
+				if (query != '') {
+					apiFetch({ path: query }).then(function (products) {
+						props.setAttributes({ isLoading: false});
+						let IDs = '';
+						for ( let i = 0; i < products.length; i++) {
+							IDs += products[i].id + ',';
+						}
+						props.setAttributes({ productIDs: IDs});
+					});
+				}
+			}
+
+			function _queryOrder(value) {
+				let query = attributes.queryProducts;
+				const idx = query.indexOf('&orderby');
+				if ( idx > -1) {
+					query = query.substring(idx, -25);
+				}
+
+				switch ( value ) {
+					case 'date_desc':
+						query +='&orderby=date&order=desc';
+					break;
+					case 'date_asc':
+						query +='&orderby=date&order=asc';
+					break;
+					case 'title_desc':
+						query +='&orderby=title&order=desc';
+					break;
+					case 'title_asc':
+						query +='&orderby=title&order=asc';
+					break;
+					default: 
+						
+					break;
+				}
+				props.setAttributes({ queryProducts: query });
+			}
+
+			function _getQueryOrder() {
+				if ( attributes.queryOrder.length < 1) return '';
+				let order = '';
+				switch ( attributes.queryOrder ) {
+					case 'date_desc':
+						order = '&orderby=date&order=desc';
+					break;
+					case 'date_asc':
+						order = '&orderby=date&order=asc';
+					break;
+					case 'title_desc':
+						order = '&orderby=title&order=desc';
+					break;
+					case 'title_asc':
+						order = '&orderby=title&order=asc';
+					break;
+					default: 
+						
+					break;
+				}
+
+				return order;
+			}
+
+		//==============================================================================
+		//	Display ajax results
+		//==============================================================================
+			function renderSearchResults() {
+				let productElements = [];
+
+				if ( attributes.querySearchNoResults === true) {
+					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
+				}
+				let products = attributes.querySearchResults;
+				for (let i = 0; i < products.length; i++ ) {
+					let img = '';
+					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+					}
+					productElements.push(
+						el(
+							'span', 
+							{
+								key: 		'item-' + products[i].id +i,
+								className: _searchResultClass(products[i].id),
+								title: products[i].name,
+								'data-index': i,
+							}, 
+							img,
+							el(
+								'label', 
+								{
+									className: 'title-wrapper'
+								},
+								el(
+									'input',
+									{
+										key: 'some fucking key',
+										type: 'checkbox',
+										value: i,
+										onChange: function onChange(evt) {
+											const _this = evt.target;
+											let qSR = attributes.selectedIDS;
+											let index = qSR.indexOf(products[evt.target.value].id);
+											if (index == -1) {
+												qSR.push(products[evt.target.value].id);
+											} else {
+												qSR.splice(index,1);
+											}
+											props.setAttributes({ selectedIDS: qSR });
+											
+											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
+											if ( qSR.length > 0 ) {
+												props.setAttributes({queryProducts: query});
+											} else {
+												props.setAttributes({queryProducts: '' });
+											}
+											apiFetch({ path: query }).then(function (products) {
+												props.setAttributes({ querySearchSelected: products});
+											});
+										},
+									},
+								),
+								products[i].name,
+								el('span',{ className: 'dashicons dashicons-yes'}),
+								el('span',{ className: 'dashicons dashicons-no-alt'}),
+							),
+						)
+					);
+				}
+				return productElements;
+			}
+
+			function renderSearchSelected() {
+				let productElements = [];
+				const products = attributes.querySearchSelected;
+
+				for ( let i = 0; i < products.length; i++ ) {
+					let img= '';
+					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+					}
+					productElements.push(
+						el(
+							'span', 
+							{
+								key: 		'item-' + products[i].id,
+								className:'single-result', 
+								title: products[i].name,
+							}, 
+							img, 
+							el(
+								'label', 
+								{
+									className: 'title-wrapper'
+								},
+								el(
+									'input',
+									{
+										type: 'checkbox',
+										value: i,
+										onChange: function onChange(evt) {
+											const _this = evt.target;
+
+											
+											let qSS = attributes.selectedIDS;
+											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
+												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
+													qSS.push(attributes.querySearchSelected[i].id);
+												}
+											}
+											let index = qSS.indexOf(products[evt.target.value].id);
+											if (index != -1) {
+												qSS.splice(index,1);
+											}
+											props.setAttributes({ selectedIDS: qSS });
+											
+											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
+											if ( qSS.length > 0 ) {
+												props.setAttributes({queryProducts: query});
+											} else {
+												props.setAttributes({queryProducts: ''});
+											}
+											apiFetch({ path: query }).then(function (products) {
+												props.setAttributes({ querySearchSelected: products});
+											});
+										},
+									},
+								),
+								products[i].name,
+								el('span',{ className: 'dashicons dashicons-no-alt'})
+							),
+						)
+					);
+				}
+				return productElements;
+			}
+
+		//==============================================================================
+		//	Main controls 
+		//==============================================================================
 			return [
 				el(
 					InspectorControls,
-					{ key: 'inspector' },
-					el( 'hr', { key: 'lookbook-hr' } ),
+					{
+					},
 					el(
-						TextControl,
+						'div',
 						{
-							key: 'lookbook-products-option',
-              				label: i18n.__( 'Products' ),
-              				type: 'text',
-              				help: i18n.__('Insert product IDs between commas. Example: 12,56,76'),
-              				value: attributes.products,
-              				onChange: function( newIds ) {
-              					props.setAttributes( { products: newIds } );
-							},
+							className: 'main-inspector-wrapper',
 						},
-					),
-					el( 
-						PanelBody,
-						{ 
-							key: 'lookbook-display-panel',
-							title: 'Display Settings',
-							initialOpen: false
-						},
+					/* Pick specific producs */
 						el(
-							RangeControl,
+							'div',
 							{
-								key: "lookbook-height",
-								value: attributes.height,
-								allowReset: false,
-								initialPosition: 400,
-								min: 200,
-								max: 1000,
-								label: i18n.__( 'Height' ),
-								onChange: function( newNumber ) {
-									props.setAttributes( { height: newNumber } );
-								},
-							}
-						),
-						el(
-							TextControl,
-							{
-								key: "lookbook-columns",
-								type: "number",
-								value: attributes.columns,
-								min: 2,
-								max: 3,
-								label: i18n.__( 'Columns' ),
-								onChange: function( newNumber ) {
-									props.setAttributes( { columns: newNumber } );
-								},
-							}
-						),
-					),
-					el( 
-						PanelBody,
-						{ 
-							key: 'lookbook-colors-panel',
-							title: 'Colors',
-							initialOpen: false
-						},
-						el(
-							PanelColor,
-							{
-								key: 'lookbook-title-color-panel',
-								title: i18n.__( 'Title Color' ),
-								colorValue: attributes.titleColor,
+								className: 'products-ajax-search-wrapper',
 							},
 							el(
-								ColorPalette, 
+								TextControl,
 								{
-									key: 'lookbook-title-color-pallete',
-									colors: colors,
+									key: 'query-panel-string',
+			          				type: 'search',
+			          				className: 'products-ajax-search',
+			          				value: attributes.querySearchString,
+			          				placeholder: i18n.__( 'Search for products to display'),
+			          				onChange: function( newQuery ) {
+			          					props.setAttributes({ querySearchString: newQuery});
+			          					if (newQuery.length < 3) return;
+
+								        const query = getQuery('?per_page=10&search=' + newQuery);
+								        apiFetch({ path: query }).then(function (products) {
+								        	if ( products.length == 0) {
+								        		props.setAttributes({ querySearchNoResults: true});
+								        	} else {
+								        		props.setAttributes({ querySearchNoResults: false});
+								        	}
+											props.setAttributes({ querySearchResults: products});
+										});
+
+									},
+								},
+							),
+						),
+						attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
+							'div',
+							{ 
+								className: 'products-ajax-search-results',
+							},
+							renderSearchResults(),
+						),
+						attributes.querySearchSelected.length > 0 && el(
+							'div',
+							{
+								className: 'products-selected-results-wrapper',
+							},
+							el(
+								'label',
+								{},
+								i18n.__('Selected Products:'),
+							),
+							el(
+								'div',
+								{
+									className: 'products-selected-results',
+								},
+								renderSearchSelected(),
+							),
+						),
+					/* Load all products */
+						el(
+							'button',
+							{
+								className: 'render-results components-button is-button is-default is-primary is-large ' + _isLoading(),
+								disabled: _isDonePossible(),
+								onClick: function onChange(e) {
+									props.setAttributes({ isLoading: true });
+									_destroyTempAtts();
+									getProducts();
+								},
+							},
+							_isLoadingText(),
+						),
+					),
+					el(
+						RangeControl,
+						{
+							key: "gbt_18_mt_lookbook_height",
+							value: attributes.height,
+							allowReset: false,
+							initialPosition: 400,
+							min: 200,
+							max: 1000,
+							label: i18n.__( 'Height' ),
+							onChange: function( newNumber ) {
+								props.setAttributes( { height: newNumber } );
+							},
+						}
+					),
+					el(
+						RangeControl,
+						{
+							key: "gbt_18_mt_lookbook_columns",
+							value: attributes.columns,
+							allowReset: false,
+							initialPosition: 3,
+							min: 2,
+							max: 3,
+							label: i18n.__( 'Columns' ),
+							onChange: function( newNumber ) {
+								props.setAttributes( { columns: newNumber } );
+							},
+						}
+					),
+					el(
+						ColorSettings,
+						{
+							key: 'gbt_18_mt_lookbook_color_settings',
+							title: i18n.__( 'Colors' ),
+							initialOpen: false,
+							colorSettings: [
+								{ 
+									label: i18n.__( 'Title Color' ),
 									value: attributes.titleColor,
 									onChange: function( newColor) {
 										props.setAttributes( { titleColor: newColor } );
 									},
-								} 
-							),
-						),
-						el(
-							PanelColor,
-							{
-								key: 'lookbook-subtitle-color-panel',
-								title: i18n.__( 'Subtitle Color' ),
-								colorValue: attributes.subtitleColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'lookbook-subtitle-color-pallete',
-									colors: colors,
+								},
+								{ 
+									label: i18n.__( 'Subtitle Color' ),
 									value: attributes.subtitleColor,
 									onChange: function( newColor) {
 										props.setAttributes( { subtitleColor: newColor } );
 									},
-								} 
-							),
-						),
-						el(
-							PanelColor,
-							{
-								key: 'lookbook-product-color-panel',
-								title: i18n.__( 'Products Title Color' ),
-								colorValue: attributes.productColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'lookbook-bg-color-pallete',
-									colors: colors,
+								},
+								{ 
+									label: i18n.__( 'Product Title Color' ),
 									value: attributes.productColor,
 									onChange: function( newColor) {
 										props.setAttributes( { productColor: newColor } );
 									},
-								} 
-							),
-						),
-						el(
-							PanelColor,
-							{
-								key: 'lookbook-bg-color-panel',
-								title: i18n.__( 'Background Color' ),
-								colorValue: attributes.titleColor,
-							},
-							el(
-								ColorPalette, 
-								{
-									key: 'lookbook-bg-color-pallete',
-									colors: colors,
-									value: attributes.bgColor,
+								},
+								{ 
+									label: i18n.__( 'Background Color' ),
+									value: attributes.backgroundColor,
 									onChange: function( newColor) {
-										props.setAttributes( { bgColor: newColor } );
+										props.setAttributes( { backgroundColor: newColor } );
 									},
-								} 
-							),
-						),
-					),
-					el( 
-						PanelBody,
-						{ 
-							key: 'lookbook-order-panel',
-							title: 'Products Order',
-							initialOpen: false
+								}
+							]
 						},
-						el(
-							SelectControl,
-							{
-								key: 'lookbook-orderby',
-								options: orderby_options,
-	              				label: i18n.__( 'Order By' ),
-	              				value: attributes.orderBy,
-	              				onChange: function( newOrderBy ) {
-	              					props.setAttributes( { orderBy: newOrderBy } );
-								},
-							}
-						),
-						el(
-							SelectControl,
-							{
-								key: 'lookbook-order',
-								options: [{ value: 'asc', label: 'Ascending' }, { value: 'desc', label: 'Descending' }],
-	              				label: i18n.__( 'Order' ),
-	              				value: attributes.order,
-	              				onChange: function( newOrder ) {
-	              					props.setAttributes( { order: newOrder } );
-								},
-							}
-						),
 					),
 				),
 				el(
 					'div', 
 					{ 
-						key: 'wp-block-gbt-lookbook',
-						className: 'wp-block-gbt-lookbook',
+						key: 'gbt_18_mt_lookbook',
+						className: 'gbt_18_mt_lookbook',
 					},
 					el(
 						'div', 
@@ -347,7 +627,7 @@
 								style:
 								{
 									backgroundImage: 'url(' + attributes.imgURL + ')',
-									backgroundColor: attributes.bgColor,
+									backgroundColor: attributes.backgroundColor,
 									height: attributes.height + 'px'
 								},
 							},
@@ -408,13 +688,17 @@
 				),
 			];
 		},
-		save: function( props ) {
-			return '';
+
+		save: function() {
+        	return null;
 		},
 	} );
 
 } )(
 	window.wp.blocks,
+	window.wp.components,
+	window.wp.editor,
 	window.wp.i18n,
 	window.wp.element,
+	jQuery
 );

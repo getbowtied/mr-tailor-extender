@@ -41,24 +41,26 @@ if ( ! function_exists( 'gbt_18_mt_social_media_assets' ) ) {
 //==============================================================================
 //  Register Block Type
 //==============================================================================
-register_block_type( 'getbowtied/mt-social-media-profiles', array(
-	'attributes'     			=> array(
-		'align'			        => array(
-			'type'				=> 'string',
-			'default'			=> 'left',
-		),
-        'fontSize'              => array(
-            'type'              => 'number',
-            'default'           => '24',
-        ),
-        'fontColor'             => array(
-            'type'              => 'string',
-            'default'           => '#000',
-        ),
-	),
+if ( function_exists( 'register_block_type' ) ) {
+    register_block_type( 'getbowtied/mt-social-media-profiles', array(
+    	'attributes'     			=> array(
+    		'align'			        => array(
+    			'type'				=> 'string',
+    			'default'			=> 'left',
+    		),
+            'fontSize'              => array(
+                'type'              => 'number',
+                'default'           => '24',
+            ),
+            'fontColor'             => array(
+                'type'              => 'string',
+                'default'           => '#000',
+            ),
+    	),
 
-	'render_callback' => 'gbt_18_mt_social_media_frontend_output',
-) );
+    	'render_callback' => 'gbt_18_mt_social_media_frontend_output',
+    ) );
+}
 
 //==============================================================================
 //  Frontend Output
