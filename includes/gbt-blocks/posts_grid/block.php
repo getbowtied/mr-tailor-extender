@@ -16,7 +16,7 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 			'align'					=> 'center',
 			'orderby'				=> 'date_desc',
 			'columns'				=> '3',
-			'className'             => 'is-style-grid'
+			'className'             => 'is-style-default'
 		), $attributes ) );
 
 		$args = array(
@@ -63,7 +63,7 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 
 	        <div class="gbt_18_mt_posts_grid <?php echo $className; ?>">
 	    
-	    		<div class="gbt_18_mt_posts_grid_wrapper <?php echo $className == 'is-style-grid' ? 'columns-'.$columns : ''; ?> <?php echo $align; ?>">
+	    		<div class="gbt_18_mt_posts_grid_wrapper <?php echo $className == 'is-style-default' ? 'columns-'.$columns : ''; ?> <?php echo $align; ?>">
 		                    
 		            <?php foreach($recentPosts as $post) : ?>
 		        
@@ -84,9 +84,9 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 										<span class="gbt_18_mt_posts_grid_img gbt_18_mt_posts_grid_noimg"></span>
 									<?php endif;  ?>
 
-								</span><!--.from_the_blog_img_container-->
+								</span>
 
-								<?php if($className == 'is-style-grid') : ?>
+								<?php if($className == 'is-style-default') : ?>
 									<a class="gbt_18_mt_posts_grid_title" href="<?php echo get_post_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a>
 								<?php elseif($className == 'is-style-list') : ?>
 									<span class="gbt_18_mt_posts_grid_content_wrapper">
@@ -106,7 +106,7 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 		                    
 		                </div>
 		    
-		            <?php endforeach; // end of the loop. ?>
+		            <?php endforeach; ?>
 
 				</div>
 			</div>

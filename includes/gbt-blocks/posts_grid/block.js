@@ -28,11 +28,15 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		styles: [
-			{ name: 'grid', label:  'Grid', isDefault: true },
-			{ name: 'list', label:  'List' },
+			{ name: 'default', 	label:  'Grid', isDefault: true },
+			{ name: 'list', 	label:  'List' },
 		],
 		attributes: {
 			/* posts source */
+			result: {
+				type: 'array',
+				default: [],
+			},
 			queryPosts: {
 				type: 'string',
 				default: '',
@@ -87,7 +91,7 @@
 			attributes.doneFirstPostsLoad 	= attributes.doneFirstPostsLoad || false;
 			attributes.result 				= attributes.result || [];
 
-			if( className.indexOf('is-style-') == -1 ) { className += ' is-style-grid'; }
+			if( className.indexOf('is-style-') == -1 ) { className += ' is-style-default'; }
 
 			//==============================================================================
 			//	Helper functions
@@ -205,6 +209,13 @@
 				} else {
 					return '';
 				}
+			}
+
+			function getWrapperClass() {
+				if( className.indexOf('is-style-default') >= 0 ) {
+					return 'gbt_18_mt_editor_posts_grid_wrapper columns-' + attributes.columns;
+				}
+				return 'gbt_18_mt_editor_posts_grid_wrapper';
 			}
 
 			//==============================================================================
@@ -491,8 +502,8 @@
 							},
 							_isLoadingText(),
 						),
-						className.indexOf('is-style-grid') !== -1 && el( 'hr', {} ),
-						className.indexOf('is-style-grid') !== -1 && el(
+						className.indexOf('is-style-default') !== -1 && el( 'hr', {} ),
+						className.indexOf('is-style-default') !== -1 && el(
 							RangeControl,
 							{
 								key: "mt-posts-grid-columns",
@@ -518,7 +529,7 @@
 						'div',
 						{
 							key: 		'gbt_18_mt_editor_posts_grid_wrapper',
-							className: 	'gbt_18_mt_editor_posts_grid_wrapper columns-' + attributes.columns,
+							className: 	getWrapperClass(),
 						},
 						attributes.result.length < 1 && attributes.doneFirstPostsLoad === false && getPosts(),
 						renderResults()
