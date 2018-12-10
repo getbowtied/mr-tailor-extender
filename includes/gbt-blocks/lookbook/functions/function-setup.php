@@ -11,7 +11,7 @@ if ( ! function_exists( 'gbt_18_mt_lookbook_editor_assets' ) ) {
 		wp_enqueue_script(
 			'gbt_18_mt_lookbook_script',
 			plugins_url( 'block.js', dirname(__FILE__) ),
-			array( 'wp-api-request', 'wp-blocks', 'wp-i18n', 'wp-element' )
+			array( 'wp-api-request', 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element' )
 		);
 
 		wp_enqueue_style(

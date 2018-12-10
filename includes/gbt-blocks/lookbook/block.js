@@ -699,6 +699,5 @@
 	window.wp.components,
 	window.wp.editor,
 	window.wp.i18n,
-	window.wp.element,
-	jQuery
+	window.wp.element
 );

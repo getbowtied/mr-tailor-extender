@@ -1,19 +1,19 @@
-( function( wp, blocks, i18n, element ) {
+( function( blocks, components, editor, i18n, element ) {
 
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   	= wp.blocks.registerBlockType;
+	const registerBlockType   	= blocks.registerBlockType;
 
-	const InspectorControls 	= wp.editor.InspectorControls;
+	const InspectorControls 	= editor.InspectorControls;
 
-	const TextControl 			= wp.components.TextControl;
-	const RadioControl       	= wp.components.RadioControl;
-	const SelectControl			= wp.components.SelectControl;
-	const ToggleControl			= wp.components.ToggleControl;
-	const RangeControl			= wp.components.RangeControl;
-	const SVG 					= wp.components.SVG;
-	const Path 					= wp.components.Path;
+	const TextControl 			= components.TextControl;
+	const RadioControl       	= components.RadioControl;
+	const SelectControl			= components.SelectControl;
+	const ToggleControl			= components.ToggleControl;
+	const RangeControl			= components.RangeControl;
+	const SVG 					= components.SVG;
+	const Path 					= components.Path;
 
 	const apiFetch 				= wp.apiFetch;
 
@@ -533,8 +533,9 @@
 	} );
 
 } )(
-	window.wp,
 	window.wp.blocks,
+	window.wp.components,
+	window.wp.editor,
 	window.wp.i18n,
 	window.wp.element
 );

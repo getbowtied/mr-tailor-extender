@@ -65,24 +65,26 @@ if ( function_exists( 'register_block_type' ) ) {
 //==============================================================================
 //  Frontend Output
 //==============================================================================
-function gbt_18_mt_social_media_frontend_output($attributes) {
+if ( ! function_exists( 'gbt_18_mt_social_media_frontend_output' ) ) {
+    function gbt_18_mt_social_media_frontend_output($attributes) {
 
-    global $mr_tailor_theme_options;
+        global $mr_tailor_theme_options;
 
-	extract(shortcode_atts(
-		array(
-			'align'       => 'left',
-            'fontSize'    => '24',
-            'fontColor'   => '#000',
-		), $attributes));
-    ob_start();
+    	extract(shortcode_atts(
+    		array(
+    			'align'       => 'left',
+                'fontSize'    => '24',
+                'fontColor'   => '#000',
+    		), $attributes));
+        ob_start();
 
-    ?>
+        ?>
 
-    <div class="gbt_18_mt_social_media_profiles">
-        <?php echo do_shortcode('[social-media items_align="'.$align.'" font_size="'.$fontSize.'" color="'.$fontColor.'"]'); ?>
-    </div>
+        <div class="gbt_18_mt_social_media_profiles">
+            <?php echo do_shortcode('[social-media items_align="'.$align.'" font_size="'.$fontSize.'" color="'.$fontColor.'"]'); ?>
+        </div>
 
-    <?php
-	return ob_get_clean();
+        <?php
+    	return ob_get_clean();
+    }
 }
