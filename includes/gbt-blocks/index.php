@@ -25,9 +25,9 @@ if ( ! function_exists( 'getbowtied_mt_product_blocks_scripts' ) ) {
 	}
 }
 
-require_once 'posts_grid/block.php';
-require_once 'posts_slider/block.php';
-require_once 'banner/block.php';
-require_once 'portfolio/block.php';
-require_once 'social_media_profiles/block.php';
-require_once 'lookbook/block.php';
+include_once 'posts_grid/block.php';
+include_once 'posts_slider/block.php';
+include_once 'banner/block.php';
+include_once 'portfolio/block.php';
+include_once 'social_media_profiles/block.php';
+include_once 'lookbook/block.php';
