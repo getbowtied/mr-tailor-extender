@@ -512,7 +512,7 @@
 							key: "gbt_18_mt_lookbook_height",
 							value: attributes.height,
 							allowReset: false,
-							initialPosition: 400,
+							initialPosition: 750,
 							min: 200,
 							max: 1000,
 							label: i18n.__( 'Height' ),
