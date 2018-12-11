@@ -55,6 +55,19 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_lookbook' ) ) {
 
 			                $products = wc_get_products( $args );
 
+			                $sorted = [];
+						    foreach ( explode(',',$productIDs) as $id) {
+						        foreach ($products as $unsorted) {
+						            if ($unsorted->get_id() == $id) {
+						                $sorted[] = $unsorted;
+						                break;
+						            }
+						        }
+						    }
+						    if (sizeof($sorted) == sizeof($products)) {
+						        $products= $sorted;
+						    }
+
 			                ?>
 
 								<?php

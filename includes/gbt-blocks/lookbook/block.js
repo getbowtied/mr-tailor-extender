@@ -45,10 +45,6 @@
 				type: 'string',
 				default: '',
 			},
-			queryDisplayType: {
-				type: 'string',
-				default: 'default',
-			},
 		/* loader */
 			isLoading: {
 				type: 'bool',
@@ -71,7 +67,7 @@
 				type: 'array',
 				default: [],
 			},
-			old_align: {
+			selectedIDS: {
 				type: 'string',
 				default: '',
 			},
@@ -127,14 +123,13 @@
 		edit: function( props ) {
 
 			let attributes = props.attributes;
-			attributes.selectedIDS = attributes.selectedIDS || [];
 
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
 			
 			function _searchResultClass(theID){
-				const index = attributes.selectedIDS.indexOf(theID);
+				const index = toArray(attributes.selectedIDS).indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -196,6 +191,21 @@
 					return i18n.__('Updating');
 				}
 			}
+
+			function toArray(s) {
+                let ret = [];
+                if ( s.length > 0 ) {
+                    ret = s.split(",");
+                }
+                for ( let i = 0; i < ret.length; i++) {
+                    if ( ret[i] == '') {
+                        ret.splice(i, 1);
+                    } else {
+                        ret[i] = Number(ret[i]);
+                    }
+                }
+                return ret;
+            }
 
 		//==============================================================================
 		//	Show products functions
@@ -306,19 +316,19 @@
 								el(
 									'input',
 									{
-										key: 'some fucking key',
+										key: 'selection-input-key',
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
 											const _this = evt.target;
-											let qSR = attributes.selectedIDS;
+											let qSR = toArray(attributes.selectedIDS);
 											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
 												qSR.splice(index,1);
 											}
-											props.setAttributes({ selectedIDS: qSR });
+											props.setAttributes({ selectedIDS: qSR.join(',') });
 											
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
@@ -376,7 +386,9 @@
 											const _this = evt.target;
 
 											
-											let qSS = attributes.selectedIDS;
+											let qSS = toArray(attributes.selectedIDS);
+											console.log(qSS);
+
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
 													qSS.push(attributes.querySearchSelected[i].id);
@@ -386,7 +398,7 @@
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
-											props.setAttributes({ selectedIDS: qSS });
+											props.setAttributes({ selectedIDS: qSS.join(',') });
 											
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
