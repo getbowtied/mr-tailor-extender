@@ -13,5 +13,8 @@ Extends the functionality of Mr. Tailor with Gutenberg elements.
 
 == Changelog ==
 
+= 1.1 =
+- WordPress 5+ compatibility improvements
+
 = 1.0 =
 - Initial Version
