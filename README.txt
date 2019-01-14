@@ -9,7 +9,18 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ~Current Version:1.1~
 
-Extends the functionality of Mr. Tailor with Gutenberg elements.
+Extends the functionality of the Mr. Tailor theme by adding theme specific features.
+
+== Description ==
+
+Companion plugin for the **Mr. Tailor** theme. Extends the functionality by adding theme specific features.
+
+**Gutenberg Blocks:**
+- Banner
+- Posts Grid
+- Social Media Profiles
+- Portfolio
+- Lookbook
 
 == Changelog ==
 
