@@ -61,9 +61,9 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 		        
 	    if ( !empty($recentPosts) ) : ?>
 
-	        <div class="gbt_18_mt_posts_grid <?php echo $className; ?>">
+	        <div class="gbt_18_mt_posts_grid <?php echo $className; ?> align<?php echo $align; ?>">
 	    
-	    		<div class="gbt_18_mt_posts_grid_wrapper <?php echo $className == 'is-style-default' ? 'columns-'.$columns : ''; ?> <?php echo $align; ?>">
+	    		<div class="gbt_18_mt_posts_grid_wrapper <?php echo $className == 'is-style-default' ? 'columns-'.$columns : ''; ?>">
 		            
 		            <div class="gbt_18_mt_posts_grid_items">
 

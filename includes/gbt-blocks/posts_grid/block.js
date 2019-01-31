@@ -3,23 +3,27 @@
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   	= blocks.registerBlockType;
+	const registerBlockType = blocks.registerBlockType;
 
-	const InspectorControls 	= editor.InspectorControls;
+	const {
+		TextControl,
+		RadioControl,
+		SelectControl,
+		ToggleControl,
+		RangeControl,
+		SVG,
+		Path,
+	} = wp.components;
 
-	const TextControl 			= components.TextControl;
-	const RadioControl       	= components.RadioControl;
-	const SelectControl			= components.SelectControl;
-	const ToggleControl			= components.ToggleControl;
-	const RangeControl			= components.RangeControl;
-	const SVG 					= components.SVG;
-	const Path 					= components.Path;
+	const {
+		InspectorControls
+	} = wp.editor;
 
-	const apiFetch 				= wp.apiFetch;
+	const apiFetch = wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-posts-grid', {
-		title: i18n.__( 'Posts Grid' ),
+		title: i18n.__( 'Posts Grid', 'mrtailor' ),
 		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 				el( Path, { d:'M4 5v13h17V5H4zm10 2v3.5h-3V7h3zM6 7h3v3.5H6V7zm0 9v-3.5h3V16H6zm5 0v-3.5h3V16h-3zm8 0h-3v-3.5h3V16zm-3-5.5V7h3v3.5h-3z' } ) 
 			),
@@ -28,8 +32,8 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		styles: [
-			{ name: 'default', 	label:  'Grid', isDefault: true },
-			{ name: 'list', 	label:  'List' },
+			{ name: 'default', 	label:  i18n.__( 'Grid', 'mrtailor' ), isDefault: true },
+			{ name: 'list', 	label:  i18n.__( 'List', 'mrtailor' ), },
 		],
 		attributes: {
 			/* posts source */
@@ -172,6 +176,8 @@
 						break;
 				}
 
+				query += '&lang=' + posts_grid_vars.language;
+
 				return query;
 			}
 
@@ -237,10 +243,10 @@
 
 			function renderResults() {
 				if ( attributes.firstLoad === true ) {
-					apiFetch({ path: '/wp/v2/posts?per_page=12&orderby=date&order=desc' }).then(function (posts) {
+					apiFetch({ path: '/wp/v2/posts?per_page=12&orderby=date&order=desc&lang=' + posts_grid_vars.language }).then(function (posts) {
 						props.setAttributes({ result: posts });
 						props.setAttributes({ firstLoad: false });
-						let query = '/wp/v2/posts?per_page=12&orderby=date&order=desc';
+						let query = '/wp/v2/posts?per_page=12&orderby=date&order=desc&lang=' + posts_grid_vars.language;
 						props.setAttributes({queryPosts: query});
 						props.setAttributes({ queryPostsLast: query});
 					});
@@ -254,7 +260,20 @@
 
 					for ( let i = 0; i < posts.length; i++ ) {
 
-						var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+						var months = [
+							i18n.__( 'January',  	'mrtailor' ),
+							i18n.__( 'February', 	'mrtailor' ),
+							i18n.__( 'March', 	 	'mrtailor' ),
+							i18n.__( 'April', 	 	'mrtailor' ), 
+							i18n.__( 'May', 	 	'mrtailor' ),
+							i18n.__( 'June', 	 	'mrtailor' ),
+							i18n.__( 'July', 	 	'mrtailor' ),
+							i18n.__( 'August', 		'mrtailor' ),
+							i18n.__( 'September',	'mrtailor' ), 
+							i18n.__( 'October', 	'mrtailor' ),
+							i18n.__( 'November', 	'mrtailor' ),
+							i18n.__( 'December', 	'mrtailor' ),
+						];
 
 						let date = new Date(posts[i]['date']);
 						day = date.getDate();
@@ -353,7 +372,7 @@
 				let optionsIDs = [];
 				let sorted = [];
 			
-				apiFetch({ path: '/wp/v2/categories?per_page=-1' }).then(function (categories) {
+				apiFetch({ path: '/wp/v2/categories?per_page=-1&lang=' + posts_grid_vars.language }).then(function (categories) {
 
 				 	for( let i = 0; i < categories.length; i++) {
 	        			options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
@@ -462,7 +481,7 @@
 										{ value: 'date_asc',   	label: 'Date Ascending' },
 										{ value: 'date_desc',  	label: 'Date Descending' },
 									],
-	              				label: i18n.__( 'Order By' ),
+	              				label: i18n.__( 'Order By', 'mrtailor' ),
 	              				value: attributes.orderby,
 	              				onChange: function( value ) {
 	              					props.setAttributes( { orderby: value } );
@@ -481,7 +500,7 @@
 								initialPosition: 12,
 								min: 1,
 								max: 20,
-								label: i18n.__( 'Number of Posts' ),
+								label: i18n.__( 'Number of Posts', 'mrtailor' ),
 								onChange: function onChange(newNumber){
 									props.setAttributes( { number: newNumber } );
 									let newCategoriesSelected = attributes.categoriesIDs;
@@ -512,7 +531,7 @@
 								initialPosition: 3,
 								min: 1,
 								max: 4,
-								label: i18n.__( 'Columns' ),
+								label: i18n.__( 'Columns', 'mrtailor' ),
 								onChange: function( newColumns ) {
 									props.setAttributes( { columns: newColumns } );
 								},
