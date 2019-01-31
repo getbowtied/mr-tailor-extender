@@ -5,21 +5,25 @@
 	/* Blocks */
 	const registerBlockType   	= blocks.registerBlockType;
 
-	const InspectorControls 	= editor.InspectorControls;
+	const {
+		TextControl,
+		RangeControl,
+		SelectControl,
+		RadioControl,
+		ToggleControl,
+		SVG,
+		Path,
+	} = wp.components;
 
-	const TextControl 			= components.TextControl;
-	const RadioControl       	= components.RadioControl;
-	const SelectControl			= components.SelectControl;
-	const ToggleControl			= components.ToggleControl;
-	const RangeControl			= components.RangeControl;
-	const SVG 					= components.SVG;
-	const Path 					= components.Path;
+	const {
+		InspectorControls,
+	} = wp.editor;
 
 	const apiFetch 				= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-portfolio', {
-		title: i18n.__( 'Portfolio' ),
+		title: i18n.__( 'Portfolio', 'mrtailor' ),
 		icon:
 			el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 				el( Path, { d:'M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2l.01-11c0-1.11.88-2 1.99-2h4V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h4z' } ),
@@ -29,10 +33,10 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		styles: [
-			{ name: 'default', label:  'Equal Boxes', isDefault: true },
-			{ name: 'masonry_1', label:  'Masonry Style V1' },
-			{ name: 'masonry_2', label:  'Masonry Style V2' },
-			{ name: 'masonry_3', label:  'Masonry Style V3' },
+			{ name: 'default',   label:  i18n.__( 'Equal Boxes', 'mrtailor' ), isDefault: true },
+			{ name: 'masonry_1', label:  i18n.__( 'Masonry Style V1', 'mrtailor' ) },
+			{ name: 'masonry_2', label:  i18n.__( 'Masonry Style V2', 'mrtailor' ) },
+			{ name: 'masonry_3', label:  i18n.__( 'Masonry Style V3', 'mrtailor' ) },
 		],
 		attributes: {
 			/* Products source */
@@ -135,6 +139,8 @@
 					default: 
 						break;
 				}	
+
+				query += '&lang=' + portfolio_vars.language;
 
 				return query;
 			}
@@ -245,10 +251,10 @@
 
 			function renderResults() {
 				if ( attributes.firstLoad === true ) {
-					apiFetch({ path: '/wp/v2/portfolio-item?per_page=12&orderby=date&order=desc' }).then(function (portfolio_items) {
+					apiFetch({ path: '/wp/v2/portfolio-item?per_page=12&orderby=date&order=desc&lang=' + portfolio_vars.language }).then(function (portfolio_items) {
 						props.setAttributes({ result: portfolio_items });
 						props.setAttributes({ firstLoad: false });
-						let query = '/wp/v2/portfolio-item?per_page=12&orderby=date&order=desc';
+						let query = '/wp/v2/portfolio-item?per_page=12&orderby=date&order=desc&lang=' + portfolio_vars.language;
 						props.setAttributes({queryItems: query});
 						props.setAttributes({ queryItemsLast: query});
 					});
@@ -337,7 +343,7 @@
 				let optionsIDs = [];
 				let sorted = [];
 			
-				apiFetch({ path: '/wp/v2/portfolio-category?per_page=-1' }).then(function (categories) {
+				apiFetch({ path: '/wp/v2/portfolio-category?per_page=-1&lang=' + portfolio_vars.language }).then(function (categories) {
 
 				 	for( let i = 0; i < categories.length; i++) {
 	        			options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
@@ -427,7 +433,7 @@
 						{
 							className: 'main-inspector-wrapper',
 						},
-						el( 'label', { className: 'components-base-control__label' }, i18n.__('Categories:') ),
+						el( 'label', { className: 'components-base-control__label' }, i18n.__( 'Categories:', 'mrtailor' ), ),
 						el(
 							'div',
 							{
@@ -442,10 +448,10 @@
 								key: 'mt-latest-posts-order-by',
 								options:
 									[
-										{ value: 'title_asc',   label: 'Alphabetical Ascending' },
-										{ value: 'title_desc',  label: 'Alphabetical Descending' },
-										{ value: 'date_asc',   	label: 'Date Ascending' },
-										{ value: 'date_desc',  	label: 'Date Descending' },
+										{ value: 'title_asc',   label: i18n.__( 'Alphabetical Ascending', 'mrtailor' ) },
+										{ value: 'title_desc',  label: i18n.__( 'Alphabetical Descending', 'mrtailor' ) },
+										{ value: 'date_asc',   	label: i18n.__( 'Date Ascending', 'mrtailor' ) },
+										{ value: 'date_desc',  	label: i18n.__( 'Date Descending', 'mrtailor' ) },
 									],
 	              				label: i18n.__( 'Order By' ),
 	              				value: attributes.orderby,
@@ -466,7 +472,7 @@
 								initialPosition: 12,
 								min: 1,
 								max: 20,
-								label: i18n.__( 'Number of Portfolio Items' ),
+								label: i18n.__( 'Number of Portfolio Items', 'mrtailor' ),
 								onChange: function onChange(newNumber){
 									props.setAttributes( { number: newNumber } );
 									let newCategoriesSelected = attributes.categoriesIDs;
@@ -492,7 +498,7 @@
 							ToggleControl,
 							{
 								key: "portfolio-filters-toggle",
-	              				label: i18n.__( 'Show Filters?' ),
+	              				label: i18n.__( 'Show Filters?', 'mrtailor' ),
 	              				checked: attributes.showFilters,
 	              				onChange: function() {
 									props.setAttributes( { showFilters: ! attributes.showFilters } );
@@ -508,7 +514,7 @@
 								initialPosition: 3,
 								min: 3,
 								max: 5,
-								label: i18n.__( 'Columns' ),
+								label: i18n.__( 'Columns', 'mrtailor' ),
 								onChange: function( newColumns ) {
 									props.setAttributes( { columns: newColumns } );
 								},

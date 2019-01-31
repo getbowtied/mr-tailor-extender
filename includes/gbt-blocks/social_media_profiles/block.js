@@ -5,27 +5,20 @@
 	/* Blocks */
 	const registerBlockType   	= blocks.registerBlockType;
 
-	const AlignmentToolbar		= editor.AlignmentToolbar;
-	const BlockControls       	= editor.BlockControls;
-	const InspectorControls   	= editor.InspectorControls;
-	const ColorSettings			= editor.PanelColorSettings;
+	const {
+		TextControl,
+		RangeControl,
+		SVG,
+		Path,
+	} = wp.components;
 
-	const TextControl 			= components.TextControl;
-	const RangeControl			= components.RangeControl;
-	const SVG 					= components.SVG;
-	const Path 					= components.Path;
-
-	const ServerSideRender		= editor.ServerSideRender;
-
-// 	const {
-// 	TextControl,
-// 	RangeControl,
-// 	ToggleControl,
-// 	RadioControl,
-// 	PanelBody,
-// 	SVG,
-// 	Path,
-// } = wp.components;
+	const {
+		ServerSideRender,
+		PanelColorSettings,
+		InspectorControls,
+		BlockControls,
+		AlignmentToolbar,
+	} = wp.editor;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-social-media-profiles', {
@@ -81,7 +74,7 @@
 							}
 						),
 						el(
-							ColorSettings,
+							PanelColorSettings,
 							{
 								key: 'gbt_18_mt_socials_icons_color',
 								title: i18n.__( 'Icons Color', 'mrtailor' ),
