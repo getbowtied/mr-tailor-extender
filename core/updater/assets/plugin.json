@@ -17,12 +17,12 @@
 	},
 	
 	"icons" : {
-		"1x" : "https://raw.githubusercontent.com/getbowtied/merchandiser-extender/develop/core/updater/assets/images/mrtailor-extender-128x128.png",
-		"2x" : "https://raw.githubusercontent.com/getbowtied/merchandiser-extender/develop/core/updater/assets/images/mrtailor-extender-256x256.png"
+		"1x" : "https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/develop/core/updater/assets/images/mrtailor-extender-128x128.png",
+		"2x" : "https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/develop/core/updater/assets/images/mrtailor-extender-256x256.png"
     },
 
 	"banners": {
-		"low": "https://raw.githubusercontent.com/getbowtied/merchandiser-extender/develop/core/updater/assets/images/mrtailor-banner-772x250.png",
-		"high": "https://raw.githubusercontent.com/getbowtied/merchandiser-extender/develop/core/updater/assets/images/mrtailor-banner-1544x500.png"
+		"low": "https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/develop/core/updater/assets/images/mrtailor-banner-772x250.png",
+		"high": "https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/develop/core/updater/assets/images/mrtailor-banner-1544x500.png"
 	}
 }
