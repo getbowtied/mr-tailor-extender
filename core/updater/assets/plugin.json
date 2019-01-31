@@ -12,7 +12,7 @@
 	"author_homepage": "https://getbowtied.com/",
 
 	"sections": {
-		"description": "<p>Companion plugin for the <b>Mr. Tailor</b> theme. Extends the functionality by adding theme specific features.</p><h4>Gutenberg Blocks:</h4><ul><li>Banner</li><li>Portfolio</li><li>Blog Posts Grid</li><li>Lookbook</li><li>Social Media Profiles</li></ul>",
+		"description": "<p>Companion plugin for the <b>Mr. Tailor</b> theme. Extends the functionality by adding theme specific features.</p><h4>Gutenberg Blocks:</h4><ul><li>Banner</li><li>Portfolio</li><li>Blog Posts Grid</li><li>Blog Posts Slider</li><li>Lookbook</li><li>Social Media Profiles</li></ul>",
 		"changelog": "<h4>1.2</h4><ul><li>WordPress 5+ compatibility improvements</li><li>Improved styles for theme neutrality</li><li>Localization issues with the Posts Grid Block</li></ul><h4>1.1</h4><ul><li>WordPress 5+ compatibility improvements</li></ul><h4>1.0</h4><ul><li>Initial Version</li></ul>"
 	},
 	

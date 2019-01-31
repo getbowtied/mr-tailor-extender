@@ -1,5 +1,7 @@
 <?php
 
+global $theme;
+
 //==============================================================================
 //	Main Editor Styles
 //==============================================================================
@@ -25,9 +27,17 @@ if ( ! function_exists( 'getbowtied_mt_product_blocks_scripts' ) ) {
 	}
 }
 
+//==============================================================================
+//  Load Blocks
+//==============================================================================
+
+// Mr. Tailor Dependent Blocks
+if ( $theme->template == 'mrtailor') {
+    include_once 'social_media_profiles/block.php';
+    include_once 'portfolio/block.php';
+}
+
 include_once 'posts_grid/block.php';
 include_once 'posts_slider/block.php';
 include_once 'banner/block.php';
-include_once 'portfolio/block.php';
-include_once 'social_media_profiles/block.php';
 include_once 'lookbook/block.php';

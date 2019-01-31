@@ -17,7 +17,8 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 
 **Gutenberg Blocks:**
 - Banner
-- Posts Grid
+- Blog Posts Grid
+- Blog Posts Slider
 - Social Media Profiles
 - Portfolio
 - Lookbook

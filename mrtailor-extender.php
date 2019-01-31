@@ -37,11 +37,6 @@ add_action( 'init', 'gbt_mt_gutenberg_blocks' );
 if(!function_exists('gbt_mt_gutenberg_blocks')) {
 	function gbt_mt_gutenberg_blocks() {
 
-		$theme = wp_get_theme();
-		if ( $theme->template != 'mrtailor') {
-			return;
-		}
-
 		if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0') ) {
 			include_once 'includes/gbt-blocks/index.php';
 		} else {
@@ -55,8 +50,9 @@ if( !function_exists('mt_theme_warning') ) {
 
 		?>
 
-		<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-			<p>Mr. Tailor Extender plugin couldn't find the Block Editor (Gutenberg) on this site. It requires WordPress 5+ or Gutenberg installed as a plugin.</p>
+		<div class="error">
+			<p>Mr. Tailor Extender plugin couldn't find the Block Editor (Gutenberg) on this site. 
+				It requires WordPress 5+ or Gutenberg installed as a plugin.</p>
 		</div>
 
 		<?php
