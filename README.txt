@@ -2,7 +2,7 @@
 Contributors: getbowtied, vanesareinerth, adrianlbs
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.0
+Tested up to: 5.0.3
 Stable tag: 1.1
 Requires PHP: 5.5.0
 License: GPLv2 or later
@@ -23,6 +23,11 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 1.2 =
+- WordPress 5+ compatibility improvements
+- Improved styles for theme neutrality
+- Localization issues with the Posts Grid Block
 
 = 1.1 =
 - WordPress 5+ compatibility improvements

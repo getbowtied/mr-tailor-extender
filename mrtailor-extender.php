@@ -2,13 +2,13 @@
 
 /**
  * Plugin Name:       		Mr. Tailor Extender
- * Plugin URI:        		https://github.com/getbowtied/mr-tailor-extender
+ * Plugin URI:        		https://mrtailor.wp-theme.design/
  * Description:       		Extends the functionality of Mr. Tailor with Gutenberg elements.
  * Version:           		1.1
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
- * Tested up to: 			5.0
+ * Tested up to: 			5.0.3
  *
  * @package  Mr. Tailor Extender
  * @author   GetBowtied
@@ -22,34 +22,16 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
-add_action( 'init', 'github_mt_plugin_updater' );
-if(!function_exists('github_mt_plugin_updater')) {
-	function github_mt_plugin_updater() {
+global $theme;
+$theme = wp_get_theme();
 
-		include_once 'updater.php';
-
-		define( 'WP_GITHUB_FORCE_UPDATE', true );
-
-		if ( is_admin() ) {
-
-			$config = array(
-				'slug' 				 => plugin_basename(__FILE__),
-				'proper_folder_name' => 'mr-tailor-extender',
-				'api_url' 			 => 'https://api.github.com/repos/getbowtied/mr-tailor-extender',
-				'raw_url' 			 => 'https://raw.github.com/getbowtied/mr-tailor-extender/master',
-				'github_url' 		 => 'https://github.com/getbowtied/mr-tailor-extender',
-				'zip_url' 			 => 'https://github.com/getbowtied/mr-tailor-extender/zipball/master',
-				'sslverify'			 => true,
-				'requires'			 => '5.0',
-				'tested'			 => '5.0',
-				'readme'			 => 'README.txt',
-				'access_token'		 => '',
-			);
-
-			new WP_GitHub_Updater( $config );
-		}
-	}
-}
+// Plugin Updater
+require 'core/updater/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/develop/core/updater/assets/plugin.json',
+	__FILE__,
+	'mr-tailor-extender'
+);
 
 add_action( 'init', 'gbt_mt_gutenberg_blocks' );
 if(!function_exists('gbt_mt_gutenberg_blocks')) {
