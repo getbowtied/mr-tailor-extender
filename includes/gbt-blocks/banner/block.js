@@ -21,7 +21,7 @@
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-banner', {
-		title: i18n.__( 'Banner' ),
+		title: i18n.__( 'Banner', 'mrtailor' ),
 		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 				el( Path, { d:'M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM5 15h14v3H5z' } ) 
 			),
@@ -100,21 +100,21 @@
 
 				let colors = [
 					{ 
-						label: i18n.__( 'Title Color' ),
+						label: i18n.__( 'Title Color', 'mrtailor' ),
 						value: attributes.titleColor,
 						onChange: function( newColor) {
 							props.setAttributes( { titleColor: newColor } );
 						},
 					},
 					{ 
-						label: i18n.__( 'Subtitle Color' ),
+						label: i18n.__( 'Subtitle Color', 'mrtailor' ),
 						value: attributes.subtitleColor,
 						onChange: function( newColor) {
 							props.setAttributes( { subtitleColor: newColor } );
 						},
 					},
 					{ 
-						label: i18n.__( 'Background Color' ),
+						label: i18n.__( 'Background Color', 'mrtailor' ),
 						value: attributes.backgroundColor,
 						onChange: function( newColor) {
 							props.setAttributes( { backgroundColor: newColor } );
@@ -125,7 +125,7 @@
 				if( attributes.innerStrokeThickness > 0 ) {
 					colors.push(
 						{ 
-							label: i18n.__( 'Inner Stroke Color' ),
+							label: i18n.__( 'Inner Stroke Color', 'mrtailor' ),
 							value: attributes.innerStrokeColor,
 							onChange: function( newColor) {
 								props.setAttributes( { innerStrokeColor: newColor } );
@@ -147,7 +147,7 @@
 						PanelBody, 
 						{ 
 							key: 'gbt_18_mt_banner_settings_panel',
-							title: 'General Settings',
+							title: i18n.__( 'General Settings', 'mrtailor' ),
 							initialOpen: false,
 						},
 						el(
@@ -155,7 +155,7 @@
 							{
 								key: 'gbt_18_mt_banner_url',
 								type: 'string',
-								label: i18n.__( 'URL' ),
+								label: i18n.__( 'URL', 'mrtailor' ),
 								value: attributes.url,
 								onChange: function( newURL ) {
 									props.setAttributes( { url: newURL } );
@@ -166,7 +166,7 @@
 							ToggleControl,
 							{
 								key: "gbt_18_mt_banner_new_tab",
-	              				label: i18n.__( 'Open link in new tab?' ),
+	              				label: i18n.__( 'Open link in new tab?', 'mrtailor' ),
 	              				checked: attributes.blank,
 	              				onChange: function() {
 									props.setAttributes( { blank: ! attributes.blank } );
@@ -182,7 +182,7 @@
 								initialPosition: 300,
 								min: 0,
 								max: 1000,
-								label: i18n.__( 'Height' ),
+								label: i18n.__( 'Height', 'mrtailor' ),
 								onChange: function( newNumber ) {
 									props.setAttributes( { height: newNumber } );
 								},
@@ -205,7 +205,7 @@
 								initialPosition: 38,
 								min: 10,
 								max: 72,
-								label: i18n.__( 'Title Font Size' ),
+								label: i18n.__( 'Title Font Size', 'mrtailor' ),
 								onChange: function( newNumber ) {
 									props.setAttributes( { titleSize: newNumber } );
 								},
@@ -220,7 +220,7 @@
 								initialPosition: 18,
 								min: 10,
 								max: 72,
-								label: i18n.__( 'Subtitle Font Size' ),
+								label: i18n.__( 'Subtitle Font Size', 'mrtailor' ),
 								onChange: function( newNumber ) {
 									props.setAttributes( { subtitleSize: newNumber } );
 								},
@@ -231,7 +231,7 @@
 						PanelBody,
 						{ 
 							key: 'gbt_18_mt_banner_immer_stroke_settings',
-							title: 'Inner Stroke',
+							title: i18n.__( 'Inner Stroke', 'mrtailor' ),
 							initialOpen: false
 						},
 						el(
@@ -243,7 +243,7 @@
 								max: '30',
 								initialPosition: '2',
 								allowReset: false,
-								label: i18n.__( 'Inner Stroke Thickness' ),
+								label: i18n.__( 'Inner Stroke Thickness', 'mrtailor' ),
 								onChange: function( newNumber ) {
 									props.setAttributes( { innerStrokeThickness: newNumber } );
 								},
@@ -254,7 +254,7 @@
 						ColorSettings,
 						{
 							key: 'gbt_18_mt_banner_color_settings',
-							title: i18n.__( 'Colors' ),
+							title: i18n.__( 'Colors', 'mrtailor' ),
 							initialOpen: false,
 							colorSettings: getColors()
 						},
@@ -317,7 +317,7 @@
 				              						className: 'button gbt_18_mt_editor_banner_add_image',
 				              						onClick: img.open
 				              					},
-				              					i18n.__( 'Add Image' )
+				              					i18n.__( 'Add Image', 'mrtailor' ),
 			              					), 
 			              					!! attributes.imgID && el(
 			              						Button, 
@@ -333,7 +333,7 @@
 											            });
 													}
 												},
-												i18n.__( 'Remove Image' )
+												i18n.__( 'Remove Image', 'mrtailor' ),
 											), 
 			              				];
 			              			},
@@ -369,7 +369,7 @@
 											tagName: 'h3',
 											format: 'string',
 											value: attributes.title,
-											placeholder: i18n.__( 'Add Title' ),
+											placeholder: i18n.__( 'Add Title', 'mrtailor' ),
 											onChange: function( newTitle) {
 												props.setAttributes( { title: newTitle } );
 											}
@@ -389,7 +389,7 @@
 											format: 'string',
 											value: attributes.subtitle,
 											formattingControls: [],
-											placeholder: i18n.__( 'Add Subtitle' ),
+											placeholder: i18n.__( 'Add Subtitle', 'mrtailor' ),
 											onChange: function( newSubtitle) {
 												props.setAttributes( { subtitle: newSubtitle } );
 											}
@@ -409,7 +409,7 @@
 			return el( 'div', 
 				{ 
 					key: 'gbt_18_mt_banner',
-					className: 'gbt_18_mt_banner ' + attributes.align,
+					className: 'gbt_18_mt_banner',
 					style:
 					{
 						height: attributes.height + 'px',
@@ -460,10 +460,10 @@
 										style:
 										{
 											color: attributes.titleColor,
-											fontSize: attributes.titleSize + 'px'
+											fontSize: attributes.titleSize + 'px',
 										},
+										dangerouslySetInnerHTML: { __html: i18n.__( attributes.title, 'mrtailor' ) }
 									},
-									attributes.title
 								),
 								el( 'p',
 									{
@@ -473,9 +473,9 @@
 										{
 											color: attributes.subtitleColor,
 											fontSize: attributes.subtitleSize + 'px'
-										}
+										},
+										dangerouslySetInnerHTML: { __html: i18n.__( attributes.subtitle, 'mrtailor' ) }
 									},
-									attributes.subtitle
 								)
 							)
 						)
