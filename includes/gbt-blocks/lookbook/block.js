@@ -578,8 +578,8 @@
 				el(
 					'div', 
 					{ 
-						key: 'gbt_18_mt_lookbook',
-						className: 'gbt_18_mt_lookbook',
+						key: 'gbt_18_mt_editor_lookbook',
+						className: 'gbt_18_mt_editor_lookbook',
 					},
 					el(
 						'div', 

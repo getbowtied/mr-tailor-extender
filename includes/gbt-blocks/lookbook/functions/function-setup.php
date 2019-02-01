@@ -28,11 +28,18 @@ if ( ! function_exists( 'gbt_18_mt_lookbook_editor_assets' ) ) {
 add_action( 'enqueue_block_assets', 'gbt_18_mt_lookbook_assets' );
 if ( ! function_exists( 'gbt_18_mt_lookbook_assets' ) ) {
 	function gbt_18_mt_lookbook_assets() {
+		global $theme;
 		
 		wp_enqueue_style(
 			'gbt_18_mt_lookbook_styles',
 			plugins_url( 'assets/css/style.css', dirname(__FILE__) ),
 			array()
+		);
+
+		wp_enqueue_script(
+			'gbt_18_mt_lookbook_slider_script',
+			plugins_url( 'assets/js/lookbook.js', dirname(__FILE__) ),
+			array( 'jquery' )
 		);
 	}
 }
