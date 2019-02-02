@@ -43,7 +43,7 @@ if ( ! function_exists( 'gbt_18_mt_lookbook_assets' ) ) {
 		);
 
 		wp_enqueue_style( 'getbowtied_swiper_styles' );
-		wp_enqueue_style( 'getbowtied_swiper_scripts' );
+		wp_enqueue_script( 'getbowtied_swiper_scripts' );
 	}
 }
 

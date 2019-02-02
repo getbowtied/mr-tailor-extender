@@ -22,7 +22,22 @@
 		    position: relative;
 		    padding: 10px;
 		    text-align: center;
-	        width: 33.3333333%;
+
+		    &.columns-2 {
+		    	width: 50%;
+		    }
+
+		    &.columns-3 {
+		    	width: 33.3333333%;
+		    }
+
+		    &.columns-4 {
+		    	width: 25%;
+		    }
+
+		    &.columns-5 {
+		    	width: 20%;
+		    }
 
 			.gbt_18_mt_editor_posts_slider_item_img {
 			    background-size: cover;
@@ -74,11 +89,11 @@
 	}
 
 	.swiper-button-next {
-		right: 0;
+		right: -100px;
 	}
 
 	.swiper-button-prev {
-		left: 0;
+		left: -100px;
 	}
 
 	.quickview-pagination {

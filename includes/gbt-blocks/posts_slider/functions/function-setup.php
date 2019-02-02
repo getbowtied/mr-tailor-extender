@@ -14,6 +14,12 @@ if ( ! function_exists( 'gbt_18_mt_posts_slider_editor_assets' ) ) {
 			array( 'wp-api-request', 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element' )
 		);
 
+		$language = isset($_GET['lang']) ? $_GET['lang'] : get_locale();
+
+		wp_localize_script( 'gbt_18_mt_posts_slider_script', 'posts_slider_vars', array(
+			'language' => $language
+		) );
+
 		wp_enqueue_style(
 			'gbt_18_mt_posts_slider_editor_styles',
 			plugins_url( 'assets/css/editor.css', dirname(__FILE__) ),
@@ -34,6 +40,15 @@ if ( ! function_exists( 'gbt_18_mt_posts_slider_assets' ) ) {
 			plugins_url( 'assets/css/style.css', dirname(__FILE__) ),
 			array()
 		);
+
+		wp_enqueue_script(
+			'gbt_18_mc_posts_slider_script',
+			plugins_url( 'assets/js/posts_slider.js', dirname(__FILE__) ),
+			array( 'jquery' )
+		);
+
+		wp_enqueue_style( 'getbowtied_swiper_styles' );
+		wp_enqueue_script( 'getbowtied_swiper_scripts' );
 	}
 }
 
@@ -59,21 +74,9 @@ if ( function_exists( 'register_block_type' ) ) {
 				'type'						=> 'string',
 				'default'					=> 'date_desc',
 			),
-			'arrows'						=> array(
-				'type'						=> 'boolean',
-				'default'					=> true
-			),
-			'bullets'						=> array(
-				'type'						=> 'boolean',
-				'default'					=> true
-			),
-			'fontColor'						=> array(
-				'type'						=> 'string',
-				'default'					=> '#000'
-			),
-			'backgroundColor'				=> array(
-				'type'						=> 'string',
-				'default'					=> '#fff'
+			'columns'						=> array(
+				'type'						=> 'integer',
+				'default'					=> '3',
 			),
 		),
 

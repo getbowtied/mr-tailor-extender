@@ -66,6 +66,11 @@
 				type: 'string',
 				default: 'date_desc'
 			},
+			/* Columns */
+	        columns: {
+				type: 'number',
+				default: '3',
+			},
 		},
 
 		edit: function( props ) {
@@ -157,6 +162,8 @@
 						break;
 				}
 
+				query += '&lang=' + posts_slider_vars.language;
+
 				return query;
 			}
 
@@ -216,10 +223,10 @@
 
 			function renderResults() {
 				if ( attributes.firstLoad === true ) {
-					apiFetch({ path: '/wp/v2/posts?per_page=12&orderby=date&order=desc' }).then(function (posts) {
+					apiFetch({ path: '/wp/v2/posts?per_page=12&orderby=date&order=desc&lang=' + posts_slider_vars.language }).then(function (posts) {
 						props.setAttributes({ result: posts });
 						props.setAttributes({ firstLoad: false });
-						let query = '/wp/v2/posts?per_page=12&orderby=date&order=desc';
+						let query = '/wp/v2/posts?per_page=12&orderby=date&order=desc&lang=' + posts_slider_vars.language;
 						props.setAttributes({queryPosts: query});
 						props.setAttributes({ queryPostsLast: query});
 					});
@@ -270,7 +277,7 @@
 							el( "div", 
 								{
 									key: 		'gbt_18_mt_editor_posts_slider_item_' + posts[i].id, 
-									className: 	'gbt_18_mt_editor_posts_slider_item'
+									className: 	'gbt_18_mt_editor_posts_slider_item columns-' + attributes.columns
 								},
 								el( "div", 
 									{
@@ -304,7 +311,7 @@
 
 						count++;
 
-						if( count % 3 == 0 && count != posts.length) {
+						if( count % attributes.columns == 0 && count != posts.length) {
 							wrapper.push(
 								el( "div", 
 									{
@@ -408,7 +415,7 @@
 				let optionsIDs = [];
 				let sorted = [];
 			
-				apiFetch({ path: '/wp/v2/categories?per_page=-1' }).then(function (categories) {
+				apiFetch({ path: '/wp/v2/categories?per_page=-1&lang=' + posts_slider_vars.language }).then(function (categories) {
 
 				 	for( let i = 0; i < categories.length; i++) {
 	        			options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
@@ -557,6 +564,21 @@
 							},
 							_isLoadingText(),
 						),
+					),
+					el(
+						RangeControl,
+						{
+							key: "gbt_18_mt_posts_slider_columns",
+							value: attributes.columns,
+							allowReset: false,
+							initialPosition: 3,
+							min: 2,
+							max: 5,
+							label: i18n.__( 'Columns', 'mrtailor-extender' ),
+							onChange: function( newNumber ) {
+								props.setAttributes( { columns: newNumber } );
+							},
+						}
 					),
 				),
 				el( 'div',
