@@ -19,7 +19,7 @@
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-posts-slider', {
-		title: i18n.__( 'Posts Slider' ),
+		title: i18n.__( 'Posts Slider', 'mrtailor-extender' ),
 		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 				el( Path, { d:'M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z' } ) 
 			),
@@ -178,9 +178,9 @@
 
 			function _isLoadingText(){
 				if ( attributes.isLoading  === false ) {
-					return i18n.__('Update');
+					return i18n.__('Update', 'mrtailor-extender' );
 				} else {
-					return i18n.__('Updating');
+					return i18n.__('Updating', 'mrtailor-extender' );
 				}
 			}
 
@@ -244,7 +244,20 @@
 
 					for ( let i = 0; i < posts.length; i++ ) {
 
-						var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+						var months = [
+							i18n.__( 'January',  	'mrtailor-extender' ),
+							i18n.__( 'February', 	'mrtailor-extender' ),
+							i18n.__( 'March', 	 	'mrtailor-extender' ),
+							i18n.__( 'April', 	 	'mrtailor-extender' ), 
+							i18n.__( 'May', 	 	'mrtailor-extender' ),
+							i18n.__( 'June', 	 	'mrtailor-extender' ),
+							i18n.__( 'July', 	 	'mrtailor-extender' ),
+							i18n.__( 'August', 		'mrtailor-extender' ),
+							i18n.__( 'September',	'mrtailor-extender' ), 
+							i18n.__( 'October', 	'mrtailor-extender' ),
+							i18n.__( 'November', 	'mrtailor-extender' ),
+							i18n.__( 'December', 	'mrtailor-extender' ),
+						];
 
 						let date = new Date(posts[i]['date']);
 						date = months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
@@ -484,7 +497,7 @@
 						{
 							className: 'main-inspector-wrapper',
 						},
-						el( 'label', { className: 'components-base-control__label' }, i18n.__('Categories:') ),
+						el( 'label', { className: 'components-base-control__label' }, i18n.__( 'Categories:', 'mrtailor-extender' ), ),
 						el(
 							'div',
 							{
@@ -499,10 +512,10 @@
 								key: 'mt-posts-slider-order-by',
 								options:
 									[
-										{ value: 'title_asc',   label: 'Alphabetical Ascending' },
-										{ value: 'title_desc',  label: 'Alphabetical Descending' },
-										{ value: 'date_asc',   	label: 'Date Ascending' },
-										{ value: 'date_desc',  	label: 'Date Descending' },
+										{ value: 'title_asc',   label: i18n.__( 'Alphabetical Ascending', 'mrtailor-extender' ) },
+										{ value: 'title_desc',  label: i18n.__( 'Alphabetical Descending', 'mrtailor-extender' ) },
+										{ value: 'date_asc',   	label: i18n.__( 'Date Ascending', 'mrtailor-extender' ) },
+										{ value: 'date_desc',  	label: i18n.__( 'Date Descending', 'mrtailor-extender' ) },
 									],
 	              				label: i18n.__( 'Order By' ),
 	              				value: attributes.orderby,
@@ -523,7 +536,7 @@
 								initialPosition: 12,
 								min: 1,
 								max: 20,
-								label: i18n.__( 'Number of Posts' ),
+								label: i18n.__( 'Number of Posts', 'mrtailor-extender' ),
 								onChange: function onChange(newNumber){
 									props.setAttributes( { number: newNumber } );
 									let newCategoriesSelected = attributes.categoriesIDs;

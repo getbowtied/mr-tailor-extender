@@ -41,6 +41,9 @@ if ( ! function_exists( 'gbt_18_mt_lookbook_assets' ) ) {
 			plugins_url( 'assets/js/lookbook.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
+
+		wp_enqueue_style( 'getbowtied_swiper_styles' );
+		wp_enqueue_style( 'getbowtied_swiper_scripts' );
 	}
 }
 

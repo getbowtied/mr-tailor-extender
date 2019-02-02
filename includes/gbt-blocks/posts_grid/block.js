@@ -23,7 +23,7 @@
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-posts-grid', {
-		title: i18n.__( 'Posts Grid', 'mrtailor' ),
+		title: i18n.__( 'Posts Grid', 'mrtailor-extender' ),
 		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 				el( Path, { d:'M4 5v13h17V5H4zm10 2v3.5h-3V7h3zM6 7h3v3.5H6V7zm0 9v-3.5h3V16H6zm5 0v-3.5h3V16h-3zm8 0h-3v-3.5h3V16zm-3-5.5V7h3v3.5h-3z' } ) 
 			),
@@ -32,8 +32,8 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		styles: [
-			{ name: 'default', 	label:  i18n.__( 'Grid', 'mrtailor' ), isDefault: true },
-			{ name: 'list', 	label:  i18n.__( 'List', 'mrtailor' ), },
+			{ name: 'default', 	label:  i18n.__( 'Grid', 'mrtailor-extender' ), isDefault: true },
+			{ name: 'list', 	label:  i18n.__( 'List', 'mrtailor-extender' ), },
 		],
 		attributes: {
 			/* posts source */
@@ -261,18 +261,18 @@
 					for ( let i = 0; i < posts.length; i++ ) {
 
 						var months = [
-							i18n.__( 'January',  	'mrtailor' ),
-							i18n.__( 'February', 	'mrtailor' ),
-							i18n.__( 'March', 	 	'mrtailor' ),
-							i18n.__( 'April', 	 	'mrtailor' ), 
-							i18n.__( 'May', 	 	'mrtailor' ),
-							i18n.__( 'June', 	 	'mrtailor' ),
-							i18n.__( 'July', 	 	'mrtailor' ),
-							i18n.__( 'August', 		'mrtailor' ),
-							i18n.__( 'September',	'mrtailor' ), 
-							i18n.__( 'October', 	'mrtailor' ),
-							i18n.__( 'November', 	'mrtailor' ),
-							i18n.__( 'December', 	'mrtailor' ),
+							i18n.__( 'January',  	'mrtailor-extender' ),
+							i18n.__( 'February', 	'mrtailor-extender' ),
+							i18n.__( 'March', 	 	'mrtailor-extender' ),
+							i18n.__( 'April', 	 	'mrtailor-extender' ), 
+							i18n.__( 'May', 	 	'mrtailor-extender' ),
+							i18n.__( 'June', 	 	'mrtailor-extender' ),
+							i18n.__( 'July', 	 	'mrtailor-extender' ),
+							i18n.__( 'August', 		'mrtailor-extender' ),
+							i18n.__( 'September',	'mrtailor-extender' ), 
+							i18n.__( 'October', 	'mrtailor-extender' ),
+							i18n.__( 'November', 	'mrtailor-extender' ),
+							i18n.__( 'December', 	'mrtailor-extender' ),
 						];
 
 						let date = new Date(posts[i]['date']);
@@ -481,7 +481,7 @@
 										{ value: 'date_asc',   	label: 'Date Ascending' },
 										{ value: 'date_desc',  	label: 'Date Descending' },
 									],
-	              				label: i18n.__( 'Order By', 'mrtailor' ),
+	              				label: i18n.__( 'Order By', 'mrtailor-extender' ),
 	              				value: attributes.orderby,
 	              				onChange: function( value ) {
 	              					props.setAttributes( { orderby: value } );
@@ -500,7 +500,7 @@
 								initialPosition: 12,
 								min: 1,
 								max: 20,
-								label: i18n.__( 'Number of Posts', 'mrtailor' ),
+								label: i18n.__( 'Number of Posts', 'mrtailor-extender' ),
 								onChange: function onChange(newNumber){
 									props.setAttributes( { number: newNumber } );
 									let newCategoriesSelected = attributes.categoriesIDs;
@@ -531,7 +531,7 @@
 								initialPosition: 3,
 								min: 2,
 								max: 4,
-								label: i18n.__( 'Columns', 'mrtailor' ),
+								label: i18n.__( 'Columns', 'mrtailor-extender' ),
 								onChange: function( newColumns ) {
 									props.setAttributes( { columns: newColumns } );
 								},

@@ -23,7 +23,7 @@
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-portfolio', {
-		title: i18n.__( 'Portfolio', 'mrtailor' ),
+		title: i18n.__( 'Portfolio', 'mrtailor-extender' ),
 		icon:
 			el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 				el( Path, { d:'M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2l.01-11c0-1.11.88-2 1.99-2h4V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h4z' } ),
@@ -33,10 +33,10 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		styles: [
-			{ name: 'default',   label:  i18n.__( 'Equal Boxes', 'mrtailor' ), isDefault: true },
-			{ name: 'masonry_1', label:  i18n.__( 'Masonry Style V1', 'mrtailor' ) },
-			{ name: 'masonry_2', label:  i18n.__( 'Masonry Style V2', 'mrtailor' ) },
-			{ name: 'masonry_3', label:  i18n.__( 'Masonry Style V3', 'mrtailor' ) },
+			{ name: 'default',   label:  i18n.__( 'Equal Boxes', 'mrtailor-extender' ), isDefault: true },
+			{ name: 'masonry_1', label:  i18n.__( 'Masonry Style V1', 'mrtailor-extender' ) },
+			{ name: 'masonry_2', label:  i18n.__( 'Masonry Style V2', 'mrtailor-extender' ) },
+			{ name: 'masonry_3', label:  i18n.__( 'Masonry Style V3', 'mrtailor-extender' ) },
 		],
 		attributes: {
 			/* Products source */
@@ -433,7 +433,7 @@
 						{
 							className: 'main-inspector-wrapper',
 						},
-						el( 'label', { className: 'components-base-control__label' }, i18n.__( 'Categories:', 'mrtailor' ), ),
+						el( 'label', { className: 'components-base-control__label' }, i18n.__( 'Categories:', 'mrtailor-extender' ), ),
 						el(
 							'div',
 							{
@@ -448,10 +448,10 @@
 								key: 'mt-latest-posts-order-by',
 								options:
 									[
-										{ value: 'title_asc',   label: i18n.__( 'Alphabetical Ascending', 'mrtailor' ) },
-										{ value: 'title_desc',  label: i18n.__( 'Alphabetical Descending', 'mrtailor' ) },
-										{ value: 'date_asc',   	label: i18n.__( 'Date Ascending', 'mrtailor' ) },
-										{ value: 'date_desc',  	label: i18n.__( 'Date Descending', 'mrtailor' ) },
+										{ value: 'title_asc',   label: i18n.__( 'Alphabetical Ascending', 'mrtailor-extender' ) },
+										{ value: 'title_desc',  label: i18n.__( 'Alphabetical Descending', 'mrtailor-extender' ) },
+										{ value: 'date_asc',   	label: i18n.__( 'Date Ascending', 'mrtailor-extender' ) },
+										{ value: 'date_desc',  	label: i18n.__( 'Date Descending', 'mrtailor-extender' ) },
 									],
 	              				label: i18n.__( 'Order By' ),
 	              				value: attributes.orderby,
@@ -472,7 +472,7 @@
 								initialPosition: 12,
 								min: 1,
 								max: 20,
-								label: i18n.__( 'Number of Portfolio Items', 'mrtailor' ),
+								label: i18n.__( 'Number of Portfolio Items', 'mrtailor-extender' ),
 								onChange: function onChange(newNumber){
 									props.setAttributes( { number: newNumber } );
 									let newCategoriesSelected = attributes.categoriesIDs;
@@ -498,7 +498,7 @@
 							ToggleControl,
 							{
 								key: "portfolio-filters-toggle",
-	              				label: i18n.__( 'Show Filters?', 'mrtailor' ),
+	              				label: i18n.__( 'Show Filters?', 'mrtailor-extender' ),
 	              				checked: attributes.showFilters,
 	              				onChange: function() {
 									props.setAttributes( { showFilters: ! attributes.showFilters } );
@@ -514,7 +514,7 @@
 								initialPosition: 3,
 								min: 3,
 								max: 5,
-								label: i18n.__( 'Columns', 'mrtailor' ),
+								label: i18n.__( 'Columns', 'mrtailor-extender' ),
 								onChange: function( newColumns ) {
 									props.setAttributes( { columns: newColumns } );
 								},
