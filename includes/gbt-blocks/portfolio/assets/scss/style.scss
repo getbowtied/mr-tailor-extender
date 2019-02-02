@@ -1,37 +1,47 @@
 .gbt_18_mt_portfolio
 {
-	&.aligncenter
+	h2.portfolio-title
 	{
-		.default_grid.items_per_row_3
-		{
-			h2.portfolio-title.hover-effect-title
-			{
-				font-size: 20px;
-	    		word-break: break-word;
-	    		padding: 40px 40px 5px;
-			}
+		word-break: break-word;
+	}
 
-			p.portfolio-categories.hover-effect-text
-			{
-				padding: 0px 40px 33px
-			}
+	.default_grid
+	{
+		h2.portfolio-title,
+		p.portfolio-categories
+		{
+			width: 100%;
 		}
 
-		.default_grid.items_per_row_4,
-		.default_grid.items_per_row_5
+		h2.portfolio-title
 		{
-			h2.portfolio-title.hover-effect-title
-			{
-				font-size: 18px;
-	    		word-break: break-word;
-	    		padding: 10px;
-			}
-
-			p.portfolio-categories.hover-effect-text
-			{
-				padding: 0px 10px 33px;
-			}
+			padding: 40px 40px 5px;
 		}
+
+		p.portfolio-categories
+		{
+			padding: 0px 40px 33px;
+		}
+	}
+
+	&.aligncenter { 
+
+		.default_grid {
+
+			&.items_per_row_4,
+	        &.items_per_row_5
+	        {
+	            h2.portfolio-title
+				{
+					padding: 40px 10px 5px;
+				}
+
+				p.portfolio-categories
+				{
+					padding: 0px 10px 33px;
+				}
+	        }
+	    }
 	}
 }
 

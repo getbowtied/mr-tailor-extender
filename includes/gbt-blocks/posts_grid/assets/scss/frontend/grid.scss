@@ -1,87 +1,20 @@
 .gbt_18_mt_posts_grid.is-style-default {
 
-	&:not(.alignfull)
-	{
+	&.alignfull {
 		.gbt_18_mt_posts_grid_wrapper {
-
-		  	@media all and (min-width: 640px) {
-		  		margin: 0 -15px;
-		  	}
+		    margin: 0 20px;
 		}
 	}
 
-	&.alignfull {
-
+	&:not(.alignfull) {
 		.gbt_18_mt_posts_grid_wrapper {
-
-		    &.columns-1 {
-		    	.gbt_18_mt_posts_grid_item {
-		    		padding: 0 30px;
-		    	}
-		    }
-
-		    &.columns-2 {
-		    	@media all and (min-width: 640px) {
-			    	.gbt_18_mt_posts_grid_item {
-			    		&:nth-child(odd) {
-			    			padding-left: 30px;
-			    		}
-			    	}
-
-			    	.gbt_18_mt_posts_grid_item {
-			    		&:nth-child(even) {
-			    			padding-right: 30px;
-			    		}
-			    	}
-			    }
-
-			    @media all and (max-width: 639px) {
-					.gbt_18_mt_posts_grid_item {
-						padding: 0 30px;
-					}
-				}
-		    }
-
-		    &.columns-3 {
-		    	@media all and (min-width: 640px) {
-			    	padding: 0 20px;		
-			    }
-
-			    @media all and (max-width: 639px) {
-					.gbt_18_mt_posts_grid_item {
-						padding: 0 30px;
-					}
-				}
-		    }
-
-		    &.columns-4 {
-		    	@media all and (min-width: 640px) {
-			    	padding: 0 20px;		
-			    }
-
-			    @media all and (max-width: 639px) {
-					.gbt_18_mt_posts_grid_item {
-						padding: 0 30px;
-					}
-				}
-		    }
+		    margin: 0 -15px;
 		}
 	}
 
 	.gbt_18_mt_posts_grid_wrapper {
 		position: relative;
 	  	overflow: hidden;
-
-		&.columns-1 
-		{
-			.gbt_18_mt_posts_grid_item {
-				width: 100%;
-
-				@media all and (max-width: 639px) {
-					padding: 0 0;
-				}
-			}
-		}
 
 		&.columns-2 {
 

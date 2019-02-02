@@ -22,7 +22,7 @@
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-lookbook', {
-		title: i18n.__( 'Lookbook' ),
+		title: i18n.__( 'Lookbook', 'mrtailor' ),
 		icon:
 			el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 				el( Path, { d:'M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 2v5l-1-.75L15 9V4h2zm3 12H8V4h5v9l3-2.25L19 13V4h1v12z' } ),
@@ -186,9 +186,9 @@
 
 			function _isLoadingText(){
 				if ( attributes.isLoading  === false ) {
-					return i18n.__('Update');
+					return i18n.__('Update', 'mrtailor' );
 				} else {
-					return i18n.__('Updating');
+					return i18n.__('Updating', 'mrtailor' );
 				}
 			}
 
@@ -288,7 +288,7 @@
 				let productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
-					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
+					return el('span', {className: 'no-results'}, i18n.__('No products matching.', 'mrtailor' ));
 				}
 				let products = attributes.querySearchResults;
 				for (let i = 0; i < products.length; i++ ) {
@@ -447,7 +447,7 @@
 			          				type: 'search',
 			          				className: 'products-ajax-search',
 			          				value: attributes.querySearchString,
-			          				placeholder: i18n.__( 'Search for products to display'),
+			          				placeholder: i18n.__( 'Search for products to display', 'mrtailor' ),
 			          				onChange: function( newQuery ) {
 			          					props.setAttributes({ querySearchString: newQuery});
 			          					if (newQuery.length < 3) return;
@@ -481,7 +481,7 @@
 							el(
 								'label',
 								{},
-								i18n.__('Selected Products:'),
+								i18n.__('Selected Products:', 'mrtailor' ),
 							),
 							el(
 								'div',
@@ -515,7 +515,7 @@
 							initialPosition: 750,
 							min: 200,
 							max: 1000,
-							label: i18n.__( 'Height' ),
+							label: i18n.__( 'Height', 'mrtailor' ),
 							onChange: function( newNumber ) {
 								props.setAttributes( { height: newNumber } );
 							},
@@ -530,7 +530,7 @@
 							initialPosition: 3,
 							min: 2,
 							max: 3,
-							label: i18n.__( 'Columns' ),
+							label: i18n.__( 'Columns', 'mrtailor' ),
 							onChange: function( newNumber ) {
 								props.setAttributes( { columns: newNumber } );
 							},
@@ -540,32 +540,32 @@
 						ColorSettings,
 						{
 							key: 'gbt_18_mt_lookbook_color_settings',
-							title: i18n.__( 'Colors' ),
+							title: i18n.__( 'Colors', 'mrtailor' ),
 							initialOpen: false,
 							colorSettings: [
 								{ 
-									label: i18n.__( 'Title Color' ),
+									label: i18n.__( 'Title Color', 'mrtailor' ),
 									value: attributes.titleColor,
 									onChange: function( newColor) {
 										props.setAttributes( { titleColor: newColor } );
 									},
 								},
 								{ 
-									label: i18n.__( 'Subtitle Color' ),
+									label: i18n.__( 'Subtitle Color', 'mrtailor' ),
 									value: attributes.subtitleColor,
 									onChange: function( newColor) {
 										props.setAttributes( { subtitleColor: newColor } );
 									},
 								},
 								{ 
-									label: i18n.__( 'Product Title Color' ),
+									label: i18n.__( 'Product Title Color', 'mrtailor' ),
 									value: attributes.productColor,
 									onChange: function( newColor) {
 										props.setAttributes( { productColor: newColor } );
 									},
 								},
 								{ 
-									label: i18n.__( 'Background Color' ),
+									label: i18n.__( 'Background Color', 'mrtailor' ),
 									value: attributes.backgroundColor,
 									onChange: function( newColor) {
 										props.setAttributes( { backgroundColor: newColor } );
@@ -612,7 +612,7 @@
 			              						className: 'button add-image',
 			              						onClick: img.open
 			              					},
-			              					i18n.__( 'Add Image' )
+			              					i18n.__( 'Add Image', 'mrtailor' ),
 		              					), 
 		              					!! attributes.imgID && el(
 		              						Button, 
@@ -628,7 +628,7 @@
 										            });
 												}
 											},
-											i18n.__( 'Remove Image' )
+											i18n.__( 'Remove Image', 'mrtailor' ),
 										), 
 		              				];
 		              			},
@@ -667,7 +667,7 @@
 											format: 'string',
 											style: { color: attributes.titleColor },
 											value: attributes.title,
-											placeholder: i18n.__( 'Add Title' ),
+											placeholder: i18n.__( 'Add Title', 'mrtailor' ),
 											onChange: function( newTitle) {
 												props.setAttributes( { title: newTitle } );
 											}
@@ -689,7 +689,7 @@
 											style: { color: attributes.subtitleColor },
 											value: attributes.subtitle,
 											formattingControls: [],
-											placeholder: i18n.__( 'Add Subtitle' ),
+											placeholder: i18n.__( 'Add Subtitle', 'mrtailor' ),
 											onChange: function( newSubtitle) {
 												props.setAttributes( { subtitle: newSubtitle } );
 											}

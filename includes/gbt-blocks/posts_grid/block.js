@@ -529,7 +529,7 @@
 								value: attributes.columns,
 								allowReset: false,
 								initialPosition: 3,
-								min: 1,
+								min: 2,
 								max: 4,
 								label: i18n.__( 'Columns', 'mrtailor' ),
 								onChange: function( newColumns ) {
