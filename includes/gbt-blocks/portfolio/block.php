@@ -98,7 +98,7 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_portfolio' ) ) {
         ?>
         
         <!-- Wrappers -->
-        <div class="gbt_18_mt_portfolio wp-block-gbt-portfolio <?php echo $className; ?> <?php echo $align; ?>">
+        <div class="gbt_18_mt_portfolio wp-block-gbt-portfolio <?php echo $className; ?> align<?php echo $align; ?>">
             <div class="portfolio-isotope-container gbt_18_mt_portfolio_container <?php echo $items_per_row_class ;?>">
                         
             <!-- Filters -->

@@ -14,6 +14,12 @@ if ( ! function_exists( 'gbt_18_mt_portfolio_editor_assets' ) ) {
             array( 'wp-api-request', 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element' )
 		);
 
+        $language = isset($_GET['lang']) ? $_GET['lang'] : get_locale();
+
+        wp_localize_script( 'gbt_18_mt_portfolio_script', 'portfolio_vars', array(
+            'language' => $language
+        ) );
+
 		wp_enqueue_style(
 			'gbt_18_mt_portfolio_editor_styles',
 			plugins_url( 'assets/css/editor.css', dirname(__FILE__) ),

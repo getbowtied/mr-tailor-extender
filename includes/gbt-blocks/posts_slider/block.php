@@ -16,10 +16,7 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_slider' ) ) {
 			'categoriesSavedIDs'	=> '',
 			'align'					=> 'center',
 			'orderby'				=> 'date_desc',
-			'arrows'				=> true,
-			'bullets' 				=> true,
-			'fontColor'				=> '#000',
-			'backgroundColor'		=> '#fff'
+			'columns' 				=> '3',
 		), $attributes ) );
 
 		$args = array(
@@ -64,62 +61,50 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_slider' ) ) {
 		        
 	    if ( !empty($recentPosts) ) : ?>
 
-	    	<div class="gbt_18_mt_posts_slider <?php echo $align; ?>">
-	    
-			    <script>
-				jQuery(document).ready(function($) {
-					$("#from-the-blog-<?php echo $sliderrandomid ?>").owlCarousel({
-						items:3,
-						itemsDesktop : [1200,3],
-						itemsDesktopSmall : [1000,2],
-						itemsTablet: false,
-						itemsMobile : [600,1],
-						lazyLoad : true,
-					});
-				});
-				</script>
+	    	<div class="gbt_18_mt_posts_slider align<?php echo $align; ?>">
 		    
-				<div class="row">
-				    <div class="from-the-blog-wrapper">
-					
-				        <div id="from-the-blog-<?php echo $sliderrandomid ?>" class="owl-carousel">
+			    <div class="swiper-container columns-<?php echo $columns; ?>">
+				
+			        <div class="swiper-wrapper">
+								
+						<?php
+		
+						foreach($recentPosts as $post) : ?>
+			            		                    
+		                    <div class="swiper-slide <?php if ( !has_post_thumbnail($post->ID)) : ?>no_thumb<?php endif; ?>">
+		                        
+								<a class="gbt_18_mt_posts_slider_link" href="<?php echo get_permalink($post->ID) ?>">
+									<span class="gbt_18_mt_posts_slider_overlay"></span>
 									
-							<?php
-			
-							foreach($recentPosts as $post) : ?>
-				            
-			                    <?php $post_format = get_post_format($post->ID); ?>
-			                    
-			                    <div class="from_the_blog_item <?php echo $post_format ? $post_format: 'standard'; ?> <?php if ( !has_post_thumbnail($post->ID)) : ?>no_thumb<?php endif; ?>">
-			                        
-									<a class="from_the_blog_img_link" href="<?php echo get_permalink($post->ID) ?>">
-										<span class="from_the_blog_overlay"></span>
-										
-										<?php if ( has_post_thumbnail($post->ID)) :
-											$image_id = get_post_thumbnail_id($post->ID);
-											$image_url = wp_get_attachment_image_src($image_id,'large', true);
-										?>
-											<span class="from_the_blog_img" style="background-image: url(<?php echo $image_url[0]; ?> );"></span>
-											<span class="with_thumb_icon"></span>
-										<?php else : ?>
-											<span class="from_the_blog_noimg"></span>
-											<span class="no_thumb_icon"></span>
-										<?php endif;  ?>
-										
-									</a>
-			                        
-			                        <div class="from_the_blog_content">
-		                            	<h3><a class="from_the_blog_title" href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></h3>
-		                            	<div class="post_header_date"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo date('F d, Y', strtotime($post->post_date)); ?></a></div>                       
-			                        </div>
-			                        
-			                    </div>
-			        
-			                <?php endforeach; ?>
-				              
-				        </div>
-					</div>
-			    </div>
+									<?php if ( has_post_thumbnail($post->ID)) :
+										$image_id = get_post_thumbnail_id($post->ID);
+										$image_url = wp_get_attachment_image_src($image_id,'large', true);
+									?>
+										<span class="gbt_18_mt_posts_slider_img" style="background-image: url(<?php echo $image_url[0]; ?> );"></span>
+									<?php else : ?>
+										<span class="gbt_18_mt_posts_slider_noimg"></span>
+									<?php endif;  ?>
+									
+								</a>
+		                        
+		                        <div class="gbt_18_mt_posts_slider_content">
+	                            	<h4 class="gbt_18_mt_posts_slider_title"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></h4>
+	                            	<div class="gbt_18_mt_posts_slider_date"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo date('F d, Y', strtotime($post->post_date)); ?></a></div>                       
+		                        </div>
+		                        
+		                    </div>
+		        
+		                <?php endforeach; ?>
+			              
+			        </div>
+
+			        <div class="swiper-pagination"></div>
+					
+				</div>
+
+				<span class="swiper-button-prev"></span>
+	        	<span class="swiper-button-next"></span>
+
 			</div>
 
 		<?php endif; ?> 

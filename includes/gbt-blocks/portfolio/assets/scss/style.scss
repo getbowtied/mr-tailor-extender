@@ -1,55 +1,47 @@
-.wp-block-gbt-portfolio
+.gbt_18_mt_portfolio
 {
-	margin-bottom: 2.5rem;
-
-	&.full
+	h2.portfolio-title
 	{
-		margin-left: calc( -100vw / 2 + 100% / 2 );
-	    margin-right: calc( -100vw / 2 + 100% / 2 );
-	    max-width: 100vw;
+		word-break: break-word;
 	}
 
-	&.wide
+	.default_grid
 	{
-		@media all and (min-width: 1024px) {
-			margin-left: calc( -75vw / 2 + 100% / 2 );
-		    margin-right: calc( -75vw / 2 + 100% / 2 );
-		    max-width: 75vw;
+		h2.portfolio-title,
+		p.portfolio-categories
+		{
+			width: 100%;
+		}
+
+		h2.portfolio-title
+		{
+			padding: 40px 40px 5px;
+		}
+
+		p.portfolio-categories
+		{
+			padding: 0px 40px 33px;
 		}
 	}
 
-	&.center
-	{
-		.default_grid.items_per_row_3
-		{
-			h2.portfolio-title.hover-effect-title
-			{
-				font-size: 20px;
-	    		word-break: break-word;
-	    		padding: 40px 40px 5px;
-			}
+	&.aligncenter { 
 
-			p.portfolio-categories.hover-effect-text
-			{
-				padding: 0px 40px 33px
-			}
-		}
+		.default_grid {
 
-		.default_grid.items_per_row_4,
-		.default_grid.items_per_row_5
-		{
-			h2.portfolio-title.hover-effect-title
-			{
-				font-size: 18px;
-	    		word-break: break-word;
-	    		padding: 10px;
-			}
+			&.items_per_row_4,
+	        &.items_per_row_5
+	        {
+	            h2.portfolio-title
+				{
+					padding: 40px 10px 5px;
+				}
 
-			p.portfolio-categories.hover-effect-text
-			{
-				padding: 0px 10px 33px;
-			}
-		}
+				p.portfolio-categories
+				{
+					padding: 0px 10px 33px;
+				}
+	        }
+	    }
 	}
 }
 
