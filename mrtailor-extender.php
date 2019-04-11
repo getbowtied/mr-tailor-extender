@@ -23,44 +23,100 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 }
 
 // Plugin Updater
-require 'core/updater/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/plugin.json',
-	__FILE__,
-	'mr-tailor-extender'
-);
+// require 'core/updater/plugin-update-checker.php';
+// $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+// 	'https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/plugin.json',
+// 	__FILE__,
+// 	'mr-tailor-extender'
+// );
 
-add_action( 'init', 'gbt_mt_gutenberg_blocks' );
-if(!function_exists('gbt_mt_gutenberg_blocks')) {
-	function gbt_mt_gutenberg_blocks() {
+if ( ! class_exists( 'MrTailorExtender' ) ) :
 
-		if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0') ) {
-			include_once 'includes/gbt-blocks/index.php';
-		} else {
-			add_action( 'admin_notices', 'mt_theme_warning' );
+	/**
+	 * MrTailorExtender class.
+	*/
+	class MrTailorExtender {
+
+		/**
+		 * The single instance of the class.
+		 *
+		 * @var MrTailorExtender
+		*/
+		protected static $_instance = null;
+
+		/**
+		 * MrTailorExtender constructor.
+		 *
+		*/
+		public function __construct() {
+
+			$theme = wp_get_theme();
+			$parent_theme = $theme->parent();
+
+			// Helpers
+			include_once( 'includes/helpers/helpers.php' );
+
+			// Vendor
+			//include_once( 'includes/vendor/enqueue.php' );
+
+			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) || $theme->template != 'mrtailor' ) {
+
+			// 	// Customizer
+			// 	include_once( 'includes/customizer/class/class-control-toggle.php' );
+
+				// Shortcodes
+				include_once( 'includes/shortcodes/index.php' );
+
+			// 	// Social Media
+			// 	include_once( 'includes/social-media/class-social-media.php' );
+
+			// 	//Widgets
+			// 	include_once( 'includes/widgets/social-media.php' );
+
+			// 	// Addons
+			// 	if ( $theme->template == 'shopkeeper' && is_plugin_active( 'woocommerce/woocommerce.php') ) { 
+			// 		include_once( 'includes/addons/class-wc-category-header-image.php' );
+			// 	}
+			}
+
+			// Gutenberg Blocks
+			add_action( 'init', array( $this, 'gbt_mt_gutenberg_blocks' ) );
+
+			// if( $theme->template == 'shopkeeper' && ( $theme->version >= '2.8.1' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.1' ) ) ) {
+
+			// 	// Social Sharing Buttons
+			// 	if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
+			// 		include_once( 'includes/social-sharing/class-social-sharing.php' );
+			// 	}
+			// }
+		}
+
+		/**
+		 * Loads Gutenberg blocks
+		 *
+		 * @return void
+		*/
+		public function gbt_mt_gutenberg_blocks() {
+
+			if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0') ) {
+				include_once 'includes/gbt-blocks/index.php';
+			} else {
+				add_action( 'admin_notices', 'mt_theme_warning' );
+			}
+		}
+
+		/**
+		 * Ensures only one instance of MrTailorExtender is loaded or can be loaded.
+		 *
+		 * @return MrTailorExtender
+		*/
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
 		}
 	}
-}
+endif;
 
-if( !function_exists('mt_theme_warning') ) {
-	function mt_theme_warning() {
-
-		?>
-
-		<div class="error">
-			<p>Mr. Tailor Extender plugin couldn't find the Block Editor (Gutenberg) on this site. 
-				It requires WordPress 5+ or Gutenberg installed as a plugin.</p>
-		</div>
-
-		<?php
-	}
-}
-
-if( !function_exists('is_mt_wp_version') ) {
-	function is_mt_wp_version( $operator = '>', $version = '4.0' ) {
-
-		global $wp_version;
-
-		return version_compare( $wp_version, $version, $operator );
-	}
-}
+$mrtailor_extender = new MrTailorExtender;
