@@ -70,10 +70,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				// Social Media
 				include_once( 'includes/social-media/class-social-media.php' );
 
-			// 	//Widgets
-			// 	include_once( 'includes/widgets/social-media.php' );
-
-			// 	// Addons
+				// Addons
 				if ( $theme->template == 'mrtailor' && is_plugin_active( 'woocommerce/woocommerce.php') ) { 
 					include_once( 'includes/addons/class-wc-category-header-image.php' );
 				}
