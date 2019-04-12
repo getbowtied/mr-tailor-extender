@@ -13,7 +13,7 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 	
 	//Include shortcodes
 	include_once('wc/product-categories.php');
-	include_once('wc/wc-mod-product.php');
+	include_once('wc/single-product.php');
 	include_once('wc/add-to-cart.php');
 
 	//Mixed shortcodes
@@ -43,6 +43,9 @@ function getbowtied_mt_shortcodes_styles() {
 	wp_register_style('mrtailor-banner-shortcode-styles', plugins_url( 'assets/css/banner.css', __FILE__ ), NULL );
 	wp_register_style('mrtailor-from-the-blog-list-shortcode-styles', plugins_url( 'assets/css/from-the-blog-list.css', __FILE__ ), NULL );
 	wp_register_style('mrtailor-from-the-blog-slider-shortcode-styles',	plugins_url( 'assets/css/from-the-blog-slider.css', __FILE__ ), NULL );
+	wp_register_style('mrtailor-single-product-shortcode-styles',	plugins_url( 'assets/css/single-product.css', __FILE__ ), NULL );
+	wp_register_style('mrtailor-lookbook-shortcode-styles',	plugins_url( 'assets/css/lookbook.css', __FILE__ ), NULL );
+	wp_register_style('mrtailor-products-slider-shortcode-styles',	plugins_url( 'assets/css/products-slider.css', __FILE__ ), NULL );
 }
 
 // add_action( 'wp_enqueue_scripts', 'getbowtied_sk_shortcodes_scripts', 99 );

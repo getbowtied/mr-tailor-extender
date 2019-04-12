@@ -1,6 +1,9 @@
 <?php
 
-function mr_tailor_product_mod($atts, $content = null) {	
+function mr_tailor_product_mod($atts, $content = null) {
+
+	wp_enqueue_style('mrtailor-single-product-shortcode-styles');
+	
 	global $mr_tailor_theme_options;
 	extract(shortcode_atts(array(
 		"id" => ''

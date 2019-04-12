@@ -1,0 +1,68 @@
+.shortcode_products_slider
+{
+	margin:0 -15px;
+}
+
+.shortcode_products_slider  .product_after_shop_loop .price del
+{
+	color: inherit;
+	opacity: 0.55;
+}
+
+.shortcode_products_slider .products ul h3 a
+{
+	transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+}
+
+.shortcode_products_slider .products ul h3 a:hover
+{
+	color: inherit;
+	opacity: 0.55;
+}
+
+.shortcode_products_slider .products .yith-wcwl-add-button,
+.shortcode_products_slider .products .add_to_wishlist
+{
+	color: inherit !important;
+}
+
+.shortcode_products_slider .products .add_to_wishlist:before
+{
+	color: inherit;
+	opacity: 0.4;
+	
+	transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+}
+
+.shortcode_products_slider .products li:hover .add_to_wishlist:before
+{
+	color: inherit;
+	opacity: 0.55;
+}
+
+.shortcode_products_slider .products .yith-wcwl-wishlistexistsbrowse,
+.shortcode_products_slider .products .yith-wcwl-wishlistaddedbrowse,
+.shortcode_products_slider .products .yith-wcwl-wishlistexistsbrowse a:hover,
+.shortcode_products_slider .products .yith-wcwl-wishlistaddedbrowse a:hover
+{
+	color: inherit;
+}
+
+.shortcode_products_slider .products .star-rating:before,
+.shortcode_products_slider .products .star-rating:before
+{
+	color: inherit;
+	opacity: 0.35;
+}
+
+.shortcode_products_slider .owl-theme .owl-controls .owl-page span
+{
+	background: none;
+	border: 4px solid;
+	opacity: 0.35;
+	
+	transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+}

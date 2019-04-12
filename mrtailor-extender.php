@@ -57,7 +57,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			include_once( 'includes/helpers/helpers.php' );
 
 			// Vendor
-			//include_once( 'includes/vendor/enqueue.php' );
+			include_once( 'includes/vendor/enqueue.php' );
 
 			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) || $theme->template != 'mrtailor' ) {
 

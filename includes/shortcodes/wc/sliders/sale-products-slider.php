@@ -2,6 +2,11 @@
 
 // [sale_products_slider]
 function shortcode_sale_products_slider($atts, $content = null) {
+
+	wp_enqueue_style('mrtailor-products-slider-shortcode-styles');
+	wp_enqueue_style('mr_tailor-owl');
+	wp_enqueue_script('mr_tailor-owl');
+	
 	global $woocommerce;
 	$sliderrandomid = rand();
 	extract(shortcode_atts(array(
@@ -14,16 +19,9 @@ function shortcode_sale_products_slider($atts, $content = null) {
 	), $atts));
 	ob_start();
 	?>
-
-    <?php 
-	/**
-	* Check if WooCommerce is active
-	**/
-	if (class_exists('WooCommerce')) {
-	?>
     
-     <div class="woocommerce shortcode_products_slider">
-         <div id="products-carousel-<?php echo $sliderrandomid ?>" class="owl-carousel related products">
+    <div class="woocommerce shortcode_products_slider">
+        <div id="products-carousel-<?php echo $sliderrandomid ?>" class="owl-carousel related products">
             <?php
 			
 			// Get products on sale
@@ -60,8 +58,6 @@ function shortcode_sale_products_slider($atts, $content = null) {
             ?>
         </div>
     </div>
-    
-    <?php } ?>
     
 	<script>
 	jQuery(document).ready(function($) {

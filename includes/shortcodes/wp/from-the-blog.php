@@ -4,6 +4,8 @@
 function shortcode_from_the_blog($atts, $content = null) {
 
 	wp_enqueue_style('mrtailor-from-the-blog-slider-shortcode-styles');
+	wp_enqueue_style('mr_tailor-owl');
+	wp_enqueue_script('mr_tailor-owl');
 
 	$sliderrandomid = rand();
 	extract(shortcode_atts(array(

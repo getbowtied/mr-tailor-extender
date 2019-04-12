@@ -1,6 +1,9 @@
 <?php
 
 function shortcode_lookbook_mixed($atts, $content = null) {
+
+	wp_enqueue_style('mrtailor-lookbook-shortcode-styles');
+
 	global $woocommerce;
 	$sliderrandomid = rand();
     extract(shortcode_atts(array(
@@ -14,13 +17,6 @@ function shortcode_lookbook_mixed($atts, $content = null) {
 	), $atts));
 	ob_start();
     ?>
-
-    <?php 
-	/**
-	* Check if WooCommerce is active
-	**/
-	if (class_exists('WooCommerce')) {
-	?>
 
     <div class="woocommerce">
 	    
@@ -117,20 +113,15 @@ function shortcode_lookbook_mixed($atts, $content = null) {
 
     </div>
     
-    <?php } ?>
-    
 	<script>
 	jQuery(document).ready(function($) {
 		
 		function lookbook_init() {
 			if ( $(window).width() < 1024 ) {
-				//$(".lookbook").css('margin', '0 -60px');
 				$(".lookbook .swiper-slide").width( Math.ceil($(window).innerWidth()) );				
 			} else if ( ($(window).width() >= 1024) && ($(window).innerWidth() < 1366) ) {
-				//$(".lookbook").css('margin', '0 -15px');
 				$(".lookbook .swiper-slide").width( Math.ceil($(window).innerWidth()/2) );
 			} else {
-				//$(".lookbook").css('margin', '0 -15px');
 				$(".lookbook .swiper-slide").width( Math.ceil($(window).innerWidth()/<?php echo $columns; ?>) );
 			}
 			$(".lookbook .swiper-slide.first").width( Math.ceil($(window).innerWidth()) );
