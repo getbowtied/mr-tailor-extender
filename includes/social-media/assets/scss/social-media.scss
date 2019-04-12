@@ -1,170 +1,83 @@
-// Social Media Icons List
-ul.sk_social_icons_list
+.site-social-icons-shortcode
 {
-	clear: both;
-	display: block;
-	margin: 15px 0;
-	padding: 0;
 	vertical-align: middle;
+	clear: both;
+	margin: 5px -15px 15px -15px;
+	display: block;
 
-	&.left
+	ul.mt_social_icons_list
 	{
-		text-align:left;
-	}
-
-	&.center
-	{
-		text-align: center;
-	}
-
-	&.right
-	{
-		text-align:right;
-	}
-
-	li.sk_social_icon
-	{	
-		display: inline-block;
 		list-style: none;
-		line-height: 1;
-		margin: 10px 30px 10px 0;
-
-		&:last-child
+		margin: 0;
+		padding: 0;
+	    line-height: 1em;
+		
+		&.left
 		{
-			margin-right: 0;
+			text-align:left;
 		}
 
-		a.sk_social_icon_link
+		&.center
 		{
-			&:hover
-			{
-				i
-				{
-					opacity: .75;
-				}
-			}
+			text-align:center;
+		}
 
-			i
-			{
-				transition: opacity .2s;
-			}
+		&.right
+		{
+			text-align:right;
+		}
+
+		li.mt_social_icon
+		{
+			padding: 5px 12px;
+			display: inline-block;
 		}
 	}
 }
 
-// Top Bar
-.site-top-bar-social-icons-wrapper
+// Top Bar Socials
+#site-top-bar
 {
-	display: block;
-	float: right;
-	padding: 8px 0;
+	.site-social-icons-shortcode
+	{
+		float: right;
+	    order: 2;
+	    flex-shrink: 0;
+        text-align: center;
+    	margin: 5px 0 0 0;
 
-	ul.sk_social_icons_list
+    	ul.mt_social_icons_list
+    	{
+		    line-height: 1.8em;
+		    list-style: none;
+		    margin: 0;
+		    padding: 0 0 0 20px;
+		    overflow: auto;
+
+		    li.mt_social_icon
+		    {
+	    	    padding: 8px 7px 7px 7px;
+    			float: left;
+
+    			&:last-child
+    			{
+				    padding: 8px 0 7px 7px;
+				}
+		    }
+    	}
+	}
+}
+
+// Mobile Menu Offcanvas Socials
+.offcanvas-left-content
+{
+	.site-social-icons-shortcode
 	{
 		margin: 0;
-		padding-left: 50px;
 
-		li.sk_social_icon
+		ul.mt_social_icons_list
 		{
-			margin: 5px 10px 5px 0;
-
-			&:last-child
-			{
-				margin-right: 0;
-			}
-
-			svg
-			{
-				width: 16px !important;
-				height: 16px !important;
-			}
-		}
-	}
-}
-
-// Footer
-.footer_socials_wrapper
-{
-	margin-bottom: 21px;
-
-	@media only screen and (min-width: 40.063em) {
-		margin-bottom: 34px;
-	}
-}
-
-// Off-Canvas
-.off-canvas
-{
-	ul.sk_social_icons_list
-	{
-		li.sk_social_icon
-		{
-			margin: 10px 22px 10px 0;
-
-			svg
-			{
-				width: 18px !important;
-				height: 18px !important;
-			}
-		}
-	}
-}
-
-// RTL
-.rtl
-{
-	ul.sk_social_icons_list
-	{
-		li.sk_social_icon
-		{	
-			margin: 10px 0 10px 30px;
-
-			&:last-child
-			{
-				margin-left: 0;
-			}
-		}
-	}
-
-	.widget_shopkeeper_social_media
-	{
-		ul.sk_social_icons_list
-		{
-			text-align: right;
-		}
-	}
-
-	.site-top-bar-social-icons-wrapper
-	{
-	    float: left;
-
-	    ul.sk_social_icons_list
-	    {
-	    	padding-left: 0;
-	    	padding-right: 50px;
-
-	    	li.sk_social_icon
-			{
-				margin: 5px  5px 10px;
-
-				&:last-child
-				{
-					margin-left: 0;
-				}
-			}
-	    }
-	}
-
-	.off-canvas
-	{
-		ul.sk_social_icons_list
-		{
-			text-align: right;
-
-			li.sk_social_icon
-			{
-				margin: 10px 0 10px 22px;
-			}
+		    padding: 30px 10px;
 		}
 	}
 }

@@ -68,7 +68,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				include_once( 'includes/shortcodes/index.php' );
 
 			// 	// Social Media
-			// 	include_once( 'includes/social-media/class-social-media.php' );
+				include_once( 'includes/social-media/class-social-media.php' );
 
 			// 	//Widgets
 			// 	include_once( 'includes/widgets/social-media.php' );

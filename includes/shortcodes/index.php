@@ -1,7 +1,6 @@
 <?php
 
 //Include shortcodes
-include_once('wp/socials.php');
 include_once('wp/from-the-blog.php');
 include_once('wp/from-the-blog-listing.php');
 include_once('wp/banner.php');
@@ -59,7 +58,6 @@ if ( defined(  'WPB_VC_VERSION' ) ) {
 	add_action( 'init', 'getbowtied_mt_wb_shortcodes' );
 	function getbowtied_mt_wb_shortcodes() {
 		include_once('wb/blog-posts.php');
-		include_once('wb/social-media-profiles.php');
 		include_once('wb/banner.php');
 		include_once('wb/title.php');
 		include_once('wb/output/title.php');

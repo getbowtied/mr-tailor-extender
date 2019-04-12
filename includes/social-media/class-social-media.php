@@ -1,13 +1,13 @@
 <?php
 
-if ( ! class_exists( 'SKSocialMedia' ) ) :
+if ( ! class_exists( 'MTSocialMedia' ) ) :
 
 	/**
-	 * SKSocialMedia class.
+	 * MTSocialMedia class.
 	 *
 	 * @since 1.4
 	*/
-	class SKSocialMedia {
+	class MTSocialMedia {
 
 		/**
 		 * List of social media profiles.
@@ -21,23 +21,18 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		 * The single instance of the class.
 		 *
 		 * @since 1.4
-		 * @var SKSocialMedia
+		 * @var MTSocialMedia
 		*/
 		protected static $_instance = null;
 
 		/**
-		 * SKSocialMedia constructor.
+		 * MTSocialMedia constructor.
 		 *
 		 * @since 1.4
 		*/
 		public function __construct() {
 
 			$this->set_profiles();
-			
-			if( !get_option( 'social_media_options_import', false ) ) {
-				$done_import = $this->import_options();
-				update_option( 'social_media_options_import', true );
-			}
 
 			$this->enqueue_styles();
 			$this->customizer_options();
@@ -49,11 +44,11 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		}
 
 		/**
-		 * Ensures only one instance of SKSocialMedia is loaded or can be loaded.
+		 * Ensures only one instance of MTSocialMedia is loaded or can be loaded.
 		 *
 		 * @since 1.4
 		 *
-		 * @return SKSocialMedia
+		 * @return MTSocialMedia
 		*/
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -70,29 +65,8 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		*/
 		protected function enqueue_styles() {
 			add_action( 'wp_enqueue_scripts', function() {
-				wp_enqueue_style('sk-social-media-styles', plugins_url( 'assets/css/social-media.css', __FILE__ ), NULL );
+				wp_enqueue_style('mt-social-media-styles', plugins_url( 'assets/css/social-media.css', __FILE__ ), NULL );
 			});
-		}
-
-		/**
-		 * Imports social media links stored as theme mods into the options WP table.
-		 *
-		 * @since 1.4
-		 * @return void
-		 */
-		private function import_options() {
-
-			foreach( $this->social_media_profiles as $social) {
-				if( get_theme_mod( $social['link'] ) ) {
-					update_option( 'sk_' . $social['link'], get_theme_mod( $social['link'], '' ) );
-				}
-			}
-
-			$top_bar_option = get_theme_mod( 'top_bar_social_icons', false ) ? 'yes' : 'no';
-			update_option( 'sk_top_bar_social_icons', $top_bar_option );
-
-			$footer_option = get_theme_mod( 'footer_social_icons', true ) ? 'yes' : 'no';
-			update_option( 'sk_footer_social_icons', $footer_option );
 		}
 
 		/**
@@ -219,7 +193,7 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 			        'name' 		=> 'SoundCloud'
 			    ),
 			    array( 
-			        'link' 		=> 'vk_link',
+			        'link' 		=> 'vkontakte_link',
 			        'slug' 		=> 'vk',
 			        'svg_path'	=> 'M25,2C12.318,2,2,12.318,2,25s10.318,23,23,23c12.683,0,23-10.318,23-23S37.683,2,25,2z M34.973,29.535 c2.237,1.986,2.702,2.695,2.778,2.816C38.678,33.821,36.723,34,36.723,34h-4.12c0,0-1.003,0.011-1.86-0.557 c-1.397-0.915-2.86-2.689-3.888-2.381C25.992,31.32,26,32.486,26,33.483C26,33.84,25.693,34,25,34s-0.981,0-1.288,0 c-2.257,0-4.706-0.76-7.149-3.313c-3.456-3.609-6.487-10.879-6.487-10.879s-0.179-0.366,0.016-0.589 c0.221-0.25,0.822-0.218,0.822-0.218L14.909,19c0,0,0.376,0.071,0.646,0.261c0.223,0.156,0.347,0.454,0.347,0.454 s0.671,2.216,1.526,3.629c1.67,2.758,2.447,2.828,3.014,2.531C21.27,25.445,21,22.513,21,22.513s0.037-1.259-0.395-1.82 c-0.333-0.434-0.97-0.665-1.248-0.701c-0.225-0.029,0.151-0.423,0.63-0.648C20.627,19.059,21.498,18.986,23,19 c1.169,0.011,1.506,0.081,1.962,0.186C26.341,19.504,26,20.343,26,23.289c0,0.944-0.13,2.271,0.582,2.711 c0.307,0.19,1.359,0.422,3.231-2.618c0.889-1.442,1.596-3.834,1.596-3.834s0.146-0.263,0.373-0.393 c0.232-0.133,0.225-0.13,0.543-0.13S35.832,19,36.532,19c0.699,0,1.355-0.008,1.468,0.402c0.162,0.589-0.516,2.607-2.234,4.797 C32.943,27.793,32.63,27.457,34.973,29.535z',
 			        'name' 		=> 'VK'
@@ -300,7 +274,7 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		 * @return void
 		 */
 		protected function customizer_options() {
-			add_action( 'customize_register', array( $this, 'sk_social_media_customizer' ) );
+			add_action( 'customize_register', array( $this, 'mt_social_media_customizer' ) );
 		}
 
 		/**
@@ -309,63 +283,20 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		 * @since 1.4
 		 * @return void
 		 */
-		public function sk_social_media_customizer( $wp_customize ) {
+		public function mt_social_media_customizer( $wp_customize ) {
 
 			global $social_media_profiles;
 
-			$theme = wp_get_theme();
-			if ( $theme->template == 'shopkeeper') {
-
-				$wp_customize->add_setting( 'sk_top_bar_social_icons', array(
-					'type'		 			=> 'option',
-					'capability' 			=> 'manage_options',
-					'sanitize_callback'    	=> 'sk_bool_to_string',
-					'sanitize_js_callback' 	=> 'sk_string_to_bool',
-					'default'	 			=> 'no',
-				) );
-
-				$wp_customize->add_control( 
-					new WP_SK_Customize_Toggle_Control(
-						$wp_customize,
-						'sk_top_bar_social_icons',
-						array( 
-							'label'       	=> esc_attr__( 'Top Bar Social Icons', 'shopkeeper-extender' ),
-							'section'     	=> 'top_bar',
-							'priority'    	=> 20,
-						)
-					)
-				);
-
-				$wp_customize->add_setting( 'sk_footer_social_icons', array(
-					'type'		 			=> 'option',
-					'capability' 			=> 'manage_options',
-					'sanitize_callback'    	=> 'sk_bool_to_string',
-					'default'	 			=> 'yes',
-				) );
-
-				$wp_customize->add_control( 
-					new WP_SK_Customize_Toggle_Control(
-						$wp_customize,
-						'sk_footer_social_icons',
-						array( 
-							'label'       	=> esc_attr__( 'Social Networking Icons', 'shopkeeper-extender' ),
-							'section'     	=> 'footer',
-							'priority'    	=> 20,
-						)
-					)
-				);
-			}
-
 			// Section
 			$wp_customize->add_section( 'social_media', array(
-		 		'title'       => esc_attr__( 'Social Media', 'shopkeeper-extender' ),
+		 		'title'       => esc_attr__( 'Social Media', 'mrtailor-extender' ),
 		 		'priority'    => 10,
 		 	) );
 
 			// Fields
 			foreach($this->social_media_profiles as $social) :
 
-				$wp_customize->add_setting( 'sk_' . $social['link'], array(
+				$wp_customize->add_setting( 'mt_' . $social['link'], array(
 					'type'		 => 'option',
 					'capability' => 'manage_options',
 					'transport'  => 'refresh',
@@ -375,10 +306,10 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 				$wp_customize->add_control( 
 					new WP_Customize_Control(
 						$wp_customize,
-						'sk_' . $social['link'],
+						'mt_' . $social['link'],
 						array( 
 							'type'			=> 'text',
-							'label'       	=> esc_attr__( $social['name'], 'shopkeeper-extender' ),
+							'label'       	=> esc_attr__( $social['name'], 'mrtailor-extender' ),
 							'section'     	=> 'social_media',
 							'priority'    	=> 10,
 						)
@@ -395,7 +326,7 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		 * @return void
 		 */
 		protected function create_shortcode() {
-			add_shortcode( 'social-media', array( $this, 'sk_social_media_shortcode' ) );
+			add_shortcode( 'social-media', array( $this, 'mt_social_media_shortcode' ) );
 		}
 
 		/**
@@ -404,53 +335,48 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		 * @since 1.4
 		 * @return string
 		 */
-		public function sk_social_media_shortcode( $atts, $content = null ) {
+		public function mt_social_media_shortcode( $atts, $content = null ) {
 			global $social_media_profiles;
 
 		    extract( shortcode_atts( array(
 		        'items_align' => 'left',
-		        'type'		  => 'shortcode',
-		        'fontsize'    => '24',
-                'fontcolor'   => '#000',
+		        'font_size'   => '16',
+		        'color'       => '#222',
 		        ), 
 		    $atts ) );
-
-		    $color = '';
-		    if( $type == 'block') {
-			    if( !empty($fontcolor) ) {
-			    	$color = 'fill="' . $fontcolor . '"';
-				}
-		    }
 
 		    ob_start();
 
 		    ?>
 
-	        <ul class="sk_social_icons_list <?php echo esc_html($items_align); ?>">
+		    <div class="site-social-icons-shortcode">
 
-	            <?php foreach($this->social_media_profiles as $social) : ?>
+		        <ul class="mt_social_icons_list <?php echo esc_html($items_align); ?>">
 
-	                <?php if ( get_option( 'sk_' . $social['link'] ) ) : ?>
-	                    
-	                    <li class="sk_social_icon icon_<?php echo $social['slug']; ?>">
-	                        <a class="sk_social_icon_link" target="_blank" 
-	                        	href="<?php echo esc_url(get_option( 'sk_' . $social['link'], '#' )); ?>">
-	                        	<svg
-	                        		class="<?php echo !empty($color) ? 'has-color' : ''; ?>" 
-	                        		xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-									width="<?php echo $fontsize; ?>" height="<?php echo $fontsize; ?>"
-									viewBox="0 0 50 50"
-									<?php echo $color; ?>>    
-									<path d="<?php echo $social['svg_path']; ?>"></path>
-								</svg>
-	                        </a>
-	                    </li>
+		            <?php foreach($this->social_media_profiles as $social) : ?>
 
-	                <?php endif; ?>
+		                <?php if ( get_option( 'mt_' . $social['link'] ) ) : ?>
+		                    
+		                    <li class="mt_social_icon icon_<?php echo $social['slug']; ?>">
+		                        <a class="mt_social_icon_link" target="_blank" 
+		                        	href="<?php echo esc_url(get_option( 'mt_' . $social['link'], '#' )); ?>">
+		                        	<svg
+		                        		xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+										width="<?php echo $font_size; ?>" height="<?php echo $font_size; ?>"
+										viewBox="0 0 50 50"
+										fill="<?php echo $color; ?>">    
+										<path d="<?php echo $social['svg_path']; ?>"></path>
+									</svg>
+		                        </a>
+		                    </li>
 
-	            <?php endforeach; ?>
+		                <?php endif; ?>
 
-	        </ul>
+		            <?php endforeach; ?>
+
+		        </ul>
+
+		    </div>
 		    
 		    <?php
 
@@ -469,34 +395,54 @@ if ( ! class_exists( 'SKSocialMedia' ) ) :
 		 */
 		protected function create_wb_element() {
 
-			vc_map( 
-				array(
-				   "name"			=> "Social Media Profiles",
-				   "category"		=> 'Social',
-				   "description"	=> "Links to your social media profiles",
-				   "base"			=> "social-media",
-				   "class"			=> "",
-				   "icon"			=> "social-media",
-				   "params" 		=> array(
-						array(
-							"type"			=> "dropdown",
-							"holder"		=> "div",
-							"class" 		=> "hide_in_vc_editor",
-							"admin_label" 	=> true,
-							"heading"		=> "Align",
-							"param_name"	=> "items_align",
-							"value"			=> array(
-								"Left"		=> "left",
-								"Center"	=> "center",
-								"Right"		=> "right"
-							)
+			vc_map(array(
+				"name"					=> __( 'Social Media Profiles', 'mrtailor-extender' ),
+				"category"				=> "Mr. Tailor",
+				"description"			=> __( 'Links to your social media profiles', 'mrtailor-extender' ),
+				"base"					=> "social-media",
+				"class"					=> "",
+				"icon"					=> "social-media",
+			   
+			   "params" 	=> array(
+
+					array(
+						"type"			=> "dropdown",
+						"holder"		=> "div",
+						"class" 		=> "hide_in_vc_editor",
+						"admin_label" 	=> true,
+						"heading"		=> __( 'Align', 'mrtailor-extender' ),
+						"param_name"	=> "items_align",
+						"value"			=> array(
+							"Left"		=> "left",
+							"Center"	=> "center",
+							"Right"		=> "right"
 						)
-				   )
-				)
-			);
+					),
+
+					array(
+						"type"			=> "textfield",
+						"holder"		=> "div",
+						"class" 		=> "hide_in_vc_editor",
+						"admin_label" 	=> true,
+						"heading"		=> __( 'Font Size (px, em)', 'mrtailor-extender' ),
+						"param_name"	=> "font_size",
+					),
+
+					array(
+						"type"			=> "colorpicker",
+						"holder"		=> "div",
+						"class" 		=> "hide_in_vc_editor",
+						"admin_label" 	=> true,
+						"heading"		=> __( 'Color', 'mrtailor-extender' ),
+						"param_name"	=> "color",
+					),
+					
+			   )
+			   
+			));
 		}
 	}
 
 endif;
 
-$sk_social_media = new SKSocialMedia;
+$mt_social_media = new MTSocialMedia;
