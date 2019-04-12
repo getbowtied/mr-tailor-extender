@@ -1,26 +1,26 @@
 <?php
 
-if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
+if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 
 	/**
-	 * SKCategoryHeaderImage class.
+	 * MTCategoryHeaderImage class.
 	 *
 	 * Adds a Header Image to WooCommerce Product Category.
 	 *
 	 * @since 1.4
 	*/
-	class SKCategoryHeaderImage {
+	class MTCategoryHeaderImage {
 
 		/**
 		 * The single instance of the class.
 		 *
 		 * @since 1.4
-		 * @var SKCategoryHeaderImage
+		 * @var MTCategoryHeaderImage
 		*/
 		protected static $_instance = null;
 
 		/**
-		 * SKCategoryHeaderImage constructor.
+		 * MTCategoryHeaderImage constructor.
 		 *
 		 * @since 1.4
 		*/
@@ -36,11 +36,11 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 		}
 
 		/**
-		 * Ensures only one instance of SKCategoryHeaderImage is loaded or can be loaded.
+		 * Ensures only one instance of MTCategoryHeaderImage is loaded or can be loaded.
 		 *
 		 * @since 1.4
 		 *
-		 * @return SKCategoryHeaderImage
+		 * @return MTCategoryHeaderImage
 		*/
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -61,12 +61,12 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 			?>
 
 			<div class="form-field">
-				<label><?php _e( 'Header', 'shopkeeper-extender' ); ?></label>
+				<label><?php _e( 'Header', 'mrtailor-extender' ); ?></label>
 				<div id="product_cat_header" style="float:left;margin-right:10px;"><img src="<?php echo wc_placeholder_img_src(); ?>" width="60px" height="60px" /></div>
 				<div style="line-height:60px;">
 					<input type="hidden" id="product_cat_header_id" name="product_cat_header_id" />
-					<button type="submit" class="upload_header_button button"><?php _e( 'Upload/Add image', 'shopkeeper-extender' ); ?></button>
-					<button type="submit" class="remove_header_image_button button"><?php _e( 'Remove image', 'shopkeeper-extender' ); ?></button>
+					<button type="submit" class="upload_header_button button"><?php _e( 'Upload/Add image', 'mrtailor-extender' ); ?></button>
+					<button type="submit" class="remove_header_image_button button"><?php _e( 'Remove image', 'mrtailor-extender' ); ?></button>
 				</div>
 
 				<script type="text/javascript">
@@ -90,9 +90,9 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 
 						// Create the media frame.
 						header_file_frame = wp.media.frames.downloadable_file = wp.media({
-							title: '<?php _e( 'Choose an image', 'shopkeeper-extender' ); ?>',
+							title: '<?php _e( 'Choose an image', 'mrtailor-extender' ); ?>',
 							button: {
-								text: '<?php _e( 'Use image', 'shopkeeper-extender' ); ?>',
+								text: '<?php _e( 'Use image', 'mrtailor-extender' ); ?>',
 							},
 							multiple: false
 						});
@@ -151,13 +151,13 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 			?>
 
 			<tr class="form-field">
-				<th scope="row" valign="top"><label><?php _e( 'Header', 'shopkeeper-extender' ); ?></label></th>
+				<th scope="row" valign="top"><label><?php _e( 'Header', 'mrtailor-extender' ); ?></label></th>
 				<td>
 					<div id="product_cat_header" style="float:left;margin-right:10px;"><img src="<?php echo $image; ?>" width="60px" height="60px" /></div>
 					<div style="line-height:60px;">
 						<input type="hidden" id="product_cat_header_id" name="product_cat_header_id" value="<?php echo $header_id; ?>" />
-						<button type="submit" class="upload_header_button button"><?php _e( 'Upload/Add image', 'shopkeeper-extender' ); ?></button>
-						<button type="submit" class="remove_header_image_button button"><?php _e( 'Remove image', 'shopkeeper-extender' ); ?></button>
+						<button type="submit" class="upload_header_button button"><?php _e( 'Upload/Add image', 'mrtailor-extender' ); ?></button>
+						<button type="submit" class="remove_header_image_button button"><?php _e( 'Remove image', 'mrtailor-extender' ); ?></button>
 					</div>
 
 					<script type="text/javascript">			 
@@ -183,9 +183,9 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 
 							// Create the media frame.
 							header_file_frame = wp.media.frames.downloadable_file = wp.media({
-								title: '<?php _e( 'Choose an image', 'shopkeeper-extender' ); ?>',
+								title: '<?php _e( 'Choose an image', 'mrtailor-extender' ); ?>',
 								button: {
-									text: '<?php _e( 'Use image', 'shopkeeper-extender' ); ?>',
+									text: '<?php _e( 'Use image', 'mrtailor-extender' ); ?>',
 								},
 								multiple: false
 							});
@@ -232,8 +232,9 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 		 * @return void
 		 */
 		public function woocommerce_category_header_img_save( $term_id, $tt_id, $taxonomy ) {	
-			if ( isset( $_POST['product_cat_header_id'] ) )
-				update_term_meta( $term_id, 'header_id', absint( $_POST['product_cat_header_id'] ) );
+			if ( isset( $_POST['product_cat_header_id'] ) ) {
+				update_woocommerce_term_meta( $term_id, 'header_id', absint( $_POST['product_cat_header_id'] ) );
+			}
 
 			delete_transient( 'wc_term_counts' );
 		}
@@ -249,7 +250,11 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 		 */
 		public function woocommerce_product_cat_header_columns( $columns ) {
 			$new_columns = array();
-			$new_columns['header'] = __( 'Header', 'shopkeeper-extender' );
+			$new_columns['cb'] = $columns['cb'];
+			$new_columns['thumb'] = __( 'Image', 'mrtailor-extender' );
+			$new_columns['header'] = __( 'Header', 'mrtailor-extender' );
+			unset( $columns['cb'] );
+			unset( $columns['thumb'] );
 
 			return array_merge( $new_columns, $columns );
 		}
@@ -333,15 +338,15 @@ if ( ! class_exists( 'SKCategoryHeaderImage' ) ) :
 		 */
 		public function product_cat_header_column() {
 		   	echo '<style type="text/css">
-					table.wp-list-table .column-header {
-						width: 52px;
-						text-align: center;
-						white-space: nowrap;
-					}
-		        </style>';
+				table.wp-list-table .column-header {
+					width: 52px;
+					text-align: center;
+					white-space: nowrap;
+				}
+			</style>';
 		}
 	}
 
 endif;
 
-$sk_wc_cat_header = new SKCategoryHeaderImage;
+$mt_wc_cat_header = new MTCategoryHeaderImage;
