@@ -61,13 +61,13 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) || $theme->template != 'mrtailor' ) {
 
-			// 	// Customizer
-			// 	include_once( 'includes/customizer/class/class-control-toggle.php' );
+				// Customizer
+				include_once( 'includes/customizer/class/class-control-toggle.php' );
 
 				// Shortcodes
 				include_once( 'includes/shortcodes/index.php' );
 
-			// 	// Social Media
+				// Social Media
 				include_once( 'includes/social-media/class-social-media.php' );
 
 			// 	//Widgets
@@ -82,13 +82,13 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			// Gutenberg Blocks
 			add_action( 'init', array( $this, 'gbt_mt_gutenberg_blocks' ) );
 
-			// if( $theme->template == 'shopkeeper' && ( $theme->version >= '2.8.1' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.1' ) ) ) {
+			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) {
 
-			// 	// Social Sharing Buttons
-			// 	if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
-			// 		include_once( 'includes/social-sharing/class-social-sharing.php' );
-			// 	}
-			// }
+				// Social Sharing Buttons
+				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
+					include_once( 'includes/social-sharing/class-social-sharing.php' );
+				}
+			}
 		}
 
 		/**

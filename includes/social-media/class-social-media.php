@@ -5,14 +5,14 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 	/**
 	 * MTSocialMedia class.
 	 *
-	 * @since 1.4
+	 * @since 1.3
 	*/
 	class MTSocialMedia {
 
 		/**
 		 * List of social media profiles.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @var array
 		 */
 		protected $social_media_profiles = array();
@@ -20,7 +20,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * The single instance of the class.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @var MTSocialMedia
 		*/
 		protected static $_instance = null;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * MTSocialMedia constructor.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		*/
 		public function __construct() {
 
@@ -46,7 +46,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Ensures only one instance of MTSocialMedia is loaded or can be loaded.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @return MTSocialMedia
 		*/
@@ -60,7 +60,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Enqueue styles.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return void
 		*/
 		protected function enqueue_styles() {
@@ -72,7 +72,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Sets the social media profile array.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return void
 		 */
 		protected function set_profiles() {
@@ -270,7 +270,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Registers customizer options.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return void
 		 */
 		protected function customizer_options() {
@@ -280,7 +280,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Creates customizer options.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return void
 		 */
 		public function mt_social_media_customizer( $wp_customize ) {
@@ -322,7 +322,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Adds social media shortcode.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return void
 		 */
 		protected function create_shortcode() {
@@ -332,7 +332,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Creates social media shortcode.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return string
 		 */
 		public function mt_social_media_shortcode( $atts, $content = null ) {
@@ -390,7 +390,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		/**
 		 * Adds social media as a WPBakery element.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return void
 		 */
 		protected function create_wb_element() {

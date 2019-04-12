@@ -3,14 +3,14 @@
 /**
  * SK_Social_Media_Widget class.
  *
- * @since 1.4
+ * @since 1.3
 */
 class SK_Social_Media_Widget extends WP_Widget {
 
 	/**
 	 * SK_Social_Media_Widget constructor.
 	 *
-	 * @since 1.4
+	 * @since 1.3
 	*/
 	public function __construct() {
 		parent::__construct(
@@ -23,7 +23,7 @@ class SK_Social_Media_Widget extends WP_Widget {
 	/**
 	 * Widget output.
 	 *
-	 * @since 1.4
+	 * @since 1.3
 	 * @return void
 	*/
 	public function widget( $args, $instance ) {
@@ -45,7 +45,7 @@ class SK_Social_Media_Widget extends WP_Widget {
 	/**
 	 * Widget backend output.
 	 *
-	 * @since 1.4
+	 * @since 1.3
 	 * @return void
 	*/
 	public function form( $instance ) {
@@ -69,7 +69,7 @@ class SK_Social_Media_Widget extends WP_Widget {
 	/**
 	 * Widget update.
 	 *
-	 * @since 1.4
+	 * @since 1.3
 	 * @return array
 	*/
 	public function update( $new_instance, $old_instance ) {

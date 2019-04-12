@@ -10,10 +10,10 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
 }
 
 /**
- * Class WP_SK_Customize_Toggle_Control
+ * Class WP_MT_Customize_Toggle_Control
  */
-if ( ! class_exists( 'WP_SK_Customize_Toggle_Control' ) ) {
-	class WP_SK_Customize_Toggle_Control extends WP_Customize_Control {
+if ( ! class_exists( 'WP_MT_Customize_Toggle_Control' ) ) {
+	class WP_MT_Customize_Toggle_Control extends WP_Customize_Control {
 
 		public $type = 'toggle';
 
@@ -39,13 +39,13 @@ if ( ! class_exists( 'WP_SK_Customize_Toggle_Control' ) ) {
 		{
 			?>
 			<label>
-				<div class="sk-toggle-content">
+				<div class="mt-toggle-content">
 					<hr />
 					<span class="customize-control-title" style="width: calc(100% - 55px);"><?php echo esc_html( $this->label ); ?></span>
-					<input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="sk-tgl" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
-					<label for="cb<?php echo $this->instance_number ?>" class="sk-tgl-btn"></label>
+					<input id="cb<?php echo $this->instance_number ?>" type="checkbox" class="mt-tgl" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+					<label for="cb<?php echo $this->instance_number ?>" class="mt-tgl-btn"></label>
 				</div>
-				<div class="sk-toggle-description"><i><?php echo $this->description; ?></i></div>
+				<div class="mt-toggle-description"><i><?php echo $this->description; ?></i></div>
 			</label>
 			<?php
 		}
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WP_SK_Customize_Toggle_Control' ) ) {
 		 * Enqueue control related scripts/styles.
 		 */
 		public function enqueue() {
-			wp_enqueue_style('sk-extender-customizer-styles', plugins_url( 'assets/css/customizer.css', dirname( __FILE__ ) ), NULL );
+			wp_enqueue_style('mt-extender-customizer-styles', plugins_url( 'assets/css/customizer.css', dirname( __FILE__ ) ), NULL );
 		}
 	}
 }

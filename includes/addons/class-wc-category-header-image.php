@@ -7,14 +7,14 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 	 *
 	 * Adds a Header Image to WooCommerce Product Category.
 	 *
-	 * @since 1.4
+	 * @since 1.3
 	*/
 	class MTCategoryHeaderImage {
 
 		/**
 		 * The single instance of the class.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @var MTCategoryHeaderImage
 		*/
 		protected static $_instance = null;
@@ -22,7 +22,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * MTCategoryHeaderImage constructor.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		*/
 		public function __construct() {
 			add_action( 'product_cat_add_form_fields', array( $this, 'woocommerce_add_category_header_img' ) );
@@ -38,7 +38,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Ensures only one instance of MTCategoryHeaderImage is loaded or can be loaded.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @return MTCategoryHeaderImage
 		*/
@@ -52,7 +52,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Category Header fields.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 * @return void
 		*/
 		public function woocommerce_add_category_header_img() {
@@ -129,7 +129,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Edit category header field.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @param mixed $term Term (category) being edited
 		 * @param mixed $taxonomy Taxonomy of the term being edited
@@ -223,7 +223,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Save category header image.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @param mixed $term_id Term ID being saved
 		 * @param mixed $tt_id
@@ -242,7 +242,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Header column added to category admin.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @param mixed $columns
 		 *
@@ -262,7 +262,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Thumbnail column value added to category admin.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @param mixed $columns
 		 * @param mixed $column
@@ -294,7 +294,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Get category header output.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @return void
 		 */
@@ -306,7 +306,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Get category header image url.
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @param mixed $cat_ID -image's product category ID (if empty/false auto loads curent product category ID)
 		 *
@@ -332,7 +332,7 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		/**
 		 * Admin area styling
 		 *
-		 * @since 1.4
+		 * @since 1.3
 		 *
 		 * @return void
 		 */

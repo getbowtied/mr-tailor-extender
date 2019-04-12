@@ -1,13 +1,13 @@
-.sk-toggle-content .customize-control-title {
+.mt-toggle-content .customize-control-title {
   display: inline-block; }
 
-.sk-toggle-content hr {
+.mt-toggle-content hr {
   margin-bottom: 12px; }
 
-input[type=checkbox].sk-tgl {
+input[type=checkbox].mt-tgl {
   display: none; }
 
-input[type=checkbox].sk-tgl + .sk-tgl-btn {
+input[type=checkbox].mt-tgl + .mt-tgl-btn {
   border: 1px solid #b4b9be;
   display: inline-block;
   width: 35px;
@@ -27,12 +27,12 @@ input[type=checkbox].sk-tgl + .sk-tgl-btn {
   -o-transition: background 350ms ease;
   transition: background 350ms ease; }
 
-input[type=checkbox].sk-tgl:checked + .sk-tgl-btn:after {
+input[type=checkbox].mt-tgl:checked + .mt-tgl-btn:after {
   background: #0073aa;
   -webkit-transform: translate3d(100%, -50%, 0);
   transform: translate3d(100%, -50%, 0); }
 
-input[type=checkbox].sk-tgl + .sk-tgl-btn:after {
+input[type=checkbox].mt-tgl + .mt-tgl-btn:after {
   content: "";
   display: block;
   width: 20px;
