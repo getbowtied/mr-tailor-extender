@@ -56,7 +56,6 @@ if ( $theme->template != 'mrtailor') {
 // Mr. Tailor Dependent Blocks
 if ( $theme->template == 'mrtailor') {
     include_once 'social_media_profiles/block.php';
-    include_once 'portfolio/block.php';
 }
 
 // WooCommerce Dependent Blocks
