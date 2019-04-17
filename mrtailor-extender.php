@@ -85,6 +85,9 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
 					include_once( 'includes/social-sharing/class-social-sharing.php' );
 				}
+
+				// Custom Code
+				include_once( 'includes/custom-code/class-custom-code.php' );
 			}
 		}
 

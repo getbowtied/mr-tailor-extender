@@ -93,13 +93,6 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 		 */
 		public function mt_social_sharing_customizer( $wp_customize ) {
 
-			// Section
-			$wp_customize->add_section( 'social-sharing', array(
-		 		'title'       => esc_attr__( 'Social Sharing Options', 'mrtailor-portfolio' ),
-		 		'priority'    => 20,
-		 	) );
-
-			// Fields
 			$wp_customize->add_setting( 'mt_product_sharing_options', array(
 				'type'		 			=> 'option',
 				'capability' 			=> 'manage_options',
@@ -114,7 +107,7 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 					'mt_product_sharing_options',
 					array( 
 						'label'       	=> esc_attr__( 'Product Sharing Options', 'mrtailor-extender' ),
-						'section'     	=> 'social-sharing',
+						'section'     	=> 'panel_product',
 						'priority'    	=> 20,
 					)
 				)
@@ -134,7 +127,7 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 					'mt_blog_sharing_options',
 					array( 
 						'label'       	=> esc_attr__( 'Blog Sharing Options', 'mrtailor-extender' ),
-						'section'     	=> 'social-sharing',
+						'section'     	=> 'panel_blog',
 						'priority'    	=> 20,
 					)
 				)
