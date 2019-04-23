@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.wp-theme.design/
- * Description:       		Extends the functionality of Mr. Tailor with Gutenberg elements.
+ * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
  * Version:           		1.2.1
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
