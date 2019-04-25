@@ -23,6 +23,18 @@
     font-weight: 700;
     text-transform: uppercase;
     position: relative;
+
+    &:before
+    {
+        transition: content .3s ease;
+        position: relative;
+        top: 4px;
+    }
+
+    &:hover:before
+    {
+        opacity: .5;
+    }
 }
 
 .box-share-list

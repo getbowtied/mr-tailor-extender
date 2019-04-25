@@ -130,58 +130,6 @@
 		display: none;
 	}
 
-	.no-thumb.standard .no_thumb_icon:before {
-		content: "\f15c";
-	}
-
-	.no_thumb.status .no_thumb_icon:before,
-	.from_the_blog_item.status .with_thumb_icon:before 
-	{
-		content: "\f075";
-	}
-
-	.no_thumb.link .no_thumb_icon:before,
-	.from_the_blog_item.link .with_thumb_icon:before
-	{
-		content: "\f0c1";
-	}
-
-	.no_thumb.video .no_thumb_icon:before,
-	.from_the_blog_item.video .with_thumb_icon:before
-	{
-		content: "\f16a";
-	}
-
-	.no_thumb.audio .no_thumb_icon:before,
-	.from_the_blog_item.audio .with_thumb_icon:before
-	{
-		content: "\f001";
-	}
-
-	.no_thumb.aside .no_thumb_icon:before,
-	.from_the_blog_item.aside .with_thumb_icon:before
-	{
-		content: "\f15b";
-	}
-
-	.no_thumb.quote .no_thumb_icon:before,
-	.from_the_blog_item.quote .with_thumb_icon:before
-	{
-		content: "\f10d";
-	}
-
-	.no_thumb.image .no_thumb_icon:before,
-	.from_the_blog_item.image .with_thumb_icon:before
-	{
-		content: "\f03e";
-	}
-
-	.no_thumb.gallery .no_thumb_icon:before,
-	.from_the_blog_item.gallery .with_thumb_icon:before
-	{
-		content: "\f00a";
-	}
-
 	.no_thumb .from_the_blog_img
 	{
 		line-height: 245px;

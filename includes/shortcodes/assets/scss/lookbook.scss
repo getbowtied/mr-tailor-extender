@@ -1,5 +1,6 @@
 .lookbook {
 	visibility: hidden;
+	position: relative;
 }
 
 .full-width-page .lookbook {
@@ -8,7 +9,6 @@
 }
 
 .lookbook .swiper-slide {
-	width: 500px;
 	background-size: cover;
 	background-position: center;
 	position: relative;
@@ -16,6 +16,13 @@
 
 .lookbook .swiper-slide.first {
 	text-align: center;
+	position: relative;
+	top: 50%;
+	margin-top: -10px;
+    transform: translateY(-50%);
+	max-width: 100%;
+	padding: 0 50px;
+	margin: 0 auto;
 }
 
 .lookbook-first-slide-wrapper {
@@ -109,14 +116,6 @@
 .lookbook-arrow-left,
 .lookbook-arrow-right
 {
-	font-size:80px;
-	line-height:1;
-	
-	color:#fff;
-	
-	width:80px;
-	height:80px;
-	
 	position:absolute;
 	top:50%;
 	margin-top:-40px;
@@ -134,25 +133,14 @@
 	right:15px;
 }
 
-.lookbook-arrow-left:before,
 .lookbook-arrow-right:before
 {
-	font-family: 'getbowtied-icons';
-	font-style: normal;
-	font-variant: normal;
-	font-weight: normal;
-	line-height: 1;
-	text-transform: none;
+	content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='65' height='65' viewBox='0 0 24 24' fill='rgb(255,255,255)'><path d='M 10 5.9296875 L 8.5 7.4296875 L 13.070312 12 L 8.5 16.570312 L 10 18.070312 L 16.070312 12 L 10 5.9296875 z'></path></svg>");
 }
 
 .lookbook-arrow-left:before
 {
-	content: "\e610";
-}
-
-.lookbook-arrow-right:before
-{
-	content: "\e611";
+	content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='65' height='65' viewBox='0 0 24 24' fill='rgb(255,255,255)'><path d='M 13 5.9296875 L 6.9296875 12 L 13 18.070312 L 14.5 16.570312 L 9.9296875 12 L 14.5 7.4296875 L 13 5.9296875 z'></path></svg>");
 }
 
 .lookbook_product_infos {

@@ -63,7 +63,7 @@ function shortcode_from_the_blog($atts, $content = null) {
 								<span class="from_the_blog_img" style="background-image: url(<?php echo $image_url[0]; ?> );"></span>
 								<span class="with_thumb_icon"></span>
 							<?php else : ?>
-								<span class="from_the_blog_noimg"> <!--<img id="from_the_blog_nothumb" src="<?php //echo get_template_directory_uri(); ?>/images/from_the_blog_noimg.png" class="error" alt="From the blog no_image background" />--></span>
+								<span class="from_the_blog_noimg"></span>
 								<span class="no_thumb_icon"></span>
 							<?php endif;  ?>
 							
@@ -71,10 +71,25 @@ function shortcode_from_the_blog($atts, $content = null) {
                         
                         <div class="from_the_blog_content">
                         
-                            <?php //if ( ($post_format == "") || ($post_format == "video") ) : ?>
-                            	<h3><a class="from_the_blog_title" href="<?php the_permalink() ?>"><?php echo get_the_title(); ?></a></h3>
-                            <?php //endif ?>	
-                            	<div class="post_header_date"><?php mr_tailor_post_header_entry_date(); ?></div>                       
+                        	<h3><a class="from_the_blog_title" href="<?php the_permalink() ?>"><?php echo get_the_title(); ?></a></h3>
+                        	<div class="post_header_date">
+
+                        		<?php 
+                        			if ( has_post_format( array( 'chat', 'status' ) ) )
+										$format_prefix = _x( '%1$s on %2$s', '1: post format name. 2: date', 'mr_tailor' );
+									else
+										$format_prefix = '%2$s';
+                        		?>
+
+                        		<a href="<?php echo esc_url( get_permalink() ); ?>" 
+                        			title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'mr_tailor' ), the_title_attribute( 'echo=0' ) ) ); ?>" 
+                        			rel="bookmark">
+                        			<time class="entry-date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+                        				<?php echo esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) ); ?>
+                        			</time>
+                        		</a>
+                        		
+                        	</div>                       
                                 
                         </div>
                         

@@ -2,7 +2,11 @@
 
 function shortcode_lookbook_mixed($atts, $content = null) {
 
+	wp_enqueue_style( 'mr_tailor_swiper_style' );
+	wp_enqueue_script( 'mr_tailor_swiper_script' );
+
 	wp_enqueue_style('mrtailor-lookbook-shortcode-styles');
+	wp_enqueue_script('mrtailor-lookbook-shortcode-script');
 
 	global $woocommerce;
 	$sliderrandomid = rand();
@@ -22,10 +26,7 @@ function shortcode_lookbook_mixed($atts, $content = null) {
 	    
 	    <div class="lookbook">
 	        
-	        <div class="swiper-container">
-
-	            <span class="lookbook-arrow-left" href="#"></span>
-	            <span class="lookbook-arrow-right" href="#"></span>
+	        <div class="swiper-container column-<?php echo $columns; ?>">
 	            
 	            <div class="swiper-wrapper">
 	                
@@ -106,6 +107,8 @@ function shortcode_lookbook_mixed($atts, $content = null) {
 	            
 				 <!-- Add Pagination -->
 				<div class="pagination"></div>
+				<span class="lookbook-arrow-left" href="#"></span>
+	            <span class="lookbook-arrow-right" href="#"></span>
 				
 	        </div>
 
@@ -113,56 +116,6 @@ function shortcode_lookbook_mixed($atts, $content = null) {
 
     </div>
     
-	<script>
-	jQuery(document).ready(function($) {
-		
-		function lookbook_init() {
-			if ( $(window).width() < 1024 ) {
-				$(".lookbook .swiper-slide").width( Math.ceil($(window).innerWidth()) );				
-			} else if ( ($(window).width() >= 1024) && ($(window).innerWidth() < 1366) ) {
-				$(".lookbook .swiper-slide").width( Math.ceil($(window).innerWidth()/2) );
-			} else {
-				$(".lookbook .swiper-slide").width( Math.ceil($(window).innerWidth()/<?php echo $columns; ?>) );
-			}
-			$(".lookbook .swiper-slide.first").width( Math.ceil($(window).innerWidth()) );
-
-			var lookbook_offset = 0;
-			if ( $(".transparent_header .top-headers-wrapper").length > 0) {
-				lookbook_offset = 0;
-			} else {
-				lookbook_offset = $(".top-headers-wrapper").height();
-			}
-
-			$(".lookbook .swiper-container, .lookbook .swiper-slide").height( $(window).height() - lookbook_offset );
-			$(".lookbook").css('visibility', 'visible');
-		}
-
-		lookbook_init();	
-
-		var lookbook_slider = [];
-
-		$('.lookbook .swiper-container').each(function(idx){
-
-	        lookbook_slider[idx] = new Swiper($(this), {
-	            slidesPerView: 'auto',
-	            direction: 'horizontal',
-				grabCursor: true,
-				autoHeight: true,
-				pagination: { el: '.pagination', clickable: true, },
-				navigation: {
-					nextEl: $(this).find('.lookbook-arrow-right'),
-					prevEl: $(this).find('.lookbook-arrow-left'),
-				}
-	        });
-		})
-				
-        $(window).resize(function(){
-			lookbook_init();		
-		});
-		
-	});
-	</script>
-
 	<?php
 
 	wp_reset_query();

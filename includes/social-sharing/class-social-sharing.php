@@ -164,7 +164,6 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 			?>
 
 			<a class="trigger-share-list" href="#">
-            	<i class="fa fa-share-alt"></i>
             	<?php _e( $title, 'mrtailor-extender' ); ?>
             </a>
 

@@ -47,11 +47,10 @@ function getbowtied_mt_shortcodes_styles() {
 	wp_register_style('mrtailor-products-slider-shortcode-styles',	plugins_url( 'assets/css/products-slider.css', __FILE__ ), NULL );
 }
 
-// add_action( 'wp_enqueue_scripts', 'getbowtied_sk_shortcodes_scripts', 99 );
-// function getbowtied_sk_shortcodes_scripts() {
-// 	wp_register_script('shopkeeper-posts-slider-shortcode-script', 	plugins_url( 'assets/js/posts-slider.js', __FILE__ ), array('jquery') );
-// 	wp_register_script('shopkeeper-slider-shortcode-script', 		plugins_url( 'assets/js/slider.js', __FILE__ ), array('jquery') );
-// }
+add_action( 'wp_enqueue_scripts', 'getbowtied_mt_shortcodes_scripts', 99 );
+function getbowtied_mt_shortcodes_scripts() {
+	wp_register_script('mrtailor-lookbook-shortcode-script', 	plugins_url( 'assets/js/lookbook.js', __FILE__ ), array('jquery') );
+}
 
 // // Add Shortcodes to WP Bakery
 if ( defined(  'WPB_VC_VERSION' ) ) {

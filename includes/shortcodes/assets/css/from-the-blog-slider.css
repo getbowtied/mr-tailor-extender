@@ -89,32 +89,6 @@
     font-size: 78px; }
   .from-the-blog-wrapper .from_the_blog_item.standard .with_thumb_icon {
     display: none; }
-  .from-the-blog-wrapper .no-thumb.standard .no_thumb_icon:before {
-    content: "\f15c"; }
-  .from-the-blog-wrapper .no_thumb.status .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.status .with_thumb_icon:before {
-    content: "\f075"; }
-  .from-the-blog-wrapper .no_thumb.link .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.link .with_thumb_icon:before {
-    content: "\f0c1"; }
-  .from-the-blog-wrapper .no_thumb.video .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.video .with_thumb_icon:before {
-    content: "\f16a"; }
-  .from-the-blog-wrapper .no_thumb.audio .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.audio .with_thumb_icon:before {
-    content: "\f001"; }
-  .from-the-blog-wrapper .no_thumb.aside .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.aside .with_thumb_icon:before {
-    content: "\f15b"; }
-  .from-the-blog-wrapper .no_thumb.quote .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.quote .with_thumb_icon:before {
-    content: "\f10d"; }
-  .from-the-blog-wrapper .no_thumb.image .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.image .with_thumb_icon:before {
-    content: "\f03e"; }
-  .from-the-blog-wrapper .no_thumb.gallery .no_thumb_icon:before,
-  .from-the-blog-wrapper .from_the_blog_item.gallery .with_thumb_icon:before {
-    content: "\f00a"; }
   .from-the-blog-wrapper .no_thumb .from_the_blog_img {
     line-height: 245px; }
   .from-the-blog-wrapper .from_the_blog_noimg {
