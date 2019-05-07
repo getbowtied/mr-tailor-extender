@@ -15,15 +15,20 @@
   line-height: 20px;
   font-weight: 700;
   text-transform: uppercase;
-  position: relative; }
+  position: relative;
+  opacity: 1;
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease; }
   .trigger-share-list:before {
-    -webkit-transition: content .3s ease;
-    -o-transition: content .3s ease;
-    transition: content .3s ease;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
     position: relative;
+    margin-right: 2px;
     top: 4px; }
   .trigger-share-list:hover:before {
-    opacity: .5; }
+    opacity: .55; }
 
 .box-share-list {
   position: absolute;

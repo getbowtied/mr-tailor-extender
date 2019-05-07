@@ -29,11 +29,11 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 			$this->customizer_options();
 
 			if ( get_option( 'mt_product_sharing_options', 'yes' ) == 'yes' ) {
-				add_filter( 'woocommerce_single_product_summary', array( $this, 'getbowtied_product_sharing' ), 50 );
+				add_action( 'product_sharing_options', array( $this, 'getbowtied_product_sharing' ) );
 			}
 
 			if ( get_option( 'mt_blog_sharing_options', 'yes' ) == 'yes' ) {
-				add_action( 'post_sharing_options', array( $this, 'getbowtied_blog_sharing' ), 50 );
+				add_action( 'post_sharing_options', array( $this, 'getbowtied_blog_sharing' ) );
 			}
 		}
 
