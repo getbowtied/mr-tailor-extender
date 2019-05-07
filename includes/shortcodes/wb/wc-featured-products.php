@@ -8,7 +8,6 @@ vc_map(array(
    "description"	=> "",
    "base" 			=> "featured_products_mixed",
    "class" 			=> "",
-   "icon" 			=> "featured_products_mixed",
    
    "params" 	=> array(
       

@@ -8,8 +8,6 @@ vc_map(array(
    "description"	=> "Place Banner",
    "base"			=> "banner",
    "class"			=> "",
-   "icon"			=> "banner",
-
    
    "params" 	=> array(
       

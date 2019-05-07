@@ -39,9 +39,6 @@ vc_map(array(
    "description"	=> "",
    "base"			=> "product_categories_grid",
    "class"			=> "",
-   "icon"			=> "product_categories_grid",
-   //'admin_enqueue_js' => array(get_template_directory_uri().'/vc_extend/bartag.js'),
-   //'admin_enqueue_css' => array(get_template_directory_uri().'/vc_extend/bartag.css'),
    
    "params" 	=> array(
       

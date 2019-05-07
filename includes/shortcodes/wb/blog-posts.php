@@ -33,8 +33,6 @@ vc_map(array(
    "description"	=> __("Display the latest posts in the blog"),
    "base"			=> "blog_posts_mixed",
    "class"			=> "",
-   "icon"			=> "blog_posts_mixed",
-
    
    "params" 	=> array(
       

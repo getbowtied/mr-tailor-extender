@@ -27,7 +27,7 @@ vc_map(array(
    "description"	=> "",
    "base" 			=> "product_category_mixed",
    "class" 			=> "",
-   "icon" 			=> "product_category_mixed",
+
    "params" 	=> array(
 		
 		array(

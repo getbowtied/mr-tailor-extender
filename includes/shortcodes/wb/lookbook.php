@@ -34,8 +34,7 @@ vc_map(array(
    "description"	=> "",
    "base" 			=> "lookbook_mixed",
    "class" 			=> "",
-   "icon" 			=> "lookbook_mixed",
-   
+      
    "params" 	=> array(
       
 		array(

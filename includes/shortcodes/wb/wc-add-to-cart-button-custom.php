@@ -10,8 +10,7 @@ vc_map(array(
    "description"	=> "",
    "base"			=> "custom_add_to_cart",
    "class"			=> "",
-   "icon"			=> "custom_add_to_cart",
-   
+      
    "params" 	=> array(
       
 		array(

@@ -1,42 +1,40 @@
 <?php
 
 // [product]
-
-function product_field($settings, $value) {   
-    $attr = array("post_type"=>"product", "orderby"=>"name", "order"=>"asc", 'posts_per_page'   => -1);
-    $products = get_posts($attr); 
-    $data = '<select name="'.$settings['param_name'].'" class="wpb_vc_param_value wpb-input wpb-select '.$settings['param_name'].' '.$settings['type'].'">';
-    foreach($products as $product) {
-        $selected = '';
-        if ($value!='' && $product->get_id() == $value) {
-             $selected = ' selected="selected"';
-        }
-        $data .= '<option class="'.$product->get_id().'" value="'.$product->get_id().'"'.$selected.'>'.$product->post_title.'</option>';
-    }
-    $data .= '</select>';
-    return $data;
-}
-vc_add_shortcode_param('product_mod' , 'product_field');
-
 vc_map(array(
    "name" 			=> "Single Product",
    "category" 		=> "Mr. Tailor",
    "description"	=> "",
    "base" 			=> "product_mod",
    "class" 			=> "",
-   "icon" 			=> "product",
    
-   "params" 	=> array(
-		
-		array(
-			"type" 			=> "product_mod",
-			"holder" 		=> "div",
-			"class"			=> "hide_in_vc_editor",
-			"admin_label" 	=> true,
-			"heading" 		=> "Product",
-			"param_name" 	=> "id",
-		)
-		
-   )
-   
+   'params' => array(
+      array(
+        'type' => 'autocomplete',
+        'heading' => __( 'Select identificator', 'js_composer' ),
+        'param_name' => 'id',
+        'description' => __( 'Input product ID or product SKU or product title to see suggestions', 'js_composer' ),
+      ),
+      array(
+        'type' => 'hidden',
+        // This will not show on render, but will be used when defining value for autocomplete
+        'param_name' => 'sku',
+      ),
+    ),
 ));
+
+//Filters For autocomplete param:
+  //For suggestion: vc_autocomplete_[shortcode_name]_[param_name]_callback
+  add_filter( 'vc_autocomplete_product_mod_id_callback', array(
+    'Vc_Vendor_Woocommerce',
+    'productIdAutocompleteSuggester',
+  ), 10, 1 ); // Get suggestion(find). Must return an array
+  add_filter( 'vc_autocomplete_product_mod_id_render', array(
+    'Vc_Vendor_Woocommerce',
+    'productIdAutocompleteRender',
+  ), 10, 1 ); // Render exact product. Must return an array (label,value)
+  //For param: ID default value filter
+  add_filter( 'vc_form_fields_render_field_product_mod_id_param_value', array(
+    'Vc_Vendor_Woocommerce',
+    'productIdDefaultValue',
+  ), 10, 4 ); // Defines default value for param if not provided. Takes from other param value.

@@ -34,7 +34,6 @@ vc_map(array(
    "description"	=> "",
    "base" 			=> "products_mixed",
    "class" 			=> "",
-   "icon" 			=> "products_mixed",
    
    "params" 	=> array(
       

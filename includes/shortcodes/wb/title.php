@@ -7,8 +7,6 @@ vc_map(array(
    "description"	=> "Place Title",
    "base"			=> "title",
    "class"			=> "",
-   "icon"			=> "title",
-
    
    "params" 	=> array(
       

@@ -33,7 +33,6 @@ vc_map(array(
    "description"	=> "",
    "base"			=> "product_categories",
    "class"			=> "",
-   "icon"			=> "product_categories",
    
    "params" 	=> array(
 
