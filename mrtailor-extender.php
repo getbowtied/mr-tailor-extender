@@ -45,13 +45,6 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 		protected static $_instance = null;
 
 		/**
-		 * Page Templates
-		 *
-		 * @var array
-		*/
-		protected $templates = array();
-
-		/**
 		 * MrTailorExtender constructor.
 		 *
 		*/
@@ -60,19 +53,13 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			$theme = wp_get_theme();
 			$parent_theme = $theme->parent();
 
-			$this->templates = array(
-				plugin_dir_path(__FILE__) . 'includes/templates/page-with-slider.php' => 'Page With Slider',
-				plugin_dir_path(__FILE__) . 'includes/templates/page-contact.php' => 'Contact Page',
-				plugin_dir_path(__FILE__) . 'includes/templates/page-with-slider-full-width.php' => 'Page With Slider Full Width',
-			);
-
 			// Helpers
 			include_once( 'includes/helpers/helpers.php' );
 
 			// Vendor
 			include_once( 'includes/vendor/enqueue.php' );
 
-			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) || $theme->template != 'mrtailor' ) {
+			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) || $theme->template != 'mrtailor' ) {
 
 				// Customizer
 				include_once( 'includes/customizer/class/class-control-toggle.php' );
@@ -92,7 +79,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			// Gutenberg Blocks
 			add_action( 'init', array( $this, 'gbt_mt_gutenberg_blocks' ) );
 
-			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) {
+			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) {
 
 				// Social Sharing Buttons
 				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
@@ -101,85 +88,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 				// Custom Code
 				include_once( 'includes/custom-code/class-custom-code.php' );
-
-				// Metaboxes
-				include_once( 'includes/vendor/wpalchemy/MediaAccess-mod.php' );
-				include_once( 'includes/vendor/wpalchemy/MetaBox-mod.php' );
-
-				include_once 'includes/metaboxes/slider-spec.php';
-				include_once 'includes/metaboxes/map-spec.php';
-
-				add_filter( 'theme_page_templates', array( $this, 'gbt_mt_page_templates' ), 99 );
-				add_filter( 'wp_insert_post_data', array( $this, 'gbt_mt_register_project_templates' ) );
-				add_filter( 'template_include', array( $this, 'gbt_mt_view_project_template') );
-
-				include_once 'includes/metaboxes/custom_styles.php';
 			}
-		}
-
-		/**
-		 * Checks if the template is assigned to the page
-		 */
-		public function gbt_mt_view_project_template( $template ) {
-		
-			global $post;
-
-			if ( ! $post ) {
-				return $template;
-			}
-
-			if ( ! isset( $this->templates[get_post_meta( 
-				$post->ID, '_wp_page_template', true 
-			)] ) ) {
-				return $template;
-			} 
-
-			$file = get_post_meta( 
-				$post->ID, '_wp_page_template', true
-			);
-
-			if ( file_exists( $file ) ) {
-				return $file;
-			} else {
-				echo $file;
-			}
-
-			return $template;
-		}
-
-		/**
-		 * Adds our template to the pages cache in order to trick WordPress
-		 * into thinking the template file exists where it doens't really exist.
-		 */
-		public function gbt_mt_register_project_templates( $atts ) {
-
-			$cache_key = 'page_templates-' . md5( get_theme_root() . '/' . get_stylesheet() );
-
-			$templates = wp_get_theme()->get_page_templates();
-			if ( empty( $templates ) ) {
-				$templates = array();
-			} 
-
-			wp_cache_delete( $cache_key , 'themes');
-
-			$templates = array_merge( $templates, $this->templates );
-
-			wp_cache_add( $cache_key, $templates, 'themes', 1800 );
-
-			return $atts;
-		} 
-
-		/**
-		 * Page Templates
-		 *
-		 * @return void
-		*/
-		public function gbt_mt_page_templates( $posts_templates ) {
-
-			$posts_templates = array_merge( $posts_templates, $this->templates );
-
-			return $posts_templates;
-			
 		}
 
 		/**
