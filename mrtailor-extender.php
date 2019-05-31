@@ -59,7 +59,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			// Vendor
 			include_once( 'includes/vendor/enqueue.php' );
 
-			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) || $theme->template != 'mrtailor' ) {
+			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) || $theme->template != 'mrtailor' ) {
 
 				// Customizer
 				include_once( 'includes/customizer/class/class-control-toggle.php' );
@@ -79,7 +79,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			// Gutenberg Blocks
 			add_action( 'init', array( $this, 'gbt_mt_gutenberg_blocks' ) );
 
-			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.8.10' || ( !empty($parent_theme) && $parent_theme->version >= '2.8.10' ) ) ) {
+			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) {
 
 				// Social Sharing Buttons
 				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
@@ -88,6 +88,20 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 				// Custom Code
 				include_once( 'includes/custom-code/class-custom-code.php' );
+
+				// VC Templates
+				add_action( 'plugins_loaded', function() {
+					
+					if ( defined(  'WPB_VC_VERSION' ) ) {
+
+						// Modify and remove existing shortcodes from VC
+						include_once('includes/wpbakery/custom_vc.php');
+						
+						// VC Templates
+						$vc_templates_dir = dirname(__FILE__) . '/includes/wpbakery/vc_templates/';
+						vc_set_shortcodes_templates_dir($vc_templates_dir);
+					}
+				});
 			}
 		}
 
