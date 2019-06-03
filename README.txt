@@ -2,18 +2,24 @@
 Contributors: getbowtied, vanesareinerth, adrianlbs
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.1
-Stable tag: 1.2.1
+Tested up to: 5.2.1
+Stable tag: 1.3
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-~Current Version:1.2.1~
+~Current Version:1.3~
 
 Extends the functionality of the Mr. Tailor theme by adding theme specific features.
 
 == Description ==
 
 Companion plugin for the **Mr. Tailor** theme. Extends the functionality by adding theme specific features.
+
+**Features:**
+- Adds 'Social Media' section in Customizer for easy management of links to social media profiles
+- Adds header image option for WooCommerce product categories
+- Adds 'Additional JS' section in Customizer allowing for site customization with custom JavaScript code
+- Adds social sharing buttons for WooCommerce products
 
 **Gutenberg Blocks:**
 - Banner
@@ -23,7 +29,19 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Portfolio
 - Lookbook
 
+**WPBakery Page Builder Elements:**
+- Banner
+- Blog Posts ( List & Slider )
+- Lookbook
+
 == Changelog ==
+
+= 1.3 =
+- Adds: the 'Social Media' section in Customizer allowing for easy management of links to social media profiles (functionality transferred from the theme).
+- Adds: Theme-specific WPBakery Page Builder elements: Banner, Blog Posts Slider & List, Lookbook (functionality transferred from the theme).
+- Adds: Upload header images for WooCommerce product categories (functionality transferred from the theme).
+- Adds: Theme-specific 'Additional JS' section in Customizer allowing for site customization with custom JavaScript code
+- Adds: Theme-specific social sharing buttons for WooCommerce products
 
 = 1.2.1 =
 - WordPress 5.1 compatibility improvements
