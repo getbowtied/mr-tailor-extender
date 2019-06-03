@@ -23,12 +23,12 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 }
 
 // Plugin Updater
-// require 'core/updater/plugin-update-checker.php';
-// $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-// 	'https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/plugin.json',
-// 	__FILE__,
-// 	'mr-tailor-extender'
-// );
+require 'core/updater/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/plugin.json',
+	__FILE__,
+	'mr-tailor-extender'
+);
 
 if ( ! class_exists( 'MrTailorExtender' ) ) :
 
