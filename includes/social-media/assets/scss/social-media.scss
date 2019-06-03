@@ -2,7 +2,7 @@
 {
 	vertical-align: middle;
 	clear: both;
-	margin: 5px -15px 15px -15px;
+	margin: 5px -15px 2.5rem -15px;
 	display: block;
 
 	ul.mt_social_icons_list
@@ -12,17 +12,17 @@
 		padding: 0;
 	    line-height: 1em;
 		
-		&.left
+		&.align-left
 		{
 			text-align:left;
 		}
 
-		&.center
+		&.align-center
 		{
 			text-align:center;
 		}
 
-		&.right
+		&.align-right
 		{
 			text-align:right;
 		}

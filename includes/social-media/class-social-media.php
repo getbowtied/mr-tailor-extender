@@ -351,7 +351,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 
 		    <div class="site-social-icons-shortcode">
 
-		        <ul class="mt_social_icons_list <?php echo esc_html($items_align); ?>">
+		        <ul class="mt_social_icons_list align-<?php echo esc_html($items_align); ?>">
 
 		            <?php foreach($this->social_media_profiles as $social) : ?>
 
