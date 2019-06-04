@@ -15,46 +15,46 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: core/updater/Puc/v4p5/Plugin/Ui.php:54
+#: core/updater/Puc/v4p6/Plugin/Ui.php:54
 msgid "View details"
 msgstr ""
 
-#: core/updater/Puc/v4p5/Plugin/Ui.php:77
+#: core/updater/Puc/v4p6/Plugin/Ui.php:77
 #, php-format
 msgid "More information about %s"
 msgstr ""
 
-#: core/updater/Puc/v4p5/Plugin/Ui.php:128
+#: core/updater/Puc/v4p6/Plugin/Ui.php:128
 msgid "Check for updates"
 msgstr ""
 
-#: core/updater/Puc/v4p5/Plugin/Ui.php:213
+#: core/updater/Puc/v4p6/Plugin/Ui.php:213
 #, php-format
 msgctxt "the plugin title"
 msgid "The %s plugin is up to date."
 msgstr ""
 
-#: core/updater/Puc/v4p5/Plugin/Ui.php:215
+#: core/updater/Puc/v4p6/Plugin/Ui.php:215
 #, php-format
 msgctxt "the plugin title"
 msgid "A new version of the %s plugin is available."
 msgstr ""
 
-#: core/updater/Puc/v4p5/Plugin/Ui.php:217
+#: core/updater/Puc/v4p6/Plugin/Ui.php:217
 #, php-format
 msgctxt "the plugin title"
 msgid "Could not determine if updates are available for %s."
 msgstr ""
 
-#: core/updater/Puc/v4p5/Plugin/Ui.php:223
+#: core/updater/Puc/v4p6/Plugin/Ui.php:223
 #, php-format
 msgid "Unknown update checker status \"%s\""
 msgstr ""
 
-#: core/updater/Puc/v4p5/Vcs/PluginUpdateChecker.php:98
+#: core/updater/Puc/v4p6/Vcs/PluginUpdateChecker.php:98
 msgid "There is no changelog available."
 msgstr ""
 
@@ -86,6 +86,18 @@ msgstr ""
 
 #: includes/addons/class-wc-category-header-image.php:254
 msgid "Image"
+msgstr ""
+
+#: includes/custom-code/class-custom-code.php:64
+msgid "Additional JS"
+msgstr ""
+
+#: includes/custom-code/class-custom-code.php:81
+msgid "Header JavaScript Code"
+msgstr ""
+
+#: includes/custom-code/class-custom-code.php:101
+msgid "Footer JavaScript Code"
 msgstr ""
 
 #: includes/gbt-blocks/banner/block.js:24
@@ -174,14 +186,12 @@ msgid "Lookbook"
 msgstr ""
 
 #: includes/gbt-blocks/lookbook/block.js:189
-#: includes/gbt-blocks/portfolio/block.js:217
 #: includes/gbt-blocks/posts_grid/block.js:202
 #: includes/gbt-blocks/posts_slider/block.js:188
 msgid "Update"
 msgstr ""
 
 #: includes/gbt-blocks/lookbook/block.js:191
-#: includes/gbt-blocks/portfolio/block.js:219
 #: includes/gbt-blocks/posts_grid/block.js:204
 #: includes/gbt-blocks/posts_slider/block.js:190
 msgid "Updating"
@@ -200,7 +210,6 @@ msgid "Selected Products:"
 msgstr ""
 
 #: includes/gbt-blocks/lookbook/block.js:533
-#: includes/gbt-blocks/portfolio/block.js:517
 #: includes/gbt-blocks/posts_grid/block.js:534
 #: includes/gbt-blocks/posts_slider/block.js:577
 msgid "Columns"
@@ -208,70 +217,6 @@ msgstr ""
 
 #: includes/gbt-blocks/lookbook/block.js:561
 msgid "Product Title Color"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:26
-msgid "Portfolio"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:36
-msgid "Equal Boxes"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:37
-msgid "Masonry Style V1"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:38
-msgid "Masonry Style V2"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:39
-msgid "Masonry Style V3"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:436
-#: includes/gbt-blocks/posts_grid/block.js:464
-#: includes/gbt-blocks/posts_slider/block.js:507
-msgid "Categories:"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:451
-#: includes/gbt-blocks/posts_slider/block.js:522
-msgid "Alphabetical Ascending"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:452
-#: includes/gbt-blocks/posts_slider/block.js:523
-msgid "Alphabetical Descending"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:453
-#: includes/gbt-blocks/posts_slider/block.js:524
-msgid "Date Ascending"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:454
-#: includes/gbt-blocks/posts_slider/block.js:525
-msgid "Date Descending"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:456
-#: includes/gbt-blocks/posts_grid/block.js:484
-#: includes/gbt-blocks/posts_slider/block.js:527
-msgid "Order By"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:475
-msgid "Number of Portfolio Items"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.js:501
-msgid "Show Filters?"
-msgstr ""
-
-#: includes/gbt-blocks/portfolio/block.php:111
-msgid "Show all"
 msgstr ""
 
 #: includes/gbt-blocks/posts_grid/block.js:26
@@ -346,14 +291,40 @@ msgstr ""
 msgid "December"
 msgstr ""
 
+#: includes/gbt-blocks/posts_grid/block.js:464
+#: includes/gbt-blocks/posts_slider/block.js:507
+msgid "Categories:"
+msgstr ""
+
+#: includes/gbt-blocks/posts_grid/block.js:484
+#: includes/gbt-blocks/posts_slider/block.js:527
+msgid "Order By"
+msgstr ""
+
 #: includes/gbt-blocks/posts_grid/block.js:503
 #: includes/gbt-blocks/posts_slider/block.js:546
-#: includes/shortcodes/wb/blog-posts.php:46
+#: includes/shortcodes/wb/blog-posts.php:44
 msgid "Number of Posts"
 msgstr ""
 
 #: includes/gbt-blocks/posts_slider/block.js:22
 msgid "Posts Slider"
+msgstr ""
+
+#: includes/gbt-blocks/posts_slider/block.js:522
+msgid "Alphabetical Ascending"
+msgstr ""
+
+#: includes/gbt-blocks/posts_slider/block.js:523
+msgid "Alphabetical Descending"
+msgstr ""
+
+#: includes/gbt-blocks/posts_slider/block.js:524
+msgid "Date Ascending"
+msgstr ""
+
+#: includes/gbt-blocks/posts_slider/block.js:525
+msgid "Date Descending"
 msgstr ""
 
 #: includes/gbt-blocks/social_media_profiles/block.js:25
@@ -382,12 +353,31 @@ msgstr ""
 msgid "Display the latest posts in the blog"
 msgstr ""
 
-#: includes/shortcodes/wb/blog-posts.php:49
+#: includes/shortcodes/wb/blog-posts.php:47
 msgid "Number of posts to be displayed in the slider."
 msgstr ""
 
-#: includes/shortcodes/wb/blog-posts.php:57
+#: includes/shortcodes/wb/blog-posts.php:55
 msgid "Category"
+msgstr ""
+
+#: includes/shortcodes/wb/wc-product-by-id-sku.php:14
+msgid "Select identificator"
+msgstr ""
+
+#: includes/shortcodes/wb/wc-product-by-id-sku.php:16
+msgid "Input product ID or product SKU or product title to see suggestions"
+msgstr ""
+
+#: includes/shortcodes/wp/from-the-blog.php:79
+#, php-format
+msgctxt "1: post format name. 2: date"
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: includes/shortcodes/wp/from-the-blog.php:85
+#, php-format
+msgid "Permalink to %s"
 msgstr ""
 
 #: includes/social-media/class-social-media.php:292
@@ -410,26 +400,22 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: includes/social-sharing/class-social-sharing.php:109
-msgid "Social Sharing Options"
+#: includes/social-sharing/class-social-sharing.php:111
+msgid "Product Sharing Options"
 msgstr ""
 
-#: includes/social-sharing/class-social-sharing.php:128
-msgid "Share this product"
+#: includes/social-sharing/class-social-sharing.php:131
+msgid "Blog Sharing Options"
 msgstr ""
 
-#: includes/widgets/social-media.php:18
-msgid "Shopkeeper Social Media Profiles"
+#: includes/social-sharing/class-social-sharing.php:183
+msgid "Facebook"
 msgstr ""
 
-#: includes/widgets/social-media.php:19
-msgid "A widget that displays Social Media Profiles"
+#: includes/social-sharing/class-social-sharing.php:195
+msgid "Twitter"
 msgstr ""
 
-#: includes/widgets/social-media.php:57
-msgid "Get Connected"
-msgstr ""
-
-#: includes/widgets/social-media.php:62
-msgid "Title:"
+#: includes/social-sharing/class-social-sharing.php:207
+msgid "Pinterest"
 msgstr ""
