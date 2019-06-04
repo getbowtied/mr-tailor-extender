@@ -3,12 +3,12 @@
 /**
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.wp-theme.design/
- * Description:       		Extends the functionality of Mr. Tailor with Gutenberg elements.
- * Version:           		1.2.1
+ * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
+ * Version:           		1.3
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
- * Tested up to: 			5.1
+ * Tested up to: 			5.2.1
  *
  * @package  Mr. Tailor Extender
  * @author   GetBowtied
@@ -30,37 +30,107 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'mr-tailor-extender'
 );
 
-add_action( 'init', 'gbt_mt_gutenberg_blocks' );
-if(!function_exists('gbt_mt_gutenberg_blocks')) {
-	function gbt_mt_gutenberg_blocks() {
+if ( ! class_exists( 'MrTailorExtender' ) ) :
 
-		if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0') ) {
-			include_once 'includes/gbt-blocks/index.php';
-		} else {
-			add_action( 'admin_notices', 'mt_theme_warning' );
+	/**
+	 * MrTailorExtender class.
+	*/
+	class MrTailorExtender {
+
+		/**
+		 * The single instance of the class.
+		 *
+		 * @var MrTailorExtender
+		*/
+		protected static $_instance = null;
+
+		/**
+		 * MrTailorExtender constructor.
+		 *
+		*/
+		public function __construct() {
+
+			$theme = wp_get_theme();
+			$parent_theme = $theme->parent();
+
+			// Helpers
+			include_once( 'includes/helpers/helpers.php' );
+
+			// Vendor
+			include_once( 'includes/vendor/enqueue.php' );
+
+			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) || $theme->template != 'mrtailor' ) {
+
+				// Customizer
+				include_once( 'includes/customizer/class/class-control-toggle.php' );
+
+				// Shortcodes
+				include_once( 'includes/shortcodes/index.php' );
+
+				// Social Media
+				include_once( 'includes/social-media/class-social-media.php' );
+
+				// Addons
+				if ( $theme->template == 'mrtailor' && is_plugin_active( 'woocommerce/woocommerce.php') ) { 
+					include_once( 'includes/addons/class-wc-category-header-image.php' );
+				}
+			}
+
+			// Gutenberg Blocks
+			add_action( 'init', array( $this, 'gbt_mt_gutenberg_blocks' ) );
+
+			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) {
+
+				// Social Sharing Buttons
+				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
+					include_once( 'includes/social-sharing/class-social-sharing.php' );
+				}
+
+				// Custom Code
+				include_once( 'includes/custom-code/class-custom-code.php' );
+
+				// VC Templates
+				add_action( 'plugins_loaded', function() {
+					
+					if ( defined(  'WPB_VC_VERSION' ) ) {
+
+						// Modify and remove existing shortcodes from VC
+						include_once('includes/wpbakery/custom_vc.php');
+						
+						// VC Templates
+						$vc_templates_dir = dirname(__FILE__) . '/includes/wpbakery/vc_templates/';
+						vc_set_shortcodes_templates_dir($vc_templates_dir);
+					}
+				});
+			}
+		}
+
+		/**
+		 * Loads Gutenberg blocks
+		 *
+		 * @return void
+		*/
+		public function gbt_mt_gutenberg_blocks() {
+
+			if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0') ) {
+				include_once 'includes/gbt-blocks/index.php';
+			} else {
+				add_action( 'admin_notices', 'mt_theme_warning' );
+			}
+		}
+
+		/**
+		 * Ensures only one instance of MrTailorExtender is loaded or can be loaded.
+		 *
+		 * @return MrTailorExtender
+		*/
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
 		}
 	}
-}
+endif;
 
-if( !function_exists('mt_theme_warning') ) {
-	function mt_theme_warning() {
-
-		?>
-
-		<div class="error">
-			<p>Mr. Tailor Extender plugin couldn't find the Block Editor (Gutenberg) on this site. 
-				It requires WordPress 5+ or Gutenberg installed as a plugin.</p>
-		</div>
-
-		<?php
-	}
-}
-
-if( !function_exists('is_mt_wp_version') ) {
-	function is_mt_wp_version( $operator = '>', $version = '4.0' ) {
-
-		global $wp_version;
-
-		return version_compare( $wp_version, $version, $operator );
-	}
-}
+$mrtailor_extender = new MrTailorExtender;

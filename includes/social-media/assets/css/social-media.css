@@ -1,0 +1,46 @@
+.site-social-icons-shortcode {
+  vertical-align: middle;
+  clear: both;
+  margin: 5px -15px 2.5rem -15px;
+  display: block; }
+  .site-social-icons-shortcode ul.mt_social_icons_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1em; }
+    .site-social-icons-shortcode ul.mt_social_icons_list.align-left {
+      text-align: left; }
+    .site-social-icons-shortcode ul.mt_social_icons_list.align-center {
+      text-align: center; }
+    .site-social-icons-shortcode ul.mt_social_icons_list.align-right {
+      text-align: right; }
+    .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon {
+      padding: 5px 12px;
+      display: inline-block; }
+
+#site-top-bar .site-social-icons-shortcode {
+  float: right;
+  -webkit-box-ordinal-group: 3;
+  -ms-flex-order: 2;
+  order: 2;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  text-align: center;
+  margin: 5px 0 0 0;
+  max-width: 260px; }
+  #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list {
+    line-height: 1.8em;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 20px;
+    overflow: auto; }
+    #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon {
+      padding: 8px 7px 7px 7px;
+      float: left; }
+      #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon:last-child {
+        padding: 8px 0 7px 7px; }
+
+.offcanvas-left-content .site-social-icons-shortcode {
+  margin: 0; }
+  .offcanvas-left-content .site-social-icons-shortcode ul.mt_social_icons_list {
+    padding: 30px 10px; }

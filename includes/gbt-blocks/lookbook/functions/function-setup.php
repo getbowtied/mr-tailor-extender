@@ -29,6 +29,13 @@ add_action( 'enqueue_block_assets', 'gbt_18_mt_lookbook_assets' );
 if ( ! function_exists( 'gbt_18_mt_lookbook_assets' ) ) {
 	function gbt_18_mt_lookbook_assets() {
 		global $theme;
+
+		if( function_exists( 'mt_extender_vendor_scripts' ) ) {
+			mt_extender_vendor_scripts();
+		}
+
+		wp_enqueue_style( 'mr_tailor_swiper_style' );
+		wp_enqueue_script( 'mr_tailor_swiper_script' );
 		
 		wp_enqueue_style(
 			'gbt_18_mt_lookbook_styles',
@@ -41,9 +48,6 @@ if ( ! function_exists( 'gbt_18_mt_lookbook_assets' ) ) {
 			plugins_url( 'assets/js/lookbook.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
-
-		wp_enqueue_style( 'getbowtied_swiper_styles' );
-		wp_enqueue_script( 'getbowtied_swiper_scripts' );
 	}
 }
 

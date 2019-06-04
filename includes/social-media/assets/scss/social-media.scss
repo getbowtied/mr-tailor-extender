@@ -1,0 +1,84 @@
+.site-social-icons-shortcode
+{
+	vertical-align: middle;
+	clear: both;
+	margin: 5px -15px 2.5rem -15px;
+	display: block;
+
+	ul.mt_social_icons_list
+	{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	    line-height: 1em;
+		
+		&.align-left
+		{
+			text-align:left;
+		}
+
+		&.align-center
+		{
+			text-align:center;
+		}
+
+		&.align-right
+		{
+			text-align:right;
+		}
+
+		li.mt_social_icon
+		{
+			padding: 5px 12px;
+			display: inline-block;
+		}
+	}
+}
+
+// Top Bar Socials
+#site-top-bar
+{
+	.site-social-icons-shortcode
+	{
+		float: right;
+	    order: 2;
+	    flex-shrink: 0;
+        text-align: center;
+    	margin: 5px 0 0 0;
+	    max-width: 260px;
+
+    	ul.mt_social_icons_list
+    	{
+		    line-height: 1.8em;
+		    list-style: none;
+		    margin: 0;
+		    padding: 0 0 0 20px;
+		    overflow: auto;
+
+		    li.mt_social_icon
+		    {
+	    	    padding: 8px 7px 7px 7px;
+    			float: left;
+
+    			&:last-child
+    			{
+				    padding: 8px 0 7px 7px;
+				}
+		    }
+    	}
+	}
+}
+
+// Mobile Menu Offcanvas Socials
+.offcanvas-left-content
+{
+	.site-social-icons-shortcode
+	{
+		margin: 0;
+
+		ul.mt_social_icons_list
+		{
+		    padding: 30px 10px;
+		}
+	}
+}
