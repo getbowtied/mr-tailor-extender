@@ -4,7 +4,7 @@
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.wp-theme.design/
  * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
- * Version:           		1.3
+ * Version:           		1.3.1
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
@@ -103,6 +103,35 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 					}
 				});
 			}
+
+			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9.2' || ( !empty($parent_theme) && $parent_theme->version >= '2.9.2' ) ) ) {
+
+				//Custom Menu
+				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom-menu.php' );
+				include_once( dirname( __FILE__ ) . '/includes/custom-menu/edit_custom_walker.php' );
+				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom_walker.php' );
+			}
+
+			add_action('mrtailor_header_start', array($this, 'mrtailor_header_code'));
+			add_action('mrtailor_footer_action', array($this, 'mrtailor_footer_code'));
+		}
+
+		/**
+		 * Output header custom code
+		 *
+		 * @return void
+		 */
+		public function mrtailor_header_code() {
+			echo get_option( 'mt_custom_code_header_js', '' );
+		}
+
+		/**
+		 * Output footer custom code
+		 *
+		 * @return void
+		 */
+		public function mrtailor_footer_code() {
+			echo get_option( 'mt_custom_code_footer_js', '' );
 		}
 
 		/**
