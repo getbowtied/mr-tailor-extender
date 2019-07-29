@@ -8,7 +8,7 @@
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
- * Tested up to: 			5.2.1
+ * Tested up to: 			5.2.2
  *
  * @package  Mr. Tailor Extender
  * @author   GetBowtied

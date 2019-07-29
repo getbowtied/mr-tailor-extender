@@ -2,12 +2,12 @@
 Contributors: getbowtied, vanesareinerth, adrianlbs
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.2.1
+Tested up to: 5.2.2
 Stable tag: 1.3.1
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-~Current Version:1.3~
+~Current Version:1.3.1~
 
 Extends the functionality of the Mr. Tailor theme by adding theme specific features.
 
@@ -37,7 +37,7 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 == Changelog ==
 
 = 1.3.1 =
-- Adds: custom menu background image (functionality transferred from the theme).
+- Adds: custom menu background image (functionality transferred from the theme)
 
 = 1.3 =
 - Adds: the 'Social Media' section in Customizer allowing for easy management of links to social media profiles (functionality transferred from the theme).
