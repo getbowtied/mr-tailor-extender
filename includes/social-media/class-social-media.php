@@ -41,6 +41,14 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 			if ( defined(  'WPB_VC_VERSION' ) ) {
 				$this->create_wb_element();
 			}
+
+			add_action( 'footer_socials', function() {
+				echo do_shortcode('[social-media items_align="center" font_size="20" color="#bfbfbf"]');
+			} );
+
+			add_action( 'header_socials', function() {
+				echo do_shortcode('[social-media items_align="right" color="'.GBT_MT_Opt::getOption( 'top_bar_typography', '#fff' ).'"]');
+			} );
 		}
 
 		/**
