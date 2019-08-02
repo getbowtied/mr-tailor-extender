@@ -33,6 +33,10 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 			add_filter( 'manage_product_cat_custom_column', array( $this, 'woocommerce_product_cat_header_column' ), 10, 3 );
 			add_action( 'woocommerce_archive_description', array( $this, 'show_category_header' ) );
 			add_action( 'admin_head', array( $this, 'product_cat_header_column' ) );
+
+			add_filter( 'mrtailor_get_category_header_image', function() {
+				return $this->woocommerce_get_header_image_url();
+			} );
 		}
 
 		/**
