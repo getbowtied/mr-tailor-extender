@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action( 'enqueue_block_editor_assets', 'gbt_18_mt_lookbook_editor_assets' );
 if ( ! function_exists( 'gbt_18_mt_lookbook_editor_assets' ) ) {
 	function gbt_18_mt_lookbook_editor_assets() {
-		
+
 		wp_enqueue_script(
 			'gbt_18_mt_lookbook_script',
 			plugins_url( 'block.js', dirname(__FILE__) ),
@@ -34,9 +34,9 @@ if ( ! function_exists( 'gbt_18_mt_lookbook_assets' ) ) {
 			mt_extender_vendor_scripts();
 		}
 
-		wp_enqueue_style( 'mr_tailor_swiper_style' );
-		wp_enqueue_script( 'mr_tailor_swiper_script' );
-		
+		wp_enqueue_style( 'swiper' );
+		wp_enqueue_script( 'swiper' );
+
 		wp_enqueue_style(
 			'gbt_18_mt_lookbook_styles',
 			plugins_url( 'assets/css/style.css', dirname(__FILE__) ),

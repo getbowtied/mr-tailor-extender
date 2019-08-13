@@ -1,21 +1,21 @@
 {
 	"name": "Mr. Tailor Extender",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"download_url": "https://github.com/getbowtied/mr-tailor-extender/zipball/master",
 
 	"homepage": "https://themeforest.net/item/mr-tailor-responsive-woocommerce-theme/7292110",
 	"requires": "5.0",
 	"tested": "5.2.2",
-	"last_updated": "2019-08-02 17:00:00",
+	"last_updated": "2019-08-13 14:00:00",
 
 	"author": "GetBowtied",
 	"author_homepage": "https://getbowtied.com/",
 
 	"sections": {
 		"description": "<p>Companion plugin for the <b>Mr. Tailor</b> theme. Extends the functionality by adding theme specific features.</p><h4>Features:</h4><ul><li>Adds 'Social Media' section in Customizer for easy management of links to social media profiles</li><li>Adds header image option for WooCommerce product categories</li><li>Adds 'Additional JS' section in Customizer allowing for site customization with custom JavaScript code</li><li>Adds social sharing buttons for WooCommerce products</li></ul><h4>WPBakery Page Builder Elements:</h4><ul><li>Banner</li><li>Blog Posts ( List & Slider )</li><li>Lookbook</li></ul><h4>Gutenberg Blocks:</h4><ul><li>Banner</li><li>Portfolio</li><li>Blog Posts Grid</li><li>Blog Posts Slider</li><li>Lookbook</li><li>Social Media Profiles</li></ul>",
-		"changelog": "<h4>1.3.2</h4><ul><li>Small maintenance updates</li></ul><h4>1.3.1</h4><ul><li>Adds: custom menu background image (functionality transferred from the theme)</li></ul><h4>1.3</h4><ul><li>Adds: the 'Social Media' section in Customizer allowing for easy management of links to social media profiles (functionality transferred from the theme)</li><li>Adds: Theme-specific WPBakery Page Builder elements: Banner, Blog Posts Slider & List, Lookbook (functionality transferred from the theme)</li><li>Adds: Upload header images for WooCommerce product categories (functionality transferred from the theme)</li><li>Adds: Theme-specific 'Additional JS' section in Customizer allowing for site customization with custom JavaScript code</li><li>Adds: Theme-specific social sharing buttons for WooCommerce products</li></ul><h4>1.2.1</h4><ul><li>WordPress 5.1 compatibility improvements</li></ul><h4>1.2</h4><ul><li>WordPress 5+ compatibility improvements</li><li>Improved styles for theme neutrality</li><li>Localization issues with the Posts Grid and Posts Slider Blocks</li></ul><h4>1.1</h4><ul><li>WordPress 5+ compatibility improvements</li></ul><h4>1.0</h4><ul><li>Initial Version</li></ul>"
+		"changelog": "<h4>1.3.3</h4><ul><li>Small maintenance updates</li></ul><h4>1.3.2</h4><ul><li>Small maintenance updates</li></ul><h4>1.3.1</h4><ul><li>Adds: custom menu background image (functionality transferred from the theme)</li></ul><h4>1.3</h4><ul><li>Adds: the 'Social Media' section in Customizer allowing for easy management of links to social media profiles (functionality transferred from the theme)</li><li>Adds: Theme-specific WPBakery Page Builder elements: Banner, Blog Posts Slider & List, Lookbook (functionality transferred from the theme)</li><li>Adds: Upload header images for WooCommerce product categories (functionality transferred from the theme)</li><li>Adds: Theme-specific 'Additional JS' section in Customizer allowing for site customization with custom JavaScript code</li><li>Adds: Theme-specific social sharing buttons for WooCommerce products</li></ul><h4>1.2.1</h4><ul><li>WordPress 5.1 compatibility improvements</li></ul><h4>1.2</h4><ul><li>WordPress 5+ compatibility improvements</li><li>Improved styles for theme neutrality</li><li>Localization issues with the Posts Grid and Posts Slider Blocks</li></ul><h4>1.1</h4><ul><li>WordPress 5+ compatibility improvements</li></ul><h4>1.0</h4><ul><li>Initial Version</li></ul>"
 	},
-	
+
 	"icons" : {
 		"1x" : "https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/images/mrtailor-extender-128x128.png",
 		"2x" : "https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/images/mrtailor-extender-256x256.png"

@@ -4,7 +4,7 @@
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.wp-theme.design/
  * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
- * Version:           		1.3.2
+ * Version:           		1.3.3
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
@@ -71,7 +71,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				include_once( 'includes/social-media/class-social-media.php' );
 
 				// Addons
-				if ( $theme->template == 'mrtailor' && is_plugin_active( 'woocommerce/woocommerce.php') ) { 
+				if ( $theme->template == 'mrtailor' && is_plugin_active( 'woocommerce/woocommerce.php') ) {
 					include_once( 'includes/addons/class-wc-category-header-image.php' );
 				}
 			}
@@ -82,7 +82,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) {
 
 				// Social Sharing Buttons
-				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) { 
+				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) {
 					include_once( 'includes/social-sharing/class-social-sharing.php' );
 				}
 
@@ -91,12 +91,12 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 				// VC Templates
 				add_action( 'plugins_loaded', function() {
-					
+
 					if ( defined(  'WPB_VC_VERSION' ) ) {
 
 						// Modify and remove existing shortcodes from VC
 						include_once('includes/wpbakery/custom_vc.php');
-						
+
 						// VC Templates
 						$vc_templates_dir = dirname(__FILE__) . '/includes/wpbakery/vc_templates/';
 						vc_set_shortcodes_templates_dir($vc_templates_dir);
