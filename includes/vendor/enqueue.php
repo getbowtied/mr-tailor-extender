@@ -14,21 +14,21 @@ if ( $theme->template != 'mrtailor') {
 		);
 
 		wp_register_script(
-			'mr_tailor-owl', 
+			'mr_tailor-owl',
 			plugins_url( 'owl-carousel/js/owl.carousel.min.js', __FILE__ ),
-			array('jquery'),  
+			array('jquery'),
 			TRUE
 		);
 
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		wp_register_style(
-			'mr_tailor_swiper_style',
+			'swiper',
 			plugins_url( 'swiper/css/swiper'.$suffix.'.css', __FILE__ ),
 			array(),
 			filemtime(plugin_dir_path(__FILE__) . 'swiper/css/swiper'.$suffix.'.css')
 		);
 		wp_register_script(
-			'mr_tailor_swiper_script',
+			'swiper',
 			plugins_url( 'swiper/js/swiper'.$suffix.'.js', __FILE__ ),
 			array()
 		);
