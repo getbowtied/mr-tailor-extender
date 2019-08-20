@@ -1,40 +1,40 @@
 <?php
 
 //Include shortcodes
-include_once('wp/from-the-blog.php');
-include_once('wp/from-the-blog-listing.php');
-include_once('wp/banner.php');
+include_once( dirname( __FILE__ ) . '/wp/from-the-blog.php' );
+include_once( dirname( __FILE__ ) . '/wp/from-the-blog-listing.php' );
+include_once( dirname( __FILE__ ) . '/wp/banner.php' );
 
 //Mixed shortcodes
-include_once('wp/mixed/blog-posts-mixed.php');
+include_once( dirname( __FILE__ ) . '/wp/mixed/blog-posts-mixed.php' );
 
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-	
+
 	//Include shortcodes
-	include_once('wc/product-categories.php');
-	include_once('wc/single-product.php');
-	include_once('wc/add-to-cart.php');
+	include_once( dirname( __FILE__ ) . '/wc/product-categories.php' );
+	include_once( dirname( __FILE__ ) . '/wc/single-product.php' );
+	include_once( dirname( __FILE__ ) . '/wc/add-to-cart.php' );
 
 	//Mixed shortcodes
-	include_once('wc/mixed/recent-products-mixed.php');
-	include_once('wc/mixed/featured-products-mixed.php');
-	include_once('wc/mixed/sale-products-mixed.php');
-	include_once('wc/mixed/best-selling-products-mixed.php');
-	include_once('wc/mixed/top-rated-products-mixed.php');
-	include_once('wc/mixed/product-category-mixed.php');
-	include_once('wc/mixed/products-mixed.php');
-	include_once('wc/mixed/products-by-attribute-mixed.php');
-	include_once('wc/mixed/lookbook-mixed.php');
+	include_once( dirname( __FILE__ ) . '/wc/mixed/recent-products-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/featured-products-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/sale-products-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/best-selling-products-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/top-rated-products-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/product-category-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/products-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/products-by-attribute-mixed.php' );
+	include_once( dirname( __FILE__ ) . '/wc/mixed/lookbook-mixed.php' );
 
 	//Sliders shortcodes
-	include_once('wc/sliders/recent-products-slider.php');
-	include_once('wc/sliders/featured-products-slider.php');
-	include_once('wc/sliders/sale-products-slider.php');
-	include_once('wc/sliders/best-selling-products-slider.php');
-	include_once('wc/sliders/top-rated-products-slider.php');
-	include_once('wc/sliders/product-category-slider.php');
-	include_once('wc/sliders/products-slider.php');
-	include_once('wc/sliders/products-by-attribute-slider.php');
+	include_once( dirname( __FILE__ ) . '/wc/sliders/recent-products-slider.php' );
+	include_once( dirname( __FILE__ ) . '/wc/sliders/featured-products-slider.php' );
+	include_once( dirname( __FILE__ ) . '/wc/sliders/sale-products-slider.php' );
+	include_once( dirname( __FILE__ ) . '/wc/sliders/best-selling-products-slider.php' );
+	include_once( dirname( __FILE__ ) . '/wc/sliders/top-rated-products-slider.php' );
+	include_once( dirname( __FILE__ ) . '/wc/sliders/product-category-slider.php' );
+	include_once( dirname( __FILE__ ) . '/wc/sliders/products-slider.php' );
+	include_once( dirname( __FILE__ ) . '/wc/sliders/products-by-attribute-slider.php' );
 }
 
 add_action( 'wp_enqueue_scripts', 'getbowtied_mt_shortcodes_styles', 99 );
@@ -57,25 +57,25 @@ add_action( 'plugins_loaded', function() {
 	if ( defined(  'WPB_VC_VERSION' ) ) {
 		add_action( 'init', 'getbowtied_mt_wb_shortcodes' );
 		function getbowtied_mt_wb_shortcodes() {
-			include_once('wb/blog-posts.php');
-			include_once('wb/banner.php');
-			include_once('wb/title.php');
-			include_once('wb/output/title.php');
+			include_once( dirname( __FILE__ ) . '/wb/blog-posts.php' );
+			include_once( dirname( __FILE__ ) . '/wb/banner.php' );
+			include_once( dirname( __FILE__ ) . '/wb/title.php' );
+			include_once( dirname( __FILE__ ) . '/wb/output/title.php' );
 
 			if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-				include_once('wb/wc-recent-products.php');
-				include_once('wb/wc-featured-products.php');
-				include_once('wb/wc-products-by-category.php');
-				include_once('wb/wc-products-by-attribute.php');
-				include_once('wb/wc-product-by-id-sku.php');
-				include_once('wb/wc-products-by-ids-skus.php');
-				include_once('wb/wc-sale-products.php');
-				include_once('wb/wc-top-rated-products.php');
-				include_once('wb/wc-best-selling-products.php');
-				include_once('wb/wc-add-to-cart-button-custom.php');
-				include_once('wb/wc-product-categories.php');
-				include_once('wb/wc-product-categories-grid.php');
-	            include_once('wb/lookbook.php');
+				include_once( dirname( __FILE__ ) . '/wb/wc-recent-products.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-featured-products.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-products-by-category.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-products-by-attribute.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-product-by-id-sku.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-products-by-ids-skus.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-sale-products.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-top-rated-products.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-best-selling-products.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-add-to-cart-button-custom.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-product-categories.php' );
+				include_once( dirname( __FILE__ ) . '/wb/wc-product-categories-grid.php' );
+	            include_once( dirname( __FILE__ ) . '/wb/lookbook.php' );
 			}
 		}
 	}
