@@ -3,9 +3,9 @@
 // [products_mixed]
 
 /* All products dropdown */
-function products_settings_field($settings, $value) {   
+function products_settings_field($settings, $value) {
     $attr = array("post_type"=>"product", "orderby"=>"name", "order"=>"asc", 'posts_per_page'   => -1);
-    $categories = get_posts($attr); 
+    $categories = get_posts($attr);
     $data = '<input type="text" value="'.$value.'" name="'.$settings['param_name'].'" class="wpb_vc_param_value wpb-input wpb-select vc_custom_select_custom_val '.$settings['param_name'].' '.$settings['type'].'" id="vc_custom_select_custom_prod">';
     $data .= '<div class="vc_custom_select_custom_wrapper"><ul class="vc_custom_select_custom_vals">';
     $insterted_vals = explode(',', $value);
@@ -14,7 +14,7 @@ function products_settings_field($settings, $value) {
           $data .= '<li data-val="'.$val->ID.'">'.$val->post_title.'<button>×</button></li>';
         }
     }
-    $data .= '</ul>'; 
+    $data .= '</ul>';
     $data .= '<ul class="vc_custom_select_custom">';
     foreach($categories as $val) {
         $selected = '';
@@ -26,7 +26,7 @@ function products_settings_field($settings, $value) {
     $data .= '</ul></div>';
     return $data;
 }
-vc_add_shortcode_param('products' , 'products_settings_field', get_template_directory_uri() . '/js/wp-admin-visual-composer.js');
+vc_add_shortcode_param('products' , 'products_settings_field', plugins_url( 'assets/js/wp-admin-visual-composer.js', dirname( __FILE__ ) ) );
 
 vc_map(array(
    "name" 			=> "Multiple / Specific Products",
@@ -34,9 +34,9 @@ vc_map(array(
    "description"	=> "",
    "base" 			=> "products_mixed",
    "class" 			=> "",
-   
+
    "params" 	=> array(
-      
+
 		array(
 			"type" 			=> "products",
 			"holder" 		=> "div",
@@ -46,7 +46,7 @@ vc_map(array(
 			"param_name" 	=> "ids",
 			"description" 	=> "Select the products you'd like to display."
 		),
-		
+
 		array(
 			"type"			=> "textfield",
 			"holder"		=> "div",
@@ -57,7 +57,7 @@ vc_map(array(
 			"param_name"	=> "columns",
 			"value"			=> "4",
 		),
-		
+
 		array(
 			"type"			=> "dropdown",
 			"holder"		=> "div",
@@ -70,7 +70,7 @@ vc_map(array(
 				"Slider"	=> "slider"
 			),
 		),
-		
+
 		array(
 			"type"			=> "dropdown",
 			"holder"		=> "div",
@@ -87,7 +87,7 @@ vc_map(array(
 				"Rand"	=> "rand"
 			),
 		),
-		
+
 		array(
 			"type"			=> "dropdown",
 			"holder"		=> "div",
@@ -102,5 +102,5 @@ vc_map(array(
 			),
 		),
    )
-   
+
 ));
