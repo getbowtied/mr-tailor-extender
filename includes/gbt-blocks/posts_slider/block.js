@@ -4,24 +4,27 @@
 
 	/* Blocks */
 	const registerBlockType   	= blocks.registerBlockType;
-
-	const InspectorControls 	= editor.InspectorControls;
-
-	const TextControl 			= components.TextControl;
-	const RadioControl       	= components.RadioControl;
-	const SelectControl			= components.SelectControl;
-	const ToggleControl			= components.ToggleControl;
-	const RangeControl			= components.RangeControl;
-	const SVG 					= components.SVG;
-	const Path 					= components.Path;
-
 	const apiFetch 				= wp.apiFetch;
+
+	const {
+		TextControl,
+		RadioControl,
+		SelectControl,
+		ToggleControl,
+		RangeControl,
+		SVG,
+		Path,
+	} = wp.components;
+
+	const {
+		InspectorControls,
+	} = wp.blockEditor;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-posts-slider', {
 		title: i18n.__( 'Posts Slider', 'mrtailor-extender' ),
 		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
-				el( Path, { d:'M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z' } ) 
+				el( Path, { d:'M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z' } )
 			),
 		category: 'mrtailor',
 		supports: {
@@ -158,7 +161,7 @@
 					case 'title_desc':
 						query += '&orderby=title&order=desc';
 						break;
-					default: 
+					default:
 						break;
 				}
 
@@ -255,12 +258,12 @@
 							i18n.__( 'January',  	'mrtailor-extender' ),
 							i18n.__( 'February', 	'mrtailor-extender' ),
 							i18n.__( 'March', 	 	'mrtailor-extender' ),
-							i18n.__( 'April', 	 	'mrtailor-extender' ), 
+							i18n.__( 'April', 	 	'mrtailor-extender' ),
 							i18n.__( 'May', 	 	'mrtailor-extender' ),
 							i18n.__( 'June', 	 	'mrtailor-extender' ),
 							i18n.__( 'July', 	 	'mrtailor-extender' ),
 							i18n.__( 'August', 		'mrtailor-extender' ),
-							i18n.__( 'September',	'mrtailor-extender' ), 
+							i18n.__( 'September',	'mrtailor-extender' ),
 							i18n.__( 'October', 	'mrtailor-extender' ),
 							i18n.__( 'November', 	'mrtailor-extender' ),
 							i18n.__( 'December', 	'mrtailor-extender' ),
@@ -274,33 +277,33 @@
 						if ( posts[i]['fimg_url'] ) { img = posts[i]['fimg_url']; img_class = 'gbt_18_mt_editor_posts_slider_with_img'; } else { img_class = 'gbt_18_mt_editor_posts_slider_noimg'; img = ''; };
 
 						sliderElements.push(
-							el( "div", 
+							el( "div",
 								{
-									key: 		'gbt_18_mt_editor_posts_slider_item_' + posts[i].id, 
+									key: 		'gbt_18_mt_editor_posts_slider_item_' + posts[i].id,
 									className: 	'gbt_18_mt_editor_posts_slider_item columns-' + attributes.columns
 								},
-								el( "div", 
+								el( "div",
 									{
-										key: 		'gbt_18_mt_editor_posts_slider_item_img',
+										key: 		'gbt_18_mt_editor_posts_slider_item_img_' + i,
 										className: 	'gbt_18_mt_editor_posts_slider_item_img ' + img_class,
 										style: 		{ backgroundImage: 'url(' + img + ')' }
 									}
 								),
-								el( "div", 
+								el( "div",
 									{
-										key: 		'gbt_18_mt_editor_posts_slider_item_text',
+										key: 		'gbt_18_mt_editor_posts_slider_item_text_' + i,
 										className: 	'gbt_18_mt_editor_posts_slider_item_text'
 									},
-									el( "h4", 
+									el( "h4",
 										{
-											key: 		'gbt_18_mt_editor_posts_slider_item_title',
+											key: 		'gbt_18_mt_editor_posts_slider_item_title_' + i,
 											className:  'gbt_18_mt_editor_posts_slider_item_title',
 											dangerouslySetInnerHTML: { __html: posts[i]['title']['rendered'] },
 										}
 									),
-									el( "span", 
+									el( "span",
 										{
-											key: 		'gbt_18_mt_editor_posts_slider_item_date',
+											key: 		'gbt_18_mt_editor_posts_slider_item_date_' + i,
 											className:  'gbt_18_mt_editor_posts_slider_item_date',
 											dangerouslySetInnerHTML: { __html: date },
 										}
@@ -313,9 +316,9 @@
 
 						if( count % attributes.columns == 0 && count != posts.length) {
 							wrapper.push(
-								el( "div", 
+								el( "div",
 									{
-										key: 		'gbt_18_mt_editor_posts_slider_slide', 
+										key: 		'gbt_18_mt_editor_posts_slider_slide_' + slide_no,
 										className: 	'gbt_18_mt_editor_posts_slider_slide ' + isSelectedSlide(slide_no)
 									},
 									sliderElements
@@ -330,9 +333,9 @@
 
 					if( sliderElements != [] ) {
 						wrapper.push(
-							el( "div", 
+							el( "div",
 								{
-									key: 		'gbt_18_mt_editor_posts_slider_slide_', 
+									key: 		'gbt_18_mt_editor_posts_slider_slide_' + slide_no,
 									className: 	'gbt_18_mt_editor_posts_slider_slide ' + isSelectedSlide(slide_no)
 								},
 								sliderElements
@@ -343,7 +346,7 @@
 						sliderElements = [];
 						slide_no++;
 					}
-				} 
+				}
 
 				if( postElements.length > 1 ) {
 					postElements.push(
@@ -377,7 +380,7 @@
 						),
 					);
 				}
-				
+
 				return postElements;
 			}
 
@@ -414,7 +417,7 @@
 				let options = [];
 				let optionsIDs = [];
 				let sorted = [];
-			
+
 				apiFetch({ path: '/wp/v2/categories?per_page=-1&lang=' + posts_slider_vars.language }).then(function (categories) {
 
 				 	for( let i = 0; i < categories.length; i++) {
@@ -440,15 +443,17 @@
 							el(
 								'li',
 								{
+									key: 'posts-slider-category-' + i,
 									className: 'level-' + catArr[i].level,
 								},
 								el(
 								'label',
 									{
+										key: 'posts-slider-category-label-' + i,
 										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
 									},
 									el(
-									'input', 
+									'input',
 										{
 											type:  'checkbox',
 											key:   'category-checkbox-' + catArr[i].value,
@@ -471,7 +476,7 @@
 												props.setAttributes({ categoriesIDs: newCategoriesSelected });
 												props.setAttributes({ queryPosts: _buildQuery(newCategoriesSelected, attributes.number, attributes.orderby) });
 											},
-										}, 
+										},
 									),
 									catArr[i].label,
 									el(
@@ -483,11 +488,11 @@
 								renderCategories( catArr[i].value, level+1)
 							),
 						);
-					} 
-				}	
+					}
+				}
 				if (categoryElements.length > 0 ) {
 					let wrapper = el('ul', {className: 'level-' + level}, categoryElements);
-					return wrapper;		
+					return wrapper;
 				} else {
 					return;
 				}
@@ -584,7 +589,7 @@
 				el( 'div',
 					{
 						key: 		'gbt_18_mt_editor_posts_slider',
-						className: 	'gbt_18_mt_editor_posts_slider'	
+						className: 	'gbt_18_mt_editor_posts_slider'
 					},
 					el(
 						'div',
