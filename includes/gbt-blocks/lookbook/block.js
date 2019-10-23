@@ -5,20 +5,23 @@
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   	= blocks.registerBlockType;
+	const registerBlockType = blocks.registerBlockType;
+	const apiFetch 			= wp.apiFetch;
 
-	const InspectorControls 	= editor.InspectorControls;
-	const ColorSettings			= editor.PanelColorSettings;
-	const MediaUpload			= editor.MediaUpload;
-	const RichText				= editor.RichText;
+	const {
+		TextControl,
+		Button,
+		RangeControl,
+		SVG,
+		Path,
+	} = wp.components;
 
-	const TextControl 			= components.TextControl;
-	const RangeControl			= components.RangeControl;
-	const Button 				= components.Button;
-	const SVG 					= components.SVG;
-	const Path 					= components.Path;
-	
-	const apiFetch 				= wp.apiFetch;
+	const {
+		InspectorControls,
+		MediaUpload,
+		RichText,
+		PanelColorSettings,
+	} = wp.blockEditor;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-lookbook', {
@@ -127,7 +130,7 @@
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
-			
+
 			function _searchResultClass(theID){
 				const index = toArray(attributes.selectedIDS).indexOf(theID);
 				if ( index == -1) {
@@ -250,8 +253,8 @@
 					case 'title_asc':
 						query +='&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 				props.setAttributes({ queryProducts: query });
@@ -273,8 +276,8 @@
 					case 'title_asc':
 						order = '&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 
@@ -288,35 +291,36 @@
 				let productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
-					return el('span', {className: 'no-results'}, i18n.__('No products matching.', 'mrtailor-extender' ));
+					return el('span', { key: 'search-no-results', className: 'no-results'}, i18n.__('No products matching.', 'mrtailor-extender' ));
 				}
 				let products = attributes.querySearchResults;
 				for (let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { key: 'search1-img-wrapper' + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'search2-img-wrapper' + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
-								key: 		'item-' + products[i].id +i,
+								key: 		'search-item-' + products[i].id + i,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
-							}, 
+							},
 							img,
 							el(
-								'label', 
+								'label',
 								{
+									key: 'search-title-wrapper-'  + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
-										key: 'selection-input-key',
+										key: 'search-selection-input-key-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -329,7 +333,7 @@
 												qSR.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSR.join(',') });
-											
+
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -343,8 +347,8 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-yes'}),
-								el('span',{ className: 'dashicons dashicons-no-alt'}),
+								el('span',{ key: 'search-dashicons-yes-' + i, className: 'dashicons dashicons-yes'}),
+								el('span',{ key: 'search-dashicons-no-alt-' + i, className: 'dashicons dashicons-no-alt'}),
 							),
 						)
 					);
@@ -359,33 +363,35 @@
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { key: 'product1-img-wrapper-'  + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'product2-img-wrapper-'  + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
-								key: 		'item-' + products[i].id,
-								className:'single-result', 
+								key: 		'product-item-' + products[i].id,
+								className:'single-result',
 								title: products[i].name,
-							}, 
-							img, 
+							},
+							img,
 							el(
-								'label', 
+								'label',
 								{
+									key: 'product-title-wrapper-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'product-product-checkbox-'  + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
 											const _this = evt.target;
 
-											
+
 											let qSS = toArray(attributes.selectedIDS);
 											console.log(qSS);
 
@@ -399,7 +405,7 @@
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS.join(',') });
-											
+
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -413,7 +419,7 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-no-alt'})
+								el('span',{ key: 'product-dashicons-yes-'  + i, className: 'dashicons dashicons-no-alt'})
 							),
 						)
 					);
@@ -422,22 +428,25 @@
 			}
 
 		//==============================================================================
-		//	Main controls 
+		//	Main controls
 		//==============================================================================
 			return [
 				el(
 					InspectorControls,
 					{
+						key: 'main-inspector',
 					},
 					el(
 						'div',
 						{
+							key: 'main-inspector-wrapper',
 							className: 'main-inspector-wrapper',
 						},
 					/* Pick specific producs */
 						el(
 							'div',
 							{
+								key: 'products-ajax-search-wrapper',
 								className: 'products-ajax-search-wrapper',
 							},
 							el(
@@ -468,7 +477,8 @@
 						),
 						attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
-							{ 
+							{
+								key: 'products-ajax-search-results',
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -476,6 +486,7 @@
 						attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
+								key: 'products-selected-results-wrapper',
 								className: 'products-selected-results-wrapper',
 							},
 							el(
@@ -486,6 +497,7 @@
 							el(
 								'div',
 								{
+									key: 'products-selected-results',
 									className: 'products-selected-results',
 								},
 								renderSearchSelected(),
@@ -495,6 +507,7 @@
 						el(
 							'button',
 							{
+								key: 'load-button',
 								className: 'render-results components-button is-button is-default is-primary is-large ' + _isLoading(),
 								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
@@ -537,34 +550,34 @@
 						}
 					),
 					el(
-						ColorSettings,
+						PanelColorSettings,
 						{
 							key: 'gbt_18_mt_lookbook_color_settings',
 							title: i18n.__( 'Colors', 'mrtailor-extender' ),
 							initialOpen: false,
 							colorSettings: [
-								{ 
+								{
 									label: i18n.__( 'Title Color', 'mrtailor-extender' ),
 									value: attributes.titleColor,
 									onChange: function( newColor) {
 										props.setAttributes( { titleColor: newColor } );
 									},
 								},
-								{ 
+								{
 									label: i18n.__( 'Subtitle Color', 'mrtailor-extender' ),
 									value: attributes.subtitleColor,
 									onChange: function( newColor) {
 										props.setAttributes( { subtitleColor: newColor } );
 									},
 								},
-								{ 
+								{
 									label: i18n.__( 'Product Title Color', 'mrtailor-extender' ),
 									value: attributes.productColor,
 									onChange: function( newColor) {
 										props.setAttributes( { productColor: newColor } );
 									},
 								},
-								{ 
+								{
 									label: i18n.__( 'Background Color', 'mrtailor-extender' ),
 									value: attributes.backgroundColor,
 									onChange: function( newColor) {
@@ -576,14 +589,14 @@
 					),
 				),
 				el(
-					'div', 
-					{ 
+					'div',
+					{
 						key: 'gbt_18_mt_editor_lookbook',
 						className: 'gbt_18_mt_editor_lookbook',
 					},
 					el(
-						'div', 
-						{ 
+						'div',
+						{
 							key: 'lookbook-media-wrapper',
 							id: 'lookbook-wrapper',
 							className: 'lookbook-media-wrapper',
@@ -603,19 +616,19 @@
 										imgAlt: img.alt,
 									} );
 								},
-		              			render: function( img ) { 
+		              			render: function( img ) {
 		              				return [
 			              				! attributes.imgID && el(
-			              					Button, 
-			              					{ 
+			              					Button,
+			              					{
 			              						key: 'lookbook-add-image-button',
 			              						className: 'button add-image',
 			              						onClick: img.open
 			              					},
 			              					i18n.__( 'Add Image', 'mrtailor-extender' ),
-		              					), 
+		              					),
 		              					!! attributes.imgID && el(
-		              						Button, 
+		              						Button,
 											{
 												key: 'lookbook-remove-image-button',
 												className: 'button remove-image',
@@ -629,7 +642,7 @@
 												}
 											},
 											i18n.__( 'Remove Image', 'mrtailor-extender' ),
-										), 
+										),
 		              				];
 		              			},
 							},
@@ -658,7 +671,7 @@
 										key: 'lookbook-title-wrapper'
 									},
 									el(
-										RichText, 
+										RichText,
 										{
 											key: 'lookbook-title',
 											className: 'lookbook-title',
@@ -680,7 +693,7 @@
 										key: 'lookbook-subtitle-wrapper',
 									},
 									el(
-										RichText, 
+										RichText,
 										{
 											key: 'lookbook-subtitle',
 											className: 'lookbook-subtitle',

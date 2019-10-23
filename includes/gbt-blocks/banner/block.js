@@ -3,27 +3,31 @@
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   	= blocks.registerBlockType;
-		
-	const InspectorControls 	= editor.InspectorControls;
-	const RichText				= editor.RichText;
-	const BlockControls			= editor.BlockControls;
-	const MediaUpload			= editor.MediaUpload;
-	const ColorSettings			= editor.PanelColorSettings;
+	const registerBlockType = blocks.registerBlockType;
 
-	const TextControl 			= components.TextControl;
-	const ToggleControl			= components.ToggleControl;
-	const RangeControl			= components.RangeControl;
-	const PanelBody				= components.PanelBody;
-	const Button				= components.Button;
-	const SVG 					= components.SVG;
-	const Path 					= components.Path;
+	const {
+		TextControl,
+		PanelBody,
+		ToggleControl,
+		Button,
+		RangeControl,
+		SVG,
+		Path,
+	} = wp.components;
+
+	const {
+		InspectorControls,
+		MediaUpload,
+		RichText,
+		BlockControls,
+		PanelColorSettings,
+	} = wp.blockEditor;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/mt-banner', {
 		title: i18n.__( 'Banner', 'mrtailor-extender' ),
 		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
-				el( Path, { d:'M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM5 15h14v3H5z' } ) 
+				el( Path, { d:'M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM5 15h14v3H5z' } )
 			),
 		category: 'mrtailor',
 		supports: {
@@ -99,21 +103,21 @@
 			function getColors() {
 
 				let colors = [
-					{ 
+					{
 						label: i18n.__( 'Title Color', 'mrtailor-extender' ),
 						value: attributes.titleColor,
 						onChange: function( newColor) {
 							props.setAttributes( { titleColor: newColor } );
 						},
 					},
-					{ 
+					{
 						label: i18n.__( 'Subtitle Color', 'mrtailor-extender' ),
 						value: attributes.subtitleColor,
 						onChange: function( newColor) {
 							props.setAttributes( { subtitleColor: newColor } );
 						},
 					},
-					{ 
+					{
 						label: i18n.__( 'Background Color', 'mrtailor-extender' ),
 						value: attributes.backgroundColor,
 						onChange: function( newColor) {
@@ -124,7 +128,7 @@
 
 				if( attributes.innerStrokeThickness > 0 ) {
 					colors.push(
-						{ 
+						{
 							label: i18n.__( 'Inner Stroke Color', 'mrtailor-extender' ),
 							value: attributes.innerStrokeColor,
 							onChange: function( newColor) {
@@ -140,12 +144,12 @@
 			return [
 				el(
 					InspectorControls,
-					{ 
+					{
 						key: 'gbt_18_mt_banner_inspector'
 					},
-					el( 
-						PanelBody, 
-						{ 
+					el(
+						PanelBody,
+						{
 							key: 'gbt_18_mt_banner_settings_panel',
 							title: i18n.__( 'General Settings', 'mrtailor-extender' ),
 							initialOpen: false,
@@ -189,9 +193,9 @@
 							}
 						),
 					),
-					el( 
-						PanelBody, 
-						{ 
+					el(
+						PanelBody,
+						{
 							key: 'gbt_18_mt_banner_font_panel',
 							title: 'Font Settings',
 							initialOpen: false,
@@ -229,7 +233,7 @@
 					),
 					el(
 						PanelBody,
-						{ 
+						{
 							key: 'gbt_18_mt_banner_immer_stroke_settings',
 							title: i18n.__( 'Inner Stroke', 'mrtailor-extender' ),
 							initialOpen: false
@@ -251,7 +255,7 @@
 						),
 					),
 					el(
-						ColorSettings,
+						PanelColorSettings,
 						{
 							key: 'gbt_18_mt_banner_color_settings',
 							title: i18n.__( 'Colors', 'mrtailor-extender' ),
@@ -261,14 +265,14 @@
 					),
 				),
 				el(
-					'div', 
-					{ 
+					'div',
+					{
 						key: 'gbt_18_mt_editor_banner',
 						className: 'gbt_18_mt_editor_banner',
 					},
 					el(
-						'div', 
-						{ 
+						'div',
+						{
 							key: 'gbt_18_mt_editor_banner_wrapper',
 							className: 'gbt_18_mt_editor_banner_wrapper',
 							style:
@@ -308,19 +312,19 @@
 											imgAlt: img.alt,
 										} );
 									},
-			              			render: function( img ) { 
+			              			render: function( img ) {
 			              				return [
 				              				! attributes.imgID && el(
-				              					Button, 
-				              					{ 
+				              					Button,
+				              					{
 				              						key: 'gbt_18_mt_editor_banner_add_image_button',
 				              						className: 'button gbt_18_mt_editor_banner_add_image',
 				              						onClick: img.open
 				              					},
 				              					i18n.__( 'Add Image', 'mrtailor-extender' ),
-			              					), 
+			              					),
 			              					!! attributes.imgID && el(
-			              						Button, 
+			              						Button,
 												{
 													key: 'gbt_18_mt_editor_banner_remove_image_button',
 													className: 'button gbt_18_mt_editor_banner_remove_image',
@@ -334,7 +338,7 @@
 													}
 												},
 												i18n.__( 'Remove Image', 'mrtailor-extender' ),
-											), 
+											),
 			              				];
 			              			},
 								},
@@ -356,11 +360,11 @@
 										className: 'gbt_18_mt_editor_banner_text_content',
 									},
 									el(
-										RichText, 
+										RichText,
 										{
 											key: 'gbt_18_mt_editor_banner_title',
 											style:
-											{ 
+											{
 												color: attributes.titleColor,
 												fontSize: attributes.titleSize + 'px'
 											},
@@ -376,7 +380,7 @@
 										}
 									),
 									el(
-										RichText, 
+										RichText,
 										{
 											key: 'gbt_18_mt_editor_banner_subtitle',
 											style:
@@ -406,8 +410,8 @@
 
 			let attributes = props.attributes;
 
-			return el( 'div', 
-				{ 
+			return el( 'div',
+				{
 					key: 'gbt_18_mt_banner',
 					className: 'gbt_18_mt_banner',
 					style:
@@ -415,8 +419,8 @@
 						height: attributes.height + 'px',
 					}
 				},
-				el( 'a', 
-					{ 
+				el( 'a',
+					{
 						key: 'gbt_18_mt_banner_wrapper',
 						className: 'gbt_18_mt_banner_wrapper',
 						href: attributes.url,

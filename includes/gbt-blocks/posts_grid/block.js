@@ -17,7 +17,7 @@
 
 	const {
 		InspectorControls
-	} = wp.editor;
+	} = wp.blockEditor;
 
 	const apiFetch = wp.apiFetch;
 
@@ -25,7 +25,7 @@
 	registerBlockType( 'getbowtied/mt-posts-grid', {
 		title: i18n.__( 'Posts Grid', 'mrtailor-extender' ),
 		icon: el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
-				el( Path, { d:'M4 5v13h17V5H4zm10 2v3.5h-3V7h3zM6 7h3v3.5H6V7zm0 9v-3.5h3V16H6zm5 0v-3.5h3V16h-3zm8 0h-3v-3.5h3V16zm-3-5.5V7h3v3.5h-3z' } ) 
+				el( Path, { d:'M4 5v13h17V5H4zm10 2v3.5h-3V7h3zM6 7h3v3.5H6V7zm0 9v-3.5h3V16H6zm5 0v-3.5h3V16h-3zm8 0h-3v-3.5h3V16zm-3-5.5V7h3v3.5h-3z' } )
 			),
 		category: 'mrtailor',
 		supports: {
@@ -172,7 +172,7 @@
 					case 'title_desc':
 						query += '&orderby=title&order=desc';
 						break;
-					default: 
+					default:
 						break;
 				}
 
@@ -264,12 +264,12 @@
 							i18n.__( 'January',  	'mrtailor-extender' ),
 							i18n.__( 'February', 	'mrtailor-extender' ),
 							i18n.__( 'March', 	 	'mrtailor-extender' ),
-							i18n.__( 'April', 	 	'mrtailor-extender' ), 
+							i18n.__( 'April', 	 	'mrtailor-extender' ),
 							i18n.__( 'May', 	 	'mrtailor-extender' ),
 							i18n.__( 'June', 	 	'mrtailor-extender' ),
 							i18n.__( 'July', 	 	'mrtailor-extender' ),
 							i18n.__( 'August', 		'mrtailor-extender' ),
-							i18n.__( 'September',	'mrtailor-extender' ), 
+							i18n.__( 'September',	'mrtailor-extender' ),
 							i18n.__( 'October', 	'mrtailor-extender' ),
 							i18n.__( 'November', 	'mrtailor-extender' ),
 							i18n.__( 'December', 	'mrtailor-extender' ),
@@ -284,67 +284,67 @@
 						if ( posts[i]['fimg_url'] ) { img = posts[i]['fimg_url']; img_class = 'gbt_18_mt_editor_posts_grid_with_img'; } else { img_class = 'gbt_18_mt_editor_posts_grid_noimg'; img = ''; };
 
 						postElements.push(
-							el( "div", 
+							el( "div",
 								{
-									key: 		'gbt_18_mt_editor_posts_grid_item_' + posts[i].id, 
+									key: 		'gbt_18_mt_editor_posts_grid_item_' + posts[i].id,
 									className: 	'gbt_18_mt_editor_posts_grid_item'
 								},
-								el( "a", 
+								el( "a",
 									{
-										key: 		'gbt_18_mt_editor_posts_grid_item_link',
+										key: 		'gbt_18_mt_editor_posts_grid_item_link_' + i,
 										className: 	'gbt_18_mt_editor_posts_grid_item_link'
 									},
-									el( "span", 
-										{ 
-											key: 		'gbt_18_mt_editor_posts_grid_img_container',
+									el( "span",
+										{
+											key: 		'gbt_18_mt_editor_posts_grid_img_container_' + i,
 											className: 	'gbt_18_mt_editor_posts_grid_img_container'
 										},
-										el( "span", 
+										el( "span",
 											{
-												key: 'gbt_18_mt_editor_posts_grid_img_overlay',
+												key: 'gbt_18_mt_editor_posts_grid_img_overlay_' + i,
 												className: 'gbt_18_mt_editor_posts_grid_img_overlay'
 											}
 										),
-										el( "span", 
+										el( "span",
 											{
-												key: 		'gbt_18_mt_editor_posts_grid_img',
+												key: 		'gbt_18_mt_editor_posts_grid_img_' + i,
 												className: 	'gbt_18_mt_editor_posts_grid_img ' + img_class,
 												style: 		{ backgroundImage: 'url(' + img + ')' }
 											}
 										)
 									),
-									el( "div", 
+									el( "div",
 										{
-											key: 		'gbt_18_mt_editor_posts_grid_content', 
+											key: 		'gbt_18_mt_editor_posts_grid_content_' + i,
 											className: 	'gbt_18_mt_editor_posts_grid_content'
 										},
-										el( "div", 
+										el( "div",
 											{
-												key: 		'gbt_18_mt_editor_posts_grid_content_inner', 
+												key: 		'gbt_18_mt_editor_posts_grid_content_inner_' + i,
 												className: 	'gbt_18_mt_editor_posts_grid_content_inner'
-											}, 
+											},
 											className.indexOf('is-style-list') >= 0 && el( "span",
 												{
-													key: 		'gbt_18_mt_editor_posts_grid_day',
+													key: 		'gbt_18_mt_editor_posts_grid_day_' + i,
 													className:  'gbt_18_mt_editor_posts_grid_day',
 													dangerouslySetInnerHTML: { __html: day }
 												}
 											),
-											el( "div", 
+											el( "div",
 												{
-													key: 		'gbt_18_mt_editor_posts_grid_title_content', 
+													key: 		'gbt_18_mt_editor_posts_grid_title_content_' + i,
 													className: 	'gbt_18_mt_editor_posts_grid_title_content'
 												},
 												className.indexOf('is-style-list') >= 0 && el( "span",
 													{
-														key: 		'gbt_18_mt_editor_posts_grid_date',
+														key: 		'gbt_18_mt_editor_posts_grid_date_' + i,
 														className:  'gbt_18_mt_editor_posts_grid_date',
 														dangerouslySetInnerHTML: { __html: date }
 													}
 												),
-												el( "span", 
+												el( "span",
 													{
-														key: 		'gbt_18_mt_editor_posts_grid_title',
+														key: 		'gbt_18_mt_editor_posts_grid_title_' + i,
 														className:  'gbt_18_mt_editor_posts_grid_title',
 														dangerouslySetInnerHTML: { __html: posts[i]['title']['rendered'] }
 													}
@@ -356,8 +356,8 @@
 							)
 						);
 					}
-				} 
-				
+				}
+
 				return postElements;
 			}
 
@@ -371,7 +371,7 @@
 				let options = [];
 				let optionsIDs = [];
 				let sorted = [];
-			
+
 				apiFetch({ path: '/wp/v2/categories?per_page=-1&lang=' + posts_grid_vars.language }).then(function (categories) {
 
 				 	for( let i = 0; i < categories.length; i++) {
@@ -397,15 +397,17 @@
 							el(
 								'li',
 								{
+									key: 'category-' + i,
 									className: 'level-' + catArr[i].level,
 								},
 								el(
 								'label',
 									{
+										key: 'category-label-' + i,
 										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
 									},
 									el(
-									'input', 
+									'input',
 										{
 											type:  'checkbox',
 											key:   'category-checkbox-' + catArr[i].value,
@@ -428,7 +430,7 @@
 												props.setAttributes({ categoriesIDs: newCategoriesSelected });
 												props.setAttributes({ queryPosts: _buildQuery(newCategoriesSelected, attributes.number, attributes.orderby) });
 											},
-										}, 
+										},
 									),
 									catArr[i].label,
 									el(
@@ -440,11 +442,11 @@
 								renderCategories( catArr[i].value, level+1)
 							),
 						);
-					} 
-				}	
+					}
+				}
 				if (categoryElements.length > 0 ) {
 					let wrapper = el('ul', {className: 'level-' + level}, categoryElements);
-					return wrapper;		
+					return wrapper;
 				} else {
 					return;
 				}
@@ -542,7 +544,7 @@
 				el( 'div',
 					{
 						key: 		'gbt_18_mt_posts_grid',
-						className: 	'gbt_18_mt_posts_grid ' + className	
+						className: 	'gbt_18_mt_posts_grid ' + className
 					},
 					el(
 						'div',
