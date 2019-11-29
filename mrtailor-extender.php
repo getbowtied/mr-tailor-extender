@@ -104,7 +104,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				});
 			}
 
-			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9.2' || ( !empty($parent_theme) && $parent_theme->version >= '2.9.2' ) ) ) {
+			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) {
 
 				//Custom Menu
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom-menu.php' );
