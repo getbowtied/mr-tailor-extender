@@ -2,12 +2,12 @@
 Contributors: getbowtied, vanesareinerth, adrianlbs
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.3
-Stable tag: 1.3.6
+Tested up to: 5.3.1
+Stable tag: 1.3.7
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-~Current Version:1.3.6~
+~Current Version:1.3.7~
 
 Extends the functionality of the Mr. Tailor theme by adding theme specific features.
 
@@ -35,6 +35,9 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 1.3.7 =
+- WordPress 5.3.1 compatibility updates
 
 = 1.3.6 =
 - Fixed: Menu Background URL not working
