@@ -61,9 +61,6 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) || $theme->template != 'mrtailor' ) {
 
-				// Customizer
-				include_once( dirname( __FILE__ ) . '/includes/customizer/class/class-control-toggle.php' );
-
 				// Shortcodes
 				include_once( dirname( __FILE__ ) . '/includes/shortcodes/index.php' );
 
