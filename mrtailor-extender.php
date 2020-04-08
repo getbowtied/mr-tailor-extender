@@ -4,11 +4,11 @@
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.wp-theme.design/
  * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
- * Version:           		1.3.8
+ * Version:           		1.3.9
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
- * Tested up to: 			5.3.2
+ * Tested up to: 			5.4
  *
  * @package  Mr. Tailor Extender
  * @author   GetBowtied
