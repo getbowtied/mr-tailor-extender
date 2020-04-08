@@ -1,7 +1,7 @@
 .main-inspector-wrapper {
   border-top: 1px solid #e2e4e7;
   margin: 15px 0;
-  padding-top: 15px; }
+  padding: 15px; }
   .main-inspector-wrapper .products-ajax-search-wrapper {
     position: relative; }
     .main-inspector-wrapper .products-ajax-search-wrapper.is-disabled .components-base-control__field {

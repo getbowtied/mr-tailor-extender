@@ -1,10 +1,10 @@
 .main-inspector-wrapper {
         border-top: 1px solid #e2e4e7;
         margin: 15px 0;
-        padding-top: 15px;
+        padding: 15px;
     .products-ajax-search-wrapper {
         position: relative;
-        
+
         &.is-disabled{
             .components-base-control__field {
                 opacity: .3;
@@ -48,7 +48,7 @@
         overflow-y: auto;
         overflow-x: hidden;
         margin-top: -9px;
-        
+
         .no-results {
             display: inline-block;
             margin: 20px 12px;
@@ -67,7 +67,7 @@
             border-bottom: 1px solid #E8EBEF;
             transition: all 0.3s ease-in-out;
             cursor: pointer;
-            
+
             &:hover {
                 background:#F8FCFF;
                 .dashicons-yes {
@@ -87,19 +87,19 @@
                 line-height: 51px;
                 padding-left: 51px;
                 cursor: pointer;
-                
+
                 input[type="checkbox"]{
                     display: none;
                 }
             }
-            
+
             .img-wrapper{
                 width: 32px;
                 height: 32px;
                 position: relative;
                 margin-right: 12px;
                 margin-left: 12px;
-                flex: 0 0 32px;            
+                flex: 0 0 32px;
 
                 .img {
                     background-size: cover;
@@ -109,7 +109,7 @@
                     position: absolute;
                     left: 0;
                     top: 0;
-                }                
+                }
             }
 
             &:after {
@@ -135,7 +135,7 @@
 
             &.selected {
                 background:#F8FCFF;
-                
+
                 &:after {
                     background: linear-gradient(to left, rgba(248, 252, 255, 1), rgba(248, 252, 255, 0.7));
                 }
@@ -169,7 +169,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             padding-left: 2px;
-            
+
             .single-result {
                 display: flex;
                 align-items: center;
@@ -182,11 +182,11 @@
                 cursor: pointer;
                 box-sizing: border-box;
                 background:#F8FCFF;
-                
+
                 &:last-child {
                     border-bottom: none;
                 }
-                
+
                 .title-wrapper {
                     position: absolute;
                     left: 0;
@@ -196,19 +196,19 @@
                     line-height: 51px;
                     padding-left: 51px;
                     cursor: pointer;
-                    
+
                     input[type="checkbox"]{
                         display: none;
                     }
                 }
-                
+
                 .img-wrapper{
                     width: 32px;
                     height: 32px;
                     position: relative;
                     margin-right: 12px;
                     margin-left: 12px;
-                    flex: 0 0 32px;            
+                    flex: 0 0 32px;
 
                     .img {
                         background-size: cover;
@@ -218,7 +218,7 @@
                         position: absolute;
                         left: 0;
                         top: 0;
-                    }                
+                    }
                 }
 
                 &:after {
@@ -279,10 +279,10 @@
         margin-bottom: 20px;
         padding-left: 3px;
         margin-top: 10px;
-            
+
         ul {
             list-style: none;
-            margin: 0; 
+            margin: 0;
             padding: 0;
             &.level-1 {
                 margin-left: 10px;
@@ -305,7 +305,7 @@
             width: 100%;
             position: relative;
             transition: all .3s ease-in-out;
-            
+
             sup {
                 margin-left: 4px;
                 color: #ccc;
@@ -313,8 +313,8 @@
 
             .expand {
                 position: absolute;
-                right: 0;  
-                transition: all .3s ease-in-out;   
+                right: 0;
+                transition: all .3s ease-in-out;
             }
 
             &.expanded {
@@ -334,7 +334,7 @@
             width: 100%;
             position: relative;
             margin-bottom: 10px;
-            
+
             sup {
                 margin-left: 4px;
                 color: #ccc;
@@ -342,8 +342,8 @@
         }
     }
     button.render-results {
-        margin-top:20px; 
-        
+        margin-top:20px;
+
         &.disabled {
             color: #4daacf;
             background: #005d82;

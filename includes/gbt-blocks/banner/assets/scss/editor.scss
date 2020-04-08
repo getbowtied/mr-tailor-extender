@@ -102,26 +102,12 @@
 		.button.gbt_18_mt_editor_banner_remove_image
 		{
 		    position: absolute;
-		    visibility: hidden;
-		    opacity: 0;
+		    visibility: visible;
+		    opacity: 1;
 		    transition: all .2s ease-in-out;
 		    z-index: 100;
 		    top: 30px;
 		    left: 30px;
-		}
-	}
-}
-
-.wp-block.editor-block-list__block[data-type="getbowtied/mt-banner"] {
-
-	&.is-selected,
-	&.is-hovered,
-	&.is-typing {
-
-		.button.gbt_18_mt_editor_banner_add_image,
-		.button.gbt_18_mt_editor_banner_remove_image {
-			visibility: visible;
-			opacity: 1;
 		}
 	}
 }
