@@ -38,6 +38,11 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 			$this->customizer_options();
 			$this->create_shortcode();
 
+			if( !get_option( 'mt_social_media_repeater_option_import', false ) ) {
+				$this->set_repeater_default();
+				update_option( 'mt_social_media_repeater_option_import', true );
+			}
+
 			if ( defined(  'WPB_VC_VERSION' ) ) {
 				$this->create_wb_element();
 			}
@@ -63,6 +68,30 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 				self::$_instance = new self();
 			}
 			return self::$_instance;
+		}
+
+		/**
+		 * Set new repeater option default based on old options.
+		 *
+		 * @since 1.5.9
+		 * @return void
+		 */
+		protected function set_repeater_default() {
+
+			$repeater_default = array();
+			foreach( $this->social_media_profiles as $social) {
+				if( !empty( get_option( 'mt_' . $social['link'] ) ) ) {
+					$repeater_default[] = array(
+						'icon_slug' => $social['slug'],
+						'link' => get_option( 'mt_' . $social['link'] ),
+						'title' => $social['name'],
+					);
+				}
+			}
+
+			update_option( 'mt_social_media_repeater', json_encode( $repeater_default ) );
+
+			return;
 		}
 
 		/**
@@ -302,29 +331,25 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 		 	) );
 
 			// Fields
-			foreach($this->social_media_profiles as $social) :
+			$wp_customize->add_setting( 'mt_social_media_repeater', array(
+				'type'		 		=> 'option',
+				'sanitize_callback' => 'mt_sanitize_repeater',
+				'capability' 		=> 'manage_options',
+				'transport'  		=> 'refresh',
+				'default' 			=> json_encode( array() ),
+			) );
 
-				$wp_customize->add_setting( 'mt_' . $social['link'], array(
-					'type'		 => 'option',
-					'capability' => 'manage_options',
-					'transport'  => 'refresh',
-					'default' 	 => '',
-				) );
-
-				$wp_customize->add_control(
-					new WP_Customize_Control(
-						$wp_customize,
-						'mt_' . $social['link'],
-						array(
-							'type'			=> 'text',
-							'label'       	=> esc_attr__( $social['name'], 'mrtailor-extender' ),
-							'section'     	=> 'social_media',
-							'priority'    	=> 10,
-						)
+			$wp_customize->add_control(
+				new MT_Ext_Customize_Repeater_Control(
+					$wp_customize,
+					'mt_social_media_repeater',
+					array(
+						'section' => 'social_media',
+						'profiles' => $this->social_media_profiles,
+						'priority' => 10,
 					)
-				);
-
-			endforeach;
+				)
+			);
 		}
 
 		/**
@@ -361,27 +386,56 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 
 		        <ul class="mt_social_icons_list align-<?php echo esc_html($items_align); ?>">
 
-		            <?php foreach($this->social_media_profiles as $social) : ?>
+					<?php
 
-		                <?php if ( get_option( 'mt_' . $social['link'] ) ) : ?>
+					$social_media_encoded_list = get_option( 'mt_social_media_repeater', json_encode( array() ) );
+					$social_media_profiles 	   = json_decode( $social_media_encoded_list );
 
-		                    <li class="mt_social_icon icon_<?php echo $social['slug']; ?>">
-		                        <a class="mt_social_icon_link" target="_blank"
-		                        	href="<?php echo esc_url(get_option( 'mt_' . $social['link'], '#' )); ?>">
-		                        	<svg
-		                        		xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-										width="<?php echo $font_size; ?>" height="<?php echo $font_size; ?>"
-										viewBox="0 0 50 50"
-										fill="<?php echo $color; ?>">
-										<path d="<?php echo $social['svg_path']; ?>"></path>
-									</svg>
-		                        </a>
-		                    </li>
+					foreach( $social_media_profiles as $social ) {
 
-		                <?php endif; ?>
+						if( !empty( $social->link ) && !empty($social->icon_slug) ) {
 
-		            <?php endforeach; ?>
+							if( 'custom' === $social->icon_slug && !empty( $social->image_url ) ) {
+							?>
 
+								<li class="mt_social_icon custom_icon icon_<?php echo $social->icon_slug; ?>">
+									<a class="mt_social_icon_link" target="_blank" href="<?php echo esc_url( $social->link ); ?>">
+										<img src="<?php echo esc_url( $social->image_url ); ?>" alt="Social Media Profile"
+											width="<?php echo esc_attr( $font_size ); ?>" height="<?php echo esc_attr( $font_size ); ?>" />
+									</a>
+								</li>
+
+							<?php } else if( 'custom' !== $social->icon_slug ) {
+
+								$svg_path = '';
+								foreach( $this->social_media_profiles as $social_profile => $val ) {
+									if( $val['slug'] === $social->icon_slug && isset( $val['svg_path'] ) ) {
+										$svg_path = $val['svg_path'];
+									}
+								}
+
+								if( !empty($svg_path) ) {
+									?>
+
+									<li class="mt_social_icon default_icon icon_<?php echo $social->icon_slug; ?>">
+										<a class="mt_social_icon_link" target="_blank"
+											href="<?php echo esc_url( $social->link ); ?>">
+											<svg
+												xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+												width="<?php echo esc_attr( $font_size ); ?>" height="<?php echo esc_attr( $font_size ); ?>"
+												viewBox="0 0 50 50"
+												fill="<?php echo esc_attr( $color ); ?>">
+												<path d="<?php echo esc_attr( $svg_path ); ?>"></path>
+											</svg>
+										</a>
+									</li>
+
+									<?php
+								}
+							}
+						}
+					}
+					?>
 		        </ul>
 
 		    </div>

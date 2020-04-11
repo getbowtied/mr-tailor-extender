@@ -30,6 +30,9 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'mr-tailor-extender'
 );
 
+$version = ( isset(get_plugin_data( __FILE__ )['Version']) && !empty(get_plugin_data( __FILE__ )['Version']) ) ? get_plugin_data( __FILE__ )['Version'] : '1.0';
+define ( 'MT_EXT_VERSION', $version );
+
 if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 	/**
@@ -60,6 +63,9 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			include_once( dirname( __FILE__ ) . '/includes/vendor/enqueue.php' );
 
 			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) || $theme->template != 'mrtailor' ) {
+
+                // Customizer
+				include_once( dirname( __FILE__ ) . '/includes/customizer/repeater/class-mt-ext-repeater-control.php' );
 
 				// Shortcodes
 				include_once( dirname( __FILE__ ) . '/includes/shortcodes/index.php' );

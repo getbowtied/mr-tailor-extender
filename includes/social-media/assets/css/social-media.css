@@ -16,7 +16,10 @@
       text-align: right; }
     .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon {
       padding: 5px 12px;
-      display: inline-block; }
+      display: inline-block;
+      vertical-align: middle; }
+      .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon img {
+        vertical-align: top; }
 
 #site-top-bar .site-social-icons-shortcode {
   float: right;
