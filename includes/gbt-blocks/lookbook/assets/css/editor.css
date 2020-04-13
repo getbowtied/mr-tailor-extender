@@ -1,1 +1,32 @@
-.gbt_18_mt_editor_lookbook .lookbook-content-wrapper{height:500px;width:100%;background-size:cover;display:table}.gbt_18_mt_editor_lookbook .lookbook-content-wrapper .lookbook-text-wrapper{text-align:center;height:100%;display:table-cell;vertical-align:middle}.gbt_18_mt_editor_lookbook .lookbook-content-wrapper .lookbook-text-wrapper .lookbook-title{font-size:56px;color:#fff;margin-bottom:20px}.gbt_18_mt_editor_lookbook .lookbook-content-wrapper .lookbook-text-wrapper .lookbook-subtitle{font-size:36px;color:#fff}.gbt_18_mt_editor_lookbook .add-image,.gbt_18_mt_editor_lookbook .remove-image{position:absolute;top:20px;left:20px;opacity:0;-webkit-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out}.editor-block-list__block[data-type="getbowtied/mt-lookbook"].is-hovered .add-image,.editor-block-list__block[data-type="getbowtied/mt-lookbook"].is-hovered .remove-image,.editor-block-list__block[data-type="getbowtied/mt-lookbook"].is-selected .add-image,.editor-block-list__block[data-type="getbowtied/mt-lookbook"].is-selected .remove-image,.editor-block-list__block[data-type="getbowtied/mt-lookbook"].is-typing .add-image,.editor-block-list__block[data-type="getbowtied/mt-lookbook"].is-typing .remove-image{opacity:1;-webkit-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
+.gbt_18_mt_editor_lookbook .lookbook-content-wrapper {
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  display: table; }
+  .gbt_18_mt_editor_lookbook .lookbook-content-wrapper .lookbook-text-wrapper {
+    text-align: center;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle; }
+    .gbt_18_mt_editor_lookbook .lookbook-content-wrapper .lookbook-text-wrapper .lookbook-title {
+      font-size: 56px;
+      color: #fff;
+      margin-bottom: 20px; }
+    .gbt_18_mt_editor_lookbook .lookbook-content-wrapper .lookbook-text-wrapper .lookbook-subtitle {
+      font-size: 36px;
+      color: #fff; }
+
+.gbt_18_mt_editor_lookbook .add-image, .gbt_18_mt_editor_lookbook .remove-image {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  opacity: 0;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
+
+.wp-block[data-type="getbowtied/mt-lookbook"].is-selected .add-image, .wp-block[data-type="getbowtied/mt-lookbook"].is-selected .remove-image, .wp-block[data-type="getbowtied/mt-lookbook"].is-hovered .add-image, .wp-block[data-type="getbowtied/mt-lookbook"].is-hovered .remove-image, .wp-block[data-type="getbowtied/mt-lookbook"].is-typing .add-image, .wp-block[data-type="getbowtied/mt-lookbook"].is-typing .remove-image {
+  opacity: 1;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
