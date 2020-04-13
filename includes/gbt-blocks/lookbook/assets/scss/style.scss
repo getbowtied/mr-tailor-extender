@@ -62,12 +62,18 @@
 	.swiper-button-prev,
 	.swiper-button-next {
 		background-size: 25px;
+		background-repeat: no-repeat;
+		background-position: center;
         height: 75px;
         width: 75px;
         opacity: 0.5;
         display: block;
         transition: all .3s;
         outline: 0;
+
+		&:after {
+			content: none;
+		}
 
 		&.swiper-button-disabled {
 			opacity: 0;

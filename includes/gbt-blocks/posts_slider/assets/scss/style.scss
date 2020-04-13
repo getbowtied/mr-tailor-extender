@@ -41,7 +41,7 @@
 				height: 245px;
 				width: 100%;
 				margin-bottom: 18px;
-				
+
 				-webkit-mask-image: -webkit-radial-gradient(white, black);
 			}
 
@@ -104,12 +104,18 @@
 	.swiper-button-prev,
 	.swiper-button-next {
 		background-size: 15px;
+		background-position: center;
+		background-repeat: no-repeat;
         height: 55px;
         width: 55px;
         opacity: 0;
         display: block;
         transition: all .3s;
         outline: 0;
+
+		&:after {
+			content: none;
+		}
 
 		&.swiper-button-disabled {
 			opacity: 0;
