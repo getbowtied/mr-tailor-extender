@@ -1,6 +1,11 @@
 .mt_ext_products_slider {
     ul.products {
         display: flex;
+        margin-top: 0;
+
+        li.product.last {
+            margin-right: 30px;
+        }
     }
 
     .swiper-pagination {

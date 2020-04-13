@@ -1,7 +1,10 @@
 .mt_ext_products_slider ul.products {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  margin-top: 0; }
+  .mt_ext_products_slider ul.products li.product.last {
+    margin-right: 30px; }
 
 .mt_ext_products_slider .swiper-pagination {
   padding: 0 0 50px;

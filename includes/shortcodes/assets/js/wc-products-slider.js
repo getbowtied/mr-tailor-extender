@@ -6,15 +6,18 @@
 
 	$('.mt_ext_products_slider').each(function() {
 
-		var autoplay = $(this).attr('data-autoplay');
-		if ($.isNumeric(autoplay)) {
-			autoplay = autoplay * 1000;
-		} else {
-			autoplay = 10000;
+		var columns = 4;
+		if( $(this).attr( 'data-columns' ) ) {
+			columns = $(this).attr( 'data-columns' );
+		}
+
+		var medium_slides = 3;
+		if( columns < 3 ) {
+			medium_slides = columns;
 		}
 
 		var mySwiper = new Swiper ($(this).find('.swiper-container'), {
-			slidesPerView: 4,
+			slidesPerView: columns,
 			loop: false,
 			spaceBetween: 30,
 			breakpoints: {
@@ -22,15 +25,12 @@
 					slidesPerView: 2,
 				},
 				640: {
-					slidesPerView: 3,
+					slidesPerView: medium_slides,
 				},
 				1024: {
-					slidesPerView: 4,
+					slidesPerView: columns,
 				}
 			},
-			autoplay: {
-			    delay: autoplay
-		  	},
 			pagination: {
 			    el: $(this).find('.swiper-pagination'),
 			    type: 'bullets',

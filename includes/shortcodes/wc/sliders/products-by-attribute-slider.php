@@ -49,7 +49,7 @@ function mt_ext_shortcode_product_attribute_slider($atts, $content = null) {
 
     $products = new WP_Query( $args );
 
-	mt_products_slider( 'attribute-products', $products, $title );
+	mt_products_slider( 'attribute-products', $products, $title, $columns );
 
 	wp_reset_postdata();
 	$content = ob_get_contents();

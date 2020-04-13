@@ -39,7 +39,7 @@ function mt_ext_shortcode_sale_products_slider($atts, $content = null) {
 
     $products = new WP_Query( $args );
 
-	mt_products_slider( 'sale-products', $products, $title );
+	mt_products_slider( 'sale-products', $products, $title, $columns );
 
 	wp_reset_postdata();
 	$content = ob_get_contents();

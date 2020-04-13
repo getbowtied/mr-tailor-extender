@@ -38,7 +38,7 @@ function mt_ext_shortcode_top_rated_products_slider($atts, $content = null) {
 
     $products = new WP_Query( $args );
 
-	mt_products_slider( 'top-rated-products', $products, $title );
+	mt_products_slider( 'top-rated-products', $products, $title, $columns );
 
 	wp_reset_postdata();
 	$content = ob_get_contents();

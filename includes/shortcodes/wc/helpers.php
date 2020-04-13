@@ -3,12 +3,12 @@
 /*
  * Sliders output.
  */
-function mt_products_slider( $type = '', $products = null, $title = '' ) {
+function mt_products_slider( $type = '', $products = null, $title = '', $columns = 4 ) {
 ?>
 
     <?php if ( $products->have_posts() ) : ?>
 
-    	<div class="<?php echo $type; ?>-wrapper wc-products-slider mt_ext_products_slider woocommerce">
+    	<div class="<?php echo $type; ?>-wrapper wc-products-slider mt_ext_products_slider woocommerce" data-columns=<?php echo esc_attr($columns); ?>>
 
             <div class="mt_items_sliders_header">
                 <div class="mt_items_sliders_title">
