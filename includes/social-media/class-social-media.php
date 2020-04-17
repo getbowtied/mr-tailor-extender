@@ -47,12 +47,12 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 				$this->create_wb_element();
 			}
 
-			add_action( 'footer_socials', function() {
-				echo do_shortcode('[social-media items_align="center" font_size="20" color="#bfbfbf"]');
+			add_action( 'footer_socials', function( $color ) {
+				echo do_shortcode('[social-media items_align="center" font_size="20" color="'.$color.'"]');
 			} );
 
-			add_action( 'header_socials', function() {
-				echo do_shortcode('[social-media items_align="right" color="'.get_theme_mod( 'top_bar_typography', '#fff' ).'"]');
+			add_action( 'header_socials', function( $color ) {
+				echo do_shortcode('[social-media items_align="right" color="'.$color.'"]');
 			} );
 		}
 
