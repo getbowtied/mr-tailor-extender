@@ -22,7 +22,9 @@ if ( ! function_exists( 'gbt_18_mt_get_rest_post_featured_image' ) ) {
     function gbt_18_mt_get_rest_post_featured_image( $object, $field_name, $request ) {
         if( $object['featured_media'] ){
             $img = wp_get_attachment_image_src( $object['featured_media'], 'app-thumb' );
-            return $img[0];
+            if( isset( $img[0] ) ) {
+                return $img[0];
+            }
         }
         return false;
     }
