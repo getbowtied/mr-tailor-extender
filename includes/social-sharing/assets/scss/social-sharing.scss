@@ -6,14 +6,54 @@
 
     .box-share-container
     {
-        display: inline-block;
+        display: block;
+        margin: 40px auto 36px;
         position: relative;
+        text-align: center;
         z-index: 99;
-    }
 
-    .box-share-container a
-    {
-        font-weight: bold;
+        &.product-share-container {
+            margin: 0;
+            text-align: left;
+
+            .box-share-list {
+                margin: 0 0 0 10px;
+            }
+        }
+
+        .box-share-list
+        {
+            background-color: #fff;
+            border-top: 3px solid;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+            border-right: 1px solid;
+            margin: 0 auto;
+            text-align: left;
+            transition: all 0.3s;
+            opacity: 0;
+            max-height: 0;
+            visibility: hidden;
+            height: auto;
+            width: fit-content;
+            z-index: 999;
+        }
+
+        &.open
+        {
+            .box-share-list
+            {
+                opacity: 1;
+                max-height: 200px;
+                margin-top: 10px;
+                visibility: visible;
+            }
+
+            .box-share-link {
+                opacity: 1;
+                transition-delay: .1s;
+            }
+        }
     }
 
     a.trigger-share-list
@@ -32,122 +72,44 @@
         transition: all .3s ease;
     }
 
-    .box-share-list
-    {
-        position: absolute;
-        top: 8px;
-        left: 50%;
-        width: 0px;
-        height: 0px;
-        overflow: hidden;
-        text-align: left;
-        background: #fff;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        transform: translate(-50%,-50%);
-        transition: height 0.3s, width 0.3s, transform 0.3s;
-    }
-
-    .box-share-container.open .box-share-list
-    {
-        width: 185px;
-    }
-
     .box-share-list-inner
     {
-        padding: 24px 13px 28px 22px;
-        width: 185px;
+        padding: 25px 35px 25px 30px;
 
         a {
             text-decoration: none;
         }
     }
 
-    .box-share-link
-    {
+    .box-share-link {
         display: block;
         font-size: 13px;
-        color: #000;
         margin-bottom: 13px;
         font-weight: normal;
         position: relative;
-        left: 200%;
-        transition: left 0.3s, opacity 0.3s;
+        opacity: 0;
+        transition: opacity 0.15s;
          -webkit-transform: translateZ(0);
          -webkit-font-smoothing: antialiased !important;
 
-        &:hover
-        {
-            opacity: .5;
+        span {
+            font-weight: bold;
+            transition: all .3s ease;
+         }
+
+        svg {
+            position: relative;
+            top: 3px;
+            margin: 0 5px 0 0;
+            transition: all .3s ease;
+
+            path {
+                transition: all .3s ease;
+            }
         }
-    }
 
-    .box-share-link svg
-    {
-        position: relative;
-        top: 3px;
-        margin: 0 5px 0 0;
-    }
-
-    .box-share-container.open .box-share-link
-    {
-        left: 0
-    }
-
-    .box-share-container.open a:nth-child(1)
-    {
-        transition-delay: 0.05s;
-    }
-
-    .box-share-container.open a:nth-child(2)
-    {
-        transition-delay: 0.1s;
-    }
-
-    .box-share-container.open a:nth-child(3)
-    {
-        transition-delay: 0.15s;
-    }
-
-    .box-share-container.open a:nth-child(4)
-    {
-        transition-delay: 0.2s;
-    }
-
-    .box-share-link:last-child
-    {
-        margin-bottom: 0;
-    }
-
-    .box-share-link:hover
-    {
-        color: #000 !important;
-    }
-
-    .box-share-link span
-    {
-        padding-bottom: 4px;
-        border-bottom: 2px solid transparent;
-        transition: border-color 0.3s;
-    }
-
-    .box-share-link:hover span
-    {
-        border-bottom-width: 2px;
-        border-bottom-style: solid;
-    }
-
-    .box-share-container.post-share-container
-    {
-        display: block;
-        text-align: center;
-        margin: 48px 0 40px;
-    }
-
-    /* min-width 641px, medium screens */
-    @media only screen and (min-width: 40.063em) {
-        .box-share-container.post-share-container
-        {
-            margin: 58px 0 -48px;
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }
