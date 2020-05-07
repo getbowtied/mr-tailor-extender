@@ -80,7 +80,7 @@
     -webkit-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease; }
-    .gbt_18_mt_editor_posts_slider .swiper-pagination-bullet:nth-child(3) {
+    .gbt_18_mt_editor_posts_slider .swiper-pagination-bullet:first-child {
       -webkit-transform: scale(1.4);
       -ms-transform: scale(1.4);
       transform: scale(1.4);

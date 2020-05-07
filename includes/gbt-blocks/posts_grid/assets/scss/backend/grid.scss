@@ -3,83 +3,48 @@
 	.gbt_18_mt_editor_posts_grid_wrapper
 	{
 		position: relative;
-	  	overflow: hidden;
+		display: grid;
+  		grid-gap: 3rem 30px;
 
 		&.columns-2 {
-			.gbt_18_mt_editor_posts_grid_item {
-				width: 50%;
-				float: left;
-
-				&:nth-child(2n+1) {
-					clear: both;
-				}
+			grid-template-columns: 1fr 1fr;
+			@media only screen and (max-width: 640px) {
+				grid-template-columns: 1fr;
 			}
 		}
 
 		&.columns-3 {
-			.gbt_18_mt_editor_posts_grid_item {
-				width: 33.333333%;
-				float: left;
-
-				&:nth-child(3n+1) {
-					clear: both;
-				}
+			grid-template-columns: 1fr 1fr 1fr;
+			@media only screen and (max-width: 1023px) {
+				grid-template-columns: 1fr 1fr;
+			}
+			@media only screen and (max-width: 640px) {
+				grid-template-columns: 1fr;
 			}
 		}
 
 		&.columns-4 {
-			.gbt_18_mt_editor_posts_grid_item {
-				width: 25%;
-				float: left;
-
-				&:nth-child(4n+1) {
-					clear: both;
-				}
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			@media only screen and (max-width: 1023px) {
+				grid-template-columns: 1fr 1fr;
+			}
+			@media only screen and (max-width: 640px) {
+				grid-template-columns: 1fr;
 			}
 		}
 
-		.gbt_18_mt_editor_posts_grid_img_container {
-			padding-bottom: 100%;
-		}
-
-		.gbt_18_mt_editor_posts_grid_item {
-			padding: 0 10px;	
-		    margin-bottom: 1rem;
+		a {
+			text-decoration: none;
 		}
 
 		.gbt_18_mt_editor_posts_grid_title {
 			display: block;
 			text-align: left;
-			font-size: 18px;
-			line-height: 1.1333em;
+			line-height: 1.2;
 			color: #000;
-			margin: 0 0 15px;
+			margin: 0;
+			text-align: center;
 		    transition: all .5s;
-
-			&:hover
-			{
-			    opacity: .4;
-		        transition: all .5s;
-		        cursor: pointer;
-			}
-		}
-
-		.gbt_18_mt_editor_posts_grid_img_overlay
-		{
-			display: block;
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			z-index: 2;
-			opacity: 0;
-			transition: all .35s ease;
-		    background: rgba(255, 255, 255, 0.6);
-		}
-
-		.gbt_18_mt_editor_posts_grid_img_container:hover .gbt_18_mt_editor_posts_grid_img_overlay
-		{
-			opacity: 1;
-			cursor: pointer;
 		}
 
 		.gbt_18_mt_editor_posts_grid_img_container
@@ -87,12 +52,13 @@
 			display: block;
 			overflow: hidden;
 			position: relative;
-			height: 100%;
+			padding-bottom: 55%;
+			height: 0;
 			width: 100%;
-			margin-bottom: 15px;
-			
+			margin-bottom: 25px;
+
 			-webkit-mamt-image: -webkit-radial-gradient(white, black);
-		}	
+		}
 
 		.gbt_18_mt_editor_posts_grid_img
 		{
@@ -101,10 +67,7 @@
 			width: 100%;
 			height: 100%;
 			background-position: center center;
-			background-size:cover;		
-			width: -webkit-calc(100% + 50px);
-			width: calc(100% + 50px);
-			max-width: none;
+			background-size:cover;
 			transition: opacity 0.35s, transform 0.35s;
 		}
 
@@ -115,5 +78,11 @@
 			width: 100%;
 			display: block;
 		}
+	}
+}
+
+.wp-block[data-type="getbowtied/mt-posts-grid"][data-align="full"] {
+	.gbt_18_mt_posts_grid {
+		padding: 0 30px;
 	}
 }

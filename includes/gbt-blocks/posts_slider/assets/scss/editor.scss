@@ -115,7 +115,7 @@
 		opacity: .2;
 	    transition: all .3s ease;
 
-		&:nth-child(3) {
+		&:first-child {
 			transform: scale(1.4);
 			opacity: 1;
 		}

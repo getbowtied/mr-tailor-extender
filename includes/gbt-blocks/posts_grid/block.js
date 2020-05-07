@@ -342,7 +342,7 @@
 														dangerouslySetInnerHTML: { __html: date }
 													}
 												),
-												el( "span",
+												el( "h4",
 													{
 														key: 		'gbt_18_mt_editor_posts_grid_title_' + i,
 														className:  'gbt_18_mt_editor_posts_grid_title',

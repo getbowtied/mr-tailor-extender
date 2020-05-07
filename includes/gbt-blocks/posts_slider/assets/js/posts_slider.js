@@ -29,7 +29,7 @@ jQuery(function($) {
 		  	},
 			loop: true,
 			slidesPerView: slides,
-			spaceBetween: 25,
+			spaceBetween: 30,
 			breakpoints: {
 				480: {
 			      slidesPerView: 1,
