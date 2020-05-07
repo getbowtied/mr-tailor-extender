@@ -353,7 +353,7 @@
 						el( 'button',
 							{
 								key: 'swiper-button-prev',
-								className: 'swiper-button-prev dashicon dashicons-arrow-left-alt2',
+								className: 'swiper-button-prev dashicon dashicons-arrow-left-alt',
 								onClick: function onClick() {
 									const idx = attributes.selectedSlide;
 									if ( idx - 1 >= 0) {
@@ -367,7 +367,7 @@
 						el( 'button',
 							{
 								key: 'swiper-button-next',
-								className: 'swiper-button-next dashicon dashicons-arrow-right-alt2',
+								className: 'swiper-button-next dashicon dashicons-arrow-right-alt',
 								onClick: function onClick() {
 									const idx = attributes.selectedSlide;
 									if ( idx + 1 < slide_no ) {
@@ -397,7 +397,7 @@
 							el( 'div',
 								{
 									key: 'swiper-pagination-bullet_' + i,
-									className: 'swiper-pagination-bullet swiper-pagination-bullet-active'
+									className: 'swiper-pagination-bullet'
 								}
 							),
 						);
@@ -569,21 +569,25 @@
 							},
 							_isLoadingText(),
 						),
-					),
-					el(
-						RangeControl,
-						{
-							key: "gbt_18_mt_posts_slider_columns",
-							value: attributes.columns,
-							allowReset: false,
-							initialPosition: 3,
-							min: 2,
-							max: 5,
-							label: i18n.__( 'Columns', 'mrtailor-extender' ),
-							onChange: function( newNumber ) {
-								props.setAttributes( { columns: newNumber } );
-							},
-						}
+						el(
+							'hr',
+							{}
+						),
+						el(
+							RangeControl,
+							{
+								key: "gbt_18_mt_posts_slider_columns",
+								value: attributes.columns,
+								allowReset: false,
+								initialPosition: 3,
+								min: 2,
+								max: 5,
+								label: i18n.__( 'Columns', 'mrtailor-extender' ),
+								onChange: function( newNumber ) {
+									props.setAttributes( { columns: newNumber } );
+								},
+							}
+						),
 					),
 				),
 				el( 'div',

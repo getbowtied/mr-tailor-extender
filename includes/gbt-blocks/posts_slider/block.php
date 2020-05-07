@@ -11,6 +11,9 @@ include_once 'functions/function-helper.php';
 if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_slider' ) ) {
 	function gbt_18_mt_render_frontend_posts_slider( $attributes ) {
 
+		wp_enqueue_style( 'swiper' );
+		wp_enqueue_script( 'swiper' );
+
 		extract( shortcode_atts( array(
 			'number'				=> '12',
 			'categoriesSavedIDs'	=> '',

@@ -6,18 +6,20 @@ jQuery(function($) {
 
 		var slides = 2;
 		var slides_large = 2;
+		var slides_xlarge = 2;
 
 		if($(this).find('.swiper-container').hasClass('columns-3')) {
 			slides = 3;
 			slides_large = 3;
+			slides_xlarge = 3;
 		} else if($(this).find('.swiper-container').hasClass('columns-4')) {
-			slides = 4;
-			slides_large = 3;
+			slides = 3;
+			slides_large = 4;
+			slides_xlarge = 4;
 		} else if($(this).find('.swiper-container').hasClass('columns-5')) {
-			slides = 5;
-			slides_large = 3;
-		} else {
-			slides = 2;
+			slides = 3;
+			slides_large = 4;
+			slides_xlarge = 5;
 		}
 
 		var mySwiper = new Swiper ($(this).find('.swiper-container'), {
@@ -39,6 +41,9 @@ jQuery(function($) {
 			    },
 			    1024: {
 			      slidesPerView: slides_large,
+			    },
+				1280: {
+			      slidesPerView: slides_xlarge,
 			    },
 			},
 		    pagination: {
