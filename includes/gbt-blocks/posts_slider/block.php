@@ -54,52 +54,51 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_slider' ) ) {
 		}
 
 	    if( $categoriesSavedIDs != '' ) $args['category'] = $categoriesSavedIDs;
-	    
+
 	    $recentPosts = get_posts( $args );
 
 		ob_start();
-		        
+
 	    if ( !empty($recentPosts) ) : ?>
 
 	    	<div class="gbt_18_mt_posts_slider align<?php echo $align; ?>">
-		    
+
 			    <div class="swiper-container columns-<?php echo $columns; ?>">
-				
+
 			        <div class="swiper-wrapper">
-								
+
 						<?php
-		
+
 						foreach($recentPosts as $post) : ?>
-			            		                    
+
 		                    <div class="swiper-slide <?php if ( !has_post_thumbnail($post->ID)) : ?>no_thumb<?php endif; ?>">
-		                        
+
 								<a class="gbt_18_mt_posts_slider_link" href="<?php echo get_permalink($post->ID) ?>">
-									<span class="gbt_18_mt_posts_slider_overlay"></span>
-									
+
 									<?php if ( has_post_thumbnail($post->ID)) :
 										$image_id = get_post_thumbnail_id($post->ID);
 										$image_url = wp_get_attachment_image_src($image_id,'large', true);
 									?>
-										<span class="gbt_18_mt_posts_slider_img" style="background-image: url(<?php echo $image_url[0]; ?> );"></span>
+										<div class="gbt_18_mt_posts_slider_img" style="background-image: url(<?php echo $image_url[0]; ?> );">
 									<?php else : ?>
-										<span class="gbt_18_mt_posts_slider_noimg"></span>
+										<div class="gbt_18_mt_posts_slider_noimg">
 									<?php endif;  ?>
-									
+										<span class="more-link"><?php esc_html_e('Read more', 'mrtailor-extender'); ?></span>
+									</div>
+
+									<div class="gbt_18_mt_posts_slider_content">
+		                            	<h4 class="gbt_18_mt_posts_slider_title"><?php echo $post->post_title; ?></h4>
+		                            	<div class="gbt_18_mt_posts_slider_date"><?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
+			                        </div>
 								</a>
-		                        
-		                        <div class="gbt_18_mt_posts_slider_content">
-	                            	<h4 class="gbt_18_mt_posts_slider_title"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo $post->post_title; ?></a></h4>
-	                            	<div class="gbt_18_mt_posts_slider_date"><a href="<?php echo get_permalink($post->ID); ?>"><?php echo date('F d, Y', strtotime($post->post_date)); ?></a></div>                       
-		                        </div>
-		                        
 		                    </div>
-		        
+
 		                <?php endforeach; ?>
-			              
+
 			        </div>
 
 			        <div class="swiper-pagination"></div>
-					
+
 				</div>
 
 				<span class="swiper-button-prev"></span>
@@ -107,8 +106,8 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_slider' ) ) {
 
 			</div>
 
-		<?php endif; ?> 
-		
+		<?php endif; ?>
+
 		<?php
 
 		wp_reset_query();

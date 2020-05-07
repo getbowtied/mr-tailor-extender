@@ -1,5 +1,5 @@
 jQuery(function($) {
-	
+
 	"use strict";
 
 	$('.gbt_18_mt_posts_slider').each(function(i) {
@@ -41,14 +41,14 @@ jQuery(function($) {
 			      slidesPerView: slides_large,
 			    },
 			},
-		    pagination: { 
-		    	el: $('.swiper-pagination')[i],
-		    	dynamicBullets: true,
-		    	clickable: true 
+		    pagination: {
+		    	el: $(this).find('.swiper-pagination')[i],
+		    	dynamicBullets: false,
+		    	clickable: true
 		    },
 		    navigation: {
-			    nextEl: $('.swiper-button-next')[i],
-			    prevEl: $('.swiper-button-prev')[i],
+			    nextEl: $(this).find('.swiper-button-next')[i],
+			    prevEl: $(this).find('.swiper-button-prev')[i],
 		  	},
 		});
 	});

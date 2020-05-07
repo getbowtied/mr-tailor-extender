@@ -23,10 +23,15 @@
 		}
 
 		.swiper-slide {
-			padding: 0 0 35px 0;
+			padding: 0 0 50px 0;
+
+			a {
+				text-decoration: none;
+			}
 
 			.gbt_18_mt_posts_slider_title {
 				margin: 0 0 12px;
+				transition: all .3s ease;
 			}
 
 			.gbt_18_mt_posts_slider_title,
@@ -34,11 +39,18 @@
 				text-align: center;
 			}
 
+			.gbt_18_mt_posts_slider_date {
+				font-size: 13px;
+				font-weight: bold;
+				opacity: .45;
+				text-transform: uppercase;
+				transition: all .3s ease;
+			}
+
 			.gbt_18_mt_posts_slider_link {
 				display: block;
 				overflow: hidden;
 				position: relative;
-				height: 245px;
 				width: 100%;
 				margin-bottom: 18px;
 
@@ -48,9 +60,12 @@
 			.gbt_18_mt_posts_slider_img {
 				display: block;
 				width: 100%;
-				height: 100%;
+				height: 250px;
 				background-position: center center;
 				background-size: cover;
+				position: relative;
+				overflow: hidden;
+				margin-bottom: 25px;
 				transition: all 1s ease;
 			}
 
@@ -59,26 +74,41 @@
 				height: 245px;
 				width: 100%;
 				display: block;
+				overflow: hidden;
+				margin-bottom: 25px;
+				position: relative;
 			}
 
-			.gbt_18_mt_posts_slider_overlay {
-				background: rgba(0,0,0,0);
+			.more-link {
+				border-radius: 0 0 3px 3px;
+				font-weight: bold;
+				padding: 20px;
 				position: absolute;
+				bottom: -40px;
+				margin: 0;
 				width: 100%;
-				height: 100%;
-				z-index: 1;
-				transition: all .3s ease;
+				max-height: 0;
+				opacity: 0;
+				visibility: hidden;
+				transition: all .4s ease;
+				text-transform: initial;
+			}
+
+			.arrow-icon {
+				background-repeat: no-repeat;
+				background-position: center;
+				float: right;
+				height: 20px;
+				width: 20px;
 			}
 
 			&:hover {
-				.gbt_18_mt_posts_slider_overlay {
-					background: rgba(0,0,0,0.4);
-					transition: all .3s ease;
-				}
-
-				.gbt_18_mt_posts_slider_img {
-					transform: translateZ(0) scale(1.1,1.1);
-					-ms-transform: none;
+				.more-link {
+					bottom: 0;
+					max-height: 100px;
+					opacity: 1;
+					visibility: visible;
+					transition: all .4s ease;
 				}
 			}
 		}
@@ -103,7 +133,6 @@
 
 	.swiper-button-prev,
 	.swiper-button-next {
-		background-size: 15px;
 		background-position: center;
 		background-repeat: no-repeat;
         height: 55px;
@@ -112,6 +141,10 @@
         display: block;
         transition: all .3s;
         outline: 0;
+
+		@media only screen and (max-width: 1023px) {
+			display: none;
+		}
 
 		&:after {
 			content: none;
@@ -134,7 +167,15 @@
         visibility: hidden;
 	}
 
-	.swiper-pagination-bullet-active {
-		background-color: #000000;
+	.swiper-pagination {
+		.swiper-pagination-bullet {
+			width: 6px;
+			height: 6px;
+			transition: all .3s ease;
+		}
+
+		.swiper-pagination-bullet-active {
+			transform: scale(1.4);
+		}
 	}
 }
