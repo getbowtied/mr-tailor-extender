@@ -12,7 +12,13 @@
 
 		.post_header_date {
 			text-align: center;
-			font-size: 0.875em;
+			font-size: 13px;
+			font-weight: bold;
+			text-transform: uppercase;
+
+			a {
+				text-decoration: none;
+			}
 		}
 
 		&.gallery
@@ -54,7 +60,12 @@
 		height: 245px;
 		width: 100%;
 		margin-bottom: 18px;
+		text-decoration: none;
 		-webkit-mask-image: -webkit-radial-gradient(white, black);
+	}
+
+	.from_the_blog_title {
+		text-decoration: none;
 	}
 
 	.from_the_blog_img

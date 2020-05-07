@@ -10,6 +10,7 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+    text-decoration: none;
     -webkit-mask-image: -webkit-radial-gradient(white, black); }
   .blog-list-wrapper .blog_list_overlay {
     display: block;

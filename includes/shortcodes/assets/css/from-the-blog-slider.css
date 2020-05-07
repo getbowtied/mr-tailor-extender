@@ -6,7 +6,11 @@
 
 .from-the-blog-wrapper .from_the_blog_item .post_header_date {
   text-align: center;
-  font-size: 0.875em; }
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase; }
+  .from-the-blog-wrapper .from_the_blog_item .post_header_date a {
+    text-decoration: none; }
 
 .from-the-blog-wrapper .from_the_blog_item.gallery {
   margin: 0 !important; }
@@ -37,7 +41,11 @@
   height: 245px;
   width: 100%;
   margin-bottom: 18px;
+  text-decoration: none;
   -webkit-mask-image: -webkit-radial-gradient(white, black); }
+
+.from-the-blog-wrapper .from_the_blog_title {
+  text-decoration: none; }
 
 .from-the-blog-wrapper .from_the_blog_img {
   display: block;

@@ -16,8 +16,9 @@
 		overflow: hidden;
 		position: relative;
 		width: 100%;
+		text-decoration: none;
 		-webkit-mask-image: -webkit-radial-gradient(white, black);
-	}	
+	}
 
 	.blog_list_overlay
 	{
@@ -70,7 +71,7 @@
 		display: table-row;
 	}
 
-	.blog-list-day 
+	.blog-list-day
 	{
 		display: table-cell;
 		vertical-align: top;
@@ -117,13 +118,13 @@
 		{
 			margin: 0 0 10px;
 		}
-		
+
 		.blog-list-item:first-child
 		{
 			margin-top: 10px;
 		}
-		
-		.blog-list-day 
+
+		.blog-list-day
 		{
 			vertical-align: middle;
 			font-size: 75px;
@@ -133,20 +134,20 @@
 			width: 170px;
 			min-width: 170px;
 		}
-		
+
 		.blog-list-content
 		{
 			padding-left: 50px;
 			padding-right: 50px;
 		}
-		
+
 		.blog-list-date
 		{
 			font-size: 14px;
 			margin: 0 0 5px;
-			
+
 		}
-		
+
 		.blog-list-title
 		{
 			font-size: 30px;
