@@ -40,11 +40,6 @@ if ( $theme->template == 'mrtailor') {
     include_once 'social_media_profiles/block.php';
 }
 
-// WooCommerce Dependent Blocks
-if( is_plugin_active( 'woocommerce/woocommerce.php') ) {
-	include_once 'lookbook/block.php';
-}
-
 include_once 'posts_grid/block.php';
 include_once 'posts_slider/block.php';
 include_once 'banner/block.php';
