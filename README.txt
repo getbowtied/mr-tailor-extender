@@ -26,8 +26,6 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Blog Posts Grid
 - Blog Posts Slider
 - Social Media Profiles
-- Portfolio
-- Lookbook
 
 **WPBakery Page Builder Elements:**
 - Banner
