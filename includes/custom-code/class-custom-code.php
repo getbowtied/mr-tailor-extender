@@ -25,6 +25,9 @@ if ( ! class_exists( 'MTCustomCode' ) ) :
 		public function __construct() {
 
 			$this->customizer_options();
+
+			add_action('mrtailor_header_start', array($this, 'mrtailor_header_code'));
+			add_action('mrtailor_footer_action', array($this, 'mrtailor_footer_code'));
 		}
 
 		/**
@@ -39,6 +42,24 @@ if ( ! class_exists( 'MTCustomCode' ) ) :
 				self::$_instance = new self();
 			}
 			return self::$_instance;
+		}
+
+		/**
+		 * Output header custom code
+		 *
+		 * @return void
+		 */
+		public function mrtailor_header_code() {
+			echo get_option( 'mt_custom_code_header_js', '' );
+		}
+
+		/**
+		 * Output footer custom code
+		 *
+		 * @return void
+		 */
+		public function mrtailor_footer_code() {
+			echo get_option( 'mt_custom_code_footer_js', '' );
 		}
 
 		/**
@@ -72,11 +93,11 @@ if ( ! class_exists( 'MTCustomCode' ) ) :
 				'default' 	 => '',
 			) );
 
-			$wp_customize->add_control( 
+			$wp_customize->add_control(
 				new WP_Customize_Code_Editor_Control(
 					$wp_customize,
 					'mt_custom_code_header_js',
-					array( 
+					array(
 						'code_type' 	=> 'javascript',
 						'label'       	=> esc_attr__( 'Header JavaScript Code', 'mrtailor-extender' ),
 						'section'     	=> 'custom_code_panel',
@@ -92,11 +113,11 @@ if ( ! class_exists( 'MTCustomCode' ) ) :
 				'default' 	 => '',
 			) );
 
-			$wp_customize->add_control( 
+			$wp_customize->add_control(
 				new WP_Customize_Code_Editor_Control(
 					$wp_customize,
 					'mt_custom_code_footer_js',
-					array( 
+					array(
 						'code_type' 	=> 'javascript',
 						'label'       	=> esc_attr__( 'Footer JavaScript Code', 'mrtailor-extender' ),
 						'section'     	=> 'custom_code_panel',

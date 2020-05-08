@@ -62,27 +62,24 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			// Vendor
 			include_once( dirname( __FILE__ ) . '/includes/vendor/enqueue.php' );
 
-			if( ( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) || $theme->template != 'mrtailor' ) {
+            // Customizer
+			include_once( dirname( __FILE__ ) . '/includes/customizer/repeater/class-mt-ext-repeater-control.php' );
 
-                // Customizer
-				include_once( dirname( __FILE__ ) . '/includes/customizer/repeater/class-mt-ext-repeater-control.php' );
+			// Shortcodes
+			include_once( dirname( __FILE__ ) . '/includes/shortcodes/index.php' );
 
-				// Shortcodes
-				include_once( dirname( __FILE__ ) . '/includes/shortcodes/index.php' );
+			// Social Media
+			include_once( dirname( __FILE__ ) . '/includes/social-media/class-social-media.php' );
 
-				// Social Media
-				include_once( dirname( __FILE__ ) . '/includes/social-media/class-social-media.php' );
-
-				// Addons
-				if ( $theme->template == 'mrtailor' && is_plugin_active( 'woocommerce/woocommerce.php') ) {
-					include_once( dirname( __FILE__ ) . '/includes/addons/class-wc-category-header-image.php' );
-				}
+			// Addons
+			if ( $theme->template == 'mrtailor' && is_plugin_active( 'woocommerce/woocommerce.php') ) {
+				include_once( dirname( __FILE__ ) . '/includes/addons/class-wc-category-header-image.php' );
 			}
 
 			// Gutenberg Blocks
-			add_action( 'init', array( $this, 'gbt_mt_gutenberg_blocks' ) );
+            include_once( dirname( __FILE__ ) . '/includes/gbt-blocks/index.php' );
 
-			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) {
+			if( $theme->template == 'mrtailor' ) {
 
 				// Social Sharing Buttons
 				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) {
@@ -105,49 +102,11 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 						vc_set_shortcodes_templates_dir($vc_templates_dir);
 					}
 				});
-			}
 
-			if( $theme->template == 'mrtailor' && ( $theme->version >= '2.9' || ( !empty($parent_theme) && $parent_theme->version >= '2.9' ) ) ) {
-
-				//Custom Menu
+                // Custom Menu
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom-menu.php' );
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/edit_custom_walker.php' );
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom_walker.php' );
-			}
-
-			add_action('mrtailor_header_start', array($this, 'mrtailor_header_code'));
-			add_action('mrtailor_footer_action', array($this, 'mrtailor_footer_code'));
-		}
-
-		/**
-		 * Output header custom code
-		 *
-		 * @return void
-		 */
-		public function mrtailor_header_code() {
-			echo get_option( 'mt_custom_code_header_js', '' );
-		}
-
-		/**
-		 * Output footer custom code
-		 *
-		 * @return void
-		 */
-		public function mrtailor_footer_code() {
-			echo get_option( 'mt_custom_code_footer_js', '' );
-		}
-
-		/**
-		 * Loads Gutenberg blocks
-		 *
-		 * @return void
-		*/
-		public function gbt_mt_gutenberg_blocks() {
-
-			if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_mt_wp_version('>=', '5.0') ) {
-				include_once 'includes/gbt-blocks/index.php';
-			} else {
-				add_action( 'admin_notices', 'mt_theme_warning' );
 			}
 		}
 
