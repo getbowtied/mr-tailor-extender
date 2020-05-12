@@ -1,5 +1,5 @@
 <?php
-	
+
 function mr_tailor_product_categories( $atts ) {
 
 	extract( shortcode_atts( array(
@@ -18,7 +18,7 @@ function mr_tailor_product_categories( $atts ) {
 	} else {
 		$ids = array();
 	}
-	
+
 	$hide_empty = ( $hide_empty == true || $hide_empty == 1 ) ? 1 : 0;
 
 	// get terms and workaround WP bug with parents/pad counts
@@ -61,12 +61,12 @@ function mr_tailor_product_categories( $atts ) {
 	if ( $product_categories ) {
 
 		foreach ( $product_categories as $category ) {
-				   
+
 			$thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
 			$image = wp_get_attachment_url( $thumbnail_id );
 			$cat_class = "";
 
-			$cat_counter++;                                        
+			$cat_counter++;
 
 			switch ($cat_number) {
 				case 1:
@@ -91,14 +91,14 @@ function mr_tailor_product_categories( $atts ) {
 						$cat_class = "more_than_6";
 					}
 			}
-			
+
 			?>
 
 			<div class="category_<?php echo $cat_class; ?>">
 				<div class="category_grid_box">
-					<span class="category_item_bkg" style="background-image:url(<?php echo $image; ?>)"></span> 
+					<span class="category_item_bkg" style="background-image:url(<?php echo $image; ?>)"></span>
 					<a href="<?php echo get_term_link( $category->slug, 'product_cat' ); ?>" class="category_item" >
-						<span class="category_name"><?php echo $category->name; ?></span>
+						<h3 class="category_name"><?php echo $category->name; ?></h3>
 					</a>
 				</div>
 			</div>
@@ -106,11 +106,11 @@ function mr_tailor_product_categories( $atts ) {
 			<?php
 
 		}
-		
+
 		?>
-					
+
 			<div class="clearfix"></div>
-					
+
 		<?php
 
 	}
