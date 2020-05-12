@@ -31,10 +31,6 @@
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
 		},
-		styles: [
-			{ name: 'default', 	label:  i18n.__( 'Grid', 'mrtailor-extender' ), isDefault: true },
-			{ name: 'list', 	label:  i18n.__( 'List', 'mrtailor-extender' ), },
-		],
 		attributes: {
 			/* posts source */
 			result: {
@@ -94,8 +90,6 @@
 			attributes.categoryOptions 		= attributes.categoryOptions || [];
 			attributes.doneFirstPostsLoad 	= attributes.doneFirstPostsLoad || false;
 			attributes.result 				= attributes.result || [];
-
-			if( className.indexOf('is-style-') == -1 ) { className += ' is-style-default'; }
 
 			//==============================================================================
 			//	Helper functions
@@ -217,13 +211,6 @@
 				}
 			}
 
-			function getWrapperClass() {
-				if( className.indexOf('is-style-default') >= 0 ) {
-					return 'gbt_18_mt_editor_posts_grid_wrapper columns-' + attributes.columns;
-				}
-				return 'gbt_18_mt_editor_posts_grid_wrapper';
-			}
-
 			//==============================================================================
 			//	Show posts functions
 			//==============================================================================
@@ -323,25 +310,11 @@
 												key: 		'gbt_18_mt_editor_posts_grid_content_inner_' + i,
 												className: 	'gbt_18_mt_editor_posts_grid_content_inner'
 											},
-											className.indexOf('is-style-list') >= 0 && el( "span",
-												{
-													key: 		'gbt_18_mt_editor_posts_grid_day_' + i,
-													className:  'gbt_18_mt_editor_posts_grid_day',
-													dangerouslySetInnerHTML: { __html: day }
-												}
-											),
-											el( "div",
+												el( "div",
 												{
 													key: 		'gbt_18_mt_editor_posts_grid_title_content_' + i,
 													className: 	'gbt_18_mt_editor_posts_grid_title_content'
 												},
-												className.indexOf('is-style-list') >= 0 && el( "span",
-													{
-														key: 		'gbt_18_mt_editor_posts_grid_date_' + i,
-														className:  'gbt_18_mt_editor_posts_grid_date',
-														dangerouslySetInnerHTML: { __html: date }
-													}
-												),
 												el( "h4",
 													{
 														key: 		'gbt_18_mt_editor_posts_grid_title_' + i,
@@ -523,8 +496,8 @@
 							},
 							_isLoadingText(),
 						),
-						className.indexOf('is-style-default') !== -1 && el( 'hr', {} ),
-						className.indexOf('is-style-default') !== -1 && el(
+						el( 'hr', {} ),
+						el(
 							RangeControl,
 							{
 								key: "mt-posts-grid-columns",
@@ -550,7 +523,7 @@
 						'div',
 						{
 							key: 		'gbt_18_mt_editor_posts_grid_wrapper',
-							className: 	getWrapperClass(),
+							className: 	'gbt_18_mt_editor_posts_grid_wrapper columns-' + attributes.columns,
 						},
 						attributes.result.length < 1 && attributes.doneFirstPostsLoad === false && getPosts(),
 						renderResults()

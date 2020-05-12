@@ -16,7 +16,6 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 			'align'					=> 'center',
 			'orderby'				=> 'date_desc',
 			'columns'				=> '3',
-			'className'             => 'is-style-default'
 		), $attributes ) );
 
 		$args = array(
@@ -61,9 +60,9 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 
 	    if ( !empty($recentPosts) ) : ?>
 
-	        <div class="gbt_18_mt_posts_grid <?php echo $className; ?> align<?php echo $align; ?>">
+	        <div class="gbt_18_mt_posts_grid align<?php echo $align; ?>">
 
-	    		<div class="gbt_18_mt_posts_grid_wrapper <?php echo $className == 'is-style-default' ? 'columns-'.$columns : ''; ?>">
+	    		<div class="gbt_18_mt_posts_grid_wrapper columns-<?php echo esc_attr($columns); ?>">
 
 		            <div class="gbt_18_mt_posts_grid_items">
 
@@ -85,27 +84,10 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_grid' ) ) {
 											<span class="gbt_18_mt_posts_grid_img gbt_18_mt_posts_grid_noimg"></span>
 										<?php endif;  ?>
 
-										<?php if($className == 'is-style-default') : ?>
-											<span class="more-link"><?php esc_html_e('Read more', 'mrtailor-extender'); ?><span class="arrow-icon"></span></span>
-										<?php endif; ?>
+										<span class="more-link"><?php esc_html_e('Read more', 'mrtailor-extender'); ?><span class="arrow-icon"></span></span>
 									</span>
 
-									<?php if($className == 'is-style-default') : ?>
-										<h4 class="gbt_18_mt_posts_grid_title" href="<?php echo get_post_permalink($post->ID); ?>"><?php echo $post->post_title; ?></h4>
-									<?php elseif($className == 'is-style-list') : ?>
-										<span class="gbt_18_mt_posts_grid_content_wrapper">
-											<span class="gbt_18_mt_posts_grid_content_inner">
-
-												<span class="gbt_18_mt_posts_grid_item_day"><?php echo date('d', strtotime($post->post_date)); ?></span>
-
-												<span class="gbt_18_mt_posts_grid_content">
-													<span class="gbt_18_mt_posts_grid_item_date"><?php echo date('F Y', strtotime($post->post_date)); ?></span>
-													<h3 class="gbt_18_mt_posts_grid_item_title"><?php echo $post->post_title; ?></h3>
-												</span>
-
-											</span>
-										</span>
-									<?php endif; ?>
+									<h4 class="gbt_18_mt_posts_grid_title" href="<?php echo get_post_permalink($post->ID); ?>"><?php echo $post->post_title; ?></h4>
 								</a>
 
 			                </div>
