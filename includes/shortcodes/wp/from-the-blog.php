@@ -47,10 +47,8 @@ function mt_ext_shortcode_from_the_blog($atts, $content = null) {
 								$image_url = wp_get_attachment_image_src($image_id,'large', true);
 							?>
 								<span class="from_the_blog_img" style="background-image: url(<?php echo $image_url[0]; ?> );"></span>
-								<span class="with_thumb_icon"></span>
 							<?php else : ?>
 								<span class="from_the_blog_noimg"></span>
-								<span class="no_thumb_icon"></span>
 							<?php endif;  ?>
 
 						</a>
@@ -88,7 +86,7 @@ function mt_ext_shortcode_from_the_blog($atts, $content = null) {
         </div>
 
         <div class="swiper-pagination"></div>
-        
+
     </div>
 
     <?php
