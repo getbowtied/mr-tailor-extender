@@ -54,6 +54,10 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 			add_action( 'header_socials', function( $color ) {
 				echo do_shortcode('[social-media items_align="right" color="'.$color.'"]');
 			} );
+
+			add_action( 'header_socials_full', function( $color ) {
+				echo do_shortcode('[social-media items_align="left" color="'.$color.'"]');
+			} );
 		}
 
 		/**

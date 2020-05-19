@@ -45,19 +45,15 @@
 {
 	.site-social-icons-shortcode
 	{
-		float: right;
-	    order: 2;
 	    flex-shrink: 0;
         text-align: center;
     	margin: 0;
-	    max-width: 260px;
 
     	ul.mt_social_icons_list
     	{
 		    line-height: 1;
 		    list-style: none;
 		    margin: 0;
-		    padding: 0 0 0 20px;
 		    overflow: auto;
 
 		    li.mt_social_icon
@@ -71,6 +67,11 @@
 					svg {
 						transition: all .3s ease;
 					}
+				}
+
+				&:first-child
+    			{
+				    padding: 11px 7px 4px 0;
 				}
 
     			&:last-child
