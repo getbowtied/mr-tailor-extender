@@ -7,7 +7,7 @@
   .category_header.with_featured_img .woocommerce-breadcrumb a {
     color: #fff; }
   .category_header.with_featured_img .woocommerce-products-header__title {
-    margin-bottom: 1rem; }
+    margin-bottom: 25px; }
   .category_header.with_featured_img .woocommerce-breadcrumb {
     color: rgba(255, 255, 255, 0.45); }
     .category_header.with_featured_img .woocommerce-breadcrumb a:hover {
