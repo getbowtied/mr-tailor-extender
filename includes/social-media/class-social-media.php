@@ -387,7 +387,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 			$social_media_encoded_list = get_option( 'mt_social_media_repeater', json_encode( array() ) );
 			$social_media_profiles 	   = json_decode( $social_media_encoded_list );
 
-			if( !empty($social_media_profiles) ) {
+			if( !empty($social_media_profiles) && ( count($social_media_profiles) > 1 || ( !empty( $social_media_profiles[0]->link ) && !empty($social_media_profiles[0]->icon_slug) ) ) ) {
 
 			    ?>
 
