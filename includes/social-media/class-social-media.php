@@ -384,67 +384,71 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 
 		    ob_start();
 
-		    ?>
+			$social_media_encoded_list = get_option( 'mt_social_media_repeater', json_encode( array() ) );
+			$social_media_profiles 	   = json_decode( $social_media_encoded_list );
 
-		    <div class="site-social-icons-shortcode">
+			if( !empty($social_media_profiles) ) {
 
-		        <ul class="mt_social_icons_list align-<?php echo esc_html($items_align); ?>">
+			    ?>
 
-					<?php
+			    <div class="site-social-icons-shortcode">
 
-					$social_media_encoded_list = get_option( 'mt_social_media_repeater', json_encode( array() ) );
-					$social_media_profiles 	   = json_decode( $social_media_encoded_list );
+			        <ul class="mt_social_icons_list align-<?php echo esc_html($items_align); ?>">
 
-					foreach( $social_media_profiles as $social ) {
+						<?php
 
-						if( !empty( $social->link ) && !empty($social->icon_slug) ) {
+						foreach( $social_media_profiles as $social ) {
 
-							if( 'custom' === $social->icon_slug && !empty( $social->image_url ) ) {
-							?>
+							if( !empty( $social->link ) && !empty($social->icon_slug) ) {
 
-								<li class="mt_social_icon custom_icon icon_<?php echo $social->icon_slug; ?>">
-									<a class="mt_social_icon_link" target="_blank" href="<?php echo esc_url( $social->link ); ?>">
-										<img src="<?php echo esc_url( $social->image_url ); ?>" alt="Social Media Profile"
-											width="<?php echo esc_attr( $font_size ); ?>" height="<?php echo esc_attr( $font_size ); ?>" />
-									</a>
-								</li>
+								if( 'custom' === $social->icon_slug && !empty( $social->image_url ) ) {
+								?>
 
-							<?php } else if( 'custom' !== $social->icon_slug ) {
-
-								$svg_path = '';
-								foreach( $this->social_media_profiles as $social_profile => $val ) {
-									if( $val['slug'] === $social->icon_slug && isset( $val['svg_path'] ) ) {
-										$svg_path = $val['svg_path'];
-									}
-								}
-
-								if( !empty($svg_path) ) {
-									?>
-
-									<li class="mt_social_icon default_icon icon_<?php echo $social->icon_slug; ?>">
-										<a class="mt_social_icon_link" target="_blank"
-											href="<?php echo esc_url( $social->link ); ?>">
-											<svg
-												xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-												width="<?php echo esc_attr( $font_size ); ?>" height="<?php echo esc_attr( $font_size ); ?>"
-												viewBox="0 0 50 50"
-												fill="<?php echo esc_attr( $color ); ?>">
-												<path d="<?php echo esc_attr( $svg_path ); ?>"></path>
-											</svg>
+									<li class="mt_social_icon custom_icon icon_<?php echo $social->icon_slug; ?>">
+										<a class="mt_social_icon_link" target="_blank" href="<?php echo esc_url( $social->link ); ?>">
+											<img src="<?php echo esc_url( $social->image_url ); ?>" alt="Social Media Profile"
+												width="<?php echo esc_attr( $font_size ); ?>" height="<?php echo esc_attr( $font_size ); ?>" />
 										</a>
 									</li>
 
-									<?php
+								<?php } else if( 'custom' !== $social->icon_slug ) {
+
+									$svg_path = '';
+									foreach( $this->social_media_profiles as $social_profile => $val ) {
+										if( $val['slug'] === $social->icon_slug && isset( $val['svg_path'] ) ) {
+											$svg_path = $val['svg_path'];
+										}
+									}
+
+									if( !empty($svg_path) ) {
+										?>
+
+										<li class="mt_social_icon default_icon icon_<?php echo $social->icon_slug; ?>">
+											<a class="mt_social_icon_link" target="_blank"
+												href="<?php echo esc_url( $social->link ); ?>">
+												<svg
+													xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+													width="<?php echo esc_attr( $font_size ); ?>" height="<?php echo esc_attr( $font_size ); ?>"
+													viewBox="0 0 50 50"
+													fill="<?php echo esc_attr( $color ); ?>">
+													<path d="<?php echo esc_attr( $svg_path ); ?>"></path>
+												</svg>
+											</a>
+										</li>
+
+										<?php
+									}
 								}
 							}
 						}
-					}
-					?>
-		        </ul>
+						?>
+			        </ul>
 
-		    </div>
+			    </div>
 
 		    <?php
+
+			}
 
 		    $content = ob_get_contents();
 
