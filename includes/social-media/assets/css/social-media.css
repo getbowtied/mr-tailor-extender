@@ -32,7 +32,7 @@
     margin: 0;
     overflow: auto; }
     #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon {
-      padding: 12px 7px 5px 7px;
+      padding: 4px 7px 0 7px;
       float: left; }
       #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon a {
         vertical-align: middle; }
@@ -41,9 +41,9 @@
           -o-transition: all .3s ease;
           transition: all .3s ease; }
       #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon:first-child {
-        padding: 11px 7px 4px 0; }
+        padding: 4px 7px 0 0; }
       #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon:last-child {
-        padding: 11px 0 4px 7px; }
+        padding: 4px 0 0 7px; }
 
 .offcanvas-left-content .site-social-icons-shortcode {
   margin: 0; }
