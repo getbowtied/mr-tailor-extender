@@ -31,7 +31,7 @@ jQuery(function($) {
 			slidesPerView: slides,
 			spaceBetween: 30,
 			breakpoints: {
-				480: {
+				0: {
 			      slidesPerView: 1,
 			      spaceBetween: 0,
 			    },
