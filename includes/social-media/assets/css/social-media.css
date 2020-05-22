@@ -29,8 +29,7 @@
   #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list {
     line-height: 1;
     list-style: none;
-    margin: 0;
-    overflow: auto; }
+    margin: 0; }
     #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon {
       padding: 4px 7px 0 7px;
       float: left; }
