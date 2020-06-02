@@ -15,333 +15,378 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: core\n"
 
-#: core/updater/Puc/v4p6/Plugin/Ui.php:54
-msgid "View details"
-msgstr ""
-
-#: core/updater/Puc/v4p6/Plugin/Ui.php:77
-#, php-format
-msgid "More information about %s"
-msgstr ""
-
-#: core/updater/Puc/v4p6/Plugin/Ui.php:128
-msgid "Check for updates"
-msgstr ""
-
-#: core/updater/Puc/v4p6/Plugin/Ui.php:213
-#, php-format
-msgctxt "the plugin title"
-msgid "The %s plugin is up to date."
-msgstr ""
-
-#: core/updater/Puc/v4p6/Plugin/Ui.php:215
-#, php-format
-msgctxt "the plugin title"
-msgid "A new version of the %s plugin is available."
-msgstr ""
-
-#: core/updater/Puc/v4p6/Plugin/Ui.php:217
-#, php-format
-msgctxt "the plugin title"
-msgid "Could not determine if updates are available for %s."
-msgstr ""
-
-#: core/updater/Puc/v4p6/Plugin/Ui.php:223
-#, php-format
-msgid "Unknown update checker status \"%s\""
-msgstr ""
-
-#: core/updater/Puc/v4p6/Vcs/PluginUpdateChecker.php:98
-msgid "There is no changelog available."
-msgstr ""
-
-#: includes/addons/class-wc-category-header-image.php:64
-#: includes/addons/class-wc-category-header-image.php:154
-#: includes/addons/class-wc-category-header-image.php:255
+#: includes/addons/class-wc-category-header-image.php:100
+#: includes/addons/class-wc-category-header-image.php:139
+#: includes/addons/class-wc-category-header-image.php:186
 msgid "Header"
 msgstr ""
 
-#: includes/addons/class-wc-category-header-image.php:68
-#: includes/addons/class-wc-category-header-image.php:159
+#: includes/addons/class-wc-category-header-image.php:106
+#: includes/addons/class-wc-category-header-image.php:144
 msgid "Upload/Add image"
 msgstr ""
 
-#: includes/addons/class-wc-category-header-image.php:69
-#: includes/addons/class-wc-category-header-image.php:160
+#: includes/addons/class-wc-category-header-image.php:107
+#: includes/addons/class-wc-category-header-image.php:145
 msgid "Remove image"
 msgstr ""
 
-#: includes/addons/class-wc-category-header-image.php:93
-#: includes/addons/class-wc-category-header-image.php:186
-msgid "Choose an image"
-msgstr ""
-
-#: includes/addons/class-wc-category-header-image.php:95
-#: includes/addons/class-wc-category-header-image.php:188
-msgid "Use image"
-msgstr ""
-
-#: includes/addons/class-wc-category-header-image.php:254
+#: includes/addons/class-wc-category-header-image.php:185
 msgid "Image"
 msgstr ""
 
-#: includes/custom-code/class-custom-code.php:64
+#: includes/custom-code/class-custom-code.php:85
 msgid "Additional JS"
 msgstr ""
 
-#: includes/custom-code/class-custom-code.php:81
+#: includes/custom-code/class-custom-code.php:102
 msgid "Header JavaScript Code"
 msgstr ""
 
-#: includes/custom-code/class-custom-code.php:101
+#: includes/custom-code/class-custom-code.php:122
 msgid "Footer JavaScript Code"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:24
-msgid "Banner"
+#: includes/custom-menu/edit_custom_walker.php:107
+#, php-format
+msgid "%s (Invalid)"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:103
-#: includes/gbt-blocks/lookbook/block.js:547
-msgid "Title Color"
+#: includes/custom-menu/edit_custom_walker.php:111
+#, php-format
+msgid "%s (Pending)"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:110
-#: includes/gbt-blocks/lookbook/block.js:554
-msgid "Subtitle Color"
+#: includes/custom-menu/edit_custom_walker.php:124
+msgid "sub item"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:117
-#: includes/gbt-blocks/lookbook/block.js:568
-msgid "Background Color"
+#: includes/custom-menu/edit_custom_walker.php:139
+msgid "Move up"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:128
-msgid "Inner Stroke Color"
+#: includes/custom-menu/edit_custom_walker.php:152
+msgid "Move down"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:150
-msgid "General Settings"
+#: includes/custom-menu/edit_custom_walker.php:156
+msgid "Edit menu item"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:158
+#: includes/custom-menu/edit_custom_walker.php:156
+msgid "Edit"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:165
+#: includes/gbt-blocks/banner/block.js:162
 msgid "URL"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:169
+#: includes/custom-menu/edit_custom_walker.php:172
+msgid "Navigation Label"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:178
+msgid "Title Attribute"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:185
+msgid "Open link in a new tab"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:190
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:196
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:202
+msgid "Description"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:204
+msgid "The description will be displayed in the menu if the current theme supports it."
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:213
+msgid "Background URL"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:222
+msgid "Move"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:223
+msgid "Up one"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:224
+msgid "Down one"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:227
+msgid "To the top"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:233
+#, php-format
+msgid "Original: %s"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:246
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:151
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:189
+msgid "Remove"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:247
+msgid "Cancel"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:99
+msgid "Add a Profile"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:134
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:173
+msgid "Title:"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:141
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:180
+msgid "Link:"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:155
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:193
+msgid "Done"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:164
+msgid "Social Media Profile"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:229
+msgid "Icon:"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:243
+msgid "Custom Icon"
+msgstr ""
+
+#: includes/customizer/repeater/class-mt-ext-repeater-control.php:262
+msgid "Image:"
+msgstr ""
+
+#: includes/gbt-blocks/banner/block.js:28
+msgid "Banner"
+msgstr ""
+
+#: includes/gbt-blocks/banner/block.js:107
+msgid "Title Color"
+msgstr ""
+
+#: includes/gbt-blocks/banner/block.js:114
+msgid "Subtitle Color"
+msgstr ""
+
+#: includes/gbt-blocks/banner/block.js:121
+msgid "Background Color"
+msgstr ""
+
+#: includes/gbt-blocks/banner/block.js:132
+msgid "Inner Stroke Color"
+msgstr ""
+
+#: includes/gbt-blocks/banner/block.js:154
+msgid "General Settings"
+msgstr ""
+
+#: includes/gbt-blocks/banner/block.js:173
 msgid "Open link in new tab?"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:185
-#: includes/gbt-blocks/lookbook/block.js:518
+#: includes/gbt-blocks/banner/block.js:189
 msgid "Height"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:208
+#: includes/gbt-blocks/banner/block.js:212
 msgid "Title Font Size"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:223
+#: includes/gbt-blocks/banner/block.js:227
 msgid "Subtitle Font Size"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:234
+#: includes/gbt-blocks/banner/block.js:238
 msgid "Inner Stroke"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:246
+#: includes/gbt-blocks/banner/block.js:250
 msgid "Inner Stroke Thickness"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:257
-#: includes/gbt-blocks/lookbook/block.js:543
+#: includes/gbt-blocks/banner/block.js:261
 msgid "Colors"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:320
-#: includes/gbt-blocks/lookbook/block.js:615
+#: includes/gbt-blocks/banner/block.js:324
 msgid "Add Image"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:336
-#: includes/gbt-blocks/lookbook/block.js:631
+#: includes/gbt-blocks/banner/block.js:340
 msgid "Remove Image"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:372
-#: includes/gbt-blocks/lookbook/block.js:670
+#: includes/gbt-blocks/banner/block.js:376
 msgid "Add Title"
 msgstr ""
 
-#: includes/gbt-blocks/banner/block.js:392
-#: includes/gbt-blocks/lookbook/block.js:692
+#: includes/gbt-blocks/banner/block.js:396
 msgid "Add Subtitle"
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:25
-msgid "Lookbook"
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:189
-#: includes/gbt-blocks/posts_grid/block.js:202
-#: includes/gbt-blocks/posts_slider/block.js:188
-msgid "Update"
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:191
-#: includes/gbt-blocks/posts_grid/block.js:204
-#: includes/gbt-blocks/posts_slider/block.js:190
-msgid "Updating"
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:291
-msgid "No products matching."
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:450
-msgid "Search for products to display"
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:484
-msgid "Selected Products:"
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:533
-#: includes/gbt-blocks/posts_grid/block.js:534
-#: includes/gbt-blocks/posts_slider/block.js:577
-msgid "Columns"
-msgstr ""
-
-#: includes/gbt-blocks/lookbook/block.js:561
-msgid "Product Title Color"
 msgstr ""
 
 #: includes/gbt-blocks/posts_grid/block.js:26
 msgid "Posts Grid"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:35
-msgid "Grid"
+#: includes/gbt-blocks/posts_grid/block.js:196
+#: includes/gbt-blocks/posts_slider/block.js:191
+msgid "Update"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:36
-msgid "List"
+#: includes/gbt-blocks/posts_grid/block.js:198
+#: includes/gbt-blocks/posts_slider/block.js:193
+msgid "Updating"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:264
-#: includes/gbt-blocks/posts_slider/block.js:255
+#: includes/gbt-blocks/posts_grid/block.js:251
+#: includes/gbt-blocks/posts_slider/block.js:258
 msgid "January"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:265
-#: includes/gbt-blocks/posts_slider/block.js:256
+#: includes/gbt-blocks/posts_grid/block.js:252
+#: includes/gbt-blocks/posts_slider/block.js:259
 msgid "February"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:266
-#: includes/gbt-blocks/posts_slider/block.js:257
+#: includes/gbt-blocks/posts_grid/block.js:253
+#: includes/gbt-blocks/posts_slider/block.js:260
 msgid "March"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:267
-#: includes/gbt-blocks/posts_slider/block.js:258
+#: includes/gbt-blocks/posts_grid/block.js:254
+#: includes/gbt-blocks/posts_slider/block.js:261
 msgid "April"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:268
-#: includes/gbt-blocks/posts_slider/block.js:259
+#: includes/gbt-blocks/posts_grid/block.js:255
+#: includes/gbt-blocks/posts_slider/block.js:262
 msgid "May"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:269
-#: includes/gbt-blocks/posts_slider/block.js:260
+#: includes/gbt-blocks/posts_grid/block.js:256
+#: includes/gbt-blocks/posts_slider/block.js:263
 msgid "June"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:270
-#: includes/gbt-blocks/posts_slider/block.js:261
+#: includes/gbt-blocks/posts_grid/block.js:257
+#: includes/gbt-blocks/posts_slider/block.js:264
 msgid "July"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:271
-#: includes/gbt-blocks/posts_slider/block.js:262
+#: includes/gbt-blocks/posts_grid/block.js:258
+#: includes/gbt-blocks/posts_slider/block.js:265
 msgid "August"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:272
-#: includes/gbt-blocks/posts_slider/block.js:263
+#: includes/gbt-blocks/posts_grid/block.js:259
+#: includes/gbt-blocks/posts_slider/block.js:266
 msgid "September"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:273
-#: includes/gbt-blocks/posts_slider/block.js:264
+#: includes/gbt-blocks/posts_grid/block.js:260
+#: includes/gbt-blocks/posts_slider/block.js:267
 msgid "October"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:274
-#: includes/gbt-blocks/posts_slider/block.js:265
+#: includes/gbt-blocks/posts_grid/block.js:261
+#: includes/gbt-blocks/posts_slider/block.js:268
 msgid "November"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:275
-#: includes/gbt-blocks/posts_slider/block.js:266
+#: includes/gbt-blocks/posts_grid/block.js:262
+#: includes/gbt-blocks/posts_slider/block.js:269
 msgid "December"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:464
-#: includes/gbt-blocks/posts_slider/block.js:507
+#: includes/gbt-blocks/posts_grid/block.js:439
+#: includes/gbt-blocks/posts_slider/block.js:512
 msgid "Categories:"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:484
-#: includes/gbt-blocks/posts_slider/block.js:527
+#: includes/gbt-blocks/posts_grid/block.js:459
+#: includes/gbt-blocks/posts_slider/block.js:532
 msgid "Order By"
 msgstr ""
 
-#: includes/gbt-blocks/posts_grid/block.js:503
-#: includes/gbt-blocks/posts_slider/block.js:546
+#: includes/gbt-blocks/posts_grid/block.js:478
+#: includes/gbt-blocks/posts_slider/block.js:551
 #: includes/shortcodes/wb/blog-posts.php:44
 msgid "Number of Posts"
 msgstr ""
 
-#: includes/gbt-blocks/posts_slider/block.js:22
+#: includes/gbt-blocks/posts_grid/block.js:509
+#: includes/gbt-blocks/posts_slider/block.js:585
+msgid "Columns"
+msgstr ""
+
+#: includes/gbt-blocks/posts_grid/block.php:87
+#: includes/gbt-blocks/posts_slider/block.php:89
+msgid "Read more"
+msgstr ""
+
+#: includes/gbt-blocks/posts_slider/block.js:25
 msgid "Posts Slider"
 msgstr ""
 
-#: includes/gbt-blocks/posts_slider/block.js:522
+#: includes/gbt-blocks/posts_slider/block.js:527
 msgid "Alphabetical Ascending"
 msgstr ""
 
-#: includes/gbt-blocks/posts_slider/block.js:523
+#: includes/gbt-blocks/posts_slider/block.js:528
 msgid "Alphabetical Descending"
 msgstr ""
 
-#: includes/gbt-blocks/posts_slider/block.js:524
+#: includes/gbt-blocks/posts_slider/block.js:529
 msgid "Date Ascending"
 msgstr ""
 
-#: includes/gbt-blocks/posts_slider/block.js:525
+#: includes/gbt-blocks/posts_slider/block.js:530
 msgid "Date Descending"
 msgstr ""
 
-#: includes/gbt-blocks/social_media_profiles/block.js:25
-#: includes/social-media/class-social-media.php:399
+#: includes/gbt-blocks/social_media_profiles/block.js:28
+#: includes/social-media/class-social-media.php:469
 msgid "Social Media Profiles"
 msgstr ""
 
-#: includes/gbt-blocks/social_media_profiles/block.js:70
+#: includes/gbt-blocks/social_media_profiles/block.js:73
 msgid "Icons Font Size"
 msgstr ""
 
-#: includes/gbt-blocks/social_media_profiles/block.js:80
 #: includes/gbt-blocks/social_media_profiles/block.js:83
+#: includes/gbt-blocks/social_media_profiles/block.js:86
 msgid "Icons Color"
 msgstr ""
 
-#: includes/gbt-blocks/social_media_profiles/block.js:122
+#: includes/gbt-blocks/social_media_profiles/block.js:125
 msgid "Setup social profile links under Appearance > Customize > Social Media"
 msgstr ""
 
@@ -369,53 +414,61 @@ msgstr ""
 msgid "Input product ID or product SKU or product title to see suggestions"
 msgstr ""
 
-#: includes/shortcodes/wp/from-the-blog.php:79
+#: includes/shortcodes/wp/from-the-blog.php:63
 #, php-format
 msgctxt "1: post format name. 2: date"
 msgid "%1$s on %2$s"
 msgstr ""
 
-#: includes/shortcodes/wp/from-the-blog.php:85
+#: includes/shortcodes/wp/from-the-blog.php:69
 #, php-format
 msgid "Permalink to %s"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:292
+#: includes/social-media/class-social-media.php:333
 msgid "Social Media"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:401
+#: includes/social-media/class-social-media.php:471
 msgid "Links to your social media profiles"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:413
+#: includes/social-media/class-social-media.php:483
 msgid "Align"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:427
+#: includes/social-media/class-social-media.php:497
 msgid "Font Size (px, em)"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:436
+#: includes/social-media/class-social-media.php:506
 msgid "Color"
 msgstr ""
 
-#: includes/social-sharing/class-social-sharing.php:111
+#: includes/social-sharing/class-social-sharing.php:112
 msgid "Product Sharing Options"
 msgstr ""
 
-#: includes/social-sharing/class-social-sharing.php:131
+#: includes/social-sharing/class-social-sharing.php:133
 msgid "Blog Sharing Options"
 msgstr ""
 
-#: includes/social-sharing/class-social-sharing.php:183
+#: includes/social-sharing/class-social-sharing.php:147
+msgid "Share this product"
+msgstr ""
+
+#: includes/social-sharing/class-social-sharing.php:161
+msgid "Share this post"
+msgstr ""
+
+#: includes/social-sharing/class-social-sharing.php:191
 msgid "Facebook"
 msgstr ""
 
-#: includes/social-sharing/class-social-sharing.php:195
+#: includes/social-sharing/class-social-sharing.php:203
 msgid "Twitter"
 msgstr ""
 
-#: includes/social-sharing/class-social-sharing.php:207
+#: includes/social-sharing/class-social-sharing.php:215
 msgid "Pinterest"
 msgstr ""

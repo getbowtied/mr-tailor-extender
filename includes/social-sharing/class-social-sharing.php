@@ -143,7 +143,10 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 
 		    <div class="box-share-master-container">
 		        <div class="box-share-container product-share-container">
-		            <?php $this->get_sharing_options('Share this product'); ?>
+		            <?php
+					$title = esc_html__('Share this product', 'mrtailor-extender');
+					$this->get_sharing_options( $title );
+					?>
 		        </div>
 		    </div>
 
@@ -154,7 +157,10 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 			?>
 
 			<div class="box-share-container post-share-container">
-				<?php $this->get_sharing_options('Share this post'); ?>
+				<?php
+				$title = esc_html__('Share this post', 'mrtailor-extender');
+				$this->get_sharing_options( $title );
+				?>
 			</div>
 
 			<?php
@@ -168,7 +174,7 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 			?>
 
 			<a class="trigger-share-list" href="#">
-            	<?php _e( $title, 'mrtailor-extender' ); ?>
+            	<?php echo $title; ?>
             </a>
 
             <div class="box-share-list">

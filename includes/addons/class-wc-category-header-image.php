@@ -136,13 +136,13 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 			?>
 
 			<tr class="form-field">
-				<th scope="row" valign="top"><label><?php _e( 'Header', 'mrtailor-extender' ); ?></label></th>
+				<th scope="row" valign="top"><label><?php esc_html_e( 'Header', 'mrtailor-extender' ); ?></label></th>
 				<td>
 					<div id="product_cat_header" style="background-image:url(<?php echo $image; ?>);"></div>
 					<div style="line-height:60px;">
 						<input type="hidden" id="product_cat_header_id" name="product_cat_header_id" value="<?php echo $header_id; ?>" />
-						<button type="submit" class="upload_header_button button"><?php _e( 'Upload/Add image', 'mrtailor-extender' ); ?></button>
-						<button type="submit" class="remove_header_image_button button"><?php _e( 'Remove image', 'mrtailor-extender' ); ?></button>
+						<button type="submit" class="upload_header_button button"><?php esc_html_e( 'Upload/Add image', 'mrtailor-extender' ); ?></button>
+						<button type="submit" class="remove_header_image_button button"><?php esc_html_e( 'Remove image', 'mrtailor-extender' ); ?></button>
 					</div>
 
 					<div class="clear"></div>
@@ -182,8 +182,8 @@ if ( ! class_exists( 'MTCategoryHeaderImage' ) ) :
 		 */
 		public function woocommerce_product_cat_header_columns( $columns ) {
 			$new_columns = array();
-			$new_columns['thumb'] = __( 'Image', 'mrtailor-extender' );
-			$new_columns['header'] = __( 'Header', 'mrtailor-extender' );
+			$new_columns['thumb'] = esc_html__( 'Image', 'mrtailor-extender' );
+			$new_columns['header'] = esc_html__( 'Header', 'mrtailor-extender' );
 			unset( $columns['thumb'] );
 
 			return array_merge( $new_columns, $columns );

@@ -9,6 +9,7 @@
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
  * Tested up to: 			5.4
+ * Text Domain:             mrtailor-extender
  *
  * @package  Mr. Tailor Extender
  * @author   GetBowtied
