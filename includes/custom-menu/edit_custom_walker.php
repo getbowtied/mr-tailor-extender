@@ -104,11 +104,11 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 			if ( ! empty( $item->_invalid ) ) {
 				$classes[] = 'menu-item-invalid';
 				/* translators: %s: title of menu item which is invalid */
-				$title = sprintf( __( '%s (Invalid)', 'shopkeeper' ), $item->title );
+				$title = sprintf( __( '%s (Invalid)', 'mrtailor-extender' ), $item->title );
 			} elseif ( isset( $item->post_status ) && 'draft' == $item->post_status ) {
 				$classes[] = 'pending';
 				/* translators: %s: title of menu item in draft status */
-				$title = sprintf( __('%s (Pending)', 'shopkeeper'), $item->title );
+				$title = sprintf( __('%s (Pending)', 'mrtailor-extender'), $item->title );
 			}
 
 			$title = ( ! isset( $item->label ) || '' == $item->label ) ? $title : $item->label;
@@ -121,7 +121,7 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 			<li id="menu-item-<?php echo esc_attr( $item_id ); ?>" class="<?php echo implode(' ', $classes ); ?>">
 				<div class="menu-item-bar">
 					<div class="menu-item-handle">
-						<span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo esc_html( $submenu_text ); ?>><?php esc_html_e( 'sub item', 'shopkeeper' ); ?></span></span>
+						<span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo esc_html( $submenu_text ); ?>><?php esc_html_e( 'sub item', 'mrtailor-extender' ); ?></span></span>
 						<span class="item-controls">
 							<span class="item-type"><?php echo esc_html( $item->type_label ); ?></span>
 							<span class="item-order hide-if-js">
@@ -136,7 +136,7 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 										),
 										'move-menu_item'
 									);
-								?>" class="item-move-up" aria-label="<?php esc_attr_e( 'Move up', 'shopkeeper' ) ?>">&#8593;</a>
+								?>" class="item-move-up" aria-label="<?php esc_attr_e( 'Move up', 'mrtailor-extender' ) ?>">&#8593;</a>
 								|
 								<a href="<?php
 									echo wp_nonce_url(
@@ -149,11 +149,11 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 										),
 										'move-menu_item'
 									);
-								?>" class="item-move-down" aria-label="<?php esc_attr_e( 'Move down', 'shopkeeper' ) ?>">&#8595;</a>
+								?>" class="item-move-down" aria-label="<?php esc_attr_e( 'Move down', 'mrtailor-extender' ) ?>">&#8595;</a>
 							</span>
 							<a class="item-edit" id="edit-<?php echo esc_attr( $item_id ); ?>" href="<?php
 								echo ( isset( $_GET['edit-menu-item'] ) && $item_id == $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
-							?>" aria-label="<?php esc_attr_e( 'Edit menu item', 'shopkeeper' ); ?>"><?php esc_html_e( 'Edit', 'shopkeeper' ); ?></a>
+							?>" aria-label="<?php esc_attr_e( 'Edit menu item', 'mrtailor-extender' ); ?>"><?php esc_html_e( 'Edit', 'mrtailor-extender' ); ?></a>
 						</span>
 					</div>
 				</div>
@@ -162,46 +162,46 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 					<?php if ( 'custom' == $item->type ) : ?>
 						<p class="field-url description description-wide">
 							<label for="edit-menu-item-url-<?php echo esc_attr( $item_id ); ?>">
-								<?php esc_html_e( 'URL', 'shopkeeper' ); ?><br />
+								<?php esc_html_e( 'URL', 'mrtailor-extender' ); ?><br />
 								<input type="text" id="edit-menu-item-url-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-url" name="menu-item-url[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->url ); ?>" />
 							</label>
 						</p>
 					<?php endif; ?>
 					<p class="description description-wide">
 						<label for="edit-menu-item-title-<?php echo esc_attr( $item_id ); ?>">
-							<?php esc_html_e( 'Navigation Label', 'shopkeeper' ); ?><br />
+							<?php esc_html_e( 'Navigation Label', 'mrtailor-extender' ); ?><br />
 							<input type="text" id="edit-menu-item-title-<?php echo esc_attr( $item_id ); ?>" class="widefat edit-menu-item-title" name="menu-item-title[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->title ); ?>" />
 						</label>
 					</p>
 					<p class="field-title-attribute field-attr-title description description-wide">
 						<label for="edit-menu-item-attr-title-<?php echo esc_attr( $item_id ); ?>">
-							<?php esc_html_e( 'Title Attribute', 'shopkeeper' ); ?><br />
+							<?php esc_html_e( 'Title Attribute', 'mrtailor-extender' ); ?><br />
 							<input type="text" id="edit-menu-item-attr-title-<?php echo esc_attr( $item_id ); ?>" class="widefat edit-menu-item-attr-title" name="menu-item-attr-title[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->post_excerpt ); ?>" />
 						</label>
 					</p>
 					<p class="field-link-target description">
 						<label for="edit-menu-item-target-<?php echo esc_attr( $item_id ); ?>">
 							<input type="checkbox" id="edit-menu-item-target-<?php echo esc_attr( $item_id ); ?>" value="_blank" name="menu-item-target[<?php echo esc_attr( $item_id ); ?>]"<?php checked( $item->target, '_blank' ); ?> />
-							<?php esc_html_e( 'Open link in a new tab', 'shopkeeper' ); ?>
+							<?php esc_html_e( 'Open link in a new tab', 'mrtailor-extender' ); ?>
 						</label>
 					</p>
 					<p class="field-css-classes description description-thin">
 						<label for="edit-menu-item-classes-<?php echo esc_attr( $item_id ); ?>">
-							<?php esc_html_e( 'CSS Classes (optional)', 'shopkeeper' ); ?><br />
+							<?php esc_html_e( 'CSS Classes (optional)', 'mrtailor-extender' ); ?><br />
 							<input type="text" id="edit-menu-item-classes-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( implode(' ', $item->classes ) ); ?>" />
 						</label>
 					</p>
 					<p class="field-xfn description description-thin">
 						<label for="edit-menu-item-xfn-<?php echo esc_attr( $item_id ); ?>">
-							<?php esc_html_e( 'Link Relationship (XFN)', 'shopkeeper' ); ?><br />
+							<?php esc_html_e( 'Link Relationship (XFN)', 'mrtailor-extender' ); ?><br />
 							<input type="text" id="edit-menu-item-xfn-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-xfn" name="menu-item-xfn[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->xfn ); ?>" />
 						</label>
 					</p>
 					<p class="field-description description description-wide">
 						<label for="edit-menu-item-description-<?php echo esc_attr( $item_id ); ?>">
-							<?php esc_html_e( 'Description', 'shopkeeper' ); ?><br />
+							<?php esc_html_e( 'Description', 'mrtailor-extender' ); ?><br />
 							<textarea id="edit-menu-item-description-<?php echo esc_attr( $item_id ); ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo esc_attr( $item_id ); ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
-							<span class="description"><?php esc_html_e('The description will be displayed in the menu if the current theme supports it.', 'shopkeeper'); ?></span>
+							<span class="description"><?php esc_html_e('The description will be displayed in the menu if the current theme supports it.', 'mrtailor-extender'); ?></span>
 						</label>
 					</p>
 
@@ -210,7 +210,7 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 		            ?>      
 		            <p class="field-background-url description description-wide">
 		                <label for="edit-menu-item-background_url-<?php echo esc_attr( $item_id ); ?>">
-		                    <?php esc_html_e( 'Background URL', 'shopkeeper' ); ?><br />
+		                    <?php esc_html_e( 'Background URL', 'mrtailor-extender' ); ?><br />
 		                    <input type="text" id="edit-menu-item-background_url-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-custom" name="menu-item-background_url[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->background_url ); ?>" />
 		                </label>
 		            </p>
@@ -219,18 +219,18 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 		            ?>
 
 					<fieldset class="field-move hide-if-no-js description description-wide">
-						<span class="field-move-visual-label" aria-hidden="true"><?php esc_html_e( 'Move', 'shopkeeper' ); ?></span>
-						<button type="button" class="button-link menus-move menus-move-up" data-dir="up"><?php esc_html_e( 'Up one', 'shopkeeper' ); ?></button>
-						<button type="button" class="button-link menus-move menus-move-down" data-dir="down"><?php esc_html_e( 'Down one', 'shopkeeper' ); ?></button>
+						<span class="field-move-visual-label" aria-hidden="true"><?php esc_html_e( 'Move', 'mrtailor-extender' ); ?></span>
+						<button type="button" class="button-link menus-move menus-move-up" data-dir="up"><?php esc_html_e( 'Up one', 'mrtailor-extender' ); ?></button>
+						<button type="button" class="button-link menus-move menus-move-down" data-dir="down"><?php esc_html_e( 'Down one', 'mrtailor-extender' ); ?></button>
 						<button type="button" class="button-link menus-move menus-move-left" data-dir="left"></button>
 						<button type="button" class="button-link menus-move menus-move-right" data-dir="right"></button>
-						<button type="button" class="button-link menus-move menus-move-top" data-dir="top"><?php esc_html_e( 'To the top', 'shopkeeper' ); ?></button>
+						<button type="button" class="button-link menus-move menus-move-top" data-dir="top"><?php esc_html_e( 'To the top', 'mrtailor-extender' ); ?></button>
 					</fieldset>
 
 					<div class="menu-item-actions description-wide submitbox">
 						<?php if ( 'custom' != $item->type && $original_title !== false ) : ?>
 							<p class="link-to-original">
-								<?php printf( __('Original: %s', 'shopkeeper'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
+								<?php printf( __('Original: %s', 'mrtailor-extender'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
 							</p>
 						<?php endif; ?>
 						<a class="item-delete submitdelete deletion" id="delete-<?php echo esc_attr( $item_id ); ?>" href="<?php
@@ -243,8 +243,8 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 								admin_url( 'nav-menus.php' )
 							),
 							'delete-menu_item_' . $item_id
-						); ?>"><?php esc_html_e( 'Remove', 'shopkeeper' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo esc_attr( $item_id ); ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
-							?>#menu-item-settings-<?php echo esc_attr( $item_id ); ?>"><?php esc_html_e('Cancel', 'shopkeeper'); ?></a>
+						); ?>"><?php esc_html_e( 'Remove', 'mrtailor-extender' ); ?></a> <span class="meta-sep hide-if-no-js"> | </span> <a class="item-cancel submitcancel hide-if-no-js" id="cancel-<?php echo esc_attr( $item_id ); ?>" href="<?php echo esc_url( add_query_arg( array( 'edit-menu-item' => $item_id, 'cancel' => time() ), admin_url( 'nav-menus.php' ) ) );
+							?>#menu-item-settings-<?php echo esc_attr( $item_id ); ?>"><?php esc_html_e('Cancel', 'mrtailor-extender'); ?></a>
 					</div>
 
 					<input class="menu-item-data-db-id" type="hidden" name="menu-item-db-id[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item_id ); ?>" />

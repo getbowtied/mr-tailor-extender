@@ -2,7 +2,7 @@
 /**
  * Options Repeater control class
  *
- * @package SK_Customize_Repeater_Control
+ * @package MT_Ext_Customize_Repeater_Control
  */
 
 if ( ! class_exists( 'WP_Customize_Control' ) ) {
@@ -10,7 +10,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
 }
 
 /**
- * Class SK_Customize_Repeater_Control
+ * Class MT_Ext_Customize_Repeater_Control
  */
 class MT_Ext_Customize_Repeater_Control extends WP_Customize_Control {
 

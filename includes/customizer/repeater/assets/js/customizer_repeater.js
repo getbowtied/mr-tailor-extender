@@ -236,6 +236,7 @@ jQuery(function($) {
 					$(this).siblings('.customizer-repeater-link-control-wrapper').find('.customizer-repeater-link-control').val('');
 					$(this).siblings('.customizer-repeater-title-control-wrapper').find('.customizer-repeater-title-control').val('');
 					$(this).siblings('.customizer-repeater-image-control').find('.custom-media-url').val('');
+					$(this).siblings('.customizer-repeater-image-control').find('.custom-media-url-preview').attr( 'src', '' );
 					$(this).parent().siblings('.customizer-repeater-customize-control-title').html('Social Media Profile');
 				} else {
 					$(this).parent().parent().remove();

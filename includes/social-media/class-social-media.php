@@ -54,10 +54,6 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 			add_action( 'header_socials', function( $color ) {
 				echo do_shortcode('[social-media items_align="right" color="'.$color.'"]');
 			} );
-
-			add_action( 'header_socials_full', function( $color ) {
-				echo do_shortcode('[social-media items_align="left" color="'.$color.'"]');
-			} );
 		}
 
 		/**
@@ -339,7 +335,7 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 				'type'		 		=> 'option',
 				'sanitize_callback' => 'mt_sanitize_repeater',
 				'capability' 		=> 'manage_options',
-				'transport'  		=> 'refresh',
+				'transport'         => 'postMessage',
 				'default' 			=> json_encode( array() ),
 			) );
 
@@ -354,6 +350,15 @@ if ( ! class_exists( 'MTSocialMedia' ) ) :
 					)
 				)
 			);
+
+			$wp_customize->selective_refresh->add_partial( 'mt_social_media_repeater', array(
+		        'selector' => '.topbar-wrapper .topbar-social-icons',
+		        'settings' => 'mt_social_media_repeater',
+		        'render_callback' => function() {
+		            echo $this->mt_social_media_shortcode(array());
+		        },
+				'fallback_refresh' => false,
+		    ) );
 		}
 
 		/**
