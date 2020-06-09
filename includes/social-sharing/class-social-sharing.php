@@ -121,7 +121,7 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 				'capability' 			=> 'manage_options',
 				'sanitize_callback'    	=> 'mt_bool_to_string',
 				'sanitize_js_callback' 	=> 'mt_string_to_bool',
-				'default'	 			=> 'yes',
+				'default'	 			=> 'no',
 			) );
 
 		    $wp_customize->add_control(
