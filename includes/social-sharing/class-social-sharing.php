@@ -33,7 +33,7 @@ if ( ! class_exists( 'MTSocialSharing' ) ) :
 					add_action( 'product_sharing_options', array( $this, 'getbowtied_product_sharing' ), 10 );
 				}
 
-				if ( get_option( 'mt_blog_sharing_options', 'yes' ) == 'yes' ) {
+				if ( get_option( 'mt_blog_sharing_options', 'no' ) == 'yes' ) {
 					add_action( 'post_sharing_options', array( $this, 'getbowtied_blog_sharing' ), 10 );
 				}
 			}, 1);

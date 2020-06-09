@@ -153,7 +153,7 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 							</span>
 							<a class="item-edit" id="edit-<?php echo esc_attr( $item_id ); ?>" href="<?php
 								echo ( isset( $_GET['edit-menu-item'] ) && $item_id == $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
-							?>" aria-label="<?php esc_attr_e( 'Edit menu item', 'mrtailor-extender' ); ?>"><?php esc_html_e( 'Edit', 'mrtailor-extender' ); ?></a>
+							?>" aria-label="<?php esc_attr_e( 'Edit menu item', 'mrtailor-extender' ); ?>"></a>
 						</span>
 					</div>
 				</div>
@@ -207,7 +207,7 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 
 					<?php
 		            /* New fields insertion starts here */
-		            ?>      
+		            ?>
 		            <p class="field-background-url description description-wide">
 		                <label for="edit-menu-item-background_url-<?php echo esc_attr( $item_id ); ?>">
 		                    <?php esc_html_e( 'Background URL', 'mrtailor-extender' ); ?><br />
