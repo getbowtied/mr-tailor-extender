@@ -99,6 +99,10 @@ if( !class_exists('rc_scm_walker')) {
 	            $n = "\n";
 	        }
 	        $indent  = str_repeat( $t, $depth );
+
+			if($depth === 0 ) {
+				$output .= "<li class='menu-item-image-column'></li>";
+			}
 	        $output .= "$indent</ul>{$n}";
 	    }
 
@@ -128,6 +132,10 @@ if( !class_exists('rc_scm_walker')) {
 
 	        $classes   = empty( $item->classes ) ? array() : (array) $item->classes;
 	        $classes[] = 'menu-item-' . $item->ID;
+
+			if( $depth === 0 ) {
+				$classes[] = 'menu-item-parent';
+			}
 
 	        /**
 	         * Filters the arguments for a single nav menu item.
@@ -172,8 +180,9 @@ if( !class_exists('rc_scm_walker')) {
 	         */
 	        $id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
 	        $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+			$background_image = ! empty( $item->background_url ) ? ' data-item-image="'.$item->background_url.'"' : '';
 
-	        $output .= $indent . '<li' . $id . $class_names . '>';
+	        $output .= $indent . '<li' . $id . $class_names . $background_image . '>';
 
 	        $atts           = array();
 	        $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
@@ -285,3 +294,11 @@ add_filter( 'wp_nav_menu_args', function( $args ) {
 	}
 	return $args;
 }, 1001 );
+
+add_action( 'wp_enqueue_scripts', function() {
+	wp_enqueue_script(
+		'mrtailor-custom-menu-walker-scripts',
+		plugins_url( 'assets/js/custom-menu.js', __FILE__ ),
+		array('jquery')
+	);
+});
