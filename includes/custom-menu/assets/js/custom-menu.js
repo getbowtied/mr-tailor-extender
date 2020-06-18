@@ -19,6 +19,7 @@ jQuery(function($) {
         }
     });
 
+    $('.main-navigation > ul > li.menu-item-megamenu > .sub-menu').css( 'max-height', $(window).height() - $('.main-navigation > ul > li.menu-item-megamenu > .sub-menu').offset().top - 100 );
     $('.main-navigation > ul > li.menu-item-megamenu .sub-menu li.menu-item-inner-wrapper').each(function() {
         $(this).find('ul.menu-item-inner-submenu').css( 'max-height', $(window).height() - $('.main-navigation > ul > li.menu-item-megamenu > .sub-menu').offset().top - 100 );
         $(this).css( 'min-height', $(this).find('ul.menu-item-inner-submenu').outerHeight() );
