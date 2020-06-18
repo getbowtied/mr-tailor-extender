@@ -61,6 +61,7 @@ if( !class_exists('rc_sweet_custom_menu')) {
 		function rc_scm_add_custom_nav_fields( $menu_item ) {
 
 		    $menu_item->background_url = get_post_meta( $menu_item->ID, '_menu_item_background_url', true );
+			$menu_item->megamenu = get_post_meta( $menu_item->ID, '_menu_item_megamenu', 'false' );
 		    return $menu_item;
 
 		}
@@ -82,6 +83,13 @@ if( !class_exists('rc_sweet_custom_menu')) {
 			        update_post_meta( $menu_item_db_id, '_menu_item_background_url', $background_url_value );
 			    }
 		    }
+
+			if ( !empty( $_REQUEST['menu-item-megamenu']) && isset($_REQUEST['menu-item-megamenu'][$menu_item_db_id]) ) {
+		        $megamenu_value = $_REQUEST['menu-item-megamenu'][$menu_item_db_id];
+		        update_post_meta( $menu_item_db_id, '_menu_item_megamenu', $megamenu_value );
+		    } else {
+				update_post_meta( $menu_item_db_id, '_menu_item_megamenu', 'false' );
+			}
 
 		}
 

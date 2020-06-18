@@ -72,7 +72,7 @@ if( !class_exists('rc_scm_walker')) {
 
 	        $output .= "{$n}{$indent}<ul$class_names>{$n}";
 
-			if( $depth === 0 && ( !empty($args->title) || !empty($args->description) ) ) {
+			if( $depth === 0 && ( !empty($args->title) || !empty($args->description) ) && ( 'megamenu' === $args->megamenu ) ) {
 				$title = !empty($args->title) ? esc_attr($args->title) : '';
 				$description = !empty($args->description) ? esc_attr($args->description) : '';
 				$output .= "<li class='menu-item-info-column'><h2 class='menu-item-title'>{$title}</h2><p class='menu-item-description'>{$description}</p></li>";
@@ -100,7 +100,7 @@ if( !class_exists('rc_scm_walker')) {
 	        }
 	        $indent  = str_repeat( $t, $depth );
 
-			if($depth === 0 ) {
+			if( $depth === 0 ) {
 				$output .= "<li class='menu-item-image-column'></li>";
 			}
 	        $output .= "$indent</ul>{$n}";
@@ -152,6 +152,7 @@ if( !class_exists('rc_scm_walker')) {
 			$args->background_url = ! empty( $item->background_url ) ? $item->background_url : '';
 			$args->title = ! empty( $item->attr_title ) ? $item->attr_title : '';
 			$args->description = ! empty( $item->description ) ? $item->description : '';
+			$args->megamenu = ! empty( $item->megamenu ) ? $item->megamenu : '';
 
 	        /**
 	         * Filters the CSS classes applied to a menu item's list item element.
@@ -165,6 +166,11 @@ if( !class_exists('rc_scm_walker')) {
 	         * @param int      $depth   Depth of menu item. Used for padding.
 	         */
 	        $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+
+			if( $depth === 0 && ( 'megamenu' === $args->megamenu ) ) {
+				$class_names .= ' menu-item-megamenu';
+			}
+
 	        $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
 	        /**

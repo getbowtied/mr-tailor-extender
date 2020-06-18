@@ -2,9 +2,10 @@ jQuery(function($) {
 
 	"use strict";
 
-    console.log('here');
+    $('.main-navigation > ul > li.menu-item-megamenu').each( function() {
+        var childrenNumber = $(this).find('> .sub-menu > li').length;
+        $(this).addClass('megamenu-'+childrenNumber+'-col');
 
-	$('.main-navigation > ul > li.menu-item-has-children').each( function() {
         if( $(this).attr('data-item-image') ) {
             $(this).find('.sub-menu .menu-item-image-column').css('background-image', 'url('+$(this).attr('data-item-image')+')')
         }

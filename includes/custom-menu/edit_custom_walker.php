@@ -185,6 +185,20 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 							<?php esc_html_e( 'Open link in a new tab', 'mrtailor-extender' ); ?>
 						</label>
 					</p>
+					<?php
+		            /* New fields insertion starts here */
+					if( $depth === 0) {
+						?>
+						<p class="field-megamenu description">
+			                <label for="edit-menu-item-megamenu-<?php echo esc_attr( $item_id ); ?>">
+			                    <input type="checkbox" id="edit-menu-item-megamenu-<?php echo esc_attr( $item_id ); ?>" value="megamenu" name="menu-item-megamenu[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu, 'megamenu' ); ?> />
+								<?php esc_html_e( 'Is Mega Menu', 'mrtailor-extender' ); ?>
+							</label>
+			            </p>
+						<?php
+					}
+					/* New fields insertion ends here */
+		            ?>
 					<p class="field-css-classes description description-thin">
 						<label for="edit-menu-item-classes-<?php echo esc_attr( $item_id ); ?>">
 							<?php esc_html_e( 'CSS Classes (optional)', 'mrtailor-extender' ); ?><br />
@@ -210,7 +224,7 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 		            ?>
 		            <p class="field-background-url description description-wide">
 		                <label for="edit-menu-item-background_url-<?php echo esc_attr( $item_id ); ?>">
-		                    <?php esc_html_e( 'Background URL', 'mrtailor-extender' ); ?><br />
+		                    <?php esc_html_e( 'Image URL', 'mrtailor-extender' ); ?><br />
 		                    <input type="text" id="edit-menu-item-background_url-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-custom" name="menu-item-background_url[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->background_url ); ?>" />
 		                </label>
 		            </p>
