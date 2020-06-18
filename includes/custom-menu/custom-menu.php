@@ -62,6 +62,8 @@ if( !class_exists('rc_sweet_custom_menu')) {
 
 		    $menu_item->background_url = get_post_meta( $menu_item->ID, '_menu_item_background_url', true );
 			$menu_item->megamenu = get_post_meta( $menu_item->ID, '_menu_item_megamenu', 'false' );
+			$menu_item->megamenu_title_column = get_post_meta( $menu_item->ID, '_menu_item_megamenu_title_column', 'false' );
+			$menu_item->megamenu_image_column = get_post_meta( $menu_item->ID, '_menu_item_megamenu_image_column', 'false' );
 		    return $menu_item;
 
 		}
@@ -91,6 +93,19 @@ if( !class_exists('rc_sweet_custom_menu')) {
 				update_post_meta( $menu_item_db_id, '_menu_item_megamenu', 'false' );
 			}
 
+			if ( !empty( $_REQUEST['menu-item-megamenu_title_column']) && isset($_REQUEST['menu-item-megamenu_title_column'][$menu_item_db_id]) ) {
+		        $megamenu_value = $_REQUEST['menu-item-megamenu_title_column'][$menu_item_db_id];
+		        update_post_meta( $menu_item_db_id, '_menu_item_megamenu_title_column', $megamenu_value );
+		    } else {
+				update_post_meta( $menu_item_db_id, '_menu_item_megamenu_title_column', 'false' );
+			}
+
+			if ( !empty( $_REQUEST['menu-item-megamenu_image_column']) && isset($_REQUEST['menu-item-megamenu_image_column'][$menu_item_db_id]) ) {
+		        $megamenu_value = $_REQUEST['menu-item-megamenu_image_column'][$menu_item_db_id];
+		        update_post_meta( $menu_item_db_id, '_menu_item_megamenu_image_column', $megamenu_value );
+		    } else {
+				update_post_meta( $menu_item_db_id, '_menu_item_megamenu_image_column', 'false' );
+			}
 		}
 
 		/**

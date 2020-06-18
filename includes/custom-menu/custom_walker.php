@@ -68,6 +68,8 @@ if( !class_exists('rc_scm_walker')) {
 			$args['title'] = ! empty( $element->attr_title ) ? $element->attr_title : '';
 			$args['description'] = ! empty( $element->description ) ? $element->description : '';
 			$args['megamenu'] = ! empty( $element->megamenu ) ? $element->megamenu : '';
+			$args['megamenu_title_column'] = ! empty( $element->megamenu_title_column ) ? $element->megamenu_title_column : '';
+			$args['megamenu_image_column'] = ! empty( $element->megamenu_image_column ) ? $element->megamenu_image_column : '';
 
 			// Display this element.
 			$this->has_children = ! empty( $children_elements[ $id ] );
@@ -139,13 +141,15 @@ if( !class_exists('rc_scm_walker')) {
 
 	        $output .= "{$n}{$indent}<ul$class_names>{$n}";
 
-			if( $depth === 0 && ( !empty($args->title) || !empty($args->description) ) && ( 'megamenu' === $args->megamenu ) ) {
+			if( $depth === 0 && ( 'megamenu' === $args->megamenu ) && ( 'true' === $args->megamenu_title_column ) ) {
 				$title = !empty($args->title) ? esc_attr($args->title) : '';
 				$description = !empty($args->description) ? esc_attr($args->description) : '';
 				$output .= "<li class='menu-item-info-column'><h2 class='menu-item-title'>{$title}</h2><p class='menu-item-description'>{$description}</p></li>";
 			}
 			if( ( $depth === 0 ) && ( 'megamenu' === $args->megamenu ) ) {
-				$output .= "<li class='menu-item-inner-wrapper'><ul class='menu-item-inner-submenu'>";
+				if( ( 'true' === $args->megamenu_title_column ) && ( 'true' === $args->megamenu_image_column ) ) {
+					$output .= "<li class='menu-item-inner-wrapper'><ul class='menu-item-inner-submenu'>";
+				}
 			}
 	    }
 
@@ -171,8 +175,12 @@ if( !class_exists('rc_scm_walker')) {
 	        $indent  = str_repeat( $t, $depth );
 
 			if( $depth === 0 && ( 'megamenu' === $args['megamenu'] ) ) {
-				$output .= "</ul></li>";
-				$output .= "<li class='menu-item-image-column'></li>";
+				if( ( 'true' === $args['megamenu_title_column'] ) && ( 'true' === $args['megamenu_image_column'] ) ) {
+					$output .= "</ul></li>";
+				}
+				if( 'true' === $args['megamenu_image_column'] ) {
+					$output .= "<li class='menu-item-image-column'></li>";
+				}
 			}
 	        $output .= "$indent</ul>{$n}";
 	    }
@@ -224,6 +232,8 @@ if( !class_exists('rc_scm_walker')) {
 			$args->title = ! empty( $item->attr_title ) ? $item->attr_title : '';
 			$args->description = ! empty( $item->description ) ? $item->description : '';
 			$args->megamenu = ! empty( $item->megamenu ) ? $item->megamenu : '';
+			$args->megamenu_title_column = ! empty( $item->megamenu_title_column ) ? $item->megamenu_title_column : '';
+			$args->megamenu_image_column = ! empty( $item->megamenu_image_column ) ? $item->megamenu_image_column : '';
 
 	        /**
 	         * Filters the CSS classes applied to a menu item's list item element.

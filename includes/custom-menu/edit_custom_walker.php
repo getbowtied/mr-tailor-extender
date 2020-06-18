@@ -195,6 +195,20 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 								<?php esc_html_e( 'Is Mega Menu', 'mrtailor-extender' ); ?>
 							</label>
 			            </p>
+
+						<p class="field-megamenu_title_column description">
+			                <label for="edit-menu-item-megamenu_title_column-<?php echo esc_attr( $item_id ); ?>">
+			                    <input type="checkbox" id="edit-menu-item-megamenu_title_column-<?php echo esc_attr( $item_id ); ?>" value="true" name="menu-item-megamenu_title_column[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu_title_column, 'true' ); ?> />
+								<?php esc_html_e( 'Use Title and Description Column', 'mrtailor-extender' ); ?>
+							</label>
+			            </p>
+
+						<p class="field-megamenu_image_column description">
+			                <label for="edit-menu-item-megamenu_image_column-<?php echo esc_attr( $item_id ); ?>">
+			                    <input type="checkbox" id="edit-menu-item-megamenu_image_column-<?php echo esc_attr( $item_id ); ?>" value="true" name="menu-item-megamenu_image_column[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu_image_column, 'true' ); ?> />
+								<?php esc_html_e( 'Use Image Column', 'mrtailor-extender' ); ?>
+							</label>
+			            </p>
 						<?php
 					}
 					/* New fields insertion ends here */
