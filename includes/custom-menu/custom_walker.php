@@ -34,6 +34,73 @@ if( !class_exists('rc_scm_walker')) {
 	        'id'     => 'db_id',
 	    );
 
+		/**
+		 * Traverse elements to create list from elements.
+		 *
+		 * Display one element if the element doesn't have any children otherwise,
+		 * display the element and its children. Will only traverse up to the max
+		 * depth and no ignore elements under that depth. It is possible to set the
+		 * max depth to include all depths, see walk() method.
+		 *
+		 * This method should not be called directly, use the walk() method instead.
+		 *
+		 * @since 2.5.0
+		 *
+		 * @param object $element           Data object.
+		 * @param array  $children_elements List of elements to continue traversing (passed by reference).
+		 * @param int    $max_depth         Max depth to traverse.
+		 * @param int    $depth             Depth of current element.
+		 * @param array  $args              An array of arguments.
+		 * @param string $output            Used to append additional content (passed by reference).
+		 */
+		public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
+			if ( ! $element ) {
+				return;
+			}
+
+			$id_field = $this->db_fields['id'];
+			$id       = $element->$id_field;
+
+			// var_dump($args);die();
+
+			/* Extra Fields */
+			$args['background_url'] = ! empty( $element->background_url ) ? $element->background_url : '';
+			$args['title'] = ! empty( $element->attr_title ) ? $element->attr_title : '';
+			$args['description'] = ! empty( $element->description ) ? $element->description : '';
+			$args['megamenu'] = ! empty( $element->megamenu ) ? $element->megamenu : '';
+
+			// Display this element.
+			$this->has_children = ! empty( $children_elements[ $id ] );
+			if ( isset( $args[0] ) && is_array( $args[0] ) ) {
+				$args[0]['has_children'] = $this->has_children; // Back-compat.
+			}
+
+			$this->start_el( $output, $element, $depth, ...array_values( $args ) );
+
+			// Descend only when the depth is right and there are childrens for this element.
+			if ( ( 0 == $max_depth || $max_depth > $depth + 1 ) && isset( $children_elements[ $id ] ) ) {
+
+				foreach ( $children_elements[ $id ] as $child ) {
+
+					if ( ! isset( $newlevel ) ) {
+						$newlevel = true;
+						// Start the child delimiter.
+						$this->start_lvl( $output, $depth, ...array_values( $args ) );
+					}
+					$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
+				}
+				unset( $children_elements[ $id ] );
+			}
+
+			if ( isset( $newlevel ) && $newlevel ) {
+				// End the child delimiter.
+				$this->end_lvl( $output, $depth, $args );
+			}
+
+			// End this element.
+			$this->end_el( $output, $element, $depth, ...array_values( $args ) );
+		}
+
 	    /**
 	     * Starts the list before the elements are added.
 	     *
@@ -77,6 +144,9 @@ if( !class_exists('rc_scm_walker')) {
 				$description = !empty($args->description) ? esc_attr($args->description) : '';
 				$output .= "<li class='menu-item-info-column'><h2 class='menu-item-title'>{$title}</h2><p class='menu-item-description'>{$description}</p></li>";
 			}
+			if( ( $depth === 0 ) && ( 'megamenu' === $args->megamenu ) ) {
+				$output .= "<li class='menu-item-inner-wrapper'><ul class='menu-item-inner-submenu'>";
+			}
 	    }
 
 	    /**
@@ -91,7 +161,7 @@ if( !class_exists('rc_scm_walker')) {
 	     * @param stdClass $args   An object of wp_nav_menu() arguments.
 	     */
 	    public function end_lvl( &$output, $depth = 0, $args = null ) {
-	        if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+	        if ( isset( $args['item_spacing'] ) && 'discard' === $args['item_spacing'] ) {
 	            $t = '';
 	            $n = '';
 	        } else {
@@ -100,7 +170,8 @@ if( !class_exists('rc_scm_walker')) {
 	        }
 	        $indent  = str_repeat( $t, $depth );
 
-			if( $depth === 0 ) {
+			if( $depth === 0 && ( 'megamenu' === $args['megamenu'] ) ) {
+				$output .= "</ul></li>";
 				$output .= "<li class='menu-item-image-column'></li>";
 			}
 	        $output .= "$indent</ul>{$n}";
@@ -288,6 +359,7 @@ if( !class_exists('rc_scm_walker')) {
 	            $t = "\t";
 	            $n = "\n";
 	        }
+
 	        $output .= "</li>{$n}";
 	    }
 

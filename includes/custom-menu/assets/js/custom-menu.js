@@ -18,4 +18,10 @@ jQuery(function($) {
             $(this).parents('.menu-item-parent').find('.sub-menu .menu-item-image-column').css('background-image', 'url('+$(this).parents('.menu-item-parent').attr('data-item-image')+')')
         }
     });
+
+    $('.main-navigation > ul > li.menu-item-megamenu .sub-menu ul.menu-item-inner-submenu').css( 'max-height', $(window).height() - $('.main-navigation > ul > li.menu-item-megamenu > .sub-menu').offset().top - 100 );
+    $('.main-navigation > ul > li.menu-item-megamenu .sub-menu li.menu-item-inner-wrapper').each(function() {
+        $(this).css( 'min-height', $(this).find('ul.menu-item-inner-submenu').outerHeight() );
+    });
+
 });
