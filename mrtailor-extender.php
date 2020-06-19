@@ -80,7 +80,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			// Gutenberg Blocks
             include_once( dirname( __FILE__ ) . '/includes/gbt-blocks/index.php' );
 
-			if( $theme->template == 'mrtailor' ) {
+			if( ( 'mrtailor' === $theme->template ) || ( 'mr_tailor' === $theme->get( 'TextDomain' ) ) ) {
 
 				// Social Sharing Buttons
 				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) {
