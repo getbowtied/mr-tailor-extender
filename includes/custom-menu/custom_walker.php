@@ -153,7 +153,7 @@ if( !class_exists('rc_scm_walker')) {
 			if( $depth === 0 && ( 'megamenu' === $args->megamenu ) && ( 'true' === $args->megamenu_title_column ) ) {
 				$title = !empty($args->title) ? esc_attr($args->title) : '';
 				$description = !empty($args->description) ? esc_attr($args->description) : '';
-				$output .= "<li class='menu-item-info-column'><h2 class='menu-item-title'>{$title}</h2><p class='menu-item-description'>{$description}</p></li>";
+				$output .= "<li class='menu-item-info-column'><h3 class='menu-item-title'>{$title}</h3><p class='menu-item-description'>{$description}</p></li>";
 			}
 	    }
 
