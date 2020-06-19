@@ -137,6 +137,15 @@ if( !class_exists('rc_scm_walker')) {
 	         * @param int      $depth   Depth of menu item. Used for padding.
 	         */
 	        $class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
+
+			if( $depth === 0 && ( 'megamenu' === $args->megamenu ) && ( 'true' === $args->megamenu_title_column ) ) {
+				$class_names .= ' megamenu-with-info-column';
+			}
+
+			if( $depth === 0 && ( 'megamenu' === $args->megamenu ) && ( 'true' === $args->megamenu_image_column ) ) {
+				$class_names .= ' megamenu-with-image-column';
+			}
+
 	        $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
 	        $output .= "{$n}{$indent}<ul$class_names>{$n}";
