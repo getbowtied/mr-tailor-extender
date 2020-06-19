@@ -146,11 +146,6 @@ if( !class_exists('rc_scm_walker')) {
 				$description = !empty($args->description) ? esc_attr($args->description) : '';
 				$output .= "<li class='menu-item-info-column'><h2 class='menu-item-title'>{$title}</h2><p class='menu-item-description'>{$description}</p></li>";
 			}
-			if( ( $depth === 0 ) && ( 'megamenu' === $args->megamenu ) ) {
-				if( ( 'true' === $args->megamenu_title_column ) && ( 'true' === $args->megamenu_image_column ) ) {
-					$output .= "<li class='menu-item-inner-wrapper'><ul class='menu-item-inner-submenu'>";
-				}
-			}
 	    }
 
 	    /**
@@ -175,9 +170,6 @@ if( !class_exists('rc_scm_walker')) {
 	        $indent  = str_repeat( $t, $depth );
 
 			if( $depth === 0 && ( 'megamenu' === $args['megamenu'] ) ) {
-				if( ( 'true' === $args['megamenu_title_column'] ) && ( 'true' === $args['megamenu_image_column'] ) ) {
-					$output .= "</ul></li>";
-				}
 				if( 'true' === $args['megamenu_image_column'] ) {
 					$output .= "<li class='menu-item-image-column'></li>";
 				}

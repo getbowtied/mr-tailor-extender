@@ -185,34 +185,6 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 							<?php esc_html_e( 'Open link in a new tab', 'mrtailor-extender' ); ?>
 						</label>
 					</p>
-					<?php
-		            /* New fields insertion starts here */
-					if( $depth === 0) {
-						?>
-						<p class="field-megamenu description">
-			                <label for="edit-menu-item-megamenu-<?php echo esc_attr( $item_id ); ?>">
-			                    <input type="checkbox" id="edit-menu-item-megamenu-<?php echo esc_attr( $item_id ); ?>" value="megamenu" name="menu-item-megamenu[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu, 'megamenu' ); ?> />
-								<?php esc_html_e( 'Is Mega Menu', 'mrtailor-extender' ); ?>
-							</label>
-			            </p>
-
-						<p class="field-megamenu_title_column description">
-			                <label for="edit-menu-item-megamenu_title_column-<?php echo esc_attr( $item_id ); ?>">
-			                    <input type="checkbox" id="edit-menu-item-megamenu_title_column-<?php echo esc_attr( $item_id ); ?>" value="true" name="menu-item-megamenu_title_column[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu_title_column, 'true' ); ?> />
-								<?php esc_html_e( 'Use Title and Description Column', 'mrtailor-extender' ); ?>
-							</label>
-			            </p>
-
-						<p class="field-megamenu_image_column description">
-			                <label for="edit-menu-item-megamenu_image_column-<?php echo esc_attr( $item_id ); ?>">
-			                    <input type="checkbox" id="edit-menu-item-megamenu_image_column-<?php echo esc_attr( $item_id ); ?>" value="true" name="menu-item-megamenu_image_column[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu_image_column, 'true' ); ?> />
-								<?php esc_html_e( 'Use Image Column', 'mrtailor-extender' ); ?>
-							</label>
-			            </p>
-						<?php
-					}
-					/* New fields insertion ends here */
-		            ?>
 					<p class="field-css-classes description description-thin">
 						<label for="edit-menu-item-classes-<?php echo esc_attr( $item_id ); ?>">
 							<?php esc_html_e( 'CSS Classes (optional)', 'mrtailor-extender' ); ?><br />
@@ -235,12 +207,44 @@ if( !class_exists('Walker_Nav_Menu_Edit_Custom')) {
 
 					<?php
 		            /* New fields insertion starts here */
+					if( $depth === 0) {
+						?>
+			            <hr style="clear:both;"/>
+
+						<p class="field-megamenu description description-wide">
+			                <label for="edit-menu-item-megamenu-<?php echo esc_attr( $item_id ); ?>">
+			                    <input type="checkbox" id="edit-menu-item-megamenu-<?php echo esc_attr( $item_id ); ?>" value="megamenu" name="menu-item-megamenu[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu, 'megamenu' ); ?> />
+								<?php esc_html_e( 'Is Mega Menu', 'mrtailor-extender' ); ?>
+							</label>
+			            </p>
+
+						<p class="field-megamenu_title_column description">
+			                <label for="edit-menu-item-megamenu_title_column-<?php echo esc_attr( $item_id ); ?>">
+			                    <input type="checkbox" id="edit-menu-item-megamenu_title_column-<?php echo esc_attr( $item_id ); ?>" value="true" name="menu-item-megamenu_title_column[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu_title_column, 'true' ); ?> />
+								<?php esc_html_e( 'Mega Menu - Use Title and Description Column', 'mrtailor-extender' ); ?>
+							</label>
+			            </p>
+
+						<p class="field-megamenu_image_column description">
+			                <label for="edit-menu-item-megamenu_image_column-<?php echo esc_attr( $item_id ); ?>">
+			                    <input type="checkbox" id="edit-menu-item-megamenu_image_column-<?php echo esc_attr( $item_id ); ?>" value="true" name="menu-item-megamenu_image_column[<?php echo esc_attr( $item_id ); ?>]" <?php checked( $item->megamenu_image_column, 'true' ); ?> />
+								<?php esc_html_e( 'Mega Menu - Use Image Column', 'mrtailor-extender' ); ?>
+							</label>
+			            </p>
+						<?php
+					}
+					/* New fields insertion ends here */
+		            ?>
+
+					<?php
+		            /* New fields insertion starts here */
 		            ?>
 		            <p class="field-background-url description description-wide">
 		                <label for="edit-menu-item-background_url-<?php echo esc_attr( $item_id ); ?>">
 		                    <?php esc_html_e( 'Image URL', 'mrtailor-extender' ); ?><br />
 		                    <input type="text" id="edit-menu-item-background_url-<?php echo esc_attr( $item_id ); ?>" class="widefat code edit-menu-item-custom" name="menu-item-background_url[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->background_url ); ?>" />
-		                </label>
+							<span class="description"><?php esc_html_e( 'Image will be used in the megamenu\' Image Column', 'mrtailor-extender' ); ?></span>
+						</label>
 		            </p>
 		            <?php
 		            /* New fields insertion ends here */
