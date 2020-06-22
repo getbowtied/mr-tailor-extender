@@ -28,7 +28,7 @@ jQuery(function($) {
         $(this).addClass('megamenu-'+childrenNumber+'-col');
 
         // assign parent image to image column
-		if( $(this).find('> .sub-menu .menu-item-inner-wrapper') ) {
+		if( $(this).find('> .sub-menu .menu-item-inner-wrapper').length ) {
 			$(this).find('> .sub-menu .menu-item-image-column').css( 'max-height', $(this).find('> .sub-menu .menu-item-inner-wrapper').outerHeight() );
 		} else {
 			$(this).find('> .sub-menu .menu-item-image-column').css( 'max-height', $(this).find('> .sub-menu > .menu-item').outerHeight() );
