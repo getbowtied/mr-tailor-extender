@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action( 'enqueue_block_editor_assets', 'gbt_18_mt_social_media_editor_assets' );
 if ( ! function_exists( 'gbt_18_mt_social_media_editor_assets' ) ) {
     function gbt_18_mt_social_media_editor_assets() {
-        
+
         wp_enqueue_script(
             'gbt_18_mt_social_media_script',
             plugins_url( 'block.js', __FILE__ ),
