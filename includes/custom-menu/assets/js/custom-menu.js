@@ -28,6 +28,11 @@ jQuery(function($) {
         $(this).addClass('megamenu-'+childrenNumber+'-col');
 
         // assign parent image to image column
+		if( $(this).find('> .sub-menu .menu-item-inner-wrapper') ) {
+			$(this).find('> .sub-menu .menu-item-image-column').css( 'max-height', $(this).find('> .sub-menu .menu-item-inner-wrapper').outerHeight() );
+		} else {
+			$(this).find('> .sub-menu .menu-item-image-column').css( 'max-height', $(this).find('> .sub-menu > .menu-item').outerHeight() );
+		}
         if( $(this).attr('data-item-image') && $(this).find('> .sub-menu').hasClass('megamenu-with-image-column') ) {
             $(this).find('> .sub-menu .menu-item-image-column').empty().append( '<img src="' + $(this).attr('data-item-image') + '" />');
         }
