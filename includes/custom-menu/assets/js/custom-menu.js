@@ -28,8 +28,13 @@ jQuery(function($) {
         $(this).addClass('megamenu-'+childrenNumber+'-col');
 
         // assign parent image to image column
+		if( $(this).find('> .sub-menu .menu-item-inner-wrapper').length ) {
+			$(this).find('> .sub-menu .menu-item-image-column').css( 'max-height', $(this).find('> .sub-menu .menu-item-inner-wrapper').outerHeight() );
+		} else {
+			$(this).find('> .sub-menu .menu-item-image-column').css( 'max-height', $(this).find('> .sub-menu > .menu-item').outerHeight() );
+		}
         if( $(this).attr('data-item-image') && $(this).find('> .sub-menu').hasClass('megamenu-with-image-column') ) {
-            $(this).find('> .sub-menu .menu-item-image-column').css( 'background-image', 'url(' + $(this).attr('data-item-image') + ')');
+            $(this).find('> .sub-menu .menu-item-image-column').empty().append( '<img src="' + $(this).attr('data-item-image') + '" />');
         }
     });
 
@@ -37,10 +42,10 @@ jQuery(function($) {
     $('.main-navigation > ul > li.menu-item-has-children .sub-menu li.menu-item a').on( 'mouseenter', function() {
         if( $(this).parents('.menu-item-parent').find('> .sub-menu').hasClass('megamenu-with-image-column') ) {
             if( $(this).parent().attr('data-item-image') ) {
-                $(this).parents('.menu-item-parent').find('.sub-menu .menu-item-image-column').css( 'background-image', 'url(' + $(this).parent().attr('data-item-image') + ')');
+                $(this).parents('.menu-item-parent').find('.sub-menu .menu-item-image-column').empty().append( '<img class="animate" src="' + $(this).parent().attr('data-item-image') + '" />');
             } else {
 				if( $(this).parents('.menu-item-parent').attr('data-item-image') && ( $(this).parents('.menu-item-parent').attr('data-item-image') != $(this).parents('.menu-item-parent').find('.sub-menu .menu-item-image-column img').attr('src') ) ) {
-                	$(this).parents('.menu-item-parent').find('.sub-menu .menu-item-image-column').css( 'background-image', 'url(' + $(this).parents('.menu-item-parent').attr('data-item-image') + ')');
+                	$(this).parents('.menu-item-parent').find('.sub-menu .menu-item-image-column').empty().append( '<img class="animate" src="' + $(this).parents('.menu-item-parent').attr('data-item-image') + '" />');
 				}
 			}
         }
