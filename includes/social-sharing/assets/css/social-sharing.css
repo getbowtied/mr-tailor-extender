@@ -10,8 +10,12 @@
   .content-area .box-share-container.product-share-container {
     margin: 0;
     text-align: left; }
+    .rtl .content-area .box-share-container.product-share-container {
+      text-align: right; }
     .content-area .box-share-container.product-share-container .box-share-list {
       margin: 0 0 0 8px; }
+      .rtl .content-area .box-share-container.product-share-container .box-share-list {
+        margin: 0 8px 0 0; }
   .content-area .box-share-container .box-share-list {
     background-color: #fff;
     border-top: 3px solid;
