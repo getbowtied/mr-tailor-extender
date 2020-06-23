@@ -77,10 +77,6 @@ msgstr ""
 msgid "Edit menu item"
 msgstr ""
 
-#: includes/custom-menu/edit_custom_walker.php:156
-msgid "Edit"
-msgstr ""
-
 #: includes/custom-menu/edit_custom_walker.php:165
 #: includes/gbt-blocks/banner/block.js:162
 msgid "URL"
@@ -114,38 +110,54 @@ msgstr ""
 msgid "The description will be displayed in the menu if the current theme supports it."
 msgstr ""
 
-#: includes/custom-menu/edit_custom_walker.php:213
-msgid "Background URL"
-msgstr ""
-
-#: includes/custom-menu/edit_custom_walker.php:222
-msgid "Move"
-msgstr ""
-
-#: includes/custom-menu/edit_custom_walker.php:223
-msgid "Up one"
+#: includes/custom-menu/edit_custom_walker.php:217
+msgid "Is Mega Menu"
 msgstr ""
 
 #: includes/custom-menu/edit_custom_walker.php:224
+msgid "Mega Menu - Use Title and Description Column"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:231
+msgid "Mega Menu - Use Image Column"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:244
+msgid "Image URL"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:246
+msgid "Image will be used in the megamenu' Image Column"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:254
+msgid "Move"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:255
+msgid "Up one"
+msgstr ""
+
+#: includes/custom-menu/edit_custom_walker.php:256
 msgid "Down one"
 msgstr ""
 
-#: includes/custom-menu/edit_custom_walker.php:227
+#: includes/custom-menu/edit_custom_walker.php:259
 msgid "To the top"
 msgstr ""
 
-#: includes/custom-menu/edit_custom_walker.php:233
+#: includes/custom-menu/edit_custom_walker.php:265
 #, php-format
 msgid "Original: %s"
 msgstr ""
 
-#: includes/custom-menu/edit_custom_walker.php:246
+#: includes/custom-menu/edit_custom_walker.php:278
 #: includes/customizer/repeater/class-mt-ext-repeater-control.php:151
 #: includes/customizer/repeater/class-mt-ext-repeater-control.php:189
 msgid "Remove"
 msgstr ""
 
-#: includes/custom-menu/edit_custom_walker.php:247
+#: includes/custom-menu/edit_custom_walker.php:279
 msgid "Cancel"
 msgstr ""
 
@@ -373,7 +385,7 @@ msgid "Date Descending"
 msgstr ""
 
 #: includes/gbt-blocks/social_media_profiles/block.js:28
-#: includes/social-media/class-social-media.php:469
+#: includes/social-media/class-social-media.php:474
 msgid "Social Media Profiles"
 msgstr ""
 
@@ -425,23 +437,23 @@ msgstr ""
 msgid "Permalink to %s"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:333
+#: includes/social-media/class-social-media.php:329
 msgid "Social Media"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:471
+#: includes/social-media/class-social-media.php:476
 msgid "Links to your social media profiles"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:483
+#: includes/social-media/class-social-media.php:488
 msgid "Align"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:497
+#: includes/social-media/class-social-media.php:502
 msgid "Font Size (px, em)"
 msgstr ""
 
-#: includes/social-media/class-social-media.php:506
+#: includes/social-media/class-social-media.php:511
 msgid "Color"
 msgstr ""
 
