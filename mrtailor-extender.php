@@ -54,9 +54,6 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 		*/
 		public function __construct() {
 
-			$theme = wp_get_theme();
-			$parent_theme = $theme->parent();
-
 			// Helpers
 			include_once( dirname( __FILE__ ) . '/includes/helpers/helpers.php' );
 
@@ -72,15 +69,16 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			// Social Media
 			include_once( dirname( __FILE__ ) . '/includes/social-media/class-social-media.php' );
 
-			// Addons
-			if ( $theme->template == 'mrtailor' && is_plugin_active( 'woocommerce/woocommerce.php') ) {
-				include_once( dirname( __FILE__ ) . '/includes/addons/class-wc-category-header-image.php' );
-			}
-
 			// Gutenberg Blocks
             include_once( dirname( __FILE__ ) . '/includes/gbt-blocks/index.php' );
 
-			if( ( 'mrtailor' === $theme->template ) || ( 'mr_tailor' === $theme->get( 'TextDomain' ) ) ) {
+            // Mr. Tailor Dependent Components
+			if( function_exists('mrtailor_theme_version') ) {
+
+                // Addons
+    			if ( is_plugin_active( 'woocommerce/woocommerce.php') ) {
+    				include_once( dirname( __FILE__ ) . '/includes/addons/class-wc-category-header-image.php' );
+    			}
 
 				// Social Sharing Buttons
 				if ( is_plugin_active( 'woocommerce/woocommerce.php') ) {
@@ -125,4 +123,6 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 	}
 endif;
 
-$mrtailor_extender = new MrTailorExtender;
+add_action( 'after_setup_theme', function() {
+    $mrtailor_extender = new MrTailorExtender;
+} );
