@@ -34,6 +34,9 @@
       padding: 4px 7px 0 7px;
       float: left; }
       #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon a {
+        -webkit-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
         vertical-align: middle; }
         #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon a svg {
           -webkit-transition: all .3s ease;
@@ -43,3 +46,5 @@
         padding: 4px 7px 0 0; }
       #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon:last-child {
         padding: 4px 0 0 7px; }
+      #site-top-bar .site-social-icons-shortcode ul.mt_social_icons_list li.mt_social_icon:hover a {
+        opacity: .6; }

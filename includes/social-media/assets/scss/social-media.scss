@@ -61,6 +61,7 @@
     			float: left;
 
 				a {
+					transition: all .3s ease;
 				    vertical-align: middle;
 
 					svg {
@@ -76,6 +77,12 @@
     			&:last-child
     			{
 				    padding: 4px 0 0 7px;
+				}
+
+				&:hover {
+					a {
+						opacity: .6;
+					}
 				}
 		    }
     	}
