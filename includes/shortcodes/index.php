@@ -67,31 +67,32 @@ function getbowtied_mt_shortcodes_scripts() {
 	);
 }
 
-// // Add Shortcodes to WP Bakery
-add_action( 'plugins_loaded', function() {
-	if ( defined(  'WPB_VC_VERSION' ) ) {
-		add_action( 'init', 'getbowtied_mt_wb_shortcodes' );
-		function getbowtied_mt_wb_shortcodes() {
-			include_once( dirname( __FILE__ ) . '/wb/blog-posts.php' );
-			include_once( dirname( __FILE__ ) . '/wb/banner.php' );
-			include_once( dirname( __FILE__ ) . '/wb/title.php' );
-			include_once( dirname( __FILE__ ) . '/wb/output/title.php' );
+function getbowtied_mt_wb_shortcodes() {
+	include_once( dirname( __FILE__ ) . '/wb/blog-posts.php' );
+	include_once( dirname( __FILE__ ) . '/wb/banner.php' );
+	include_once( dirname( __FILE__ ) . '/wb/title.php' );
+	include_once( dirname( __FILE__ ) . '/wb/output/title.php' );
 
-			if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-				include_once( dirname( __FILE__ ) . '/wb/wc-recent-products.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-featured-products.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-products-by-category.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-products-by-attribute.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-product-by-id-sku.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-products-by-ids-skus.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-sale-products.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-top-rated-products.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-best-selling-products.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-add-to-cart-button-custom.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-product-categories.php' );
-				include_once( dirname( __FILE__ ) . '/wb/wc-product-categories-grid.php' );
-	            include_once( dirname( __FILE__ ) . '/wb/lookbook.php' );
-			}
-		}
+	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		include_once( dirname( __FILE__ ) . '/wb/wc-recent-products.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-featured-products.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-products-by-category.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-products-by-attribute.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-product-by-id-sku.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-products-by-ids-skus.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-sale-products.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-top-rated-products.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-best-selling-products.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-add-to-cart-button-custom.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-product-categories.php' );
+		include_once( dirname( __FILE__ ) . '/wb/wc-product-categories-grid.php' );
+		include_once( dirname( __FILE__ ) . '/wb/lookbook.php' );
 	}
-});
+}
+
+// // Add Shortcodes to WP Bakery
+add_action( 'init', function() {
+	if ( class_exists( 'Vc_Manager' ) ) {
+		getbowtied_mt_wb_shortcodes();
+	}
+}, 500);
