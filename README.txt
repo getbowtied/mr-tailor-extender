@@ -2,12 +2,12 @@
 Contributors: getbowtied, vanesareinerth, adrianlbs
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.4
-Stable tag: 1.3.9
+Tested up to: 5.4.2
+Stable tag: 1.4.0
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-~Current Version:1.3.9~
+~Current Version:1.4.0~
 
 Extends the functionality of the Mr. Tailor theme by adding theme specific features.
 
@@ -33,6 +33,12 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 1.4.0 =
+- Mr. Tailor 3.0 compatibility updates
+- New: Social Media Customizer Control that allows for custom Icons and Social Profile links
+- Maintenance: Improved blocks functionality
+- Maintenance: Various fixes and improvements were made for consistency
 
 = 1.3.9 =
 - Small maintenance updates
