@@ -86,22 +86,14 @@
       transform: scale(1.4);
       opacity: 1; }
 
-.wp-block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-next, .wp-block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-prev, .wp-block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-next, .wp-block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-prev,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-next,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-prev,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-next,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-prev {
+.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-next, .block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-prev, .block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-next, .block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-prev {
   opacity: 1;
   -webkit-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out; }
 
-.wp-block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-next, .wp-block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-next,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-next,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-next {
+.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-next, .block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-next {
   right: -75px; }
 
-.wp-block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-prev, .wp-block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-prev,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-prev,
-.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-prev {
+.block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-selected .swiper-button-prev, .block-editor-block-list__block[data-type="getbowtied/mt-posts-slider"].is-hovered .swiper-button-prev {
   left: -75px; }
