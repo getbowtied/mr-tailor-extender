@@ -369,7 +369,7 @@
 												fontSize: attributes.titleSize + 'px'
 											},
 											className: 'gbt_18_mt_editor_banner_title',
-											formattingControls: [],
+											allowedFormats: [],
 											tagName: 'h3',
 											format: 'string',
 											value: attributes.title,
@@ -392,7 +392,7 @@
 											tagName: 'p',
 											format: 'string',
 											value: attributes.subtitle,
-											formattingControls: [],
+											allowedFormats: [],
 											placeholder: i18n.__( 'Add Subtitle', 'mrtailor-extender' ),
 											onChange: function( newSubtitle) {
 												props.setAttributes( { subtitle: newSubtitle } );
