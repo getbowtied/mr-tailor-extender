@@ -2,12 +2,12 @@
 Contributors: getbowtied, vanesareinerth, adrianlbs
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.4.2
-Stable tag: 1.4.0
+Tested up to: 5.5
+Stable tag: 1.4.1
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-~Current Version:1.4.0~
+~Current Version:1.4.1~
 
 Extends the functionality of the Mr. Tailor theme by adding theme specific features.
 
@@ -33,6 +33,9 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 1.4.1 =
+- Upcoming WordPress 5.5 compatibility updates
 
 = 1.4.0 =
 - Mr. Tailor 3.0 compatibility updates
