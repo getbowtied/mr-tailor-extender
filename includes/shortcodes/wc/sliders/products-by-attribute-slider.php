@@ -31,19 +31,18 @@ function mt_ext_shortcode_product_attribute_slider($atts, $content = null) {
 		'posts_per_page'      => $per_page,
 		'orderby'             => $orderby,
 		'order'               => $order,
-		'meta_query'          => array(
-			array(
-				'key'               => '_visibility',
-				'value'             => array('catalog', 'visible'),
-				'compare'           => 'IN'
-			)
-		),
 		'tax_query' 			=> array(
 			array(
 				'taxonomy' 	=> $attribute,
 				'terms'     => array_map( 'sanitize_title', explode( ",", $filter ) ),
 				'field' 	=> 'slug'
-			)
+			),
+			array(
+		        'taxonomy'  => 'product_visibility',
+		        'terms'     => array( 'exclude-from-catalog' ),
+		        'field'     => 'name',
+		        'operator'  => 'NOT IN',
+		    )
 		)
 	);
 

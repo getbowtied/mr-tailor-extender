@@ -27,12 +27,13 @@ function mt_ext_shortcode_top_rated_products_slider($atts, $content = null) {
 		'orderby' 				=> $orderby,
 		'order'					=> $order,
 		'posts_per_page' 		=> $per_page,
-		'meta_query' 			=> array(
+		'tax_query'   => array(
 			array(
-				'key' 			=> '_visibility',
-				'value' 		=> array('catalog', 'visible'),
-				'compare' 		=> 'IN'
-			)
+		        'taxonomy'  => 'product_visibility',
+		        'terms'     => array( 'exclude-from-catalog' ),
+		        'field'     => 'name',
+		        'operator'  => 'NOT IN',
+		    )
 		)
 	);
 
