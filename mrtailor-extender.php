@@ -4,11 +4,11 @@
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.wp-theme.design/
  * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
- * Version:           		1.4.2
+ * Version:           		1.4.3
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		5.0
- * Tested up to: 			5.5
+ * Tested up to: 			5.5.1
  * Text Domain:             mrtailor-extender
  *
  * @package  Mr. Tailor Extender
@@ -89,18 +89,15 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				include_once( dirname( __FILE__ ) . '/includes/custom-code/class-custom-code.php' );
 
 				// VC Templates
-				add_action( 'plugins_loaded', function() {
+				if ( defined(  'WPB_VC_VERSION' ) ) {
 
-					if ( defined(  'WPB_VC_VERSION' ) ) {
+					// Modify and remove existing shortcodes from VC
+					include_once( dirname( __FILE__ ) . '/includes/wpbakery/custom_vc.php' );
 
-						// Modify and remove existing shortcodes from VC
-						include_once( dirname( __FILE__ ) . '/includes/wpbakery/custom_vc.php' );
-
-						// VC Templates
-						$vc_templates_dir = dirname(__FILE__) . '/includes/wpbakery/vc_templates/';
-						vc_set_shortcodes_templates_dir($vc_templates_dir);
-					}
-				});
+					// VC Templates
+					$vc_templates_dir = dirname(__FILE__) . '/includes/wpbakery/vc_templates/';
+					vc_set_shortcodes_templates_dir($vc_templates_dir);
+				}
 
                 // Custom Menu
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom-menu.php' );
