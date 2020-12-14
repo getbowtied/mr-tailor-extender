@@ -2,12 +2,12 @@
 Contributors: getbowtied, vanesareinerth, adrianlbs
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.5.1
-Stable tag: 1.4.3
+Tested up to: 5.6
+Stable tag: 1.4.4
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-~Current Version:1.4.3~
+~Current Version:1.4.4~
 
 Extends the functionality of the Mr. Tailor theme by adding theme specific features.
 
@@ -33,6 +33,9 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 1.4.4 =
+- Maintenance: Updated Swiper library to its latest version
 
 = 1.4.3 =
 - WPBakery Page Builder compatibility updates
