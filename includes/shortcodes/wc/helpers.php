@@ -4,7 +4,9 @@
  * Sliders output.
  */
 function mt_products_slider( $type = '', $products = null, $title = '', $columns = 4 ) {
-?>
+
+    $unique = uniqid();
+    ?>
 
     <?php if ( $products->have_posts() ) : ?>
 
@@ -16,7 +18,7 @@ function mt_products_slider( $type = '', $products = null, $title = '', $columns
                 </div>
             </div>
 
-            <div class="swiper-container">
+            <div class="swiper-container swiper-<?php echo esc_attr($unique); ?>" data-id="<?php echo esc_attr($unique); ?>">
 
                 <ul class="products swiper-wrapper">
 
@@ -26,9 +28,9 @@ function mt_products_slider( $type = '', $products = null, $title = '', $columns
 
         		</ul>
 
+                <div class="swiper-pagination"></div>
+                
             </div>
-
-            <div class="swiper-pagination"></div>
 
         </div>
 

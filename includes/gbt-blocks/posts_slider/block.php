@@ -62,9 +62,11 @@ if ( ! function_exists( 'gbt_18_mt_render_frontend_posts_slider' ) ) {
 
 		ob_start();
 
+		$unique = uniqid();
+
 	    if ( !empty($recentPosts) ) : ?>
 
-	    	<div class="gbt_18_mt_posts_slider align<?php echo $align; ?>">
+	    	<div class="gbt_18_mt_posts_slider align<?php echo $align; ?> swiper-<?php echo esc_attr($unique); ?>" data-id="<?php echo esc_attr($unique); ?>">
 
 			    <div class="swiper-container columns-<?php echo $columns; ?>">
 

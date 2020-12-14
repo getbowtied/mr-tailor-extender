@@ -20,13 +20,15 @@ function shortcode_lookbook_mixed($atts, $content = null) {
 		'ids' => ''
 	), $atts));
 	ob_start();
+
+	$unique = uniqid();
     ?>
 
     <div class="woocommerce">
 
 	    <div class="lookbook">
 
-	        <div class="swiper-container column-<?php echo $columns; ?>">
+	        <div class="swiper-container column-<?php echo $columns; ?> swiper-<?php echo esc_attr($unique); ?>" data-id="<?php echo esc_attr($unique); ?>">
 
 	            <div class="swiper-wrapper">
 

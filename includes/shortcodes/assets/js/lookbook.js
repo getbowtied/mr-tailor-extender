@@ -1,14 +1,15 @@
 jQuery(function($) {
-	
+
 	"use strict";
-	
+
 	$('.lookbook .swiper-container').each(function(){
 
 		var mt_lookbook = $(this);
+		var data_id = $(this).attr('data-id');
 
 		function lookbook_init(lookbook) {
 			if ( $(window).width() < 1024 ) {
-				lookbook.find(".swiper-slide").width( lookbook.innerWidth() );				
+				lookbook.find(".swiper-slide").width( lookbook.innerWidth() );
 			} else if ( ($(window).width() >= 1024) && ($(window).innerWidth() < 1366) ) {
 				lookbook.find(".swiper-slide").width( lookbook.innerWidth()/2 );
 			} else {
@@ -31,32 +32,32 @@ jQuery(function($) {
 			$(".lookbook").css('visibility', 'visible');
 		}
 
-		lookbook_init(mt_lookbook);	
+		lookbook_init(mt_lookbook);
 
 		$(window).resize( mt_lookbook, function(){
-			lookbook_init(mt_lookbook);		
+			lookbook_init(mt_lookbook);
 		});
 
-        var lookbook_slider = new Swiper(mt_lookbook, {
+        var lookbook_slider = new Swiper( '.swiper-' + data_id, {
         	direction: 'horizontal',
             slidesPerView: 'auto',
 			grabCursor: true,
 			autoHeight: true,
-			pagination: { 
-				el: '.pagination', 
+			pagination: {
+				el: '.swiper-' + data_id + ' .pagination',
 				clickable: true,
 			},
 		  	navigation: {
-			    nextEl: $(this).find('.lookbook-arrow-right'),
-			    prevEl: $(this).find('.lookbook-arrow-left'),
+			    nextEl: '.swiper-' + data_id + ' .lookbook-arrow-right',
+			    prevEl: '.swiper-' + data_id + ' .lookbook-arrow-left',
 		  	},
 		  	on: {
 		  		init: function() {
-		  			
+
 		  			$(".lookbook").css('visibility', 'visible');
 		  		}
 		  	}
         });
 
-	})	
+	})
 });

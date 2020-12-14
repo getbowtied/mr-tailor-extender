@@ -16,7 +16,9 @@
 			medium_slides = columns;
 		}
 
-		var mySwiper = new Swiper ($(this).find('.swiper-container'), {
+		var data_id = $(this).find('.swiper-container').attr('data-id');
+
+		var mySwiper = new Swiper( '.swiper-' + data_id, {
 			slidesPerView: columns,
 			loop: false,
 			spaceBetween: 30,
@@ -32,7 +34,7 @@
 				}
 			},
 			pagination: {
-			    el: $(this).find('.swiper-pagination'),
+			    el: '.swiper-' + data_id + ' .swiper-pagination',
 			    type: 'bullets',
 			    clickable: true
 			},

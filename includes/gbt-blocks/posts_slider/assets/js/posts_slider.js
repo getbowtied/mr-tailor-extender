@@ -22,7 +22,9 @@ jQuery(function($) {
 			slides_xlarge = 5;
 		}
 
-		var mySwiper = new Swiper ($(this).find('.swiper-container'), {
+		var data_id = $(this).attr('data-id');
+
+		var mySwiper = new Swiper ( '.swiper-' + data_id + ' .swiper-container', {
 		    direction: 'horizontal',
 		    autoplay: {
 			    delay: 5000
@@ -47,13 +49,13 @@ jQuery(function($) {
 			    },
 			},
 		    pagination: {
-		    	el: $(this).find('.swiper-pagination')[i],
+		    	el: '.swiper-' + data_id + ' .swiper-pagination',
 		    	dynamicBullets: false,
 		    	clickable: true
 		    },
 		    navigation: {
-			    nextEl: $(this).find('.swiper-button-next')[i],
-			    prevEl: $(this).find('.swiper-button-prev')[i],
+			    nextEl: '.swiper-' + data_id + ' .swiper-button-next',
+			    prevEl: '.swiper-' + data_id + ' .swiper-button-prev',
 		  	},
 		});
 	});

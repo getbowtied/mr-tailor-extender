@@ -25,9 +25,11 @@ function mt_ext_shortcode_from_the_blog($atts, $content = null) {
 
     $recentPosts = new WP_Query( $args );
 
+    $unique = uniqid();
+
     ?>
 
-    <div class="from-the-blog-wrapper swiper-container">
+    <div class="from-the-blog-wrapper swiper-container swiper-<?php echo esc_attr($unique); ?>" data-id="<?php echo esc_attr($unique); ?>">
 
         <div class="swiper-wrapper">
 
