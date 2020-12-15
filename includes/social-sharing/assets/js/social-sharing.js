@@ -15,7 +15,7 @@ jQuery(function($) {
 					return;
 				} else {
 					$('.box-share-container').removeClass('open');
-					$('body').unbind('click');
+					$('body').off('click');
 				}
 			}
 		});

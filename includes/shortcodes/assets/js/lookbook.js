@@ -34,7 +34,7 @@ jQuery(function($) {
 
 		lookbook_init(mt_lookbook);
 
-		$(window).resize( mt_lookbook, function(){
+		$(window).on( 'resize', mt_lookbook, function(){
 			lookbook_init(mt_lookbook);
 		});
 
