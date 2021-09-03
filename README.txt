@@ -35,7 +35,7 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 == Changelog ==
 
 = 1.4.6 =
-- Upcoming WordPress 5.8 compatibility updates
+- WordPress 5.8 compatibility updates
 
 = 1.4.5 =
 - Maintenance: Fixed a few jQuery deprecated features warnings
