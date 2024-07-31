@@ -1,9 +1,9 @@
 === Mr. Tailor Extender ===
-Contributors: getbowtied, vanesareinerth, adrianlbs
+Contributors: getbowtied
 Tags: gutenberg, blocks
 Requires at least: 5.0
-Tested up to: 5.8
-Stable tag: 1.5
+Tested up to: 6.6
+Stable tag: 2.0
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,10 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 2.0 =
+- WordPress 6.6 compatibility updates
+- WooCommerce 9.1 compatibility updates
 
 = 1.5 =
 - WordPress 6.4 compatibility updates
