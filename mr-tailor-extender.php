@@ -36,23 +36,21 @@ define ( 'MT_EXT_VERSION', $version );
 
 if ( ! class_exists( 'MrTailorExtender' ) ) :
 
-	/**
-	 * MrTailorExtender class.
-	*/
 	class MrTailorExtender {
 
-		/**
-		 * The single instance of the class.
-		 *
-		 * @var MrTailorExtender
-		*/
-		protected static $_instance = null;
+		private static $instance = null;
+		private static $initialized = false;
 
-		/**
-		 * MrTailorExtender constructor.
-		 *
-		*/
-		public function __construct() {
+		private function __construct() {
+			// Empty constructor - initialization happens in init_instance
+		}
+
+		private function init_instance() {
+			if (self::$initialized) {
+				return;
+			}
+
+			$this->theme_slug = 'mrtailor';
 
 			// Helpers
 			include_once( dirname( __FILE__ ) . '/includes/helpers/helpers.php' );
@@ -104,22 +102,38 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/edit_custom_walker.php' );
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom_walker.php' );
 			}
+
+			if ( is_admin() ) {
+				global $gbt_dashboard_params;
+				$gbt_dashboard_params = array(
+					'gbt_theme_slug' => $this->theme_slug,
+				);
+				include_once( dirname( __FILE__ ) . '/dashboard/index.php' );
+			}
+
+			self::$initialized = true;
 		}
 
-		/**
-		 * Ensures only one instance of MrTailorExtender is loaded or can be loaded.
-		 *
-		 * @return MrTailorExtender
-		*/
-		public static function instance() {
-			if ( is_null( self::$_instance ) ) {
-				self::$_instance = new self();
+		public static function get_instance() {
+			return self::init();
+		}
+
+		public static function init() {
+			if (self::$instance === null) {
+				self::$instance = new self();
+				self::$instance->init_instance();
 			}
-			return self::$_instance;
+			return self::$instance;
+		}
+
+		private function __clone() {}
+		
+		public function __wakeup() {
+			throw new Exception("Cannot unserialize singleton");
 		}
 	}
 endif;
 
 add_action( 'after_setup_theme', function() {
-    $mrtailor_extender = new MrTailorExtender;
+	MrTailorExtender::init();
 } );
