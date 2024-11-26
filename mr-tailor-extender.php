@@ -4,7 +4,7 @@
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.wp-theme.design/
  * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
- * Version:           		2.1
+ * Version:           		2.2
  * Author:            		Get Bowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		6.0
@@ -19,10 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-if ( ! function_exists( 'is_plugin_active' ) ) {
-    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-}
-
 // Plugin Updater
 require 'core/updater/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
@@ -31,15 +27,13 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'mr-tailor-extender'
 );
 
-$version = ( isset(get_plugin_data( __FILE__ )['Version']) && !empty(get_plugin_data( __FILE__ )['Version']) ) ? get_plugin_data( __FILE__ )['Version'] : '1.0';
-define ( 'MT_EXT_VERSION', $version );
-
 if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 	class MrTailorExtender {
 
 		private static $instance = null;
 		private static $initialized = false;
+		private $theme_slug;
 
 		private function __construct() {
 			// Empty constructor - initialization happens in init_instance
@@ -49,6 +43,13 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			if (self::$initialized) {
 				return;
 			}
+
+			if ( ! function_exists( 'is_plugin_active' ) ) {
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
+			
+			$version = ( isset(get_plugin_data( __FILE__ )['Version']) && !empty(get_plugin_data( __FILE__ )['Version']) ) ? get_plugin_data( __FILE__ )['Version'] : '1.0';
+			define ( 'MT_EXT_VERSION', $version );
 
 			$this->theme_slug = 'mrtailor';
 
