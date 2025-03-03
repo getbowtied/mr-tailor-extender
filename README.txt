@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: gutenberg, blocks
 Requires at least: 6.0
 Tested up to: 6.6
-Stable tag: 2.4
+Stable tag: 2.5
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,10 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 2.5 =
+- WordPress 6.7.2 compatibility updates
+- WooCommerce 9.7.0 compatibility updates
 
 = 2.4 =
 - WordPress 6.7.1 compatibility updates
