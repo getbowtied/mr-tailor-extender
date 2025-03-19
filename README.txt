@@ -33,6 +33,9 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 
 == Changelog ==
 
+= 2.6 =
+- WooCommerce 9.7.1 compatibility updates
+
 = 2.5 =
 - WordPress 6.7.2 compatibility updates
 - WooCommerce 9.7.0 compatibility updates
