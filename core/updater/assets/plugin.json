@@ -1,19 +1,19 @@
 {
 	"name": "Mr. Tailor Extender",
-	"version": "3.4",
+	"version": "3.5",
 	"download_url": "https://getbowtied.github.io/repository/plugins/mr-tailor-extender/mr-tailor-extender.zip",
 
 	"homepage": "https://1.envato.market/getbowtied-to-mr-tailor",
 	"requires": "6.0",
 	"tested": "6.8",
-	"last_updated": "2025-05-29 12:00:00",
+	"last_updated": "2025-10-07 12:00:00",
 
 	"author": "Get Bowtied",
 	"author_homepage": "https://getbowtied.com",
 
 	"sections": {
 		"description": "<p>Companion plugin for the <b>Mr. Tailor</b> theme. Extends the functionality by adding theme specific features.</p><h4>Features:</h4><ul><li>Adds 'Social Media' section in Customizer for easy management of links to social media profiles</li><li>Adds header image option for WooCommerce product categories</li><li>Adds 'Additional JS' section in Customizer allowing for site customization with custom JavaScript code</li><li>Adds social sharing buttons for WooCommerce products</li></ul><h4>WPBakery Page Builder Elements:</h4><ul><li>Banner</li><li>Blog Posts ( List & Slider )</li><li>Lookbook</li></ul><h4>Gutenberg Blocks:</h4><ul><li>Banner</li><li>Portfolio</li><li>Blog Posts Grid</li><li>Blog Posts Slider</li><li>Lookbook</li><li>Social Media Profiles</li></ul>",
-		"changelog": "<h4>3.4</h4><ul><li>WooCommerce 9.8.5 compatibility updates</li></ul>"
+		"changelog": "<h4>3.5</h4><ul><li>WordPress 6.8.3 compatibility updates</li><li>WooCommerce 10.2.2 compatibility updates</li></ul>"
 	},
 
 	"icons" : {
