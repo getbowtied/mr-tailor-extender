@@ -4,7 +4,7 @@
  * Plugin Name:       		Mr. Tailor Extender
  * Plugin URI:        		https://mrtailor.getbowtied.com
  * Description:       		Extends the functionality of Mr. Tailor with theme specific features.
- * Version:           		3.5
+ * Version:           		3.6
  * Author:            		Get Bowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		6.0
@@ -104,7 +104,7 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom_walker.php' );
 			}
 
-			if ( is_admin() ) {
+			if ( is_admin() || ( defined('WP_CLI') && WP_CLI ) ) {
 				global $gbt_dashboard_params;
 				$gbt_dashboard_params = array(
 					'gbt_theme_slug' => $this->theme_slug,
