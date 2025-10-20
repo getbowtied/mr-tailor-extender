@@ -17,11 +17,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
-} // Exit if accessed directly
+}
 
-// Plugin Updater
-require 'core/updater/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+require 'dashboard/inc/puc/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+$plugin_update_checker = PucFactory::buildUpdateChecker(
 	'https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/plugin.json',
 	__FILE__,
 	'mr-tailor-extender'
