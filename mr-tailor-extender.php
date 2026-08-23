@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-require 'dashboard/inc/puc/plugin-update-checker.php';
+require 'includes/puc/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 $plugin_update_checker = PucFactory::buildUpdateChecker(
 	'https://raw.githubusercontent.com/getbowtied/mr-tailor-extender/master/core/updater/assets/plugin.json',
@@ -33,7 +33,6 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 
 		private static $instance = null;
 		private static $initialized = false;
-		private $theme_slug;
 
 		private function __construct() {
 			// Empty constructor - initialization happens in init_instance
@@ -50,8 +49,6 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 			
 			$version = ( isset(get_plugin_data( __FILE__ )['Version']) && !empty(get_plugin_data( __FILE__ )['Version']) ) ? get_plugin_data( __FILE__ )['Version'] : '1.0';
 			define ( 'MT_EXT_VERSION', $version );
-
-			$this->theme_slug = 'mrtailor';
 
 			// Helpers
 			include_once( dirname( __FILE__ ) . '/includes/helpers/helpers.php' );
@@ -102,14 +99,6 @@ if ( ! class_exists( 'MrTailorExtender' ) ) :
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom-menu.php' );
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/edit_custom_walker.php' );
 				include_once( dirname( __FILE__ ) . '/includes/custom-menu/custom_walker.php' );
-			}
-
-			if ( is_admin() || ( defined('WP_CLI') && WP_CLI ) ) {
-				global $gbt_dashboard_params;
-				$gbt_dashboard_params = array(
-					'gbt_theme_slug' => $this->theme_slug,
-				);
-				include_once( dirname( __FILE__ ) . '/dashboard/index.php' );
 			}
 
 			self::$initialized = true;
