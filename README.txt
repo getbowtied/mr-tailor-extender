@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: gutenberg, blocks
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 10.0
+Stable tag: 10.0.1
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,9 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 10.0.1 =
+- Add option to enable theme auto-updates from the update notice
 
 = 10.0 =
 - Add fallback theme updater for older theme versions
