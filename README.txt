@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: gutenberg, blocks
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 10.0.1
+Stable tag: 10.0.6
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,12 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 10.0.6 =
+* Newer updater always wins via versioned loader and GBT_Extender_Theme_Updater_Core; detach legacy direct-require hooks
+= 10.0.5 =
+- Align fallback theme updater with Shopkeeper Extender 10.0.5: class-based current-theme detection, front/cron marker fallback, suppress legacy update and license-subscription notices
+
 
 = 10.0.1 =
 - Add option to enable theme auto-updates from the update notice
