@@ -1,19 +1,19 @@
 {
 	"name": "Mr. Tailor Extender",
-	"version": "11.0",
+	"version": "11.1",
 	"download_url": "https://getbowtied.github.io/repository/plugins/mr-tailor-extender/mr-tailor-extender.zip",
 
 	"homepage": "https://1.envato.market/getbowtied-to-mr-tailor",
 	"requires": "6.0",
 	"tested": "7.1",
-	"last_updated": "2026-10-01 15:19:26",
+	"last_updated": "2026-10-08 15:00:00",
 
 	"author": "Get Bowtied",
 	"author_homepage": "https://getbowtied.com",
 
 	"sections": {
 		"description": "<p>Companion plugin for the <b>Mr. Tailor</b> theme. Extends the functionality by adding theme specific features.</p><h4>Features:</h4><ul><li>Adds 'Social Media' section in Customizer for easy management of links to social media profiles</li><li>Adds header image option for WooCommerce product categories</li><li>Adds 'Additional JS' section in Customizer allowing for site customization with custom JavaScript code</li><li>Adds social sharing buttons for WooCommerce products</li></ul><h4>WPBakery Page Builder Elements:</h4><ul><li>Banner</li><li>Blog Posts ( List & Slider )</li><li>Lookbook</li></ul><h4>Gutenberg Blocks:</h4><ul><li>Banner</li><li>Portfolio</li><li>Blog Posts Grid</li><li>Blog Posts Slider</li><li>Lookbook</li><li>Social Media Profiles</li></ul>",
-		"changelog": "<h4>11.0</h4><ul><li>Notice: Mr. Tailor ThemeForest version has reached end of life. Updates on ThemeForest stop after October 1, 2026.</li><li>Convert your ThemeForest purchase code into a new license key in your WordPress dashboard.</li><li>Future releases, updates, and support are available exclusively on our new platform.</li><li>Questions? Reach us at https://getbowtied.com/support/</li></ul>"
+		"changelog": "<h4>11.1</h4><ul><li>Update: Compatibility with WordPress 7.1.3</li><li>Security: A patched version of the Dashboard SDK to address several low-severity security issues identified in the SDK</li></ul>"
 	},
 
 	"icons" : {

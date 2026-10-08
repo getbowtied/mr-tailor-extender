@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: gutenberg, blocks
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 11.0
+Stable tag: 11.1
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,10 @@ Companion plugin for the **Mr. Tailor** theme. Extends the functionality by addi
 - Lookbook
 
 == Changelog ==
+
+= 11.1 =
+* Update: Compatibility with WordPress 7.1.3
+* Security: A patched version of the Dashboard SDK to address several low-severity security issues identified in the SDK
 
 = 11.0 =
 * Notice: Mr. Tailor ThemeForest version has reached end of life. Updates on ThemeForest stop after October 1, 2026.
